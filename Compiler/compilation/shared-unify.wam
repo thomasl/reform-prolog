@@ -1,0 +1,2896 @@
+Predicate('$await_nonvar_16_3115_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 3
+ X21
+ X29 3 0
+ X30 1 2
+ X11 0
+ X46 1 0
+ X46 3 1
+ X25 '$await_nonvar_16_3115_1' 2 2
+ X14 0
+ X49 1 0
+ X34 yes 0
+ X23
+ X27
+Label 3
+ X34 no 2
+ X27
+)
+Predicate('$await_leftmost_10_3151_2' 10
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 10
+ X50 yes 11
+ X16 5 0 11
+ X13 10
+ X32 0 7
+ X32 8 9
+ X27
+Label 3
+ X21
+ X30 1 0
+ X30 3 1
+ X30 4 4
+ X30 8 5
+ X30 9 6
+ X30 5 7
+ X30 6 8
+ X30 7 9
+ X47 1 0
+ X46 2 1
+ X46 3 2
+ X45 2 3
+ X24 1 0
+ X25 current_type 4 10
+ X47 1 0
+ X49 8 1
+ X49 9 2
+ X47 0 3
+ X25 current_type 4 8
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X23
+ X26 '$await_leftmost_10_3151_0' 8
+)
+Predicate('$await_leftmost_10_3151_0' 8
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 8
+ X21
+ X29 8 0
+ X30 3 5
+ X30 1 6
+ X30 2 7
+ X11 0
+ X46 3 0
+ X46 2 1
+ X46 8 2
+ X46 4 3
+ X25 '$await_leftmost_10_3151_1' 4 4
+ X19 2
+ X14 0
+ X49 1 1
+ X37 1
+ X62 'Await_Leftmost'
+ X61 2
+ X49 3 2
+ X34 yes 2
+ X50 'suspends until leftmost' 0
+ X23
+ X26 warning 1
+Label 3
+ X32 1 5
+ X32 6 7
+ X27
+)
+Predicate('$await_leftmost_10_3151_1' 4
+ X1 1 2 4 4 4
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 1 (
+        fragile 1
+) 4
+Label 3
+ X21
+ X30 0 2
+ X34 fragile 0
+ X46 1 0
+ X25 nonground_t 1 1
+ X49 0 0
+ X23
+ X26 binding_t 1
+Label 4
+ X21
+ X30 0 1
+ X34 fragile 3
+ X46 2 0
+ X25 nonground_t 1 1
+ X49 0 0
+ X23
+ X26 binding_t 1
+)
+Predicate('$await_nonvar_16_3115_1' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X50 yes 2
+ X16 5 0 2
+ X27
+Label 3
+ X50 yes 2
+ X16 5 1 2
+ X27
+)
+Predicate('$await_nonvar_16_3115_2' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 3
+ X30 0 4
+ X10 6
+ X50 yes 7
+ X16 5 0 7
+ X13 6
+ X46 1 0
+ X46 5 1
+ X25 construct_seq_type 2 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+Label 3
+ X21
+ X30 1 2
+ X30 0 4
+ X10 6
+ X50 no 7
+ X16 5 0 7
+ X13 6
+ X46 1 0
+ X46 5 1
+ X25 construct_par_type 2 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+)
+Predicate('$await_nv_12_3117_0' 11
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 1
+ X30 3 2
+ X30 4 3
+ X30 5 4
+ X30 6 5
+ X30 10 6
+ X30 7 7
+ X30 1 8
+ X30 8 9
+ X30 9 10
+ X11 0
+ X25 uninst_t 1 11
+ X49 10 0
+ X25 binding_t 1 10
+ X14 0
+ X49 1 8
+ X34 yes 8
+ X49 2 0
+ X49 3 1
+ X49 4 2
+ X49 5 3
+ X49 6 4
+ X49 7 5
+ X49 8 6
+ X49 9 7
+ X23
+ X26 generate_wait 8
+Label 3
+ X34 no 8
+ X32 3 2
+ X32 5 4
+ X32 9 10
+ X27
+)
+Predicate('$await_nv_12_3118_0' 11
+ X1 1 2 4 4 4
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 1 (
+        nondet 1
+) 4
+Label 3
+ X21
+ X30 7 0
+ X30 2 1
+ X30 3 2
+ X30 4 3
+ X30 5 4
+ X30 6 5
+ X30 10 7
+ X30 1 8
+ X30 8 9
+ X30 9 10
+ X11 0
+ X47 7 11
+ X34 nondet 11
+ X46 6 0
+ X25 uninst_t 1 11
+ X49 10 0
+ X25 binding_t 1 10
+ X14 0
+ X49 1 8
+ X34 yes 8
+ X49 2 0
+ X49 3 1
+ X49 4 2
+ X49 5 3
+ X49 6 4
+ X49 7 5
+ X49 8 6
+ X49 9 7
+ X23
+ X26 generate_wait 8
+Label 4
+ X34 no 8
+ X32 3 2
+ X32 5 4
+ X32 9 10
+ X27
+)
+Predicate('$await_nv_12_3119_0' 11
+ X1 1 2 4 4 4
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 1 (
+        nondet 1
+) 4
+Label 3
+ X21
+ X30 7 0
+ X30 2 1
+ X30 3 2
+ X30 4 3
+ X30 5 4
+ X30 6 5
+ X30 10 7
+ X30 1 8
+ X30 8 9
+ X30 9 10
+ X11 0
+ X47 7 11
+ X34 nondet 11
+ X46 6 0
+ X25 uninst_t 1 11
+ X49 10 0
+ X25 binding_t 1 10
+ X14 0
+ X49 1 8
+ X34 yes 8
+ X49 2 0
+ X49 3 1
+ X49 4 2
+ X49 5 3
+ X49 6 4
+ X49 7 5
+ X49 8 6
+ X49 9 7
+ X23
+ X26 generate_wait 8
+Label 4
+ X34 no 8
+ X32 3 2
+ X32 5 4
+ X32 9 10
+ X27
+)
+Predicate('$construct_locality_2_3137_0' 2
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 1 2
+ X21
+ X29 2 0
+ X30 1 1
+ X11 0
+ X50 fragile 0
+ X46 2 1
+ X25 member 2 2
+ X14 0
+ X49 1 0
+ X34 fragile 0
+ X23
+ X27
+Label 3
+ X20 1 2
+ X21
+ X29 2 0
+ X30 1 1
+ X11 0
+ X50 robust 0
+ X46 2 1
+ X25 member 2 2
+ X14 0
+ X49 1 0
+ X34 robust 0
+ X23
+ X27
+Label 4
+ X34 local 1
+ X27
+)
+Predicate('$generate_wait_8_3126_0' 3
+ X1 2 1 4 4 4
+Label 1
+ X2 2 (
+        det 2
+        nondet 3
+) 4
+Label 2
+ X20 2 3
+ X10 3
+ X34 det 0
+ X13 3
+ X37 1
+ X62 'Await_Nonvar'
+ X60 2
+ X27
+Label 3
+ X20 2 3
+ X10 3
+ X34 nondet 0
+ X13 3
+ X37 1
+ X62 'Await_Strictly_Nonvar'
+ X60 2
+ X50 'suspends if nondeterministic' 0
+ X26 warning 1
+Label 4
+ X20 3 3
+ X21
+ X29 3 0
+ X30 1 1
+ X30 0 2
+ X50 'generate_wait/4: invalid determinacy info ~q' 0
+ X53 1
+ X60 3
+ X63
+ X25 sys_error 2 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+)
+Predicate('$generate_wait_8_3127_0' 4
+ X1 2 1 4 4 4
+Label 1
+ X2 2 (
+        det 2
+        nondet 3
+) 4
+Label 2
+ X20 6 4
+ X10 4
+ X34 det 0
+ X13 4
+ X37 2
+ X55 5
+ X60 3
+ X36 'Await_Nonvar' 1 5
+ X64 x 1
+ X60 1
+ X27
+Label 3
+ X20 6 4
+ X10 4
+ X34 nondet 0
+ X13 4
+ X37 2
+ X55 5
+ X60 3
+ X36 'Await_Strictly_Nonvar' 1 5
+ X64 x 1
+ X60 1
+ X50 'suspends if nondeterministic' 0
+ X26 warning 1
+Label 4
+ X20 3 4
+ X21
+ X29 4 0
+ X30 1 2
+ X30 0 3
+ X50 'generate_wait/4: invalid determinacy info ~q' 0
+ X53 1
+ X60 4
+ X63
+ X25 sys_error 2 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+)
+Predicate('$get_term_16_3107_1' 21
+ X1 3 1 6 6 2
+Label 1
+ X2 1 (
+        heap 3
+) 6
+Label 2
+ X3 2 (
+        x 1 4
+        y 1 5
+) 6
+Label 3
+ X20 7 21
+ X29 21 0
+ X29 22 1
+ X29 23 2
+ X29 24 3
+ X29 25 4
+ X29 26 5
+ X29 27 6
+ X10 28
+ X34 heap 21
+ X13 28
+ X32 19 7
+ X46 11 0
+ X46 21 1
+ X46 22 2
+ X46 23 3
+ X46 24 4
+ X46 25 5
+ X46 26 6
+ X46 27 7
+ X46 10 9
+ X46 12 10
+ X46 13 11
+ X46 14 12
+ X46 15 13
+ X46 16 14
+ X46 17 15
+ X46 20 16
+ X26 '$get_term_16_3107_9' 17
+Label 4
+ X20 9 21
+ X29 21 0
+ X29 22 1
+ X29 23 2
+ X29 24 3
+ X29 25 4
+ X29 26 5
+ X29 27 6
+ X10 28
+ X36 x 1 21
+ X54 1
+ X13 28
+ X32 19 7
+ X46 11 0
+ X46 21 1
+ X46 22 2
+ X46 23 3
+ X46 24 4
+ X46 25 5
+ X46 26 6
+ X46 27 7
+ X46 10 9
+ X46 12 10
+ X46 13 11
+ X46 14 12
+ X46 15 13
+ X46 16 14
+ X46 17 15
+ X46 20 16
+ X26 '$get_term_16_3107_6' 17
+Label 5
+ X20 9 21
+ X29 21 0
+ X29 22 1
+ X29 23 2
+ X29 24 3
+ X29 25 4
+ X29 26 5
+ X29 27 6
+ X10 28
+ X36 y 1 21
+ X54 1
+ X13 28
+ X32 19 7
+ X46 11 0
+ X46 21 1
+ X46 22 2
+ X46 23 3
+ X46 24 4
+ X46 25 5
+ X46 26 6
+ X46 27 7
+ X46 10 9
+ X46 12 10
+ X46 13 11
+ X46 14 12
+ X46 15 13
+ X46 16 14
+ X46 17 15
+ X46 20 16
+ X26 '$get_term_16_3107_3' 17
+Label 6
+ X21
+ X30 17 0
+ X30 2 1
+ X30 3 2
+ X30 4 3
+ X30 12 7
+ X30 20 8
+ X30 0 9
+ X30 5 10
+ X30 6 13
+ X30 18 14
+ X30 8 15
+ X30 19 16
+ X30 10 17
+ X30 11 18
+ X30 13 19
+ X30 15 20
+ X11 16
+ X47 17 0
+ X24 4 1 7 9 14
+ X25 '$get_term_16_3107_0' 1 21
+ X14 16
+ X49 17 0
+ X49 18 1
+ X47 7 2
+ X49 19 3
+ X47 9 4
+ X47 1 5
+ X49 20 6
+ X47 14 7
+ X25 move_to_reg 8 16
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X49 10 10
+ X49 11 11
+ X49 12 12
+ X49 13 13
+ X49 14 14
+ X49 15 15
+ X23
+ X26 get_term 16
+)
+Predicate('$get_term_16_3107_0' 1
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X3 3 (
+        head 2 3
+        tail 2 4
+        global 1 5
+) fail
+Label 3
+ X20 3 1
+ X36 head 2 0
+ X54 2
+ X27
+Label 4
+ X20 3 1
+ X36 tail 2 0
+ X54 2
+ X27
+Label 5
+ X20 2 1
+ X36 global 1 0
+ X54 1
+ X27
+)
+Predicate('$get_term_16_3107_3' 17
+ X1 2 5 5 5 1
+Label 1
+ X3 3 (
+        new 1 2
+        x 1 3
+        y 1 4
+) 5
+Label 2
+ X20 2 17
+ X10 17
+ X36 new 1 0
+ X55 0
+ X13 17
+ X26 '$get_term_16_3107_4' 17
+Label 3
+ X20 27 17
+ X10 17
+ X36 x 1 0
+ X54 1
+ X13 17
+ X37 8
+ X55 18
+ X55 19
+ X36 comment 1 18
+ X64 pragma 1
+ X65
+ X55 20
+ X65
+ X55 21
+ X63
+ X36 info 4 21
+ X60 0
+ X60 6
+ X60 7
+ X60 5
+ X36 info 4 20
+ X60 1
+ X60 3
+ X60 4
+ X60 2
+ X37 19
+ X55 22
+ X60 16
+ X36 'Get_Value' 2 22
+ X58 1
+ X58 0
+ X32 11 9
+ X32 13 12
+ X32 15 14
+ X27
+Label 4
+ X20 34 17
+ X10 17
+ X36 y 1 0
+ X54 1
+ X13 17
+ X52 x 1 18
+ X54 1
+ X37 8
+ X55 19
+ X55 20
+ X36 comment 1 19
+ X64 pragma 1
+ X65
+ X55 21
+ X65
+ X55 22
+ X63
+ X36 info 4 22
+ X58 18
+ X60 6
+ X60 7
+ X60 5
+ X36 info 4 21
+ X60 1
+ X60 3
+ X60 4
+ X60 2
+ X37 20
+ X55 23
+ X65
+ X55 24
+ X60 16
+ X36 'Get_Value' 2 24
+ X58 1
+ X58 18
+ X36 'Put_Value' 2 23
+ X60 0
+ X58 18
+ X32 11 9
+ X32 13 12
+ X32 15 14
+ X27
+Label 5
+ X21
+ X30 5 0
+ X30 1 1
+ X30 4 2
+ X30 2 3
+ X30 3 4
+ X30 8 5
+ X30 6 6
+ X30 7 7
+ X30 18 8
+ X30 12 9
+ X30 13 11
+ X30 14 12
+ X30 15 13
+ X30 16 14
+ X30 17 15
+ X30 10 16
+ X11 11
+ X47 5 0
+ X24 2 0 9
+ X25 '$get_term_16_3107_2' 1 19
+ X14 11
+ X49 13 8
+ X33 12 8
+ X47 5 0
+ X49 14 1
+ X49 15 2
+ X49 16 3
+ X49 17 4
+ X47 9 5
+ X49 18 6
+ X47 0 7
+ X25 move_to_reg 8 11
+ X19 25
+ X49 0 0
+ X37 0
+ X55 1
+ X55 2
+ X36 comment 1 1
+ X64 pragma 1
+ X65
+ X55 3
+ X65
+ X55 4
+ X63
+ X36 info 4 4
+ X61 5
+ X61 6
+ X61 7
+ X61 8
+ X36 info 4 3
+ X61 1
+ X61 2
+ X61 3
+ X61 4
+ X37 2
+ X55 5
+ X61 10
+ X36 'Get_Value' 2 5
+ X61 9
+ X59 1
+ X23
+ X27
+)
+Predicate('$get_term_16_3107_2' 1
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X3 3 (
+        head 2 3
+        tail 2 4
+        global 1 5
+) fail
+Label 3
+ X20 3 1
+ X36 head 2 0
+ X54 2
+ X27
+Label 4
+ X20 3 1
+ X36 tail 2 0
+ X54 2
+ X27
+Label 5
+ X20 2 1
+ X36 global 1 0
+ X54 1
+ X27
+)
+Predicate('$get_term_16_3107_10' 1
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X3 2 (
+        head 2 3
+        tail 2 4
+) fail
+Label 3
+ X20 3 1
+ X36 head 2 0
+ X54 2
+ X27
+Label 4
+ X20 3 1
+ X36 tail 2 0
+ X54 2
+ X27
+)
+Predicate('$get_term_16_3107_11' 1
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X3 2 (
+        x 1 3
+        y 1 4
+) fail
+Label 3
+ X20 2 1
+ X36 x 1 0
+ X54 1
+ X27
+Label 4
+ X20 2 1
+ X36 y 1 0
+ X54 1
+ X27
+)
+Predicate('$get_term_16_3107_12' 6
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        void 2
+) 3
+Label 2
+ X20 2 6
+ X10 6
+ X34 void 0
+ X13 6
+ X37 1
+ X62 'Unify_Void'
+ X60 5
+ X32 4 2
+ X27
+Label 3
+ X20 5 6
+ X29 6 0
+ X37 1
+ X55 7
+ X60 5
+ X36 'Unify_Variable' 1 7
+ X60 6
+ X46 3 0
+ X46 6 1
+ X46 4 3
+ X26 update 4
+)
+Predicate('$get_term_16_3107_4' 17
+ X1 2 2 fail fail 1
+Label 1
+ X3 2 (
+        x 1 3
+        y 1 4
+) fail
+Label 2
+ X10 17
+ X34 void 0
+ X13 17
+ X32 11 9
+ X32 13 12
+ X32 15 14
+ X32 8 16
+ X27
+Label 3
+ X20 8 17
+ X21
+ X29 17 0
+ X30 0 12
+ X30 1 13
+ X30 2 14
+ X30 3 15
+ X10 18
+ X36 x 1 17
+ X54 1
+ X13 18
+ X37 8
+ X55 19
+ X60 16
+ X36 'Put_Value' 2 19
+ X60 1
+ X60 17
+ X46 10 0
+ X46 17 1
+ X46 9 2
+ X46 11 3
+ X25 update 4 4
+ X49 1 0
+ X33 0 0
+ X49 3 1
+ X33 2 1
+ X23
+ X27
+Label 4
+ X20 34 17
+ X10 17
+ X36 y 1 0
+ X54 1
+ X13 17
+ X52 x 1 18
+ X54 1
+ X37 8
+ X55 19
+ X55 20
+ X36 comment 1 19
+ X64 pragma 1
+ X65
+ X55 21
+ X65
+ X55 22
+ X63
+ X36 info 4 22
+ X58 18
+ X60 6
+ X60 7
+ X60 5
+ X36 info 4 21
+ X60 1
+ X60 3
+ X60 4
+ X60 2
+ X37 20
+ X55 23
+ X65
+ X55 24
+ X60 16
+ X36 'Get_Value' 2 24
+ X58 1
+ X58 18
+ X36 'Put_Value' 2 23
+ X60 0
+ X58 18
+ X32 11 9
+ X32 13 12
+ X32 15 14
+ X27
+)
+Predicate('$get_term_16_3107_6' 17
+ X1 3 1 1 1 2
+Label 1
+ X4 4
+ X6 5
+Label 2
+ X3 1 (
+        new 1 3
+) 1
+Label 3
+ X20 2 17
+ X10 17
+ X36 new 1 0
+ X55 0
+ X13 17
+ X46 8 2
+ X46 9 3
+ X46 10 4
+ X46 11 5
+ X46 12 6
+ X46 13 7
+ X46 14 8
+ X46 15 9
+ X46 16 10
+ X26 '$get_term_16_3107_8' 11
+Label 4
+ X21
+ X30 6 0
+ X30 2 1
+ X30 5 2
+ X30 3 3
+ X30 4 4
+ X30 9 5
+ X30 7 6
+ X30 8 7
+ X30 1 8
+ X30 11 9
+ X30 12 11
+ X30 13 12
+ X30 14 13
+ X30 15 14
+ X30 16 15
+ X30 10 16
+ X11 0
+ X47 6 0
+ X25 '$get_term_16_3107_7' 1 17
+ X19 25
+ X14 0
+ X49 1 0
+ X37 0
+ X55 1
+ X55 2
+ X36 comment 1 1
+ X64 pragma 1
+ X65
+ X55 3
+ X65
+ X55 4
+ X63
+ X36 info 4 4
+ X61 6
+ X61 7
+ X61 8
+ X61 9
+ X36 info 4 3
+ X61 2
+ X61 3
+ X61 4
+ X61 5
+ X37 2
+ X55 5
+ X61 10
+ X36 'Get_Value' 2 5
+ X59 6
+ X59 2
+ X49 12 6
+ X33 11 6
+ X49 14 7
+ X33 13 7
+ X49 16 8
+ X33 15 8
+ X23
+ X27
+Label 5
+ X21
+ X30 13 0
+ X30 1 1
+ X30 4 2
+ X30 2 3
+ X30 3 4
+ X30 8 5
+ X30 6 6
+ X30 7 7
+ X30 18 8
+ X30 11 9
+ X30 12 11
+ X30 14 12
+ X30 15 13
+ X30 16 14
+ X30 17 15
+ X30 9 16
+ X11 10
+ X47 13 0
+ X24 2 0 5
+ X25 '$get_term_16_3107_5' 1 19
+ X14 10
+ X49 12 8
+ X33 11 8
+ X49 13 0
+ X49 14 1
+ X49 15 2
+ X49 16 3
+ X49 17 4
+ X47 5 5
+ X49 18 6
+ X47 0 7
+ X25 move_to_reg 8 10
+ X19 25
+ X49 0 0
+ X37 0
+ X55 1
+ X55 2
+ X36 comment 1 1
+ X64 pragma 1
+ X65
+ X55 3
+ X65
+ X55 4
+ X63
+ X36 info 4 4
+ X61 5
+ X61 6
+ X61 7
+ X61 8
+ X36 info 4 3
+ X61 1
+ X61 2
+ X61 3
+ X61 4
+ X37 2
+ X55 5
+ X61 9
+ X36 'Get_Value' 2 5
+ X59 5
+ X59 1
+ X23
+ X27
+)
+Predicate('$get_term_16_3107_5' 1
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X3 3 (
+        head 2 3
+        tail 2 4
+        global 1 5
+) fail
+Label 3
+ X20 3 1
+ X36 head 2 0
+ X54 2
+ X27
+Label 4
+ X20 3 1
+ X36 tail 2 0
+ X54 2
+ X27
+Label 5
+ X20 2 1
+ X36 global 1 0
+ X54 1
+ X27
+)
+Predicate('$get_term_16_3107_7' 1
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X3 2 (
+        x 1 3
+        y 1 4
+) fail
+Label 3
+ X20 2 1
+ X36 x 1 0
+ X54 1
+ X27
+Label 4
+ X20 2 1
+ X36 y 1 0
+ X54 1
+ X27
+)
+Predicate('$get_term_16_3107_8' 11
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        void 2
+) 3
+Label 2
+ X10 11
+ X34 void 0
+ X13 11
+ X32 5 3
+ X32 7 6
+ X32 9 8
+ X32 2 10
+ X27
+Label 3
+ X20 6 11
+ X21
+ X29 11 0
+ X30 0 6
+ X30 1 7
+ X30 2 8
+ X30 3 9
+ X37 2
+ X55 12
+ X60 10
+ X36 'Get_Variable' 2 12
+ X60 11
+ X60 1
+ X46 4 0
+ X46 11 1
+ X46 3 2
+ X46 5 3
+ X25 update 4 4
+ X49 1 0
+ X33 0 0
+ X49 3 1
+ X33 2 1
+ X23
+ X27
+)
+Predicate('$get_term_16_3107_9' 17
+ X1 4 1 1 1 2
+Label 1
+ X4 5
+ X6 6
+Label 2
+ X3 2 (
+        new 1 4
+        global 1 3
+) 1
+Label 3
+ X4 5
+ X5 6
+ X6 7
+Label 4
+ X20 2 17
+ X10 17
+ X36 new 1 0
+ X55 0
+ X13 17
+ X32 13 12
+ X32 15 14
+ X46 8 1
+ X46 9 2
+ X46 10 3
+ X46 11 4
+ X46 16 5
+ X26 '$get_term_16_3107_12' 6
+Label 5
+ X21
+ X30 8 0
+ X30 14 2
+ X30 12 3
+ X30 13 4
+ X30 11 5
+ X30 9 6
+ X30 10 7
+ X30 7 8
+ X30 1 9
+ X30 2 11
+ X30 3 12
+ X30 4 13
+ X30 5 14
+ X30 6 15
+ X30 15 16
+ X11 0
+ X47 8 0
+ X25 '$get_term_16_3107_11' 1 16
+ X19 23
+ X14 0
+ X49 2 0
+ X33 1 0
+ X49 4 1
+ X33 3 1
+ X49 6 2
+ X33 5 2
+ X49 7 3
+ X37 3
+ X55 4
+ X55 5
+ X36 comment 1 4
+ X64 pragma 1
+ X65
+ X55 6
+ X65
+ X55 7
+ X63
+ X36 unified_with 3 7
+ X61 12
+ X61 13
+ X61 14
+ X36 info 4 6
+ X61 8
+ X61 9
+ X61 10
+ X61 11
+ X37 5
+ X55 8
+ X61 15
+ X36 'Unify_Value' 1 8
+ X59 8
+ X23
+ X27
+Label 6
+ X21
+ X30 3 0
+ X30 8 1
+ X30 9 8
+ X30 1 9
+ X30 2 11
+ X30 4 12
+ X30 5 13
+ X30 6 14
+ X30 7 15
+ X30 10 16
+ X11 0
+ X47 3 0
+ X25 '$get_term_16_3107_10' 1 11
+ X14 0
+ X49 2 8
+ X33 1 8
+ X49 3 0
+ X49 4 1
+ X49 5 2
+ X49 6 3
+ X49 7 4
+ X49 8 5
+ X49 9 6
+ X49 10 7
+ X23
+ X26 move_to_reg 8
+Label 7
+ X20 3 17
+ X29 17 1
+ X10 18
+ X36 global 1 0
+ X54 1
+ X13 18
+ X32 11 9
+ X46 12 1
+ X46 13 2
+ X46 14 3
+ X46 15 4
+ X46 17 5
+ X46 8 6
+ X46 16 7
+ X26 move_to_reg 8
+)
+Predicate('$get_term_16_3108_0' 16
+ X1 4 1 2 2 3
+Label 1
+ X2 1 (
+        heap 4
+) 2
+Label 2
+ X4 7
+ X6 8
+Label 3
+ X3 2 (
+        x 1 5
+        y 1 6
+) 2
+Label 4
+ X20 16 16
+ X10 16
+ X34 heap 0
+ X13 16
+ X37 10
+ X55 17
+ X55 18
+ X36 comment 1 17
+ X64 pragma 1
+ X65
+ X55 19
+ X63
+ X36 unified_with 3 19
+ X60 5
+ X60 6
+ X60 4
+ X37 18
+ X55 20
+ X60 15
+ X36 'Unify_Constant' 1 20
+ X60 1
+ X32 11 7
+ X32 12 2
+ X32 13 3
+ X32 14 9
+ X27
+Label 5
+ X20 20 16
+ X10 16
+ X36 x 1 0
+ X54 1
+ X13 16
+ X37 10
+ X55 17
+ X55 18
+ X36 comment 1 17
+ X64 pragma 1
+ X65
+ X55 19
+ X63
+ X36 info 4 19
+ X60 0
+ X60 5
+ X60 6
+ X60 4
+ X37 18
+ X55 20
+ X60 15
+ X36 'Get_Constant' 2 20
+ X60 1
+ X58 0
+ X32 11 7
+ X32 12 2
+ X32 13 3
+ X32 14 9
+ X27
+Label 6
+ X20 27 16
+ X10 16
+ X36 y 1 0
+ X54 1
+ X13 16
+ X52 x 1 17
+ X54 1
+ X37 10
+ X55 18
+ X55 19
+ X36 comment 1 18
+ X64 pragma 1
+ X65
+ X55 20
+ X63
+ X36 info 4 20
+ X60 0
+ X60 5
+ X60 6
+ X60 4
+ X37 19
+ X55 21
+ X65
+ X55 22
+ X60 15
+ X36 'Get_Constant' 2 22
+ X60 1
+ X58 17
+ X36 'Put_Value' 2 21
+ X58 0
+ X58 17
+ X32 11 7
+ X32 12 2
+ X32 13 3
+ X32 14 9
+ X27
+Label 7
+ X21
+ X30 17 0
+ X30 0 1
+ X30 18 2
+ X30 19 3
+ X30 2 4
+ X30 3 5
+ X30 4 6
+ X30 5 7
+ X30 11 8
+ X30 12 9
+ X30 20 10
+ X30 6 11
+ X30 8 12
+ X30 10 13
+ X30 13 14
+ X30 15 15
+ X11 16
+ X47 17 0
+ X24 4 1 7 9 14
+ X25 '$get_term_16_3108_1' 1 21
+ X14 16
+ X49 17 0
+ X49 18 1
+ X47 7 2
+ X49 19 3
+ X47 9 4
+ X47 1 5
+ X49 20 6
+ X47 14 7
+ X25 move_to_reg 8 16
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X49 10 10
+ X49 11 11
+ X49 12 12
+ X49 13 13
+ X49 14 14
+ X49 15 15
+ X23
+ X26 get_term 16
+Label 8
+ X20 3 16
+ X21
+ X29 16 0
+ X30 1 10
+ X30 0 15
+ X50 'Bad dest in get_term (const): ~q' 0
+ X53 1
+ X60 16
+ X63
+ X25 sys_error 2 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+)
+Predicate('$get_term_16_3108_1' 1
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X3 3 (
+        head 2 3
+        tail 2 4
+        global 1 5
+) fail
+Label 3
+ X20 3 1
+ X36 head 2 0
+ X54 2
+ X27
+Label 4
+ X20 3 1
+ X36 tail 2 0
+ X54 2
+ X27
+Label 5
+ X20 2 1
+ X36 global 1 0
+ X54 1
+ X27
+)
+Predicate('$get_term_16_3109_1' 18
+ X1 3 1 2 2 2
+Label 1
+ X2 1 (
+        heap 3
+) 2
+Label 2
+ X4 4
+ X6 5
+Label 3
+ X21
+ X30 16 1
+ X30 17 2
+ X30 21 3
+ X30 22 4
+ X30 1 5
+ X30 26 6
+ X30 25 7
+ X30 20 8
+ X30 8 9
+ X30 23 11
+ X30 3 13
+ X30 5 14
+ X30 7 15
+ X30 10 16
+ X30 12 17
+ X10 18
+ X34 heap 0
+ X13 18
+ X47 25 0
+ X47 1 1
+ X47 26 2
+ X46 10 3
+ X46 12 4
+ X45 24 5
+ X45 13 6
+ X45 15 7
+ X24 9 0 2 4 6 9 11 14 18 19
+ X25 '$get_term_16_3109_8' 8 27
+ X49 26 0
+ X50 2 1
+ X47 18 2
+ X25 subterms_have_type 3 26
+ X49 25 0
+ X50 2 1
+ X47 19 2
+ X25 subterms_have_type 3 25
+ X19 4
+ X53 17
+ X61 17
+ X63
+ X53 0
+ X61 16
+ X58 17
+ X50 heap 1
+ X47 1 2
+ X49 18 3
+ X49 19 4
+ X49 20 5
+ X47 2 6
+ X49 21 7
+ X47 4 8
+ X49 22 9
+ X47 6 10
+ X47 8 11
+ X49 23 12
+ X47 9 13
+ X47 0 14
+ X49 24 15
+ X47 14 16
+ X25 get_terms 17 16
+ X49 13 0
+ X49 14 1
+ X49 15 2
+ X47 11 3
+ X25 '$get_term_16_3109_7' 4 13
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X49 10 10
+ X49 11 11
+ X49 12 12
+ X23
+ X26 get_deep_terms 13
+Label 4
+ X21
+ X30 31 0
+ X30 17 1
+ X30 18 2
+ X30 22 3
+ X30 23 4
+ X30 1 5
+ X30 27 6
+ X30 26 7
+ X30 21 8
+ X30 8 9
+ X30 29 10
+ X30 24 11
+ X30 32 12
+ X30 3 13
+ X30 5 14
+ X30 7 15
+ X30 10 16
+ X30 12 17
+ X11 30
+ X47 31 0
+ X24 14 0 2 4 6 9 11 13 14 15 16 19 20 25 28
+ X25 '$get_term_16_3109_6' 1 33
+ X14 30
+ X49 31 0
+ X49 32 1
+ X47 15 2
+ X47 28 3
+ X25 '$get_term_16_3109_5' 4 30
+ X47 26 0
+ X47 15 1
+ X49 28 2
+ X47 1 3
+ X47 27 4
+ X49 29 5
+ X47 25 6
+ X47 13 7
+ X47 16 8
+ X25 '$get_term_16_3109_3' 9 28
+ X49 27 0
+ X50 2 1
+ X47 19 2
+ X25 subterms_have_type 3 27
+ X49 26 0
+ X50 2 1
+ X47 20 2
+ X25 subterms_have_type 3 26
+ X19 4
+ X53 17
+ X61 18
+ X63
+ X53 0
+ X61 17
+ X58 17
+ X50 heap 1
+ X47 1 2
+ X49 19 3
+ X49 20 4
+ X49 21 5
+ X47 2 6
+ X49 22 7
+ X47 4 8
+ X49 23 9
+ X47 6 10
+ X47 8 11
+ X49 24 12
+ X47 9 13
+ X47 0 14
+ X49 25 15
+ X47 14 16
+ X25 get_terms 17 17
+ X49 13 0
+ X49 14 1
+ X49 15 2
+ X49 16 3
+ X47 11 4
+ X25 '$get_term_16_3109_2' 5 13
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X49 10 10
+ X49 11 11
+ X49 12 12
+ X23
+ X26 get_deep_terms 13
+Label 5
+ X21
+ X30 18 0
+ X30 0 1
+ X30 1 2
+ X30 19 3
+ X30 20 4
+ X30 3 5
+ X30 4 6
+ X30 5 7
+ X30 6 8
+ X30 12 9
+ X30 13 11
+ X30 21 12
+ X30 7 13
+ X30 9 14
+ X30 11 15
+ X30 14 16
+ X30 16 17
+ X11 17
+ X47 18 0
+ X24 4 2 8 10 15
+ X25 '$get_term_16_3109_0' 1 22
+ X14 17
+ X49 18 0
+ X49 19 1
+ X47 8 2
+ X49 20 3
+ X47 10 4
+ X47 2 5
+ X49 21 6
+ X47 15 7
+ X25 move_to_reg 8 17
+ X19 2
+ X53 0
+ X61 0
+ X61 1
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X49 6 5
+ X49 7 6
+ X49 8 7
+ X49 9 8
+ X49 10 9
+ X49 11 10
+ X49 12 11
+ X49 13 12
+ X49 14 13
+ X49 15 14
+ X49 16 15
+ X23
+ X26 get_term 16
+)
+Predicate('$get_term_16_3109_0' 1
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X3 3 (
+        head 2 3
+        tail 2 4
+        global 1 5
+) fail
+Label 3
+ X20 3 1
+ X36 head 2 0
+ X54 2
+ X27
+Label 4
+ X20 3 1
+ X36 tail 2 0
+ X54 2
+ X27
+Label 5
+ X20 2 1
+ X36 global 1 0
+ X54 1
+ X27
+)
+Predicate('$get_term_16_3109_2' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 5
+ X50 yes 6
+ X16 5 0 6
+ X13 5
+ X32 1 4
+ X27
+Label 3
+ X21
+ X30 0 1
+ X30 1 2
+ X30 2 3
+ X30 3 4
+ X47 2 0
+ X25 nonvar_annot_term 1 4
+ X19 5
+ X49 0 0
+ X37 0
+ X55 1
+ X61 3
+ X36 'Unlock' 2 1
+ X61 1
+ X61 2
+ X23
+ X27
+)
+Predicate('$get_term_16_3109_3' 9
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 4 0
+ X30 2 1
+ X30 1 2
+ X30 5 3
+ X30 3 4
+ X30 6 6
+ X30 7 7
+ X11 0
+ X47 5 0
+ X47 3 1
+ X47 4 2
+ X46 5 3
+ X25 '$get_term_16_3109_4' 4 8
+ X19 17
+ X14 0
+ X49 1 0
+ X37 0
+ X55 1
+ X55 2
+ X36 comment 1 1
+ X64 pragma 1
+ X65
+ X55 3
+ X63
+ X36 info 4 3
+ X61 2
+ X61 3
+ X61 4
+ X61 5
+ X37 2
+ X55 4
+ X61 6
+ X36 'Get_List' 1 4
+ X59 2
+ X49 7 5
+ X34 yes 5
+ X23
+ X27
+Label 3
+ X20 20 9
+ X37 2
+ X55 9
+ X55 10
+ X36 comment 1 9
+ X64 pragma 1
+ X65
+ X55 11
+ X63
+ X36 info 4 11
+ X60 1
+ X60 4
+ X60 0
+ X60 3
+ X37 10
+ X55 12
+ X60 6
+ X36 'Lock_And_Get_List' 2 12
+ X58 1
+ X60 8
+ X36 x 1 8
+ X54 1
+ X34 no 7
+ X27
+)
+Predicate('$get_term_16_3109_4' 4
+ X1 1 2 3 3 3
+Label 1
+ X4 4
+ X5 5
+ X6 6
+Label 2
+ X2 1 (
+        local 1
+) 3
+Label 3
+ X4 5
+ X6 6
+Label 4
+ X34 local 0
+ X27
+Label 5
+ X46 1 0
+ X26 nonvar_t 1
+Label 6
+ X34 yes 3
+ X46 2 0
+ X26 nonvar_t 1
+)
+Predicate('$get_term_16_3109_5' 4
+ X1 2 3 3 3 1
+Label 1
+ X3 1 (
+        y 1 2
+) 3
+Label 2
+ X20 9 4
+ X10 4
+ X36 y 1 0
+ X54 1
+ X13 4
+ X36 x 1 2
+ X54 1
+ X37 1
+ X55 5
+ X60 3
+ X36 'Put_Value' 2 5
+ X60 0
+ X60 2
+ X27
+Label 3
+ X32 0 2
+ X32 1 3
+ X27
+)
+Predicate('$get_term_16_3109_6' 1
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X3 2 (
+        x 1 3
+        y 1 4
+) fail
+Label 3
+ X20 2 1
+ X36 x 1 0
+ X54 1
+ X27
+Label 4
+ X20 2 1
+ X36 y 1 0
+ X54 1
+ X27
+)
+Predicate('$get_term_16_3109_7' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 4
+ X50 yes 5
+ X16 5 0 5
+ X13 4
+ X32 1 3
+ X27
+Label 3
+ X21
+ X30 0 1
+ X30 1 2
+ X30 2 3
+ X47 1 0
+ X25 nonvar_annot_term 1 3
+ X19 4
+ X49 0 0
+ X37 0
+ X55 1
+ X61 2
+ X36 'Unlock' 1 1
+ X61 1
+ X23
+ X27
+)
+Predicate('$get_term_16_3109_8' 8
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 3 0
+ X30 4 1
+ X30 2 2
+ X30 1 4
+ X30 5 5
+ X30 6 6
+ X11 0
+ X47 4 0
+ X47 3 1
+ X46 3 2
+ X25 '$get_term_16_3109_9' 3 7
+ X19 14
+ X14 0
+ X49 1 0
+ X37 0
+ X55 1
+ X55 2
+ X36 comment 1 1
+ X64 pragma 1
+ X65
+ X55 3
+ X63
+ X36 unified_with 3 3
+ X61 2
+ X61 3
+ X61 4
+ X37 2
+ X62 'Unify_List'
+ X61 5
+ X49 6 4
+ X34 yes 4
+ X23
+ X27
+Label 3
+ X20 18 8
+ X37 4
+ X55 8
+ X55 9
+ X36 comment 1 8
+ X64 pragma 1
+ X65
+ X55 10
+ X63
+ X36 unified_with 3 10
+ X60 2
+ X60 0
+ X60 1
+ X37 9
+ X55 11
+ X60 5
+ X36 'Lock_And_Unify_List' 1 11
+ X60 7
+ X36 x 1 7
+ X54 1
+ X34 no 6
+ X27
+)
+Predicate('$get_term_16_3109_9' 3
+ X1 1 2 4 4 4
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 1 (
+        local 1
+) 4
+Label 3
+ X34 local 0
+ X27
+Label 4
+ X34 yes 2
+ X46 1 0
+ X26 nonvar_t 1
+)
+Predicate('$get_term_16_3110_1' 20
+ X1 3 1 2 2 2
+Label 1
+ X2 1 (
+        heap 3
+) 2
+Label 2
+ X4 4
+ X6 5
+Label 3
+ X21
+ X30 19 2
+ X30 20 3
+ X30 1 4
+ X30 25 5
+ X30 23 6
+ X30 18 7
+ X30 8 8
+ X30 21 10
+ X30 24 13
+ X30 15 14
+ X30 3 15
+ X30 5 16
+ X30 7 17
+ X30 10 18
+ X30 12 19
+ X10 20
+ X34 heap 0
+ X13 20
+ X47 23 0
+ X47 1 1
+ X47 25 2
+ X46 9 3
+ X46 11 4
+ X46 12 5
+ X47 24 6
+ X45 22 7
+ X45 14 8
+ X24 9 0 2 4 6 9 11 13 16 17
+ X25 '$get_term_16_3110_8' 9 26
+ X49 25 0
+ X47 24 1
+ X47 16 2
+ X25 subterms_have_type 3 25
+ X49 23 0
+ X49 24 1
+ X47 17 2
+ X25 subterms_have_type 3 23
+ X49 15 0
+ X50 heap 1
+ X47 1 2
+ X49 16 3
+ X49 17 4
+ X49 18 5
+ X47 2 6
+ X49 19 7
+ X47 4 8
+ X49 20 9
+ X47 6 10
+ X47 8 11
+ X49 21 12
+ X47 9 13
+ X47 0 14
+ X49 22 15
+ X47 13 16
+ X25 get_terms 17 15
+ X47 1 0
+ X49 13 1
+ X49 14 2
+ X47 11 3
+ X25 '$get_term_16_3110_7' 4 13
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X49 10 10
+ X49 11 11
+ X49 12 12
+ X23
+ X26 get_deep_terms 13
+Label 4
+ X21
+ X30 32 0
+ X30 21 2
+ X30 22 3
+ X30 1 4
+ X30 27 5
+ X30 25 6
+ X30 20 7
+ X30 8 8
+ X30 29 9
+ X30 23 10
+ X30 33 11
+ X30 30 12
+ X30 26 13
+ X30 17 14
+ X30 3 15
+ X30 5 16
+ X30 7 17
+ X30 10 18
+ X30 12 19
+ X11 31
+ X47 32 0
+ X24 14 0 2 4 6 9 11 13 14 15 16 18 19 24 28
+ X25 '$get_term_16_3110_6' 1 34
+ X14 31
+ X49 32 0
+ X49 33 1
+ X47 15 2
+ X47 28 3
+ X25 '$get_term_16_3110_5' 4 31
+ X47 25 0
+ X47 15 1
+ X49 28 2
+ X47 1 3
+ X47 27 4
+ X49 29 5
+ X49 30 6
+ X47 26 7
+ X47 24 8
+ X47 13 9
+ X47 16 10
+ X25 '$get_term_16_3110_3' 11 28
+ X49 27 0
+ X47 26 1
+ X47 18 2
+ X25 subterms_have_type 3 27
+ X49 25 0
+ X49 26 1
+ X47 19 2
+ X25 subterms_have_type 3 25
+ X49 17 0
+ X50 heap 1
+ X47 1 2
+ X49 18 3
+ X49 19 4
+ X49 20 5
+ X47 2 6
+ X49 21 7
+ X47 4 8
+ X49 22 9
+ X47 6 10
+ X47 8 11
+ X49 23 12
+ X47 9 13
+ X47 0 14
+ X49 24 15
+ X47 14 16
+ X25 get_terms 17 17
+ X49 13 0
+ X49 14 1
+ X49 15 2
+ X49 16 3
+ X47 11 4
+ X25 '$get_term_16_3110_2' 5 13
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X49 10 10
+ X49 11 11
+ X49 12 12
+ X23
+ X26 get_deep_terms 13
+Label 5
+ X21
+ X30 17 0
+ X30 0 1
+ X30 18 2
+ X30 19 3
+ X30 2 4
+ X30 3 5
+ X30 4 6
+ X30 5 7
+ X30 11 8
+ X30 12 10
+ X30 20 11
+ X30 6 15
+ X30 8 16
+ X30 10 17
+ X30 13 18
+ X30 15 19
+ X11 16
+ X47 17 0
+ X24 4 1 7 9 14
+ X25 '$get_term_16_3110_0' 1 21
+ X14 16
+ X49 17 0
+ X49 18 1
+ X47 7 2
+ X49 19 3
+ X47 9 4
+ X47 1 5
+ X49 20 6
+ X47 14 7
+ X25 move_to_reg 8 16
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X49 10 10
+ X49 11 11
+ X49 12 12
+ X49 13 13
+ X49 14 14
+ X49 15 15
+ X23
+ X26 get_term 16
+)
+Predicate('$get_term_16_3110_0' 1
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X3 3 (
+        global 1 3
+        head 2 4
+        tail 2 5
+) fail
+Label 3
+ X20 2 1
+ X36 global 1 0
+ X54 1
+ X27
+Label 4
+ X20 3 1
+ X36 head 2 0
+ X54 2
+ X27
+Label 5
+ X20 3 1
+ X36 tail 2 0
+ X54 2
+ X27
+)
+Predicate('$get_term_16_3110_2' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 5
+ X50 yes 6
+ X16 5 0 6
+ X13 5
+ X32 1 4
+ X27
+Label 3
+ X21
+ X30 0 1
+ X30 1 2
+ X30 2 3
+ X30 3 4
+ X47 2 0
+ X25 nonvar_annot_term 1 4
+ X19 5
+ X49 0 0
+ X37 0
+ X55 1
+ X61 3
+ X36 'Unlock' 2 1
+ X61 1
+ X61 2
+ X23
+ X27
+)
+Predicate('$get_term_16_3110_3' 11
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 4 0
+ X30 2 1
+ X30 1 2
+ X30 5 3
+ X30 3 4
+ X30 6 6
+ X30 7 7
+ X30 8 8
+ X30 9 9
+ X11 0
+ X47 5 0
+ X47 3 1
+ X47 4 2
+ X46 5 3
+ X25 '$get_term_16_3110_4' 4 10
+ X19 21
+ X14 0
+ X49 1 0
+ X37 0
+ X55 1
+ X55 2
+ X36 comment 1 1
+ X64 pragma 1
+ X65
+ X55 3
+ X63
+ X36 info 4 3
+ X61 2
+ X61 3
+ X61 4
+ X61 5
+ X37 2
+ X55 4
+ X61 8
+ X36 'Get_Structure' 2 4
+ X55 5
+ X59 2
+ X36 / 2 5
+ X61 6
+ X61 7
+ X49 9 6
+ X34 yes 6
+ X23
+ X27
+Label 3
+ X20 24 11
+ X37 2
+ X55 11
+ X55 12
+ X36 comment 1 11
+ X64 pragma 1
+ X65
+ X55 13
+ X63
+ X36 info 4 13
+ X60 1
+ X60 4
+ X60 0
+ X60 3
+ X37 12
+ X55 14
+ X60 8
+ X36 'Lock_And_Get_Structure' 3 14
+ X55 15
+ X58 1
+ X60 10
+ X36 / 2 15
+ X60 6
+ X60 7
+ X36 x 1 10
+ X54 1
+ X34 no 9
+ X27
+)
+Predicate('$get_term_16_3110_4' 4
+ X1 1 2 3 3 3
+Label 1
+ X4 4
+ X5 5
+ X6 6
+Label 2
+ X2 1 (
+        local 1
+) 3
+Label 3
+ X4 5
+ X6 6
+Label 4
+ X34 local 0
+ X27
+Label 5
+ X46 1 0
+ X26 nonvar_t 1
+Label 6
+ X34 yes 3
+ X46 2 0
+ X26 nonvar_t 1
+)
+Predicate('$get_term_16_3110_5' 4
+ X1 2 3 3 3 1
+Label 1
+ X3 1 (
+        y 1 2
+) 3
+Label 2
+ X20 9 4
+ X10 4
+ X36 y 1 0
+ X54 1
+ X13 4
+ X36 x 1 2
+ X54 1
+ X37 1
+ X55 5
+ X60 3
+ X36 'Put_Value' 2 5
+ X60 0
+ X60 2
+ X27
+Label 3
+ X32 0 2
+ X32 1 3
+ X27
+)
+Predicate('$get_term_16_3110_6' 1
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X3 2 (
+        x 1 3
+        y 1 4
+) fail
+Label 3
+ X20 2 1
+ X36 x 1 0
+ X54 1
+ X27
+Label 4
+ X20 2 1
+ X36 y 1 0
+ X54 1
+ X27
+)
+Predicate('$get_term_16_3110_7' 4
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        local 2
+) 3
+Label 2
+ X10 4
+ X34 local 0
+ X13 4
+ X32 1 3
+ X27
+Label 3
+ X21
+ X30 0 1
+ X30 1 2
+ X30 2 3
+ X47 1 0
+ X25 nonvar_annot_term 1 3
+ X19 4
+ X49 0 0
+ X37 0
+ X55 1
+ X61 2
+ X36 'Unlock' 1 1
+ X61 1
+ X23
+ X27
+)
+Predicate('$get_term_16_3110_8' 9
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 3 0
+ X30 4 1
+ X30 2 2
+ X30 1 4
+ X30 5 5
+ X30 6 6
+ X30 7 7
+ X11 0
+ X47 4 0
+ X47 3 1
+ X46 3 2
+ X25 '$get_term_16_3110_9' 3 8
+ X19 19
+ X14 0
+ X49 1 0
+ X37 0
+ X55 1
+ X55 2
+ X36 comment 1 1
+ X64 pragma 1
+ X65
+ X55 3
+ X63
+ X36 unified_with 3 3
+ X61 2
+ X61 3
+ X61 4
+ X37 2
+ X55 4
+ X61 7
+ X36 'Unify_Structure' 1 4
+ X64 / 2
+ X61 5
+ X61 6
+ X23
+ X27
+Label 3
+ X20 22 9
+ X37 4
+ X55 9
+ X55 10
+ X36 comment 1 9
+ X64 pragma 1
+ X65
+ X55 11
+ X63
+ X36 unified_with 3 11
+ X60 2
+ X60 0
+ X60 1
+ X37 10
+ X55 12
+ X60 7
+ X36 'Lock_And_Unify_Structure' 2 12
+ X55 13
+ X60 8
+ X36 / 2 13
+ X60 5
+ X60 6
+ X36 x 1 8
+ X54 1
+ X27
+)
+Predicate('$get_term_16_3110_9' 3
+ X1 1 2 4 4 4
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 1 (
+        local 1
+) 4
+Label 3
+ X34 local 0
+ X27
+Label 4
+ X34 yes 2
+ X46 1 0
+ X26 nonvar_t 1
+)
+Predicate('$get_terms_17_3112_0' 19
+ X1 1 6 3 2 4
+Label 1
+ X4 5
+ X5 7
+ X6 8
+Label 2
+ X4 7
+ X6 8
+Label 3
+ X4 6
+ X5 7
+ X6 8
+Label 4
+ X3 1 (
+        '$VAR' 4 1
+) 2
+Label 5
+ X20 5 19
+ X21
+ X30 1 0
+ X30 3 2
+ X30 4 3
+ X30 5 4
+ X30 6 5
+ X30 2 6
+ X30 7 7
+ X30 8 8
+ X30 9 9
+ X30 10 10
+ X30 11 11
+ X30 12 12
+ X30 13 13
+ X30 14 14
+ X30 15 15
+ X30 16 16
+ X30 17 17
+ X30 18 18
+ X10 19
+ X47 1 20
+ X36 '$VAR' 4 20
+ X55 21
+ X54 3
+ X24 1 0
+ X16 23 21
+ X13 19
+ X47 1 0
+ X47 2 1
+ X47 0 2
+ X25 location_of 3 19
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X49 10 10
+ X49 11 11
+ X49 12 12
+ X49 13 13
+ X49 14 14
+ X49 15 15
+ X49 16 16
+ X49 17 17
+ X49 18 18
+ X23
+ X26 '$get_terms_17_3112_1' 19
+Label 6
+ X20 4 19
+ X29 19 8
+ X29 20 9
+ X29 21 10
+ X29 22 12
+ X10 23
+ X16 19 0
+ X13 23
+ X32 17 11
+ X46 2 1
+ X46 3 2
+ X46 4 3
+ X46 5 4
+ X46 6 5
+ X46 13 6
+ X46 14 8
+ X46 19 9
+ X46 15 10
+ X46 20 11
+ X46 21 12
+ X46 16 13
+ X46 22 14
+ X46 18 15
+ X26 get_term 16
+Label 7
+ X20 4 19
+ X29 19 8
+ X29 20 9
+ X29 21 10
+ X29 22 12
+ X10 23
+ X50 [] 24
+ X16 5 1 24
+ X34 local 3
+ X13 23
+ X32 17 11
+ X46 2 1
+ X46 3 2
+ X46 4 3
+ X46 5 4
+ X46 6 5
+ X46 13 6
+ X46 14 8
+ X46 19 9
+ X46 15 10
+ X46 20 11
+ X46 21 12
+ X46 16 13
+ X46 22 14
+ X46 18 15
+ X26 get_term 16
+Label 8
+ X20 17 19
+ X37 11
+ X55 19
+ X60 17
+ X36 ',' 2 19
+ X60 0
+ X64 ',' 2
+ X55 20
+ X64 ',' 2
+ X60 4
+ X60 5
+ X36 x 1 20
+ X54 1
+ X32 13 6
+ X32 14 7
+ X32 15 8
+ X32 16 10
+ X37 12
+ X55 21
+ X60 18
+ X36 'Unify_Variable' 1 21
+ X58 20
+ X27
+)
+Predicate('$get_terms_17_3112_1' 19
+ X1 3 1 1 1 2
+Label 1
+ X4 4
+ X6 5
+Label 2
+ X3 1 (
+        new 1 3
+) 1
+Label 3
+ X20 7 19
+ X29 19 2
+ X29 20 8
+ X29 21 9
+ X29 22 10
+ X29 23 12
+ X10 24
+ X36 new 1 0
+ X54 1
+ X13 24
+ X32 17 11
+ X46 1 0
+ X46 3 1
+ X46 4 2
+ X46 5 3
+ X46 6 4
+ X46 19 5
+ X46 13 6
+ X46 14 8
+ X46 20 9
+ X46 15 10
+ X46 21 11
+ X46 22 12
+ X46 16 13
+ X46 23 14
+ X46 18 15
+ X26 get_term 16
+Label 4
+ X21
+ X30 3 1
+ X30 7 2
+ X30 4 5
+ X30 5 6
+ X30 9 7
+ X30 11 8
+ X30 13 10
+ X30 2 11
+ X30 15 12
+ X30 8 13
+ X30 10 14
+ X30 12 15
+ X30 14 16
+ X30 6 17
+ X30 16 18
+ X11 1
+ X47 3 0
+ X45 0 1
+ X25 locality_of 2 17
+ X19 17
+ X49 0 0
+ X34 fragile 0
+ X14 1
+ X49 2 1
+ X37 1
+ X55 2
+ X61 6
+ X36 ',' 2 2
+ X61 3
+ X64 ',' 2
+ X55 3
+ X64 ',' 2
+ X61 4
+ X61 5
+ X36 x 1 3
+ X54 1
+ X49 8 4
+ X33 7 4
+ X49 10 5
+ X33 9 5
+ X49 12 6
+ X33 11 6
+ X49 14 7
+ X33 13 7
+ X49 15 8
+ X37 8
+ X55 9
+ X61 16
+ X36 'Unify_Variable' 1 9
+ X58 3
+ X23
+ X27
+Label 5
+ X20 5 19
+ X29 19 2
+ X29 20 8
+ X29 21 9
+ X29 22 10
+ X29 23 12
+ X32 17 11
+ X46 1 0
+ X46 3 1
+ X46 4 2
+ X46 5 3
+ X46 6 4
+ X46 19 5
+ X46 13 6
+ X46 14 8
+ X46 20 9
+ X46 15 10
+ X46 21 11
+ X46 22 12
+ X46 16 13
+ X46 23 14
+ X46 18 15
+ X26 get_term 16
+)

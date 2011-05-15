@@ -1,0 +1,6742 @@
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/vector.pl'
+% Compiled:   vector_mult/3
+% Directives: []
+Predicate(vector_mult 3
+     Switch_On_Term 1 fail fail fail 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant vector_mult 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 8 3
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure v 3 0
+     Unify_X_Variable 3
+     Unify_X_Variable 4
+     Unify_X_Variable 5
+% reg x(1): par=any, seq=any, loc=local
+     Get_Structure v 3 1
+     Unify_X_Variable 6
+     Unify_X_Variable 7
+     Unify_X_Variable 8
+% builtin '$times'/3
+     Builtin 29 9 3 6
+% builtin '$times'/3
+     Builtin 29 10 4 7
+% builtin '$plus'/3
+     Builtin 25 11 9 10
+% builtin '$times'/3
+     Builtin 29 12 5 8
+% builtin '$plus'/3
+     Builtin 25 13 11 12
+% reg x(2): par=free, seq=free, loc=local
+% reg x(13): par=gnd, seq=gnd, loc=local
+     Get_X_Value 13 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/vector.pl'
+% Compiled:   scale_vector_length/3
+% Directives: []
+Predicate(scale_vector_length 3
+     Switch_On_Term 1 fail fail fail 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant scale_vector_length 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 8 3
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure v 3 0
+     Unify_X_Variable 3
+     Unify_X_Variable 4
+     Unify_X_Variable 5
+% reg x(2): par=any, seq=any, loc=local
+     Get_Structure v 3 2
+     Unify_X_Variable 6
+     Unify_X_Variable 7
+     Unify_X_Variable 8
+% builtin '$times'/3
+     Builtin 29 9 3 3
+% builtin '$times'/3
+     Builtin 29 10 4 4
+% builtin '$plus'/3
+     Builtin 25 11 9 10
+% builtin '$times'/3
+     Builtin 29 12 5 5
+% builtin '$plus'/3
+     Builtin 25 13 11 12
+% builtin '$sqrt'/2
+     Builtin 47 14 13
+% builtin '$div'/3
+     Builtin 30 15 1 14
+% builtin '$times'/3
+     Builtin 29 16 3 15
+% reg x(6): par=any, seq=any, loc=local
+% reg x(16): par=gnd, seq=gnd, loc=local
+     Get_X_Value 16 6
+% builtin '$times'/3
+     Builtin 29 17 4 15
+% reg x(7): par=any, seq=any, loc=local
+% reg x(17): par=gnd, seq=gnd, loc=local
+     Get_X_Value 17 7
+% builtin '$times'/3
+     Builtin 29 18 5 15
+% reg x(8): par=any, seq=any, loc=local
+% reg x(18): par=gnd, seq=gnd, loc=local
+     Get_X_Value 18 8
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/vector.pl'
+% Compiled:   normalize_vector/2
+% Directives: []
+Predicate(normalize_vector 2
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant normalize_vector 2
+     Put_Constant 2 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 1 2
+     Get_X_Variable 3 1
+     Put_Constant 1 1
+     Put_X_Value 3 2
+     Execute scale_vector_length 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/color.pl'
+% Compiled:   max/3
+% Directives: []
+Predicate(max 3
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant max 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+% builtin '$min'/3
+     Builtin 40 3 0 1
+% reg x(2): par=free, seq=free, loc=local
+% reg x(3): par=gnd, seq=gnd, loc=local
+     Get_X_Value 3 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/color.pl'
+% Compiled:   combine_ref_shad/4
+% Directives: []
+Predicate(combine_ref_shad 4
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant combine_ref_shad 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 12 4
+% reg x(1): par=any, seq=any, loc=local
+     Get_Structure rgb 3 1
+     Unify_X_Variable 4
+     Unify_X_Variable 5
+     Unify_X_Variable 6
+% reg x(2): par=gnd, seq=gnd, loc=local
+     Get_Structure rgb 3 2
+     Unify_X_Variable 7
+     Unify_X_Variable 8
+     Unify_X_Variable 9
+% reg x(3): par=any, seq=any, loc=local
+     Get_Structure rgb 3 3
+     Unify_X_Variable 10
+     Unify_X_Variable 11
+     Unify_X_Variable 12
+% builtin '$times'/3
+     Builtin 29 13 0 4
+     Put_Constant 1 14
+% builtin '$minus'/3
+     Builtin 27 15 14 0
+% builtin '$times'/3
+     Builtin 29 16 15 7
+% builtin '$plus'/3
+     Builtin 25 17 13 16
+% builtin '$tointeger'/2
+     Builtin 33 18 17
+% reg x(10): par=any, seq=any, loc=local
+% reg x(18): par=gnd, seq=gnd, loc=local
+     Get_X_Value 18 10
+% builtin '$times'/3
+     Builtin 29 19 0 5
+     Put_Constant 1 20
+% builtin '$minus'/3
+     Builtin 27 21 20 0
+% builtin '$times'/3
+     Builtin 29 22 21 8
+% builtin '$plus'/3
+     Builtin 25 23 19 22
+% builtin '$tointeger'/2
+     Builtin 33 24 23
+% reg x(11): par=any, seq=any, loc=local
+% reg x(24): par=gnd, seq=gnd, loc=local
+     Get_X_Value 24 11
+% builtin '$times'/3
+     Builtin 29 25 0 6
+     Put_Constant 1 26
+% builtin '$minus'/3
+     Builtin 27 27 26 0
+% builtin '$times'/3
+     Builtin 29 28 27 9
+% builtin '$plus'/3
+     Builtin 25 29 25 28
+% builtin '$tointeger'/2
+     Builtin 33 30 29
+% reg x(12): par=any, seq=any, loc=local
+% reg x(30): par=gnd, seq=gnd, loc=local
+     Get_X_Value 30 12
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/color.pl'
+% Compiled:   color_add/3
+% Directives: []
+Predicate(color_add 3
+     Switch_On_Term 1 fail fail fail 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant color_add 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 12 3
+     Allocate
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure rgb 3 0
+     Unify_X_Variable 3
+     Unify_X_Variable 4
+     Unify_X_Variable 5
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_Structure rgb 3 1
+     Unify_X_Variable 6
+     Unify_X_Variable 7
+     Unify_X_Variable 8
+% reg x(2): par=free, seq=free, loc=local
+     Get_Structure rgb 3 2
+     Unify_X_Variable 2
+     Unify_Y_Variable 3
+     Unify_Y_Variable 1
+     Init 2 0 2
+% builtin '$plus'/3
+     Builtin 25 9 3 6
+% builtin '$plus'/3
+     Builtin 25 10 4 7
+     Get_Y_Value 2 10
+% builtin '$plus'/3
+     Builtin 25 11 5 8
+     Get_Y_Value 0 11
+     Put_X_Value 9 0
+     Put_Constant 255 1
+     Call max 3 4
+     Put_Y_Unsafe_Value 2 0
+     Put_Constant 255 1
+     Put_Y_Value 3 2
+     Call max 3 2
+     Put_Y_Unsafe_Value 0 0
+     Put_Constant 255 1
+     Put_Y_Value 1 2
+     Deallocate
+     Execute max 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/camera.pl'
+% Compiled:   camera_point/4
+% Directives: []
+Predicate(camera_point 4
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant camera_point 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 11 4
+     Allocate
+     Get_X_Variable 4 0
+     Get_Y_Variable 7 1
+% reg x(2): par=gnd, seq=gnd, loc=local
+     Get_Structure camera 6 2
+     Unify_X_Variable 5
+     Unify_Y_Variable 2
+     Unify_X_Variable 0
+     Unify_Y_Variable 6
+     Unify_Void 2
+% reg x(3): par=free, seq=free, loc=local
+     Get_Structure ray 2 3
+     Unify_X_Variable 6
+     Unify_Y_Variable 1
+% reg x(6): par=free, seq=free, loc=local
+% reg x(5): par=gnd, seq=gnd, loc=local
+     Get_X_Value 5 6
+     Put_X_Value 4 1
+     Put_Y_Variable 4 2
+     Init 3 0 3 5
+     Call vector_scalar_mult 3 8
+     Put_Y_Value 6 0
+     Put_Y_Unsafe_Value 7 1
+     Put_Y_Value 5 2
+     Call vector_scalar_mult 3 6
+     Put_Y_Unsafe_Value 4 0
+     Put_Y_Unsafe_Value 5 1
+     Put_Y_Value 3 2
+     Call vector_add 3 4
+     Put_Y_Value 2 0
+     Put_Y_Unsafe_Value 3 1
+     Put_Y_Value 0 2
+     Call vector_add 3 2
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Value 1 1
+     Deallocate
+     Execute vector_normalize 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/camera.pl'
+% Compiled:   camera_height/2
+% Directives: []
+Predicate(camera_height 2
+     Switch_On_Term 1 fail fail fail 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant camera_height 2
+     Put_Constant 2 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 7 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure camera 6 0
+     Unify_Void 5
+% reg x(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 1
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/intersect.pl'
+% Compiled:   '$intersect_5_22_1'/8
+% Directives: []
+Predicate('$intersect_5_22_1' 8
+     Switch_On_Term 2 1 5 5 5
+  Label 1
+     Switch_On_Constant 2 (
+        no_map 3
+        bump 4
+     ) 5
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant '$intersect_5_22_1' 2
+     Put_Constant 8 3
+     Execute mode_error 4
+  Label 3
+     Choice_X 8
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Constant no_map 0
+     Cut_X 8
+% reg x(6): par=free, seq=free, loc=local
+% reg x(3): par=gnd, seq=gnd, loc=local
+     Get_X_Value 3 6
+% reg x(7): par=free, seq=free, loc=local
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_X_Value 1 7
+     Proceed
+  Label 4
+     Allocate
+     Get_Y_Variable 8 1
+     Get_Y_Variable 5 2
+     Get_Y_Variable 1 3
+     Get_Y_Variable 13 4
+     Get_Y_Variable 21 5
+     Get_Y_Variable 0 6
+     Get_Y_Variable 3 7
+     Choice_X 8
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Constant bump 0
+     Cut_X 8
+     Put_Y_Value 13 0
+     Put_Y_Value 21 1
+     Put_Y_Variable 19 2
+     Init 14 2 4 6 7 9 10 11 12 14 15 16 17 18 20
+     Call vector_cross_product 3 22
+     Put_Y_Value 8 0
+     Put_Y_Value 13 1
+     Put_Y_Value 20 2
+     Call vector_mult 3 22
+     Put_Constant -1 3
+     Put_Y_Unsafe_Value 20 4
+% builtin '$times'/3
+     Builtin 29 5 3 4
+% builtin '$acos'/2
+     Builtin 53 6 5
+     Get_Y_Value 17 6
+     Put_Y_Value 17 7
+     Put_Constant 3.141592654 8
+% builtin '$div'/3
+     Builtin 30 9 7 8
+     Put_Y_Value 8 0
+     Put_Y_Unsafe_Value 21 1
+     Put_Y_Value 18 2
+     Call vector_mult 3 20
+     Put_Y_Unsafe_Value 17 3
+% builtin '$sin'/2
+     Builtin 49 4 3
+     Put_Y_Unsafe_Value 18 5
+% builtin '$div'/3
+     Builtin 30 6 5 4
+% builtin '$acos'/2
+     Builtin 53 7 6
+     Put_Constant 6.283185308 8
+% builtin '$div'/3
+     Builtin 30 9 7 8
+     Get_Y_Value 16 9
+     Put_Y_Unsafe_Value 19 0
+     Put_Y_Value 8 1
+     Put_Y_Value 15 2
+     Call vector_mult 3 17
+     Put_Y_Unsafe_Value 15 0
+     Put_Y_Unsafe_Value 16 1
+     Put_Y_Value 14 2
+     Call '$intersect_5_22_3' 3 15
+     Put_Y_Unsafe_Value 14 2
+     Put_Constant 160 3
+% builtin '$times'/3
+     Builtin 29 4 2 3
+% builtin '$sin'/2
+     Builtin 49 5 4
+     Put_X_Value 5 0
+     Put_Y_Value 12 1
+     Call '$intersect_5_22_2' 2 14
+     Put_Y_Value 12 3
+% builtin '$abs'/2
+     Builtin 42 4 3
+     Put_Constant 1 5
+% builtin '$minus'/3
+     Builtin 27 6 5 4
+% builtin '$abs'/2
+     Builtin 42 7 6
+     Get_Y_Value 9 7
+     Put_Y_Value 8 0
+     Put_Y_Unsafe_Value 13 1
+     Put_Y_Value 11 2
+     Call vector_cross_product 3 13
+     Put_Y_Unsafe_Value 11 0
+     Put_Y_Unsafe_Value 12 1
+     Put_Y_Value 10 2
+     Call vector_scale_length 3 11
+     Put_Y_Value 5 0
+     Put_Y_Unsafe_Value 10 1
+     Put_Y_Value 6 2
+     Call vector_add 3 10
+     Put_Y_Unsafe_Value 8 0
+     Put_Y_Unsafe_Value 9 1
+     Put_Y_Value 7 2
+     Call vector_scale_length 3 8
+     Put_Y_Unsafe_Value 6 0
+     Put_Y_Unsafe_Value 7 1
+     Put_Y_Value 4 2
+     Call vector_add 3 6
+     Put_Y_Unsafe_Value 4 0
+     Put_Y_Unsafe_Value 5 1
+     Put_Y_Value 2 2
+     Call vector_sub 3 4
+     Put_Y_Unsafe_Value 2 0
+     Put_Y_Unsafe_Value 3 1
+     Call vector_normalize 2 2
+% reg y(0): par=free, seq=free, loc=local
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Put_Y_Unsafe_Value 1 0
+     Get_Y_Value 0 0
+     Deallocate
+     Proceed
+  Label 5
+     Allocate
+     Get_Y_Variable 4 0
+     Get_Y_Variable 1 1
+     Get_Y_Variable 5 3
+     Get_Y_Variable 13 4
+     Get_Y_Variable 12 5
+     Get_Y_Variable 0 7
+     Put_Y_Value 13 0
+     Put_Y_Value 12 1
+     Put_Y_Variable 10 2
+     Init 7 2 3 6 7 8 9 11
+     Call vector_cross_product 3 14
+     Put_Y_Value 1 0
+     Put_Y_Unsafe_Value 13 1
+     Put_Y_Value 11 2
+     Call vector_mult 3 13
+     Put_Constant -1 3
+     Put_Y_Unsafe_Value 11 4
+% builtin '$times'/3
+     Builtin 29 5 3 4
+% builtin '$acos'/2
+     Builtin 53 6 5
+     Get_Y_Value 8 6
+     Put_Y_Value 8 7
+     Put_Constant 3.141592654 8
+% builtin '$div'/3
+     Builtin 30 9 7 8
+     Get_Y_Value 3 9
+     Put_Y_Value 1 0
+     Put_Y_Unsafe_Value 12 1
+     Put_Y_Value 9 2
+     Call vector_mult 3 11
+     Put_Y_Unsafe_Value 8 3
+% builtin '$sin'/2
+     Builtin 49 4 3
+     Put_Y_Unsafe_Value 9 5
+% builtin '$div'/3
+     Builtin 30 6 5 4
+% builtin '$acos'/2
+     Builtin 53 7 6
+     Put_Constant 6.283185308 8
+% builtin '$div'/3
+     Builtin 30 9 7 8
+     Get_Y_Value 7 9
+     Put_Y_Unsafe_Value 10 0
+     Put_Y_Value 1 1
+     Put_Y_Value 6 2
+     Call vector_mult 3 8
+     Put_Y_Unsafe_Value 6 0
+     Put_Y_Unsafe_Value 7 1
+     Put_Y_Value 2 2
+     Call '$intersect_5_22_0' 3 6
+     Put_Y_Unsafe_Value 2 0
+     Put_Y_Unsafe_Value 3 1
+     Put_Y_Unsafe_Value 4 2
+     Put_Y_Unsafe_Value 5 3
+     Call get_map_color 4 2
+% reg y(0): par=free, seq=free, loc=local
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Put_Y_Unsafe_Value 1 0
+     Get_Y_Value 0 0
+     Deallocate
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/intersect.pl'
+% Compiled:   '$intersect_5_22_0'/3
+% Directives: []
+Predicate('$intersect_5_22_0' 3
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant '$intersect_5_22_0' 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 3
+     Choice_X 3
+     Put_Constant 0 4
+% builtin '$gt'/2
+     Builtin 14 0 4
+     Cut_X 3
+% reg x(2): par=free, seq=free, loc=local
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_X_Value 1 2
+     Proceed
+  Label 4
+     Put_Constant 1 3
+% builtin '$minus'/3
+     Builtin 27 4 3 1
+% reg x(2): par=free, seq=free, loc=local
+% reg x(4): par=gnd, seq=gnd, loc=local
+     Get_X_Value 4 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   '$combine_hits_5_44_0'/6
+% Directives: []
+Predicate('$combine_hits_5_44_0' 6
+     Switch_On_Term 1 1 fail fail 2
+  Label 1
+     Allocate
+     Choice_X 6
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant hit 0
+     Cut_X 6
+     Put_X_Value 1 0
+     Put_X_Value 2 1
+     Put_X_Value 3 2
+     Put_X_Value 4 3
+     Put_X_Value 5 4
+     Deallocate
+     Execute combine_hits 5
+  Label 2
+     Require_Using 3 6
+     Allocate
+     Get_Y_Variable 0 1
+     Get_Y_Variable 1 2
+     Get_Y_Variable 2 3
+     Get_Y_Variable 6 4
+     Get_Y_Variable 4 5
+% reg x(0): par=nv, seq=nv, loc=local
+     Get_Structure ray 2 0
+     Unify_Void 1
+     Unify_Y_Variable 10
+     Put_Y_Value 1 0
+     Put_Y_Value 10 1
+     Put_Y_Variable 9 2
+     Init 4 3 5 7 8
+     Call vector_mult 3 11
+     Put_Y_Value 1 0
+     Put_Y_Value 7 1
+     Call vector_length 2 11
+     Put_Y_Value 10 0
+     Put_Y_Value 8 1
+     Call vector_length 2 10
+     Put_Y_Unsafe_Value 7 3
+     Put_Y_Unsafe_Value 8 4
+% builtin '$times'/3
+     Builtin 29 5 3 4
+     Put_Y_Unsafe_Value 9 6
+% builtin '$div'/3
+     Builtin 30 7 6 5
+% builtin '$abs'/2
+     Builtin 42 8 7
+     Put_Y_Value 2 0
+     Put_X_Value 8 1
+     Put_Y_Value 5 2
+     Call scale_color 3 7
+     Put_Y_Unsafe_Value 5 0
+     Put_Y_Unsafe_Value 6 1
+     Put_Y_Value 3 2
+     Call color_add 3 5
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Deallocate
+     Execute combine_hits 5
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   '$file_to_list_2_165_0'/2
+% Directives: []
+Predicate('$file_to_list_2_165_0' 2
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Require_Using 1 2
+     Allocate
+     Get_X_Variable 2 0
+     Get_Y_Variable 1 1
+     Choice_Y 0
+     Put_Y_Value 1 0
+     Put_X_Value 2 1
+     Call read_file 2 2
+     Cut_Y 0
+     Put_Y_Unsafe_Value 1 0
+     Deallocate
+     Execute close 1
+  Label 3
+     Allocate
+     Put_X_Value 1 0
+     Call close 1 0
+     Fail
+     Deallocate
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/load.pl'
+% Compiled:   '$initialize_3_175_0'/2
+% Directives: []
+Predicate('$initialize_3_175_0' 2
+     Switch_On_Term 2 1 4 4 4
+  Label 1
+     Switch_On_Constant 2 (
+        no_map 2
+        bump 3
+     ) 4
+  Label 2
+     Choice_X 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant no_map 0
+     Cut_X 2
+% reg x(1): par=any, seq=any, loc=local
+     Get_Constant no_map 1
+     Proceed
+  Label 3
+     Choice_X 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant bump 0
+     Cut_X 2
+% reg x(1): par=any, seq=any, loc=local
+     Get_Constant bump 1
+     Proceed
+  Label 4
+     Execute read_map 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/load.pl'
+% Compiled:   '$initialize_3_177_0'/2
+% Directives: []
+Predicate('$initialize_3_177_0' 2
+     Switch_On_Term 2 1 3 3 3
+  Label 1
+     Switch_On_Constant 1 (
+        no_map 2
+     ) 3
+  Label 2
+     Choice_X 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant no_map 0
+     Cut_X 2
+% reg x(1): par=any, seq=any, loc=local
+     Get_Constant no_map 1
+     Proceed
+  Label 3
+     Execute read_map 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/intersect.pl'
+% Compiled:   '$intersect_5_22_2'/2
+% Directives: []
+Predicate('$intersect_5_22_2' 2
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant '$intersect_5_22_2' 2
+     Put_Constant 2 3
+     Execute mode_error 4
+  Label 3
+     Choice_X 2
+     Put_Constant 0 3
+% builtin '$gt'/2
+     Builtin 14 0 3
+     Cut_X 2
+% reg x(1): par=free, seq=free, loc=local
+     Get_Constant 0.15 1
+     Proceed
+  Label 4
+% reg x(1): par=free, seq=free, loc=local
+     Get_Constant -0.15 1
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/intersect.pl'
+% Compiled:   '$intersect_5_22_3'/3
+% Directives: []
+Predicate('$intersect_5_22_3' 3
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant '$intersect_5_22_3' 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 3
+     Choice_X 3
+     Put_Constant 0 4
+% builtin '$gt'/2
+     Builtin 14 0 4
+     Cut_X 3
+% reg x(2): par=free, seq=free, loc=local
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_X_Value 1 2
+     Proceed
+  Label 4
+     Put_Constant 1 3
+% builtin '$minus'/3
+     Builtin 27 4 3 1
+% reg x(2): par=free, seq=free, loc=local
+% reg x(4): par=gnd, seq=gnd, loc=local
+     Get_X_Value 4 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/intersect.pl'
+% Compiled:   '$intersect_5_22_4'/4
+% Directives: []
+Predicate('$intersect_5_22_4' 4
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant '$intersect_5_22_4' 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 3
+     Choice_X 4
+% builtin '$ge'/2
+     Builtin 16 2 0
+     Cut_X 4
+     Put_Constant 0 5
+% builtin '$gt'/2
+     Builtin 14 1 5
+% builtin '$minus'/3
+     Builtin 27 6 0 2
+% builtin '$times'/3
+     Builtin 29 7 1 1
+% builtin '$plus'/3
+     Builtin 25 8 6 7
+     Put_Constant 0 9
+% builtin '$gt'/2
+     Builtin 14 8 9
+% builtin '$sqrt'/2
+     Builtin 47 10 8
+% builtin '$minus'/3
+     Builtin 27 11 1 10
+% reg x(3): par=free, seq=free, loc=local
+% reg x(11): par=gnd, seq=gnd, loc=local
+     Get_X_Value 11 3
+     Proceed
+  Label 4
+% builtin '$minus'/3
+     Builtin 27 4 0 2
+% builtin '$times'/3
+     Builtin 29 5 1 1
+% builtin '$plus'/3
+     Builtin 25 6 4 5
+% builtin '$sqrt'/2
+     Builtin 47 7 6
+% builtin '$plus'/3
+     Builtin 25 8 1 7
+% reg x(3): par=free, seq=free, loc=local
+% reg x(8): par=gnd, seq=gnd, loc=local
+     Get_X_Value 8 3
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/intersect.pl'
+% Compiled:   '$intersect_5_24_0'/5
+% Directives: []
+Predicate('$intersect_5_24_0' 5
+     Switch_On_Term 2 1 4 4 4
+  Label 1
+     Switch_On_Constant 1 (
+        no_map 3
+     ) 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant '$intersect_5_24_0' 2
+     Put_Constant 5 3
+     Execute mode_error 4
+  Label 3
+     Choice_X 5
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Constant no_map 0
+     Cut_X 5
+% reg x(4): par=free, seq=free, loc=local
+% reg x(3): par=gnd, seq=gnd, loc=local
+     Get_X_Value 3 4
+     Proceed
+  Label 4
+     Require_Using 1 5
+     Get_X_Variable 5 0
+     Put_X_Value 1 0
+     Put_X_Value 2 1
+     Put_X_Value 5 2
+     Put_X_Value 4 3
+     Execute get_map_color 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/intersect.pl'
+% Compiled:   '$intersect_plane_7_25_0'/3
+% Directives: []
+Predicate('$intersect_plane_7_25_0' 3
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant '$intersect_plane_7_25_0' 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 3
+     Choice_X 3
+     Put_Constant 0 4
+% builtin '$lt'/2
+     Builtin 13 0 4
+     Cut_X 3
+% reg x(2): par=free, seq=free, loc=local
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_X_Value 1 2
+     Proceed
+  Label 4
+     Put_X_Value 1 0
+     Put_Constant -1 1
+     Execute vector_scalar_mult 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   '$trace_ray_5_30_0'/9
+% Directives: []
+Predicate('$trace_ray_5_30_0' 9
+     Switch_On_Term 2 4 4 4 1
+  Label 1
+     Switch_On_Structure 1 (
+        ray 2 3
+     ) 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant '$trace_ray_5_30_0' 2
+     Put_Constant 9 3
+     Execute mode_error 4
+  Label 3
+     Require_Using 6 9
+     Allocate
+     Get_X_Variable 9 0
+     Get_X_Variable 10 1
+     Get_Y_Variable 4 2
+     Get_X_Variable 11 3
+     Get_Y_Variable 0 4
+     Get_Y_Variable 8 5
+     Get_Y_Variable 5 6
+     Get_Y_Variable 3 7
+     Choice_X 12
+% reg x(9): par=gnd, seq=gnd, loc=local
+     Get_Structure ray 2 9
+     Unify_Y_Variable 6
+     Unify_Y_Variable 7
+     Cut_X 12
+     Put_Y_Value 0 0
+     Put_X_Value 9 1
+     Put_X_Value 10 2
+     Put_Y_Value 4 3
+     Put_X_Value 11 4
+     Put_Y_Value 5 5
+     Put_X_Value 8 6
+     Put_Y_Variable 2 7
+     Init 1 1
+     Call '$trace_ray_5_30_3' 8 9
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 4 1
+     Put_Y_Unsafe_Value 5 2
+     Put_Y_Value 6 3
+     Put_Y_Value 7 4
+     Put_Y_Unsafe_Value 8 5
+     Put_Y_Value 1 6
+     Call '$trace_ray_5_30_2' 7 4
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Deallocate
+     Execute '$trace_ray_5_30_1' 4
+  Label 4
+% reg x(7): par=any, seq=any, loc=local
+% reg x(3): par=any, seq=any, loc=local
+     Get_X_Value 3 7
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   '$shadow_hit_any_4_41_0'/5
+% Directives: []
+Predicate('$shadow_hit_any_4_41_0' 5
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Require_Using 3 5
+     Allocate
+     Get_X_Variable 5 0
+     Get_Y_Variable 1 3
+     Get_Y_Variable 3 4
+     Choice_Y 2
+     Put_X_Value 1 0
+     Put_X_Value 5 1
+     Put_Y_Variable 0 2
+     Put_X_Void 3
+     Put_X_Void 4
+     Call intersect 5 4
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+% builtin '$lt'/2
+     Builtin 13 0 1
+     Cut_Y 2
+% reg y(3): par=free, seq=free, loc=local
+     Put_Y_Unsafe_Value 3 2
+     Get_Constant hit 2
+     Deallocate
+     Proceed
+  Label 3
+     Require_Using 1 5
+     Get_X_Variable 5 0
+     Put_X_Value 2 0
+     Put_X_Value 5 1
+     Put_X_Value 3 2
+     Put_X_Value 4 3
+     Execute shadow_hit_any 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   '$read_ppm_stream_2_61_0'/5
+% Directives: []
+Predicate('$read_ppm_stream_2_61_0' 5
+     Switch_On_Term 3 4 1 4 4
+  Label 1
+     Switch_On_Constant 1 (
+        6 2
+     ) 4
+  Label 2
+     Try 3
+     Trust 4
+  Label 3
+     Choice_X 5
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 6 0
+     Cut_X 5
+     Put_X_Value 2 0
+     Put_X_Value 4 2
+     Execute read_ppm_raw 4
+  Label 4
+     Put_X_Value 2 0
+     Put_X_Value 4 2
+     Execute read_ppm_ascii 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   '$read_digits_2_75_0'/3
+% Directives: []
+Predicate('$read_digits_2_75_0' 3
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Allocate
+     Get_Y_Variable 2 0
+     Get_Y_Variable 3 1
+     Get_Y_Variable 1 2
+     Choice_Y 0
+     Put_Y_Value 2 0
+     Call is_digit 1 4
+     Require 2
+     Cut_Y 0
+     Put_Y_Unsafe_Value 1 2
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% reg y(2): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Local_Value 2
+     Unify_X_Variable 1
+     Put_Y_Unsafe_Value 3 0
+     Deallocate
+     Execute read_digits 2
+  Label 3
+% reg x(2): par=any, seq=any, loc=local
+     Get_Nil 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/load.pl'
+% Compiled:   '$process_world_5_171_0'/8
+% Directives: []
+Predicate('$process_world_5_171_0' 8
+     Switch_On_Term 2 1 fail fail fail
+  Label 1
+     Switch_On_Constant 4 (
+        object 2
+        light 3
+        config 4
+        camera 5
+     ) fail
+  Label 2
+     Require_Using 2 8
+     Choice_X 8
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant object 0
+     Cut_X 8
+% reg x(5): par=any, seq=any, loc=local
+     Get_List 5
+% reg x(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 1
+% reg x(7): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 7
+% reg x(6): par=any, seq=any, loc=local
+% reg x(4): par=any, seq=any, loc=local
+     Get_X_Value 4 6
+     Proceed
+  Label 3
+     Require_Using 2 8
+     Choice_X 8
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant light 0
+     Cut_X 8
+% reg x(7): par=any, seq=any, loc=local
+% reg x(5): par=any, seq=any, loc=local
+     Get_X_Value 5 7
+% reg x(4): par=any, seq=any, loc=local
+     Get_List 4
+% reg x(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 1
+% reg x(6): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 6
+     Proceed
+  Label 4
+     Choice_X 8
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant config 0
+     Cut_X 8
+% reg x(2): par=any, seq=any, loc=local
+% reg x(1): par=any, seq=any, loc=local
+     Get_X_Value 1 2
+% reg x(7): par=any, seq=any, loc=local
+% reg x(5): par=any, seq=any, loc=local
+     Get_X_Value 5 7
+% reg x(6): par=any, seq=any, loc=local
+% reg x(4): par=any, seq=any, loc=local
+     Get_X_Value 4 6
+     Proceed
+  Label 5
+     Choice_X 8
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant camera 0
+     Cut_X 8
+% reg x(3): par=any, seq=any, loc=local
+% reg x(1): par=any, seq=any, loc=local
+     Get_X_Value 1 3
+% reg x(7): par=any, seq=any, loc=local
+% reg x(5): par=any, seq=any, loc=local
+     Get_X_Value 5 7
+% reg x(6): par=any, seq=any, loc=local
+% reg x(4): par=any, seq=any, loc=local
+     Get_X_Value 4 6
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   '$skip_nondigits_2_76_0'/3
+% Directives: []
+Predicate('$skip_nondigits_2_76_0' 3
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Allocate
+     Get_Y_Variable 2 0
+     Get_Y_Variable 1 2
+     Choice_Y 0
+     Put_Y_Value 2 0
+     Call is_digit 1 3
+     Cut_Y 0
+% reg y(1): par=any, seq=any, loc=local
+% reg x(0): par=any, seq=any, loc=local
+     Put_Y_Unsafe_Value 2 0
+     Get_Y_Value 1 0
+     Deallocate
+     Proceed
+  Label 3
+     Put_X_Value 1 0
+     Put_X_Value 2 1
+     Execute skip_nondigits 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   '$skip_to_char_2_78_0'/3
+% Directives: []
+Predicate('$skip_to_char_2_78_0' 3
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Choice_X 3
+% reg x(2): par=any, seq=any, loc=local
+% reg x(0): par=any, seq=any, loc=local
+     Get_X_Value 0 2
+     Cut_X 3
+     Proceed
+  Label 3
+     Require_Using 1 3
+     Get_X_Variable 3 0
+     Put_X_Value 1 0
+     Put_X_Value 3 1
+     Execute skip_to_char 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   '$trace_ray_5_30_1'/4
+% Directives: []
+Predicate('$trace_ray_5_30_1' 4
+     Switch_On_Term 4 fail 1 fail fail
+  Label 1
+     Switch_On_Constant 2 (
+        0 2
+        1 3
+     ) 6
+  Label 2
+     Try 4
+     Trust 6
+  Label 3
+     Try 5
+     Trust 6
+  Label 4
+     Choice_X 4
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 0 0
+     Cut_X 4
+% reg x(3): par=any, seq=any, loc=local
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_X_Value 1 3
+     Proceed
+  Label 5
+     Choice_X 4
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Constant 1 0
+     Cut_X 4
+% reg x(3): par=any, seq=any, loc=local
+% reg x(2): par=any, seq=any, loc=local
+     Get_X_Value 2 3
+     Proceed
+  Label 6
+     Require_Using 1 4
+     Get_X_Variable 4 1
+% builtin '$number'/1
+     Builtin 21 0
+     Put_X_Value 2 1
+     Put_X_Value 4 2
+     Execute combine_ref_shad 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   '$trace_ray_5_30_2'/7
+% Directives: []
+Predicate('$trace_ray_5_30_2' 7
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Require_Using 2 7
+     Allocate
+     Get_X_Variable 7 1
+     Get_X_Variable 8 2
+     Choice_X 9
+     Put_Constant 1 10
+% builtin '$ineq'/2
+     Builtin 12 0 10
+     Cut_X 9
+     Put_X_Value 3 0
+     Put_X_Value 4 1
+     Put_X_Value 7 2
+     Put_X_Value 8 3
+     Put_X_Value 5 4
+     Put_X_Value 6 5
+     Deallocate
+     Execute trace_shadow 6
+  Label 3
+     Require_Using 4 7
+% reg x(6): par=free, seq=free, loc=local
+     Get_Structure rgb 3 6
+% heap: par=free, seq=free, loc=local
+     Unify_Constant 0
+% heap: par=free, seq=free, loc=local
+     Unify_Constant 0
+% heap: par=free, seq=free, loc=local
+     Unify_Constant 0
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   '$trace_ray_5_30_3'/8
+% Directives: []
+Predicate('$trace_ray_5_30_3' 8
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Allocate
+     Get_Y_Variable 1 3
+     Get_Y_Variable 2 5
+     Get_Y_Variable 3 7
+     Choice_X 8
+     Put_Constant 0 9
+     Init 1 0
+% builtin '$ineq'/2
+     Builtin 12 0 9
+     Put_Constant 0 10
+% builtin '$gt'/2
+     Builtin 14 6 10
+     Cut_X 8
+% builtin '$minus_1'/2
+     Builtin 28 11 6
+     Get_Y_Variable 4 11
+     Put_X_Value 2 0
+     Put_Y_Value 0 2
+     Call reflection_ray 3 5
+     Require 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Structure world 2 1
+     Unify_Y_Local_Value 1
+     Unify_Y_Local_Value 2
+     Put_Y_Unsafe_Value 3 2
+     Put_Y_Unsafe_Value 4 3
+     Deallocate
+     Execute trace_ray 4
+  Label 3
+% reg x(7): par=free, seq=free, loc=local
+% reg x(4): par=any, seq=any, loc=local
+     Get_X_Value 4 7
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   '$trace_ray_7_32_0'/8
+% Directives: []
+Predicate('$trace_ray_7_32_0' 8
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant '$trace_ray_7_32_0' 2
+     Put_Constant 8 3
+     Execute mode_error 4
+  Label 3
+     Require_Using 1 8
+     Allocate
+     Get_X_Variable 8 0
+     Get_Y_Variable 1 2
+     Get_Y_Variable 3 5
+     Get_Y_Variable 4 6
+     Get_Y_Variable 6 7
+     Choice_Y 2
+     Put_X_Value 1 0
+     Put_X_Value 8 1
+     Put_Y_Variable 0 2
+     Put_Y_Variable 5 3
+     Put_Y_Variable 7 4
+     Call intersect 5 8
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+% builtin '$lt'/2
+     Builtin 13 0 1
+     Cut_Y 2
+% reg y(3): par=free, seq=free, loc=local
+% reg x(2): par=gnd, seq=gnd, loc=local
+     Put_Y_Value 0 2
+     Get_Y_Value 3 2
+% reg y(4): par=free, seq=free, loc=local
+% reg x(3): par=nv, seq=nv, loc=local
+     Put_Y_Unsafe_Value 5 3
+     Get_Y_Value 4 3
+% reg y(6): par=free, seq=free, loc=local
+% reg x(4): par=gnd, seq=gnd, loc=local
+     Put_Y_Unsafe_Value 7 4
+     Get_Y_Value 6 4
+     Deallocate
+     Proceed
+  Label 4
+% reg x(5): par=free, seq=free, loc=local
+% reg x(2): par=gnd, seq=gnd, loc=local
+     Get_X_Value 2 5
+% reg x(6): par=free, seq=free, loc=local
+% reg x(3): par=nv, seq=nv, loc=local
+     Get_X_Value 3 6
+% reg x(7): par=free, seq=free, loc=local
+% reg x(4): par=gnd, seq=gnd, loc=local
+     Get_X_Value 4 7
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   camera/4
+% Directives: []
+Predicate(camera 4
+  Label 1
+     Require_Using 12 4
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 2 1
+     Get_Y_Variable 4 3
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 99
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 109
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+     Unify_Y_Variable 3
+     Put_Y_Variable 0 0
+     Call new_camera 1 5
+     Put_Y_Value 0 0
+     Put_Y_Value 3 1
+     Put_Y_Unsafe_Value 4 2
+     Call camera_opts 3 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute member_add 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   add_object/3
+% Directives: []
+Predicate(add_object 3
+  Label 1
+     Require_Using 2 3
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% reg x(0): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 0
+% reg x(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 1
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   camera_opts/3
+% Directives: []
+Predicate(camera_opts 3
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 2 2
+     Put_X_Value 1 0
+     Put_Y_Variable 3 1
+     Init 1 1
+     Call ws 2 4
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 3 1
+     Put_Y_Value 1 2
+     Call copt 3 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute camera_opts 3
+  Label 3
+% reg x(2): par=any, seq=any, loc=local
+% reg x(1): par=any, seq=any, loc=local
+     Get_X_Value 1 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/camera.pl'
+% Compiled:   camera_width/2
+% Directives: []
+Predicate(camera_width 2
+     Switch_On_Term 1 fail fail fail 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant camera_width 2
+     Put_Constant 2 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 7 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure camera 6 0
+     Unify_Void 4
+% reg x(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 1
+     Unify_Void 1
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   color/3
+% Directives: []
+Predicate(color 3
+  Label 1
+     Require_Using 4 3
+     Allocate
+     Get_Y_Variable 1 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure rgb 3 0
+     Unify_Y_Variable 7
+     Unify_Y_Variable 5
+     Unify_Y_Variable 3
+     Put_X_Value 1 0
+     Put_Y_Variable 6 1
+     Init 3 0 2 4
+     Call ws 2 8
+     Require 2
+     Put_Y_Unsafe_Value 6 3
+% reg x(3): par=any, seq=any, loc=local
+     Get_List 3
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 40
+     Unify_X_Variable 1
+     Put_Y_Value 7 0
+     Put_Y_Value 4 2
+     Call intnumber 3 6
+     Require 2
+     Put_Y_Unsafe_Value 4 3
+% reg x(3): par=any, seq=any, loc=local
+     Get_List 3
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 44
+     Unify_X_Variable 1
+     Put_Y_Value 5 0
+     Put_Y_Value 2 2
+     Call intnumber 3 4
+     Require 2
+     Put_Y_Unsafe_Value 2 3
+% reg x(3): par=any, seq=any, loc=local
+     Get_List 3
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 44
+     Unify_X_Variable 1
+     Put_Y_Value 3 0
+     Put_Y_Value 0 2
+     Call intnumber 3 2
+     Require 2
+     Put_Y_Unsafe_Value 0 0
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 41
+% reg y(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Local_Value 1
+     Deallocate
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   combine/4
+% Directives: []
+Predicate(combine 4
+     Switch_On_Term 1 2 1 2 1
+  Label 1
+     Put_Constant list_a_n 1
+     Put_Constant combine 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 5 4
+     Get_X_Variable 5 3
+     Put_Structure rgb 3 3
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 0
+     Put_X_Value 5 4
+     Execute combine_hits 5
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   combine_hits/5
+% Directives: []
+Predicate(combine_hits 5
+     Switch_On_Term 1 2 1 3 1
+  Label 1
+     Put_Constant list_a_n 1
+     Put_Constant combine_hits 2
+     Put_Constant 5 3
+     Execute mode_error 4
+  Label 2
+% reg x(0): par=list_a_n, seq=nil, loc=local
+     Get_Nil 0
+% reg x(4): par=free, seq=free, loc=local
+% reg x(3): par=gnd, seq=gnd, loc=local
+     Get_X_Value 3 4
+     Proceed
+  Label 3
+     Require_Using 6 5
+     Get_X_Variable 6 1
+     Get_X_Variable 7 2
+     Get_X_Variable 8 3
+     Get_X_Variable 9 4
+% reg x(0): par=list_a_n, seq=list_a_n, loc=local
+     Get_List 0
+     Unify_X_Variable 0
+     Unify_X_Variable 1
+     Put_X_Value 6 2
+     Put_X_Value 7 3
+     Put_X_Value 8 4
+     Put_X_Value 9 5
+     Execute '$combine_hits_5_44_0' 6
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/camera.pl'
+% Compiled:   config_reflection/2
+% Directives: []
+Predicate(config_reflection 2
+  Label 1
+     Require_Using 6 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure config 3 0
+     Unify_Void 1
+     Unify_X_Variable 2
+     Unify_Void 1
+% reg x(2): par=any, seq=any, loc=local
+     Get_Structure reflection 1 2
+% reg x(1): par=free, seq=free, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 1
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/camera.pl'
+% Compiled:   config_background/2
+% Directives: []
+Predicate(config_background 2
+     Switch_On_Term 1 fail fail fail 2
+  Label 1
+     Put_Constant nv 1
+     Put_Constant config_background 2
+     Put_Constant 2 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 4 2
+% reg x(0): par=nv, seq=nv, loc=local
+     Get_Structure config 3 0
+% reg x(1): par=free, seq=free, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 1
+     Unify_Void 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   config/4
+% Directives: []
+Predicate(config 4
+  Label 1
+     Try 2
+     Retry 3
+     Retry 4
+     Retry 5
+     Trust 6
+  Label 2
+     Require_Using 20 4
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 2 1
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 98
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 99
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 107
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 103
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 117
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 100
+     Unify_X_Variable 1
+     Put_Y_Variable 0 0
+     Put_X_Value 3 2
+     Call color 3 3
+     Require 4
+     Put_Structure config 3 0
+     Unify_Y_Local_Value 0
+     Unify_Void 2
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute member_add 3
+  Label 3
+     Require_Using 6 4
+     Allocate
+     Get_Y_Variable 2 0
+     Get_Y_Variable 3 1
+     Get_Y_Variable 1 3
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 117
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 115
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+     Unify_X_Variable 0
+     Put_Y_Variable 0 1
+     Call ws 2 4
+     Require 26
+     Put_Y_Unsafe_Value 0 3
+% reg x(3): par=any, seq=any, loc=local
+     Get_List 3
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 102
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 99
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+% reg y(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Local_Value 1
+     Put_Structure reflection 1 4
+     Unify_Void 1
+     Put_Structure config 3 0
+     Unify_Void 1
+     Unify_X_Value 4
+     Unify_Void 1
+     Put_Y_Unsafe_Value 2 1
+     Put_Y_Unsafe_Value 3 2
+     Deallocate
+     Execute member_add 3
+  Label 4
+     Require_Using 6 4
+     Allocate
+     Get_Y_Variable 2 0
+     Get_Y_Variable 3 1
+     Get_Y_Variable 1 3
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 117
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 115
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+     Unify_X_Variable 0
+     Put_Y_Variable 0 1
+     Call ws 2 4
+     Require 18
+     Put_Y_Unsafe_Value 0 3
+% reg x(3): par=any, seq=any, loc=local
+     Get_List 3
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 115
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 104
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 100
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 103
+% reg y(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Local_Value 1
+     Put_Structure config 3 0
+     Unify_Void 2
+     Unify_Constant shading
+     Put_Y_Unsafe_Value 2 1
+     Put_Y_Unsafe_Value 3 2
+     Deallocate
+     Execute member_add 3
+  Label 5
+     Require_Using 6 4
+     Allocate
+     Get_Y_Variable 2 0
+     Get_Y_Variable 3 1
+     Get_Y_Variable 1 3
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 117
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 115
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+     Unify_X_Variable 0
+     Put_Y_Variable 0 1
+     Call ws 2 4
+     Require 16
+     Put_Y_Unsafe_Value 0 3
+% reg x(3): par=any, seq=any, loc=local
+     Get_List 3
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 115
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 104
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 100
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 119
+% reg y(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Local_Value 1
+     Put_Structure config 3 0
+     Unify_Void 2
+     Unify_Constant shading
+     Put_Y_Unsafe_Value 2 1
+     Put_Y_Unsafe_Value 3 2
+     Deallocate
+     Execute member_add 3
+  Label 6
+     Require_Using 6 4
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 2 1
+     Get_Y_Variable 4 3
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 109
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 120
+     Unify_X_Variable 0
+     Put_Y_Variable 5 1
+     Init 2 0 3
+     Call ws 2 6
+     Require 20
+     Put_Y_Unsafe_Value 5 2
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 102
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 99
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+     Unify_X_Variable 0
+     Put_Y_Value 3 1
+     Call ws 2 5
+     Require 10
+     Put_Y_Unsafe_Value 3 3
+% reg x(3): par=any, seq=any, loc=local
+     Get_List 3
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 100
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 112
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 104
+     Unify_X_Variable 1
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 4 2
+     Call intnumber 3 3
+     Require 6
+     Put_Structure reflection 1 3
+     Unify_Y_Local_Value 0
+     Put_Structure config 3 0
+     Unify_Void 1
+     Unify_X_Value 3
+     Unify_Void 1
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute member_add 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/intersect.pl'
+% Compiled:   intersect/5
+% Directives: []
+Predicate(intersect 5
+     Switch_On_Term 2 fail fail fail 1
+  Label 1
+     Switch_On_Structure 3 (
+        sphere 8 3
+        plane 3 4
+        triangle 8 5
+     ) fail
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant intersect 2
+     Put_Constant 5 3
+     Execute mode_error 4
+  Label 3
+     Require_Using 18 5
+     Allocate
+     Get_Y_Variable 13 2
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure sphere 8 0
+     Unify_Y_Variable 8
+     Unify_Y_Variable 15
+     Unify_Y_Variable 10
+     Unify_Y_Variable 3
+     Unify_X_Variable 5
+     Unify_Y_Variable 0
+     Unify_Y_Variable 4
+     Unify_Y_Variable 5
+% reg x(1): par=any, seq=any, loc=local
+     Get_Structure ray 2 1
+     Unify_Y_Variable 11
+     Unify_Y_Variable 14
+% reg x(3): par=free, seq=free, loc=local
+     Get_Structure surface 2 3
+% reg x(5): par=gnd, seq=gnd, loc=local
+% heap: par=free, seq=free, loc=local
+     Unify_X_Value 5
+     Unify_Y_Variable 6
+% reg x(4): par=free, seq=free, loc=local
+     Get_Structure ray 2 4
+     Unify_Y_Variable 2
+     Unify_Y_Variable 7
+     Put_Y_Value 10 0
+     Put_Y_Value 11 1
+     Put_Y_Variable 18 2
+     Init 5 1 9 12 16 17
+     Call vector_sub 3 19
+     Put_Y_Value 18 0
+     Put_Y_Value 18 1
+     Put_Y_Value 17 2
+     Call vector_mult 3 19
+     Put_Y_Unsafe_Value 18 0
+     Put_Y_Value 14 1
+     Put_Y_Value 16 2
+     Call vector_mult 3 18
+     Put_Y_Value 15 0
+     Put_Y_Unsafe_Value 16 1
+     Put_Y_Unsafe_Value 17 2
+     Put_Y_Value 13 3
+     Call '$intersect_5_22_4' 4 15
+     Put_Y_Unsafe_Value 13 3
+% builtin '$abs'/2
+     Builtin 42 4 3
+     Put_Constant 1.0e-05 5
+% builtin '$gt'/2
+     Builtin 14 4 5
+     Put_Y_Value 14 0
+     Put_Y_Value 13 1
+     Put_Y_Value 12 2
+     Call vector_scalar_mult 3 13
+     Put_Y_Value 11 0
+     Put_Y_Unsafe_Value 12 1
+     Put_Y_Value 2 2
+     Call vector_add 3 11
+     Put_Y_Value 2 0
+     Put_Y_Value 10 1
+     Put_Y_Value 9 2
+     Call vector_sub 3 10
+     Put_Constant 1 3
+     Put_Y_Value 8 4
+% builtin '$div'/3
+     Builtin 30 5 3 4
+     Put_Y_Unsafe_Value 9 0
+     Put_X_Value 5 1
+     Put_Y_Value 1 2
+     Call vector_scalar_mult 3 8
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Value 2 2
+     Put_Y_Value 3 3
+     Put_Y_Value 4 4
+     Put_Y_Value 5 5
+     Put_Y_Value 6 6
+     Put_Y_Value 7 7
+     Deallocate
+     Execute '$intersect_5_22_1' 8
+  Label 4
+     Require_Using 14 5
+     Get_X_Variable 7 2
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure plane 3 0
+     Unify_X_Variable 0
+     Unify_X_Variable 8
+     Unify_X_Variable 9
+% reg x(1): par=any, seq=any, loc=local
+     Get_Structure ray 2 1
+     Unify_X_Variable 10
+     Unify_X_Variable 2
+% reg x(3): par=free, seq=free, loc=local
+     Get_Structure surface 2 3
+% heap: par=free, seq=free, loc=local
+     Unify_Constant 0
+% reg x(9): par=gnd, seq=gnd, loc=local
+% heap: par=free, seq=free, loc=local
+     Unify_X_Value 9
+% reg x(4): par=free, seq=free, loc=local
+     Get_Structure ray 2 4
+     Unify_X_Variable 5
+     Unify_X_Variable 6
+     Put_X_Value 8 1
+     Put_X_Value 10 3
+     Put_X_Value 7 4
+     Execute intersect_plane 7
+  Label 5
+     Require_Using 19 5
+     Allocate
+     Get_X_Variable 7 2
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure triangle 8 0
+     Unify_Y_Variable 13
+     Unify_Y_Variable 10
+     Unify_Y_Variable 9
+     Unify_X_Variable 0
+     Unify_X_Variable 8
+     Unify_Y_Variable 6
+     Unify_X_Variable 9
+     Unify_Y_Variable 5
+% reg x(1): par=any, seq=any, loc=local
+     Get_Structure ray 2 1
+     Unify_X_Variable 10
+     Unify_X_Variable 2
+% reg x(3): par=free, seq=free, loc=local
+     Get_Structure surface 2 3
+% reg x(9): par=gnd, seq=gnd, loc=local
+% heap: par=free, seq=free, loc=local
+     Unify_X_Value 9
+     Unify_Y_Variable 7
+% reg x(4): par=free, seq=free, loc=local
+     Get_Structure ray 2 4
+     Unify_Y_Variable 12
+     Unify_X_Variable 6
+     Put_X_Value 8 1
+     Put_X_Value 10 3
+     Put_X_Value 7 4
+     Put_Y_Value 12 5
+     Init 7 0 1 2 3 4 8 11
+     Call intersect_plane 7 14
+     Put_Y_Value 12 0
+     Put_Y_Value 13 1
+     Put_Y_Value 8 2
+     Call vector_sub 3 12
+     Put_Y_Value 9 0
+     Put_Y_Value 9 1
+     Put_Y_Value 0 2
+     Call vector_mult 3 12
+     Put_Y_Value 10 0
+     Put_Y_Value 10 1
+     Put_Y_Value 4 2
+     Call vector_mult 3 12
+     Put_Y_Value 8 0
+     Put_Y_Value 8 1
+     Put_Y_Value 11 2
+     Call vector_mult 3 12
+     Put_Constant 2 3
+     Put_Y_Unsafe_Value 11 4
+% builtin '$times'/3
+     Builtin 29 5 3 4
+     Put_Y_Value 0 6
+     Put_Y_Value 4 7
+% builtin '$plus'/3
+     Builtin 25 8 6 7
+% builtin '$lt'/2
+     Builtin 13 5 8
+     Put_Y_Value 8 0
+     Put_Y_Value 10 1
+     Put_Y_Value 1 2
+     Call vector_mult 3 11
+     Put_Y_Value 10 0
+     Put_Y_Value 9 1
+     Put_Y_Value 2 2
+     Call vector_mult 3 10
+     Put_Y_Unsafe_Value 8 0
+     Put_Y_Value 9 1
+     Put_Y_Value 3 2
+     Call vector_mult 3 8
+     Put_Y_Unsafe_Value 0 5
+     Put_Y_Unsafe_Value 1 6
+% builtin '$times'/3
+     Builtin 29 7 5 6
+     Put_Y_Unsafe_Value 2 8
+     Put_Y_Unsafe_Value 3 9
+% builtin '$times'/3
+     Builtin 29 10 8 9
+% builtin '$minus'/3
+     Builtin 27 11 7 10
+     Put_Y_Unsafe_Value 4 12
+     Put_Y_Value 0 13
+% builtin '$times'/3
+     Builtin 29 14 12 13
+     Put_Y_Value 2 15
+     Put_Y_Value 2 16
+% builtin '$times'/3
+     Builtin 29 17 15 16
+% builtin '$minus'/3
+     Builtin 27 18 14 17
+% builtin '$div'/3
+     Builtin 30 19 11 18
+     Put_Constant 0 20
+% builtin '$ge'/2
+     Builtin 16 19 20
+     Put_Constant 1 21
+% builtin '$le'/2
+     Builtin 15 19 21
+     Put_Y_Value 2 22
+% builtin '$times'/3
+     Builtin 29 23 19 22
+     Put_Y_Value 3 24
+% builtin '$minus'/3
+     Builtin 27 25 24 23
+     Put_Y_Value 0 26
+% builtin '$div'/3
+     Builtin 30 27 25 26
+     Put_Constant 0 28
+% builtin '$ge'/2
+     Builtin 16 27 28
+     Put_Constant 1 29
+% builtin '$le'/2
+     Builtin 15 27 29
+% builtin '$plus'/3
+     Builtin 25 30 19 27
+     Put_Constant 1 31
+% builtin '$le'/2
+     Builtin 15 30 31
+     Put_Y_Value 5 0
+     Put_X_Value 19 1
+     Put_X_Value 27 2
+     Put_Y_Value 6 3
+     Put_Y_Value 7 4
+     Deallocate
+     Execute '$intersect_5_24_0' 5
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   empty_world/1
+% Directives: []
+Predicate(empty_world 1
+     Switch_On_Term 1 2 fail fail fail
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant empty_world 2
+     Put_Constant 1 3
+     Execute mode_error 4
+  Label 2
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Nil 0
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   copt/3
+% Directives: []
+Predicate(copt 3
+  Label 1
+     Try 2
+     Retry 3
+     Retry 4
+     Retry 5
+     Retry 6
+     Retry 7
+     Trust 8
+  Label 2
+     Require_Using 24 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure camera 7 0
+     Unify_X_Variable 0
+     Unify_Void 6
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 121
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 112
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute vector 3
+  Label 3
+     Require_Using 26 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure camera 7 0
+     Unify_Void 1
+     Unify_X_Variable 0
+     Unify_Void 5
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 107
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 112
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute vector 3
+  Label 4
+     Require_Using 16 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure camera 7 0
+     Unify_Void 2
+     Unify_X_Variable 0
+     Unify_Void 4
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 122
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 109
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute number 3
+  Label 5
+     Require_Using 12 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure camera 7 0
+     Unify_Void 3
+     Unify_X_Variable 0
+     Unify_Void 3
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 117
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 112
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute vector 3
+  Label 6
+     Require_Using 18 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure camera 7 0
+     Unify_Void 4
+     Unify_X_Variable 0
+     Unify_Void 2
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 119
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 100
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 104
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute number 3
+  Label 7
+     Require_Using 20 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure camera 7 0
+     Unify_Void 5
+     Unify_X_Variable 0
+     Unify_Void 1
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 104
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 103
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 104
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute number 3
+  Label 8
+     Require_Using 28 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure camera 7 0
+     Unify_Void 6
+     Unify_X_Variable 0
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 115
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 117
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute number 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   digit/2
+% Directives: []
+Predicate(digit 2
+  Label 1
+     Put_Constant 48 2
+% builtin '$ge'/2
+     Builtin 16 0 2
+     Put_Constant 57 3
+% builtin '$le'/2
+     Builtin 15 0 3
+     Put_Constant 48 4
+% builtin '$minus'/3
+     Builtin 27 5 0 4
+% reg x(1): par=any, seq=any, loc=local
+% reg x(5): par=any, seq=any, loc=local
+     Get_X_Value 5 1
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/load.pl'
+% Compiled:   default/2
+% Directives: []
+Predicate(default 2
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+% reg x(1): par=any, seq=any, loc=local
+% reg x(0): par=any, seq=any, loc=local
+     Get_X_Value 0 1
+     Cut
+     Proceed
+  Label 3
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   gen_light_rays/3
+% Directives: []
+Predicate(gen_light_rays 3
+     Switch_On_Term 1 2 fail 3 fail
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant gen_light_rays 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Nil 0
+% reg x(2): par=free, seq=free, loc=local
+     Get_Nil 2
+     Proceed
+  Label 3
+     Require_Using 12 3
+     Allocate
+     Get_Y_Variable 1 1
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_List 0
+     Unify_X_Variable 3
+     Unify_Y_Variable 0
+% reg x(3): par=gnd, seq=gnd, loc=local
+     Get_Structure light 1 3
+     Unify_X_Variable 0
+% reg x(2): par=free, seq=free, loc=local
+     Get_List 2
+     Unify_X_Variable 4
+     Unify_Y_Variable 2
+% reg x(4): par=free, seq=free, loc=local
+     Get_Structure light 2 4
+     Unify_X_Variable 5
+     Unify_Y_Variable 5
+% reg x(5): par=free, seq=free, loc=local
+     Get_Structure ray 2 5
+% reg y(1): par=gnd, seq=gnd, loc=local
+% heap: par=free, seq=free, loc=local
+     Unify_Y_Local_Value 1
+     Unify_Y_Variable 4
+     Put_Y_Value 1 1
+     Put_Y_Variable 3 2
+     Call vector_sub 3 6
+     Put_Y_Value 3 0
+     Put_Y_Value 5 1
+     Call vector_length 2 5
+     Put_Y_Unsafe_Value 3 0
+     Put_Y_Value 4 1
+     Call normalize_vector 2 3
+     Put_Y_Value 0 0
+     Put_Y_Value 1 1
+     Put_Y_Value 2 2
+     Deallocate
+     Execute gen_light_rays 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   fraction/4
+% Directives: []
+Predicate(fraction 4
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Require_Using 3 4
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 2 1
+     Get_X_Variable 5 3
+     Choice_X 6
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 46
+     Unify_X_Variable 3
+     Cut_X 6
+     Put_Constant 10 0
+     Put_Constant 0 1
+     Put_Y_Variable 1 2
+     Put_X_Value 5 4
+     Call num_frac 5 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+% builtin '$plus'/3
+     Builtin 25 2 0 1
+% reg y(2): par=any, seq=any, loc=local
+% reg x(2): par=any, seq=any, loc=local
+     Get_Y_Value 2 2
+     Deallocate
+     Proceed
+  Label 3
+% reg x(1): par=any, seq=any, loc=local
+% reg x(0): par=any, seq=any, loc=local
+     Get_X_Value 0 1
+% reg x(3): par=any, seq=any, loc=local
+% reg x(2): par=any, seq=any, loc=local
+     Get_X_Value 2 3
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   file_to_list/2
+% Directives: []
+Predicate(file_to_list 2
+  Label 1
+     Allocate
+     Get_Y_Variable 0 1
+     Put_Constant read 1
+     Put_Y_Variable 1 2
+     Call open 3 2
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Deallocate
+     Execute '$file_to_list_2_165_0' 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   get_map_color/4
+% Directives: []
+Predicate(get_map_color 4
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant get_map_color 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 9 4
+     Allocate
+% reg x(2): par=gnd, seq=gnd, loc=local
+     Get_Structure map 2 2
+     Unify_X_Variable 4
+     Unify_X_Variable 5
+% reg x(4): par=gnd, seq=gnd, loc=local
+     Get_Structure size 2 4
+     Unify_X_Variable 6
+     Unify_X_Variable 7
+% reg x(3): par=any, seq=any, loc=local
+     Get_Structure surface 2 3
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 0
+     Unify_Y_Variable 2
+     Init 2 0 1
+% builtin '$times'/3
+     Builtin 29 8 6 0
+% builtin '$tointeger'/2
+     Builtin 33 9 8
+     Get_Y_Value 0 9
+% builtin '$times'/3
+     Builtin 29 10 7 1
+% builtin '$tointeger'/2
+     Builtin 33 11 10
+     Put_X_Value 11 0
+     Put_X_Value 5 1
+     Put_Y_Value 1 2
+     Call nth 3 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Value 2 2
+     Deallocate
+     Execute nth 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/load.pl'
+% Compiled:   initialize/3
+% Directives: []
+Predicate(initialize 3
+     Switch_On_Term 1 fail fail fail 2
+  Label 1
+     Try 3
+     Retry 4
+     Retry 5
+     Retry 6
+     Retry 7
+     Trust 8
+  Label 2
+     Switch_On_Structure 6 (
+        config 3 3
+        light 1 4
+        camera 7 5
+        sphere 7 6
+        plane 3 7
+        triangle 6 8
+     ) fail
+  Label 3
+     Require_Using 12 3
+     Allocate
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure config 3 0
+     Unify_X_Variable 0
+     Unify_Y_Variable 0
+     Unify_X_Variable 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_Constant config 1
+% reg x(2): par=any, seq=any, loc=local
+     Get_Structure config 3 2
+% reg x(0): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Value 0
+% reg y(0): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Value 0
+% reg x(3): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Value 3
+     Put_Structure rgb 3 1
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 0
+     Call default 2 1
+     Require 2
+     Put_Y_Value 0 0
+     Put_Structure reflection 1 1
+     Unify_Constant 0
+     Deallocate
+     Execute default 2
+  Label 4
+     Require_Using 8 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure light 1 0
+     Unify_X_Variable 0
+% reg x(1): par=any, seq=any, loc=local
+     Get_Constant light 1
+% reg x(2): par=any, seq=any, loc=local
+     Get_Structure light 1 2
+% reg x(0): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Value 0
+     Put_Structure v 3 1
+     Unify_Constant 0
+     Unify_Constant 100
+     Unify_Constant -100
+     Execute default 2
+  Label 5
+     Require_Using 19 3
+     Allocate
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure camera 7 0
+     Unify_Y_Variable 6
+     Unify_Y_Variable 22
+     Unify_Y_Variable 20
+     Unify_Y_Variable 18
+     Unify_Y_Variable 0
+     Unify_Y_Variable 3
+     Unify_Y_Variable 1
+% reg x(1): par=any, seq=any, loc=local
+     Get_Constant camera 1
+% reg x(2): par=any, seq=any, loc=local
+     Get_Structure camera 6 2
+% reg y(6): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Value 6
+     Unify_Y_Variable 7
+     Unify_Y_Variable 14
+     Unify_Y_Variable 12
+     Unify_Y_Variable 2
+     Unify_Y_Variable 4
+     Put_Y_Value 6 0
+     Put_Structure v 3 1
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant -8
+     Init 11 5 8 9 10 11 13 15 16 17 19 21
+     Call default 2 23
+     Require 4
+     Put_Y_Value 22 0
+     Put_Structure v 3 1
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 0
+     Call default 2 23
+     Put_Y_Value 20 0
+     Put_Constant 10 1
+     Call default 2 23
+     Require 4
+     Put_Y_Value 18 0
+     Put_Structure v 3 1
+     Unify_Constant 0
+     Unify_Constant 1
+     Unify_Constant 0
+     Call default 2 23
+     Put_Y_Value 0 0
+     Put_Constant 4 1
+     Call default 2 23
+     Put_Y_Value 3 0
+     Put_Constant 4 1
+     Call default 2 23
+     Put_Y_Value 1 0
+     Put_Constant 0.025 1
+     Call default 2 23
+     Put_Y_Value 22 0
+     Put_Y_Value 6 1
+     Put_Y_Value 21 2
+     Call vector_sub 3 22
+     Put_Y_Unsafe_Value 21 0
+     Put_Y_Value 19 1
+     Call vector_normalize 2 21
+     Put_Y_Unsafe_Value 19 0
+     Put_Y_Value 20 1
+     Put_Y_Value 17 2
+     Call vector_scalar_mult 3 19
+     Put_Y_Value 6 0
+     Put_Y_Value 17 1
+     Put_Y_Value 8 2
+     Call vector_add 3 19
+     Put_Y_Value 18 0
+     Put_Y_Value 17 1
+     Put_Y_Value 16 2
+     Call vector_cross_product 3 18
+     Put_Y_Value 16 0
+     Put_Y_Unsafe_Value 17 1
+     Put_Y_Value 15 2
+     Call vector_cross_product 3 17
+     Put_Y_Unsafe_Value 16 0
+     Put_Y_Value 1 1
+     Put_Y_Value 14 2
+     Call vector_scale_length 3 16
+     Put_Y_Unsafe_Value 15 0
+     Put_Y_Value 1 1
+     Put_Y_Value 12 2
+     Call vector_scale_length 3 15
+     Put_Y_Value 3 3
+     Put_Constant 2 4
+% builtin '$div'/3
+     Builtin 30 5 3 4
+     Get_Y_Value 13 5
+     Put_Y_Value 0 6
+     Put_Constant 2 7
+% builtin '$div'/3
+     Builtin 30 8 6 7
+     Put_Y_Value 14 0
+     Put_X_Value 8 1
+     Put_Y_Value 10 2
+     Call vector_scale_length 3 14
+     Put_Y_Value 12 0
+     Put_Y_Unsafe_Value 13 1
+     Put_Y_Value 11 2
+     Call vector_scale_length 3 12
+     Put_Y_Unsafe_Value 10 0
+     Put_Y_Unsafe_Value 11 1
+     Put_Y_Value 9 2
+     Call vector_add 3 10
+     Put_Y_Unsafe_Value 8 0
+     Put_Y_Unsafe_Value 9 1
+     Put_Y_Value 5 2
+     Call vector_sub 3 8
+     Put_Y_Unsafe_Value 5 0
+     Put_Y_Value 6 1
+     Put_Y_Value 7 2
+     Call vector_sub 3 5
+     Put_Y_Value 0 0
+     Put_Y_Value 1 1
+% builtin '$div'/3
+     Builtin 30 2 0 1
+% builtin '$tointeger'/2
+     Builtin 33 3 2
+% reg y(2): par=any, seq=any, loc=local
+% reg x(3): par=any, seq=any, loc=local
+     Get_Y_Value 2 3
+     Put_Y_Value 3 4
+     Put_Y_Value 1 5
+% builtin '$div'/3
+     Builtin 30 6 4 5
+% builtin '$tointeger'/2
+     Builtin 33 7 6
+% reg y(4): par=any, seq=any, loc=local
+% reg x(7): par=any, seq=any, loc=local
+     Get_Y_Value 4 7
+     Deallocate
+     Proceed
+  Label 6
+     Require_Using 17 3
+     Allocate
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure sphere 7 0
+     Unify_Y_Variable 4
+     Unify_Y_Variable 10
+     Unify_Y_Variable 9
+     Unify_Y_Variable 8
+     Unify_Y_Variable 0
+     Unify_Y_Variable 6
+     Unify_Y_Variable 2
+% reg x(1): par=any, seq=any, loc=local
+     Get_Constant object 1
+% reg x(2): par=any, seq=any, loc=local
+     Get_Structure sphere 8 2
+% reg y(4): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Value 4
+     Unify_Y_Variable 5
+% reg y(10): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Value 10
+% reg y(9): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Value 9
+% reg y(8): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Value 8
+     Unify_Y_Variable 1
+     Unify_Y_Variable 7
+     Unify_Y_Variable 3
+     Put_Y_Value 4 0
+     Put_Constant 3 1
+     Call default 2 11
+     Require 4
+     Put_Y_Value 10 0
+     Put_Structure v 3 1
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 100
+     Call default 2 10
+     Require 4
+     Put_Y_Value 9 0
+     Put_Structure rgb 3 1
+     Unify_Constant 255
+     Unify_Constant 0
+     Unify_Constant 0
+     Call default 2 9
+     Put_Y_Value 8 0
+     Put_Constant 0 1
+     Call default 2 8
+     Put_Y_Value 0 0
+     Put_Constant no_map 1
+     Call default 2 8
+     Require 4
+     Put_Y_Value 6 0
+     Put_Structure v 3 1
+     Unify_Constant 0
+     Unify_Constant 1
+     Unify_Constant 0
+     Call default 2 8
+     Require 4
+     Put_Y_Value 2 0
+     Put_Structure v 3 1
+     Unify_Constant 1
+     Unify_Constant 0
+     Unify_Constant 0
+     Call default 2 8
+     Put_Y_Value 4 2
+     Put_Y_Value 4 3
+% builtin '$times'/3
+     Builtin 29 4 2 3
+% reg y(5): par=any, seq=any, loc=local
+% reg x(4): par=any, seq=any, loc=local
+     Get_Y_Value 5 4
+     Put_Y_Value 6 0
+     Put_Y_Value 7 1
+     Call vector_normalize 2 4
+     Put_Y_Value 2 0
+     Put_Y_Value 3 1
+     Call vector_normalize 2 2
+     Put_Y_Value 0 0
+     Put_Y_Value 1 1
+     Deallocate
+     Execute '$initialize_3_175_0' 2
+  Label 7
+     Require_Using 12 3
+     Allocate
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure plane 3 0
+     Unify_Y_Variable 0
+     Unify_Y_Variable 3
+     Unify_Y_Variable 2
+% reg x(1): par=any, seq=any, loc=local
+     Get_Constant object 1
+% reg x(2): par=any, seq=any, loc=local
+     Get_Structure plane 3 2
+     Unify_Y_Variable 1
+% reg y(3): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Value 3
+% reg y(2): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Value 2
+     Put_Y_Value 0 0
+     Put_Structure v 3 1
+     Unify_Constant -1
+     Unify_Constant 0
+     Unify_Constant 2
+     Call default 2 4
+     Put_Y_Value 3 0
+     Put_Constant 150 1
+     Call default 2 3
+     Require 4
+     Put_Y_Value 2 0
+     Put_Structure rgb 3 1
+     Unify_Constant 70
+     Unify_Constant 190
+     Unify_Constant 70
+     Call default 2 2
+     Put_Y_Value 0 0
+     Put_Y_Value 1 1
+     Deallocate
+     Execute vector_normalize 2
+  Label 8
+     Require_Using 20 3
+     Allocate
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure triangle 6 0
+     Unify_Y_Variable 2
+     Unify_Y_Variable 6
+     Unify_Y_Variable 7
+     Unify_Y_Variable 9
+     Unify_Y_Variable 8
+     Unify_Y_Variable 0
+% reg x(1): par=any, seq=any, loc=local
+     Get_Constant object 1
+% reg x(2): par=any, seq=any, loc=local
+     Get_Structure triangle 8 2
+% reg y(2): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Value 2
+% reg y(6): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Value 6
+% reg y(7): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Value 7
+     Unify_Y_Variable 3
+     Unify_Y_Variable 4
+% reg y(9): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Value 9
+% reg y(8): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Value 8
+     Unify_Y_Variable 1
+     Put_Y_Value 2 0
+     Put_Structure v 3 1
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 90
+     Init 1 5
+     Call default 2 10
+     Require 4
+     Put_Y_Value 6 0
+     Put_Structure v 3 1
+     Unify_Constant 30
+     Unify_Constant 0
+     Unify_Constant 30
+     Call default 2 10
+     Require 4
+     Put_Y_Value 7 0
+     Put_Structure v 3 1
+     Unify_Constant 30
+     Unify_Constant 30
+     Unify_Constant 5
+     Call default 2 10
+     Require 4
+     Put_Y_Value 9 0
+     Put_Structure rgb 3 1
+     Unify_Constant 40
+     Unify_Constant 40
+     Unify_Constant 120
+     Call default 2 9
+     Put_Y_Value 8 0
+     Put_Constant 0 1
+     Call default 2 8
+     Put_Y_Value 0 0
+     Put_Constant no_map 1
+     Call default 2 8
+     Put_Y_Value 6 0
+     Put_Y_Value 7 1
+     Put_Y_Value 5 2
+     Call vector_cross_product 3 6
+     Put_Y_Unsafe_Value 5 0
+     Put_Y_Value 3 1
+     Call vector_normalize 2 5
+     Put_Y_Value 2 0
+     Put_Y_Value 3 1
+     Put_Y_Value 4 2
+     Call vector_mult 3 2
+     Put_Y_Value 0 0
+     Put_Y_Value 1 1
+     Deallocate
+     Execute '$initialize_3_177_0' 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/intersect.pl'
+% Compiled:   intersect_plane/7
+% Directives: []
+Predicate(intersect_plane 7
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant intersect_plane 2
+     Put_Constant 7 3
+     Execute mode_error 4
+  Label 2
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 6 1
+     Get_Y_Variable 9 2
+     Get_Y_Variable 4 3
+     Get_Y_Variable 8 4
+     Get_Y_Variable 5 5
+     Get_Y_Variable 2 6
+     Put_Y_Value 1 0
+     Put_Y_Value 9 1
+     Put_Y_Variable 0 2
+     Init 2 3 7
+     Call vector_mult 3 10
+     Put_Y_Value 0 3
+     Put_Constant 0 4
+% builtin '$ineq'/2
+     Builtin 12 3 4
+     Put_Y_Value 1 0
+     Put_Y_Value 4 1
+     Put_Y_Value 7 2
+     Call vector_mult 3 10
+     Put_Y_Unsafe_Value 6 3
+     Put_Y_Unsafe_Value 7 4
+% builtin '$minus'/3
+     Builtin 27 5 3 4
+     Put_Y_Value 0 6
+% builtin '$div'/3
+     Builtin 30 7 5 6
+% reg y(8): par=free, seq=free, loc=local
+% reg x(7): par=gnd, seq=gnd, loc=local
+     Get_Y_Value 8 7
+     Put_Y_Unsafe_Value 8 8
+     Put_Constant 0 9
+% builtin '$gt'/2
+     Builtin 14 8 9
+     Put_Y_Unsafe_Value 9 0
+     Put_Y_Value 8 1
+     Put_Y_Value 3 2
+     Call vector_scalar_mult 3 6
+     Put_Y_Unsafe_Value 3 0
+     Put_Y_Unsafe_Value 4 1
+     Put_Y_Unsafe_Value 5 2
+     Call vector_add 3 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute '$intersect_plane_7_25_0' 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   is_digit/1
+% Directives: []
+Predicate(is_digit 1
+  Label 1
+     Put_Constant 57 1
+% builtin '$le'/2
+     Builtin 15 0 1
+     Put_Constant 48 2
+% builtin '$ge'/2
+     Builtin 16 0 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   intnumber/3
+% Directives: []
+Predicate(intnumber 3
+  Label 1
+     Try 2
+     Retry 3
+     Trust 4
+  Label 2
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 4 2
+     Choice_Y 3
+     Put_X_Value 1 0
+     Put_Y_Variable 2 1
+     Init 1 0
+     Call ws 2 5
+     Require 2
+     Put_Y_Unsafe_Value 2 4
+% reg x(4): par=any, seq=any, loc=local
+     Get_List 4
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 45
+     Unify_X_Variable 2
+     Cut_Y 3
+     Put_Constant 0 0
+     Put_Y_Value 0 1
+     Put_Y_Unsafe_Value 4 3
+     Call num_int 4 2
+     Put_Constant -1 0
+     Put_Y_Unsafe_Value 0 1
+% builtin '$times'/3
+     Builtin 29 2 0 1
+% reg y(1): par=any, seq=any, loc=local
+% reg x(2): par=any, seq=any, loc=local
+     Get_Y_Value 1 2
+     Deallocate
+     Proceed
+  Label 3
+     Allocate
+     Get_Y_Variable 2 0
+     Get_Y_Variable 3 2
+     Choice_Y 1
+     Put_X_Value 1 0
+     Put_Y_Variable 0 1
+     Call ws 2 4
+     Require 2
+     Put_Y_Unsafe_Value 0 4
+% reg x(4): par=any, seq=any, loc=local
+     Get_List 4
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 43
+     Unify_X_Variable 2
+     Cut_Y 1
+     Put_Constant 0 0
+     Put_Y_Unsafe_Value 2 1
+     Put_Y_Unsafe_Value 3 3
+     Deallocate
+     Execute num_int 4
+  Label 4
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 2 2
+     Put_X_Value 1 0
+     Put_Y_Variable 1 1
+     Call ws 2 3
+     Put_Constant 0 0
+     Put_Y_Unsafe_Value 0 1
+     Put_Y_Unsafe_Value 1 2
+     Put_Y_Unsafe_Value 2 3
+     Deallocate
+     Execute num_int 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   light_opts/3
+% Directives: []
+Predicate(light_opts 3
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 3 2
+     Choice_Y 0
+     Put_X_Value 1 0
+     Put_Y_Variable 4 1
+     Init 1 2
+     Call ws 2 5
+     Put_Y_Value 1 0
+     Put_Y_Unsafe_Value 4 1
+     Put_Y_Value 2 2
+     Call lopt 3 4
+     Cut_Y 0
+     Put_Y_Unsafe_Value 1 0
+     Put_Y_Unsafe_Value 2 1
+     Put_Y_Unsafe_Value 3 2
+     Deallocate
+     Execute light_opts 3
+  Label 3
+% reg x(2): par=any, seq=any, loc=local
+% reg x(1): par=any, seq=any, loc=local
+     Get_X_Value 1 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   lopt/3
+% Directives: []
+Predicate(lopt 3
+  Label 1
+     Require_Using 14 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure light 1 0
+     Unify_X_Variable 0
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 99
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute vector 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/load.pl'
+% Compiled:   load_world/4
+% Directives: []
+Predicate(load_world 4
+  Label 1
+     Require_Using 3 4
+     Allocate
+     Get_Y_Variable 1 1
+     Get_Y_Variable 2 2
+% reg x(3): par=any, seq=any, loc=local
+     Get_Structure world 2 3
+     Unify_Y_Variable 4
+     Unify_Y_Variable 3
+     Put_Y_Variable 0 1
+     Call parse 2 5
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Value 3 3
+     Put_Y_Value 4 4
+     Deallocate
+     Execute process_world 5
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/load.pl'
+% Compiled:   map_size/3
+% Directives: []
+Predicate(map_size 3
+  Label 1
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 1 1
+     Put_Y_Value 0 0
+     Put_X_Value 2 1
+     Call length 2 2
+     Require 2
+     Put_Y_Unsafe_Value 0 2
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+     Unify_X_Variable 0
+     Unify_Void 1
+     Put_Y_Unsafe_Value 1 1
+     Deallocate
+     Execute length 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   next_object/3
+% Directives: []
+Predicate(next_object 3
+     Switch_On_Term 1 fail fail 2 fail
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant next_object 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 2 3
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_List 0
+% reg x(1): par=free, seq=free, loc=local
+% heap: par=gnd, seq=gnd, loc=local
+     Unify_X_Local_Value 1
+% reg x(2): par=free, seq=free, loc=local
+% heap: par=gnd, seq=gnd, loc=local
+     Unify_X_Local_Value 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   new_camera/1
+% Directives: []
+Predicate(new_camera 1
+  Label 1
+     Require_Using 8 1
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure camera 7 0
+     Unify_Void 7
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   name/3
+% Directives: []
+Predicate(name 3
+  Label 1
+     Allocate
+     Get_Y_Variable 2 0
+     Get_Y_Variable 1 2
+     Put_X_Value 1 0
+     Put_Y_Variable 4 1
+     Init 2 0 3
+     Call ws 2 5
+     Require 2
+     Put_Y_Unsafe_Value 4 3
+% reg x(3): par=any, seq=any, loc=local
+     Get_List 3
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 39
+     Unify_X_Variable 1
+     Put_Y_Value 3 0
+     Put_Y_Value 0 2
+     Call name_inner 3 4
+     Require 2
+     Put_Y_Unsafe_Value 0 2
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 39
+% reg y(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Local_Value 1
+     Put_Y_Unsafe_Value 2 0
+     Put_Y_Unsafe_Value 3 1
+     Deallocate
+     Execute name 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   member_add/3
+% Directives: []
+Predicate(member_add 3
+  Label 1
+     Require_Using 1 3
+     Get_X_Variable 3 0
+     Put_X_Value 1 0
+     Put_X_Value 3 1
+     Execute member_add_inx 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   member_add_inx/3
+% Directives: []
+Predicate(member_add_inx 3
+     Switch_On_Term 1 3 fail 2 fail
+  Label 1
+     Try 3
+     Retry 4
+     Trust 5
+  Label 2
+     Try 4
+     Trust 5
+  Label 3
+     Require_Using 2 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Nil 0
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% reg x(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 1
+% heap: par=any, seq=any, loc=local
+     Unify_Nil
+     Proceed
+  Label 4
+     Require_Using 4 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+% reg x(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 1
+     Unify_X_Variable 3
+     Cut
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% reg x(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Value 1
+% reg x(3): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Value 3
+     Proceed
+  Label 5
+     Require_Using 4 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_X_Variable 3
+     Unify_X_Variable 0
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% reg x(3): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Value 3
+     Unify_X_Variable 2
+     Execute member_add_inx 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   name_inner/3
+% Directives: []
+Predicate(name_inner 3
+     Switch_On_Term 1 3 fail 2 fail
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Require_Using 4 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_X_Variable 3
+     Unify_X_Variable 0
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% reg x(3): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Value 3
+     Unify_X_Variable 1
+     Put_Constant 39 4
+% builtin '$ineq'/2
+     Builtin 12 3 4
+     Execute name_inner 3
+  Label 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Nil 0
+% reg x(2): par=any, seq=any, loc=local
+% reg x(1): par=any, seq=any, loc=local
+     Get_X_Value 1 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   new_sphere/1
+% Directives: []
+Predicate(new_sphere 1
+  Label 1
+     Require_Using 8 1
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure sphere 7 0
+     Unify_Void 7
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   new_plane/1
+% Directives: []
+Predicate(new_plane 1
+  Label 1
+     Require_Using 4 1
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure plane 3 0
+     Unify_Void 3
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   new_light/1
+% Directives: []
+Predicate(new_light 1
+  Label 1
+     Require_Using 2 1
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure light 1 0
+     Unify_Void 1
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   new_config/1
+% Directives: []
+Predicate(new_config 1
+  Label 1
+     Require_Using 4 1
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure config 3 0
+     Unify_Void 3
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   new_triangle/1
+% Directives: []
+Predicate(new_triangle 1
+  Label 1
+     Require_Using 7 1
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure triangle 6 0
+     Unify_Void 6
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/color.pl'
+% Compiled:   scale_color/3
+% Directives: []
+Predicate(scale_color 3
+  Label 1
+     Require_Using 8 3
+     Allocate
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure rgb 3 0
+     Unify_X_Variable 3
+     Unify_X_Variable 4
+     Unify_X_Variable 5
+% reg x(2): par=free, seq=free, loc=local
+     Get_Structure rgb 3 2
+     Unify_X_Variable 2
+     Unify_Y_Variable 3
+     Unify_Y_Variable 1
+     Init 2 0 2
+% builtin '$times'/3
+     Builtin 29 6 3 1
+% builtin '$tointeger'/2
+     Builtin 33 7 6
+% builtin '$times'/3
+     Builtin 29 8 4 1
+% builtin '$tointeger'/2
+     Builtin 33 9 8
+     Get_Y_Value 2 9
+% builtin '$times'/3
+     Builtin 29 10 5 1
+% builtin '$tointeger'/2
+     Builtin 33 11 10
+     Get_Y_Value 0 11
+     Put_X_Value 7 0
+     Put_Constant 255 1
+     Call max 3 4
+     Put_Y_Unsafe_Value 2 0
+     Put_Constant 255 1
+     Put_Y_Value 3 2
+     Call max 3 2
+     Put_Y_Unsafe_Value 0 0
+     Put_Constant 255 1
+     Put_Y_Value 1 2
+     Deallocate
+     Execute max 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/camera.pl'
+% Compiled:   reflection_ray/3
+% Directives: []
+Predicate(reflection_ray 3
+     Switch_On_Term 1 fail fail fail 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant reflection_ray 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 9 3
+     Allocate
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure ray 2 0
+     Unify_Void 1
+     Unify_Y_Variable 0
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_Structure ray 2 1
+     Unify_X_Variable 3
+     Unify_Y_Variable 4
+% reg x(2): par=free, seq=free, loc=local
+     Get_Structure ray 2 2
+% reg x(3): par=gnd, seq=gnd, loc=local
+% heap: par=free, seq=free, loc=local
+     Unify_X_Value 3
+     Unify_Y_Variable 2
+     Put_Y_Value 4 0
+     Put_Y_Value 0 1
+     Put_Y_Variable 3 2
+     Init 1 1
+     Call vector_mult 3 5
+     Put_Constant 2 3
+     Put_Y_Unsafe_Value 3 4
+% builtin '$times'/3
+     Builtin 29 5 3 4
+     Put_Y_Value 4 0
+     Put_X_Value 5 1
+     Put_Y_Value 1 2
+     Call vector_scalar_mult 3 3
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Value 2 2
+     Deallocate
+     Execute vector_sub 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   nth/3
+% Directives: []
+Predicate(nth 3
+     Switch_On_Term 3 5 1 5 5
+  Label 1
+     Switch_On_Constant 1 (
+        0 2
+     ) 5
+  Label 2
+     Try 4
+     Trust 5
+  Label 3
+     Put_Constant gnd 1
+     Put_Constant nth 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 4
+     Require_Using 2 3
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Constant 0 0
+     Cut
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_List 1
+% reg x(2): par=any, seq=any, loc=local
+% heap: par=gnd, seq=gnd, loc=local
+     Unify_X_Local_Value 2
+     Unify_Void 1
+     Proceed
+  Label 5
+     Require_Using 2 3
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_List 1
+     Unify_Void 1
+     Unify_X_Variable 1
+% builtin '$minus_1'/2
+     Builtin 28 3 0
+     Put_X_Value 3 0
+     Execute nth 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   read_ppm/2
+% Directives: []
+Predicate(read_ppm 2
+  Label 1
+     Allocate
+     Get_Y_Variable 1 1
+     Put_Constant read 1
+     Put_Y_Variable 0 2
+     Call open 3 2
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Call read_ppm_stream 2 1
+     Put_Y_Unsafe_Value 0 0
+     Deallocate
+     Execute close 1
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   read_chars/3
+% Directives: []
+Predicate(read_chars 3
+     Switch_On_Term 3 4 1 4 4
+  Label 1
+     Switch_On_Constant 1 (
+        0 2
+     ) 4
+  Label 2
+     Try 3
+     Trust 4
+  Label 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 0 0
+     Cut
+% reg x(2): par=any, seq=any, loc=local
+     Get_Nil 2
+     Proceed
+  Label 4
+     Require_Using 2 3
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 1 1
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+     Unify_X_Variable 1
+     Unify_Y_Variable 2
+     Put_Y_Value 0 3
+     Put_Constant 0 4
+% builtin '$gt'/2
+     Builtin 14 3 4
+     Put_Y_Value 1 0
+     Call get0 2 3
+     Put_Y_Unsafe_Value 0 3
+% builtin '$minus_1'/2
+     Builtin 28 4 3
+     Put_X_Value 4 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Value 2 2
+     Deallocate
+     Execute read_chars 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   parse/2
+% Directives: []
+Predicate(parse 2
+  Label 1
+     Allocate
+     Get_Y_Variable 3 1
+     Choice_Y 0
+     Put_Y_Variable 4 1
+     Init 2 1 2
+     Call file_to_list 2 5
+     Put_Y_Value 1 0
+     Call new_camera 1 5
+     Put_Y_Value 2 0
+     Call new_config 1 5
+     Require 4
+     Put_List 4
+     Unify_Y_Local_Value 2
+     Unify_Nil
+     Put_List 0
+     Unify_Y_Local_Value 1
+     Unify_X_Value 4
+     Put_Y_Unsafe_Value 3 1
+     Put_Y_Unsafe_Value 4 2
+     Put_Constant [] 3
+     Call specs 4 1
+     Cut_Y 0
+     Deallocate
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   object/4
+% Directives: []
+Predicate(object 4
+  Label 1
+     Try 2
+     Retry 3
+     Retry 4
+     Trust 5
+  Label 2
+     Require_Using 12 4
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 2 1
+     Get_Y_Variable 4 3
+     Choice_X 4
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 115
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 112
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 104
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+     Unify_Y_Variable 3
+     Cut_X 4
+     Put_Y_Variable 0 0
+     Call new_sphere 1 5
+     Put_Y_Value 0 0
+     Put_Y_Value 3 1
+     Put_Y_Unsafe_Value 4 2
+     Call sphere_opts 3 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute add_object 3
+  Label 3
+     Require_Using 10 4
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 2 1
+     Get_Y_Variable 4 3
+     Choice_X 4
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 112
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+     Unify_Y_Variable 3
+     Cut_X 4
+     Put_Y_Variable 0 0
+     Call new_plane 1 5
+     Put_Y_Value 0 0
+     Put_Y_Value 3 1
+     Put_Y_Unsafe_Value 4 2
+     Call plane_opts 3 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute add_object 3
+  Label 4
+     Require_Using 16 4
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 2 1
+     Get_Y_Variable 4 3
+     Choice_X 4
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 103
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+     Unify_Y_Variable 3
+     Cut_X 4
+     Put_Y_Variable 0 0
+     Call new_triangle 1 5
+     Put_Y_Value 0 0
+     Put_Y_Value 3 1
+     Put_Y_Unsafe_Value 4 2
+     Call triangle_opts 3 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute add_object 3
+  Label 5
+     Require_Using 10 4
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 2 1
+     Get_Y_Variable 4 3
+     Choice_X 4
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 103
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 104
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+     Unify_Y_Variable 3
+     Cut_X 4
+     Put_Y_Variable 0 0
+     Call new_light 1 5
+     Put_Y_Value 0 0
+     Put_Y_Value 3 1
+     Put_Y_Unsafe_Value 4 2
+     Call light_opts 3 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute add_object 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   number/3
+% Directives: []
+Predicate(number 3
+  Label 1
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 3 2
+     Put_Y_Variable 0 0
+     Put_Y_Variable 2 2
+     Call intnumber 3 4
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Deallocate
+     Execute fraction 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   num_int/4
+% Directives: []
+Predicate(num_int 4
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Require_Using 2 4
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 3 1
+     Get_Y_Variable 5 3
+     Choice_Y 0
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+     Unify_X_Variable 0
+     Unify_Y_Variable 4
+     Put_Y_Variable 2 1
+     Call digit 2 6
+     Cut_Y 0
+     Put_Y_Unsafe_Value 1 4
+     Put_Constant 10 5
+% builtin '$times'/3
+     Builtin 29 6 4 5
+     Put_Y_Unsafe_Value 2 7
+% builtin '$plus'/3
+     Builtin 25 8 6 7
+     Put_X_Value 8 0
+     Put_Y_Unsafe_Value 3 1
+     Put_Y_Value 4 2
+     Put_Y_Unsafe_Value 5 3
+     Deallocate
+     Execute num_int 4
+  Label 3
+% reg x(1): par=any, seq=any, loc=local
+% reg x(0): par=any, seq=any, loc=local
+     Get_X_Value 0 1
+% reg x(3): par=any, seq=any, loc=local
+% reg x(2): par=any, seq=any, loc=local
+     Get_X_Value 2 3
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   num_frac/5
+% Directives: []
+Predicate(num_frac 5
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Require_Using 2 5
+     Allocate
+     Get_Y_Variable 2 0
+     Get_Y_Variable 3 1
+     Get_Y_Variable 4 2
+     Get_Y_Variable 6 4
+     Choice_Y 0
+% reg x(3): par=any, seq=any, loc=local
+     Get_List 3
+     Unify_X_Variable 0
+     Unify_Y_Variable 5
+     Put_Y_Variable 1 1
+     Call digit 2 7
+     Cut_Y 0
+     Put_Y_Unsafe_Value 1 5
+     Put_Y_Unsafe_Value 2 6
+% builtin '$div'/3
+     Builtin 30 7 5 6
+     Put_Y_Unsafe_Value 3 8
+% builtin '$plus'/3
+     Builtin 25 9 8 7
+     Put_Y_Value 2 10
+     Put_Constant 10 11
+% builtin '$times'/3
+     Builtin 29 12 10 11
+     Put_X_Value 12 0
+     Put_X_Value 9 1
+     Put_Y_Unsafe_Value 4 2
+     Put_Y_Value 5 3
+     Put_Y_Unsafe_Value 6 4
+     Deallocate
+     Execute num_frac 5
+  Label 3
+% reg x(2): par=any, seq=any, loc=local
+% reg x(1): par=any, seq=any, loc=local
+     Get_X_Value 1 2
+% reg x(4): par=any, seq=any, loc=local
+% reg x(3): par=any, seq=any, loc=local
+     Get_X_Value 3 4
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   plane_opts/3
+% Directives: []
+Predicate(plane_opts 3
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 3 2
+     Choice_Y 0
+     Put_X_Value 1 0
+     Put_Y_Variable 4 1
+     Init 1 2
+     Call ws 2 5
+     Put_Y_Value 1 0
+     Put_Y_Unsafe_Value 4 1
+     Put_Y_Value 2 2
+     Call popt 3 4
+     Cut_Y 0
+     Put_Y_Unsafe_Value 1 0
+     Put_Y_Unsafe_Value 2 1
+     Put_Y_Unsafe_Value 3 2
+     Deallocate
+     Execute plane_opts 3
+  Label 3
+% reg x(2): par=any, seq=any, loc=local
+% reg x(1): par=any, seq=any, loc=local
+     Get_X_Value 1 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   popt/3
+% Directives: []
+Predicate(popt 3
+  Label 1
+     Try 2
+     Retry 3
+     Trust 4
+  Label 2
+     Require_Using 16 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure plane 3 0
+     Unify_X_Variable 0
+     Unify_Void 2
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 109
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute vector 3
+  Label 3
+     Require_Using 20 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure plane 3 0
+     Unify_Void 1
+     Unify_X_Variable 0
+     Unify_Void 1
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 100
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 115
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 99
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute number 3
+  Label 4
+     Require_Using 14 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure plane 3 0
+     Unify_Void 2
+     Unify_X_Variable 0
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 99
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute color 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/load.pl'
+% Compiled:   process_world/5
+% Directives: []
+Predicate(process_world 5
+     Switch_On_Term 1 2 fail 3 fail
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Nil 0
+% reg x(3): par=any, seq=any, loc=local
+     Get_Nil 3
+% reg x(4): par=any, seq=any, loc=local
+     Get_Nil 4
+     Proceed
+  Label 3
+     Require_Using 2 5
+     Allocate
+     Get_Y_Variable 1 1
+     Get_Y_Variable 2 2
+     Get_Y_Variable 7 3
+     Get_Y_Variable 8 4
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_X_Variable 0
+     Unify_Y_Variable 0
+     Put_Y_Variable 5 1
+     Put_Y_Variable 6 2
+     Init 2 3 4
+     Call initialize 3 9
+     Put_Y_Unsafe_Value 5 0
+     Put_Y_Unsafe_Value 6 1
+     Put_Y_Value 1 2
+     Put_Y_Value 2 3
+     Put_Y_Unsafe_Value 7 4
+     Put_Y_Unsafe_Value 8 5
+     Put_Y_Value 3 6
+     Put_Y_Value 4 7
+     Call '$process_world_5_171_0' 8 5
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Deallocate
+     Execute process_world 5
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   read_digit/2
+% Directives: []
+Predicate(read_digit 2
+  Label 1
+     Allocate
+     Get_Y_Variable 3 0
+     Get_Y_Variable 0 1
+     Put_Y_Value 3 0
+     Put_Y_Variable 1 1
+     Init 1 2
+     Call skip_nondigits 2 4
+     Put_Y_Unsafe_Value 3 0
+     Put_Y_Value 2 1
+     Call read_digits 2 3
+     Require 2
+     Put_Y_Unsafe_Value 0 0
+     Put_List 1
+     Unify_Y_Local_Value 1
+     Unify_Y_Local_Value 2
+     Deallocate
+     Execute number_chars 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   read_digits/2
+% Directives: []
+Predicate(read_digits 2
+  Label 1
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 2 1
+     Put_Y_Value 1 0
+     Put_Y_Variable 0 1
+     Call get0 2 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute '$read_digits_2_75_0' 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   read_file/2
+% Directives: []
+Predicate(read_file 2
+  Label 1
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 2 1
+     Put_Y_Value 1 0
+     Put_Y_Variable 0 1
+     Call get0 2 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute read_file_ch 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   read_file_ch/3
+% Directives: []
+Predicate(read_file_ch 3
+     Switch_On_Term 3 4 1 4 4
+  Label 1
+     Switch_On_Constant 1 (
+        -1 2
+     ) 4
+  Label 2
+     Try 3
+     Trust 4
+  Label 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant -1 0
+     Cut
+% reg x(2): par=any, seq=any, loc=local
+     Get_Nil 2
+     Proceed
+  Label 4
+     Require_Using 2 3
+     Allocate
+     Get_Y_Variable 1 1
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% reg x(0): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 0
+     Unify_Y_Variable 2
+     Put_Y_Value 1 0
+     Put_Y_Variable 0 1
+     Call get0 2 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Value 2 2
+     Deallocate
+     Execute read_file_ch 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/load.pl'
+% Compiled:   read_map/2
+% Directives: []
+Predicate(read_map 2
+  Label 1
+     Require_Using 6 2
+     Allocate
+% reg x(1): par=any, seq=any, loc=local
+     Get_Structure map 2 1
+     Unify_X_Variable 2
+     Unify_Y_Variable 0
+% reg x(2): par=any, seq=any, loc=local
+     Get_Structure size 2 2
+     Unify_Y_Variable 1
+     Unify_Y_Variable 2
+     Put_Y_Value 0 1
+     Call read_ppm 2 3
+     Put_Y_Value 0 0
+     Put_Y_Value 1 1
+     Put_Y_Value 2 2
+     Deallocate
+     Execute map_size 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   read_ppm_stream/2
+% Directives: []
+Predicate(read_ppm_stream 2
+  Label 1
+     Allocate
+     Get_Y_Variable 3 0
+     Get_Y_Variable 4 1
+     Put_Y_Variable 0 0
+     Put_Y_Variable 1 1
+     Put_Y_Variable 2 2
+     Put_Y_Value 3 3
+     Call read_ppm_spec 4 5
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Deallocate
+     Execute '$read_ppm_stream_2_61_0' 5
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   read_ppm_spec/4
+% Directives: []
+Predicate(read_ppm_spec 4
+  Label 1
+     Require_Using 1 4
+     Allocate
+     Get_X_Variable 4 0
+     Get_Y_Variable 2 1
+     Get_Y_Variable 1 2
+     Get_Y_Variable 0 3
+     Put_Y_Value 0 0
+     Put_X_Value 4 1
+     Call read_digit 2 3
+     Put_Y_Value 0 0
+     Call skip_to_nl 1 3
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 2 1
+     Call read_digit 2 2
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Call read_digit 2 1
+     Require 1
+     Put_Y_Unsafe_Value 0 0
+     Put_X_Void 1
+     Deallocate
+     Execute read_digit 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   read_ppm_raw/4
+% Directives: []
+Predicate(read_ppm_raw 4
+     Switch_On_Term 3 4 1 4 4
+  Label 1
+     Switch_On_Constant 1 (
+        0 2
+     ) 4
+  Label 2
+     Try 3
+     Trust 4
+  Label 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 0 0
+     Cut
+% reg x(2): par=any, seq=any, loc=local
+     Get_Nil 2
+     Proceed
+  Label 4
+     Require_Using 2 4
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 1 1
+     Get_Y_Variable 3 3
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+     Unify_X_Variable 1
+     Unify_Y_Variable 2
+     Put_Y_Value 1 0
+     Put_Y_Value 3 2
+     Call read_ppm_raw_row 3 4
+     Put_Y_Unsafe_Value 0 4
+% builtin '$minus_1'/2
+     Builtin 28 5 4
+     Put_X_Value 5 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Deallocate
+     Execute read_ppm_raw 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   read_ppm_ascii/4
+% Directives: []
+Predicate(read_ppm_ascii 4
+     Switch_On_Term 3 4 1 4 4
+  Label 1
+     Switch_On_Constant 1 (
+        0 2
+     ) 4
+  Label 2
+     Try 3
+     Trust 4
+  Label 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 0 0
+     Cut
+% reg x(2): par=any, seq=any, loc=local
+     Get_Nil 2
+     Proceed
+  Label 4
+     Require_Using 2 4
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 1 1
+     Get_Y_Variable 3 3
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+     Unify_X_Variable 1
+     Unify_Y_Variable 2
+     Put_Y_Value 1 0
+     Put_Y_Value 3 2
+     Call read_ppm_ascii_row 3 4
+     Put_Y_Unsafe_Value 0 4
+% builtin '$minus_1'/2
+     Builtin 28 5 4
+     Put_X_Value 5 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Deallocate
+     Execute read_ppm_ascii 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   read_ppm_ascii_row/3
+% Directives: []
+Predicate(read_ppm_ascii_row 3
+     Switch_On_Term 3 4 1 4 4
+  Label 1
+     Switch_On_Constant 1 (
+        0 2
+     ) 4
+  Label 2
+     Try 3
+     Trust 4
+  Label 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 0 0
+     Cut
+% reg x(1): par=any, seq=any, loc=local
+     Get_Nil 1
+     Proceed
+  Label 4
+     Require_Using 6 3
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 2 2
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+     Unify_X_Variable 3
+     Unify_Y_Variable 1
+% reg x(3): par=any, seq=any, loc=local
+     Get_Structure rgb 3 3
+     Unify_X_Variable 1
+     Unify_Y_Variable 4
+     Unify_Y_Variable 3
+     Put_Y_Value 2 0
+     Call read_digit 2 5
+     Put_Y_Value 2 0
+     Put_Y_Value 4 1
+     Call read_digit 2 4
+     Put_Y_Value 2 0
+     Put_Y_Value 3 1
+     Call read_digit 2 3
+     Put_Y_Unsafe_Value 0 3
+% builtin '$minus_1'/2
+     Builtin 28 4 3
+     Put_X_Value 4 0
+     Put_Y_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute read_ppm_ascii_row 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   read_ppm_raw_row/3
+% Directives: []
+Predicate(read_ppm_raw_row 3
+     Switch_On_Term 3 4 1 4 4
+  Label 1
+     Switch_On_Constant 1 (
+        0 2
+     ) 4
+  Label 2
+     Try 3
+     Trust 4
+  Label 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 0 0
+     Cut
+% reg x(1): par=any, seq=any, loc=local
+     Get_Nil 1
+     Proceed
+  Label 4
+     Require_Using 6 3
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 2 2
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+     Unify_X_Variable 3
+     Unify_Y_Variable 1
+% reg x(3): par=any, seq=any, loc=local
+     Get_Structure rgb 3 3
+     Unify_X_Variable 1
+     Unify_Y_Variable 4
+     Unify_Y_Variable 3
+     Put_Y_Value 2 0
+     Call get0 2 5
+     Put_Y_Value 2 0
+     Put_Y_Value 4 1
+     Call get0 2 4
+     Put_Y_Value 2 0
+     Put_Y_Value 3 1
+     Call get0 2 3
+     Put_Y_Unsafe_Value 0 3
+% builtin '$minus_1'/2
+     Builtin 28 4 3
+     Put_X_Value 4 0
+     Put_Y_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute read_ppm_raw_row 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/vector.pl'
+% Compiled:   vector_add/3
+% Directives: []
+Predicate(vector_add 3
+     Switch_On_Term 1 fail fail fail 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant vector_add 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 12 3
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure v 3 0
+     Unify_X_Variable 3
+     Unify_X_Variable 4
+     Unify_X_Variable 5
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_Structure v 3 1
+     Unify_X_Variable 6
+     Unify_X_Variable 7
+     Unify_X_Variable 8
+% reg x(2): par=free, seq=free, loc=local
+     Get_Structure v 3 2
+     Unify_X_Variable 9
+     Unify_X_Variable 10
+     Unify_X_Variable 11
+% builtin '$plus'/3
+     Builtin 25 12 3 6
+% reg x(9): par=free, seq=free, loc=local
+% reg x(12): par=gnd, seq=gnd, loc=local
+     Get_X_Value 12 9
+% builtin '$plus'/3
+     Builtin 25 13 4 7
+% reg x(10): par=free, seq=free, loc=local
+% reg x(13): par=gnd, seq=gnd, loc=local
+     Get_X_Value 13 10
+% builtin '$plus'/3
+     Builtin 25 14 5 8
+% reg x(11): par=free, seq=free, loc=local
+% reg x(14): par=gnd, seq=gnd, loc=local
+     Get_X_Value 14 11
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   trace_pict/4
+% Directives: []
+Predicate(trace_pict 4
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant trace_pict 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 2
+     Allocate
+     Get_Y_Variable 3 0
+     Get_Y_Variable 4 1
+     Get_Y_Variable 5 2
+     Get_Y_Variable 0 3
+     Put_Y_Value 3 0
+     Put_Y_Variable 2 1
+     Init 2 1 6
+     Call camera_width 2 7
+     Put_Y_Value 3 0
+     Put_Y_Value 6 1
+     Call camera_height 2 7
+     Put_Y_Value 1 0
+     Put_Y_Unsafe_Value 6 1
+     Call length 2 6
+     Put_Y_Value 1 0
+     Put_Constant 0 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Put_Y_Unsafe_Value 5 5
+     Call trace_rows 6 2
+% reg y(0): par=any, seq=any, loc=local
+% reg x(0): par=any, seq=any, loc=local
+     Put_Y_Unsafe_Value 1 0
+     Get_Y_Value 0 0
+     Deallocate
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   trace_columns/6
+% Directives: []
+Predicate(trace_columns 6
+     Switch_On_Term 3 5 1 5 5
+  Label 1
+     Switch_On_Constant 1 (
+        0 2
+     ) 5
+  Label 2
+     Try 4
+     Trust 5
+  Label 3
+     Put_Constant gnd 1
+     Put_Constant trace_columns 2
+     Put_Constant 6 3
+     Execute mode_error 4
+  Label 4
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Constant 0 0
+     Cut
+% reg x(2): par=free, seq=free, loc=local
+     Get_Nil 2
+     Proceed
+  Label 5
+     Require_Using 2 6
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 1 1
+     Get_Y_Variable 3 3
+     Get_Y_Variable 4 4
+     Get_Y_Variable 5 5
+% reg x(2): par=free, seq=free, loc=local
+     Get_List 2
+     Unify_Y_Variable 7
+     Unify_Y_Variable 2
+     Put_Y_Value 0 0
+     Put_Y_Value 1 1
+     Put_Y_Value 3 2
+     Put_Y_Variable 6 3
+     Call camera_point 4 8
+     Put_Y_Unsafe_Value 6 0
+     Put_Y_Value 5 1
+     Put_Y_Value 4 2
+     Put_Y_Value 7 3
+     Call trace_ray 4 6
+     Put_Y_Unsafe_Value 0 6
+% builtin '$minus_1'/2
+     Builtin 28 7 6
+     Put_X_Value 7 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Put_Y_Unsafe_Value 5 5
+     Deallocate
+     Execute trace_columns 6
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   shadow_hit_any/4
+% Directives: []
+Predicate(shadow_hit_any 4
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant shadow_hit_any 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 3
+     Allocate
+     Get_Y_Variable 2 1
+     Get_Y_Variable 1 3
+     Choice_Y 0
+     Call empty_world 1 3
+     Cut_Y 0
+% reg y(1): par=free, seq=free, loc=local
+% reg x(0): par=any, seq=any, loc=local
+     Put_Y_Unsafe_Value 2 0
+     Get_Y_Value 1 0
+     Deallocate
+     Proceed
+  Label 4
+     Allocate
+     Get_Y_Variable 0 1
+     Get_Y_Variable 3 2
+     Get_Y_Variable 4 3
+     Put_Y_Variable 1 1
+     Put_Y_Variable 2 2
+     Call next_object 3 5
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Deallocate
+     Execute '$shadow_hit_any_4_41_0' 5
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   skip_to_nl/1
+% Directives: []
+Predicate(skip_to_nl 1
+  Label 1
+     Put_Constant 10 1
+     Execute skip_to_char 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   skip_nondigits/2
+% Directives: []
+Predicate(skip_nondigits 2
+  Label 1
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 2 1
+     Put_Y_Value 1 0
+     Put_Y_Variable 0 1
+     Call get0 2 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute '$skip_nondigits_2_76_0' 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   size/3
+% Directives: []
+Predicate(size 3
+  Label 1
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 1 1
+     Put_Y_Value 0 0
+     Put_X_Value 2 1
+     Call length 2 2
+     Require 2
+     Put_Y_Unsafe_Value 0 2
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+     Unify_X_Variable 0
+     Unify_Void 1
+     Put_Y_Unsafe_Value 1 1
+     Deallocate
+     Execute length 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   skip_to_char/2
+% Directives: []
+Predicate(skip_to_char 2
+  Label 1
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 0 1
+     Put_Y_Value 1 0
+     Put_Y_Variable 2 1
+     Call get0 2 3
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute '$skip_to_char_2_78_0' 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   specs/4
+% Directives: []
+Predicate(specs 4
+  Label 1
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 1 1
+     Get_Y_Variable 3 3
+     Put_X_Value 2 0
+     Put_Y_Variable 2 1
+     Call ws 2 4
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Deallocate
+     Execute spec_no_ws 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   spec_no_ws/4
+% Directives: []
+Predicate(spec_no_ws 4
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Allocate
+     Get_Y_Variable 2 1
+     Get_Y_Variable 4 3
+     Choice_Y 0
+     Put_Y_Variable 1 1
+     Put_Y_Variable 3 3
+     Call spec 4 5
+     Cut_Y 0
+     Put_Y_Unsafe_Value 1 0
+     Put_Y_Unsafe_Value 2 1
+     Put_Y_Unsafe_Value 3 2
+     Put_Y_Unsafe_Value 4 3
+     Deallocate
+     Execute specs 4
+  Label 3
+% reg x(1): par=any, seq=any, loc=local
+% reg x(0): par=any, seq=any, loc=local
+     Get_X_Value 0 1
+% reg x(3): par=any, seq=any, loc=local
+% reg x(2): par=any, seq=any, loc=local
+     Get_X_Value 2 3
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   spec/4
+% Directives: []
+Predicate(spec 4
+  Label 1
+     Try 2
+     Retry 3
+     Trust 4
+  Label 2
+     Allocate
+     Choice_Y 0
+     Call camera 4 1
+     Cut_Y 0
+     Deallocate
+     Proceed
+  Label 3
+     Allocate
+     Choice_Y 0
+     Call object 4 1
+     Cut_Y 0
+     Deallocate
+     Proceed
+  Label 4
+     Execute config 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   sopt/3
+% Directives: []
+Predicate(sopt 3
+  Label 1
+     Try 2
+     Retry 3
+     Retry 4
+     Retry 5
+     Retry 6
+     Retry 7
+     Retry 8
+     Trust 9
+  Label 2
+     Require_Using 20 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure sphere 7 0
+     Unify_X_Variable 0
+     Unify_Void 6
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 100
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 117
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 115
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute number 3
+  Label 3
+     Require_Using 20 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure sphere 7 0
+     Unify_Void 1
+     Unify_X_Variable 0
+     Unify_Void 5
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 99
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute vector 3
+  Label 4
+     Require_Using 18 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure sphere 7 0
+     Unify_Void 2
+     Unify_X_Variable 0
+     Unify_Void 4
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 99
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute color 3
+  Label 5
+     Require_Using 28 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure sphere 7 0
+     Unify_Void 3
+     Unify_X_Variable 0
+     Unify_Void 3
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 102
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 99
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute number 3
+  Label 6
+     Require_Using 20 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure sphere 7 0
+     Unify_Void 4
+     Unify_X_Variable 0
+     Unify_Void 2
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 98
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 109
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 112
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute name 3
+  Label 7
+     Require_Using 16 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure sphere 7 0
+     Unify_Void 4
+     Unify_X_Variable 3
+     Unify_Void 2
+     Choice_X 4
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 98
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 117
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 109
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 112
+% reg x(2): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 2
+     Cut_X 4
+% reg x(3): par=any, seq=any, loc=local
+     Get_Constant bump 3
+     Proceed
+  Label 8
+     Require_Using 16 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure sphere 7 0
+     Unify_Void 5
+     Unify_X_Variable 0
+     Unify_Void 1
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 112
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute vector 3
+  Label 9
+     Require_Using 22 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure sphere 7 0
+     Unify_Void 6
+     Unify_X_Variable 0
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 113
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 117
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute vector 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   skip_to_nl/2
+% Directives: []
+Predicate(skip_to_nl 2
+     Switch_On_Term 1 3 3 1 3
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Require_Using 2 2
+     Choice_X 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_X_Variable 3
+     Unify_X_Variable 0
+     Put_Constant 10 4
+% builtin '$ineq'/2
+     Builtin 12 3 4
+     Cut_X 2
+     Execute skip_to_nl 2
+  Label 3
+% reg x(1): par=any, seq=any, loc=local
+% reg x(0): par=any, seq=any, loc=local
+     Get_X_Value 0 1
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   sphere_opts/3
+% Directives: []
+Predicate(sphere_opts 3
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 3 2
+     Choice_Y 0
+     Put_X_Value 1 0
+     Put_Y_Variable 4 1
+     Init 1 2
+     Call ws 2 5
+     Put_Y_Value 1 0
+     Put_Y_Unsafe_Value 4 1
+     Put_Y_Value 2 2
+     Call sopt 3 4
+     Cut_Y 0
+     Put_Y_Unsafe_Value 1 0
+     Put_Y_Unsafe_Value 2 1
+     Put_Y_Unsafe_Value 3 2
+     Deallocate
+     Execute sphere_opts 3
+  Label 3
+% reg x(2): par=any, seq=any, loc=local
+% reg x(1): par=any, seq=any, loc=local
+     Get_X_Value 1 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   topt/3
+% Directives: []
+Predicate(topt 3
+  Label 1
+     Try 2
+     Retry 3
+     Retry 4
+     Retry 5
+     Retry 6
+     Trust 7
+  Label 2
+     Require_Using 19 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure triangle 6 0
+     Unify_X_Variable 0
+     Unify_Void 5
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 99
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute vector 3
+  Label 3
+     Require_Using 19 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure triangle 6 0
+     Unify_Void 1
+     Unify_X_Variable 0
+     Unify_Void 4
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 120
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 45
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 120
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 115
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute vector 3
+  Label 4
+     Require_Using 19 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure triangle 6 0
+     Unify_Void 2
+     Unify_X_Variable 0
+     Unify_Void 3
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 121
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 45
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 120
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 115
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute vector 3
+  Label 5
+     Require_Using 17 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure triangle 6 0
+     Unify_Void 3
+     Unify_X_Variable 0
+     Unify_Void 2
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 99
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute color 3
+  Label 6
+     Require_Using 27 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure triangle 6 0
+     Unify_Void 4
+     Unify_X_Variable 0
+     Unify_Void 1
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 114
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 102
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 108
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 101
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 99
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 111
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 110
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute number 3
+  Label 7
+     Require_Using 19 3
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure triangle 6 0
+     Unify_Void 5
+     Unify_X_Variable 0
+     Choice_X 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 98
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 105
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 116
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 109
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 97
+% heap: par=any, seq=any, loc=local
+     Unify_List
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 112
+     Unify_X_Variable 1
+     Cut_X 3
+     Execute name 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/main.pl'
+% Compiled:   trace1/0
+% Directives: []
+Predicate(trace1 0
+  Label 1
+     Require_Using 73 0
+     Allocate
+     Put_Structure v 3 2
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant -8
+     Put_Structure v 3 3
+     Unify_Constant -2
+     Unify_Constant 2
+     Unify_Constant 50
+     Put_Structure v 3 4
+     Unify_Constant 0.025
+     Unify_Constant 0
+     Unify_Constant 0
+     Put_Structure v 3 5
+     Unify_Constant 0
+     Unify_Constant -0.025
+     Unify_Constant 0
+     Put_Structure camera 6 6
+     Unify_X_Value 2
+     Unify_X_Value 3
+     Unify_X_Value 4
+     Unify_X_Value 5
+     Unify_Constant 160
+     Unify_Constant 160
+     Get_Y_Variable 3 6
+     Put_Structure rgb 3 7
+     Unify_Constant 70
+     Unify_Constant 70
+     Unify_Constant 70
+     Put_Structure reflection 1 8
+     Unify_Constant 0
+     Put_Structure config 3 9
+     Unify_X_Value 7
+     Unify_X_Value 8
+     Unify_Constant shading
+     Get_Y_Variable 4 9
+     Put_Structure v 3 10
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 100
+     Put_Structure rgb 3 11
+     Unify_Constant 255
+     Unify_Constant 0
+     Unify_Constant 0
+     Put_Structure v 3 12
+     Unify_Constant 0
+     Unify_Constant 1
+     Unify_Constant 0
+     Put_Structure v 3 13
+     Unify_Constant 1
+     Unify_Constant 0
+     Unify_Constant 0
+     Put_Structure sphere 8 14
+     Unify_Constant 3
+     Unify_Constant 9
+     Unify_X_Value 10
+     Unify_X_Value 11
+     Unify_Constant 0
+     Unify_Constant no_map
+     Unify_X_Value 12
+     Unify_X_Value 13
+     Put_List 15
+     Unify_X_Value 14
+     Unify_Nil
+     Put_Structure v 3 16
+     Unify_Constant 200
+     Unify_Constant 100
+     Unify_Constant -100
+     Put_Structure light 1 17
+     Unify_X_Value 16
+     Put_List 18
+     Unify_X_Value 17
+     Unify_Nil
+     Put_Structure world 2 19
+     Unify_X_Value 15
+     Unify_X_Value 18
+     Get_Y_Variable 5 19
+     Put_Constant walltime 0
+     Put_List 1
+     Unify_Y_Variable 1
+     Unify_Void 1
+     Init 2 0 2
+     Call statistics 2 6
+     Require 1
+     Put_Y_Value 3 0
+     Put_Y_Value 4 1
+     Put_Y_Value 5 2
+     Put_X_Void 3
+     Call trace_pict 4 3
+     Require 2
+     Put_Constant walltime 0
+     Put_List 1
+     Unify_Y_Local_Value 2
+     Unify_Void 1
+     Call statistics 2 3
+     Require 2
+     Put_Y_Value 2 2
+     Put_Y_Value 1 3
+% builtin '$minus'/3
+     Builtin 27 4 2 3
+     Put_Constant 'tracing: ~w~n' 0
+     Put_List 1
+     Unify_X_Value 4
+     Unify_Nil
+     Call format 2 3
+     Require 2
+     Put_Constant walltime 0
+     Put_List 1
+     Unify_Y_Local_Value 0
+     Unify_Void 1
+     Call statistics 2 3
+     Require 2
+     Put_Y_Value 0 2
+     Put_Y_Value 2 3
+% builtin '$minus'/3
+     Builtin 27 4 2 3
+     Put_Constant 'print: ~w~n' 0
+     Put_List 1
+     Unify_X_Value 4
+     Unify_Nil
+     Call format 2 2
+     Require 2
+     Put_Y_Value 0 2
+     Put_Y_Value 1 3
+% builtin '$minus'/3
+     Builtin 27 4 2 3
+     Put_Constant 'picture traced in ~w mseconds user time~n' 0
+     Put_List 1
+     Unify_X_Value 4
+     Unify_Nil
+     Deallocate
+     Execute format 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/main.pl'
+% Compiled:   trace/2
+% Directives: []
+Predicate(trace 2
+  Label 1
+     Allocate
+     Get_Y_Variable 3 1
+     Put_Y_Variable 6 1
+     Put_Y_Variable 5 2
+     Put_Y_Variable 7 3
+     Init 4 0 1 2 4
+     Call load_world 4 8
+     Require 2
+     Put_Constant walltime 0
+     Put_List 1
+     Unify_Y_Local_Value 1
+     Unify_Void 1
+     Call statistics 2 8
+     Put_Y_Unsafe_Value 5 0
+     Put_Y_Unsafe_Value 6 1
+     Put_Y_Unsafe_Value 7 2
+     Put_Y_Value 4 3
+     Call trace_pict 4 5
+     Require 2
+     Put_Constant walltime 0
+     Put_List 1
+     Unify_Y_Local_Value 2
+     Unify_Void 1
+     Call statistics 2 5
+     Require 2
+     Put_Y_Value 2 2
+     Put_Y_Value 1 3
+% builtin '$minus'/3
+     Builtin 27 4 2 3
+     Put_Constant 'tracing: ~w~n' 0
+     Put_List 1
+     Unify_X_Local_Value 4
+     Unify_Nil
+     Call format 2 5
+     Put_Y_Unsafe_Value 3 0
+     Put_Y_Unsafe_Value 4 1
+     Call write_ppm_raw 2 3
+     Require 2
+     Put_Constant walltime 0
+     Put_List 1
+     Unify_Y_Local_Value 0
+     Unify_Void 1
+     Call statistics 2 3
+     Require 2
+     Put_Y_Value 0 2
+     Put_Y_Value 2 3
+% builtin '$minus'/3
+     Builtin 27 4 2 3
+     Put_Constant 'print: ~w~n' 0
+     Put_List 1
+     Unify_X_Value 4
+     Unify_Nil
+     Call format 2 2
+     Require 2
+     Put_Y_Value 0 2
+     Put_Y_Value 1 3
+% builtin '$minus'/3
+     Builtin 27 4 2 3
+     Put_Constant 'picture traced in ~w mseconds user time~n' 0
+     Put_List 1
+     Unify_X_Value 4
+     Unify_Nil
+     Deallocate
+     Execute format 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   trace_light_rays/3
+% Directives: []
+Predicate(trace_light_rays 3
+     Switch_On_Term 1 2 1 3 1
+  Label 1
+     Put_Constant list_nv_n 1
+     Put_Constant trace_light_rays 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+% reg x(0): par=list_nv_n, seq=nil, loc=local
+     Get_Nil 0
+% reg x(2): par=free, seq=free, loc=local
+     Get_Nil 2
+     Proceed
+  Label 3
+     Require_Using 7 3
+     Allocate
+     Get_Y_Variable 1 1
+% reg x(0): par=list_nv_n, seq=list_nv_n, loc=local
+     Get_List 0
+     Unify_X_Variable 4
+     Unify_Y_Variable 0
+% reg x(4): par=nv, seq=nv, loc=local
+     Get_Structure light 2 4
+     Unify_X_Variable 1
+     Unify_X_Variable 5
+% reg x(2): par=free, seq=free, loc=local
+     Get_List 2
+     Unify_X_Variable 3
+     Unify_Y_Variable 2
+     Put_Y_Value 1 0
+     Put_X_Value 5 2
+     Call shadow_hit_any 4 3
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Value 2 2
+     Deallocate
+     Execute trace_light_rays 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   trace_rows/6
+% Directives: [parallel]
+Predicate(trace_rows 6
+     Switch_On_Term 1 2 fail 4 fail
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Nil 0
+     Cut
+     Proceed
+  Label 3
+     Require_Using 2 6
+     Allocate
+     Get_Y_Variable 0 1
+     Get_Y_Variable 2 2
+     Get_Y_Variable 3 3
+     Get_Y_Variable 4 4
+     Get_Y_Variable 5 5
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_X_Variable 2
+     Unify_Y_Variable 1
+     Put_Y_Value 2 0
+     Put_Y_Value 0 1
+     Put_Y_Value 3 3
+     Put_Y_Value 4 4
+     Put_Y_Value 5 5
+     Call trace_columns 6 6
+     Put_Y_Unsafe_Value 0 6
+% builtin '$plus_1'/2
+     Builtin 26 7 6
+     Put_Y_Value 1 0
+     Put_X_Value 7 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Put_Y_Unsafe_Value 5 5
+     Deallocate
+     Execute trace_rows 6
+  Label 4
+     Build_Rec_Poslist 0 6 7 0
+% builtin '$plus'/3
+     Builtin 25 1 6 1
+     Start_Left_Body 5
+        8 { 0 1 2 3 4 5 6 7 } -1
+     Execute trace_rows 6
+  Label 5
+     Initialize_Left 1
+  Label 6
+     Spawn_Left 1 6 6
+     Allocate
+     Get_Y_Variable 0 6
+     Put_Y_Value 0 7
+     Put_X_Void 8
+% builtin '$plus'/3
+     Builtin 25 9 8 7
+     Put_Global_Arg 2 0
+     Put_X_Value 9 1
+     Put_Y_Value 0 10
+     Put_Nth_Head 7 10 0 2
+     Put_Global_Arg 3 3
+     Put_Global_Arg 4 4
+     Put_Global_Arg 5 5
+     Call trace_columns 6 1
+     Deallocate
+     Jump 6
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   trace_ray/4
+% Directives: []
+Predicate(trace_ray 4
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant trace_ray 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 2
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 1 1
+     Get_Y_Variable 5 2
+     Get_Y_Variable 2 3
+     Put_Y_Value 5 0
+     Put_Y_Variable 3 1
+     Init 1 4
+     Call config_reflection 2 6
+     Put_Y_Unsafe_Value 5 0
+     Put_Y_Value 4 1
+     Call config_background 2 5
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Deallocate
+     Execute trace_ray 5
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   trace_ray/5
+% Directives: []
+Predicate(trace_ray 5
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant trace_ray 2
+     Put_Constant 5 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 9 5
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 7 2
+     Get_Y_Variable 8 3
+     Get_Y_Variable 3 4
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_Structure world 2 1
+     Unify_Y_Variable 2
+     Unify_Y_Variable 6
+     Put_Y_Value 1 0
+     Put_Y_Value 2 1
+     Put_Constant 999999 2
+     Put_Structure surface 2 3
+     Unify_Constant 0
+     Unify_Y_Local_Value 3
+     Put_Structure surface 2 4
+     Unify_Y_Variable 4
+     Unify_Y_Variable 5
+     Put_Constant nohit 5
+     Put_Y_Variable 0 6
+     Call trace_ray 7 9
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Value 2 2
+     Put_Y_Value 3 3
+     Put_Y_Value 4 4
+     Put_Y_Value 5 5
+     Put_Y_Value 6 6
+     Put_Y_Unsafe_Value 7 7
+     Put_Y_Unsafe_Value 8 8
+     Deallocate
+     Execute '$trace_ray_5_30_0' 9
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   trace_ray/7
+% Directives: []
+Predicate(trace_ray 7
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant trace_ray 2
+     Put_Constant 7 3
+     Execute mode_error 4
+  Label 3
+     Allocate
+     Get_Y_Variable 2 3
+     Get_Y_Variable 1 4
+     Get_Y_Variable 4 5
+     Get_Y_Variable 3 6
+     Choice_Y 0
+     Put_X_Value 1 0
+     Call empty_world 1 5
+     Cut_Y 0
+% reg y(1): par=nv, seq=nv, loc=local
+% reg x(0): par=nv, seq=nv, loc=local
+     Put_Y_Unsafe_Value 2 0
+     Get_Y_Value 1 0
+% reg y(3): par=free, seq=free, loc=local
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Put_Y_Unsafe_Value 4 1
+     Get_Y_Value 3 1
+     Deallocate
+     Proceed
+  Label 4
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 8 2
+     Get_Y_Variable 9 3
+     Get_Y_Variable 4 4
+     Get_Y_Variable 10 5
+     Get_Y_Variable 6 6
+     Put_X_Value 1 0
+     Put_Y_Variable 7 1
+     Put_Y_Variable 1 2
+     Init 3 2 3 5
+     Call next_object 3 11
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 7 1
+     Put_Y_Unsafe_Value 8 2
+     Put_Y_Unsafe_Value 9 3
+     Put_Y_Unsafe_Value 10 4
+     Put_Y_Value 2 5
+     Put_Y_Value 3 6
+     Put_Y_Value 5 7
+     Call '$trace_ray_7_32_0' 8 7
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Put_Y_Unsafe_Value 5 5
+     Put_Y_Unsafe_Value 6 6
+     Deallocate
+     Execute trace_ray 7
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ray_tracer.pl'
+% Compiled:   trace_shadow/6
+% Directives: []
+Predicate(trace_shadow 6
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant trace_shadow 2
+     Put_Constant 6 3
+     Execute mode_error 4
+  Label 2
+     Allocate
+     Get_Y_Variable 8 0
+     Get_Y_Variable 1 1
+     Get_Y_Variable 5 2
+     Get_Y_Variable 6 3
+     Get_Y_Variable 2 4
+     Get_Y_Variable 3 5
+     Put_Y_Value 1 0
+     Put_Constant 0.0001 1
+     Put_Y_Variable 9 2
+     Init 3 0 4 7
+     Call vector_scalar_mult 3 10
+     Put_Y_Unsafe_Value 8 0
+     Put_Y_Unsafe_Value 9 1
+     Put_Y_Value 7 2
+     Call vector_add 3 8
+     Put_Y_Unsafe_Value 6 0
+     Put_Y_Unsafe_Value 7 1
+     Put_Y_Value 4 2
+     Call gen_light_rays 3 6
+     Put_Y_Unsafe_Value 4 0
+     Put_Y_Unsafe_Value 5 1
+     Put_Y_Value 0 2
+     Call trace_light_rays 3 4
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Deallocate
+     Execute combine 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   triangle_opts/3
+% Directives: []
+Predicate(triangle_opts 3
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+     Allocate
+     Get_Y_Variable 1 0
+     Get_Y_Variable 3 2
+     Choice_Y 0
+     Put_X_Value 1 0
+     Put_Y_Variable 4 1
+     Init 1 2
+     Call ws 2 5
+     Put_Y_Value 1 0
+     Put_Y_Unsafe_Value 4 1
+     Put_Y_Value 2 2
+     Call topt 3 4
+     Cut_Y 0
+     Put_Y_Unsafe_Value 1 0
+     Put_Y_Unsafe_Value 2 1
+     Put_Y_Unsafe_Value 3 2
+     Deallocate
+     Execute triangle_opts 3
+  Label 3
+% reg x(2): par=any, seq=any, loc=local
+% reg x(1): par=any, seq=any, loc=local
+     Get_X_Value 1 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   vector/3
+% Directives: []
+Predicate(vector 3
+  Label 1
+     Require_Using 4 3
+     Allocate
+     Get_Y_Variable 1 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Structure v 3 0
+     Unify_Y_Variable 7
+     Unify_Y_Variable 5
+     Unify_Y_Variable 3
+     Put_X_Value 1 0
+     Put_Y_Variable 6 1
+     Init 3 0 2 4
+     Call ws 2 8
+     Require 2
+     Put_Y_Unsafe_Value 6 3
+% reg x(3): par=any, seq=any, loc=local
+     Get_List 3
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 91
+     Unify_X_Variable 1
+     Put_Y_Value 7 0
+     Put_Y_Value 4 2
+     Call number 3 6
+     Require 2
+     Put_Y_Unsafe_Value 4 3
+% reg x(3): par=any, seq=any, loc=local
+     Get_List 3
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 44
+     Unify_X_Variable 1
+     Put_Y_Value 5 0
+     Put_Y_Value 2 2
+     Call number 3 4
+     Require 2
+     Put_Y_Unsafe_Value 2 3
+% reg x(3): par=any, seq=any, loc=local
+     Get_List 3
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 44
+     Unify_X_Variable 1
+     Put_Y_Value 3 0
+     Put_Y_Value 0 2
+     Call number 3 2
+     Require 2
+     Put_Y_Unsafe_Value 0 0
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 93
+% reg y(1): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_Y_Local_Value 1
+     Deallocate
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/vector.pl'
+% Compiled:   vector_length_sq/2
+% Directives: []
+Predicate(vector_length_sq 2
+  Label 1
+     Require_Using 2 2
+     Get_X_Variable 3 0
+     Get_X_Variable 4 1
+     Put_X_Value 3 0
+     Put_X_Value 3 1
+     Put_X_Value 4 2
+     Execute vector_mult 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/vector.pl'
+% Compiled:   vector_length/2
+% Directives: []
+Predicate(vector_length 2
+     Switch_On_Term 1 fail fail fail 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant vector_length 2
+     Put_Constant 2 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 4 2
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure v 3 0
+     Unify_X_Variable 2
+     Unify_X_Variable 3
+     Unify_X_Variable 4
+% builtin '$times'/3
+     Builtin 29 5 2 2
+% builtin '$times'/3
+     Builtin 29 6 3 3
+% builtin '$plus'/3
+     Builtin 25 7 5 6
+% builtin '$times'/3
+     Builtin 29 8 4 4
+% builtin '$plus'/3
+     Builtin 25 9 7 8
+% builtin '$sqrt'/2
+     Builtin 47 10 9
+% reg x(1): par=any, seq=any, loc=local
+% reg x(10): par=gnd, seq=gnd, loc=local
+     Get_X_Value 10 1
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/vector.pl'
+% Compiled:   vector_cross_product/3
+% Directives: []
+Predicate(vector_cross_product 3
+     Switch_On_Term 1 fail fail fail 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant vector_cross_product 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 12 3
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure v 3 0
+     Unify_X_Variable 3
+     Unify_X_Variable 4
+     Unify_X_Variable 5
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_Structure v 3 1
+     Unify_X_Variable 6
+     Unify_X_Variable 7
+     Unify_X_Variable 8
+% reg x(2): par=free, seq=free, loc=local
+     Get_Structure v 3 2
+     Unify_X_Variable 9
+     Unify_X_Variable 10
+     Unify_X_Variable 11
+% builtin '$times'/3
+     Builtin 29 12 4 8
+% builtin '$times'/3
+     Builtin 29 13 5 7
+% builtin '$minus'/3
+     Builtin 27 14 12 13
+% reg x(9): par=free, seq=free, loc=local
+% reg x(14): par=gnd, seq=gnd, loc=local
+     Get_X_Value 14 9
+% builtin '$times'/3
+     Builtin 29 15 5 6
+% builtin '$times'/3
+     Builtin 29 16 3 8
+% builtin '$minus'/3
+     Builtin 27 17 15 16
+% reg x(10): par=free, seq=free, loc=local
+% reg x(17): par=gnd, seq=gnd, loc=local
+     Get_X_Value 17 10
+% builtin '$times'/3
+     Builtin 29 18 3 7
+% builtin '$times'/3
+     Builtin 29 19 4 6
+% builtin '$minus'/3
+     Builtin 27 20 18 19
+% reg x(11): par=free, seq=free, loc=local
+% reg x(20): par=gnd, seq=gnd, loc=local
+     Get_X_Value 20 11
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/vector.pl'
+% Compiled:   vector_scalar_mult/3
+% Directives: []
+Predicate(vector_scalar_mult 3
+     Switch_On_Term 1 fail fail fail 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant vector_scalar_mult 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 8 3
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure v 3 0
+     Unify_X_Variable 3
+     Unify_X_Variable 4
+     Unify_X_Variable 5
+% reg x(2): par=free, seq=free, loc=local
+     Get_Structure v 3 2
+     Unify_X_Variable 6
+     Unify_X_Variable 7
+     Unify_X_Variable 8
+% builtin '$times'/3
+     Builtin 29 9 3 1
+% reg x(6): par=free, seq=free, loc=local
+% reg x(9): par=gnd, seq=gnd, loc=local
+     Get_X_Value 9 6
+% builtin '$times'/3
+     Builtin 29 10 4 1
+% reg x(7): par=free, seq=free, loc=local
+% reg x(10): par=gnd, seq=gnd, loc=local
+     Get_X_Value 10 7
+% builtin '$times'/3
+     Builtin 29 11 5 1
+% reg x(8): par=free, seq=free, loc=local
+% reg x(11): par=gnd, seq=gnd, loc=local
+     Get_X_Value 11 8
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/vector.pl'
+% Compiled:   vector_normalize/2
+% Directives: []
+Predicate(vector_normalize 2
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant vector_normalize 2
+     Put_Constant 2 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 1 2
+     Get_X_Variable 3 1
+     Put_Constant 1 1
+     Put_X_Value 3 2
+     Execute scale_vector_length 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/vector.pl'
+% Compiled:   vector_sub/3
+% Directives: []
+Predicate(vector_sub 3
+     Switch_On_Term 2 fail fail fail 1
+  Label 1
+     Switch_On_Structure 2 (
+        v 3 3
+        v 2 4
+     ) fail
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant vector_sub 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 3
+     Require_Using 12 3
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure v 3 0
+     Unify_X_Variable 3
+     Unify_X_Variable 4
+     Unify_X_Variable 5
+% reg x(1): par=any, seq=any, loc=local
+     Get_Structure v 3 1
+     Unify_X_Variable 6
+     Unify_X_Variable 7
+     Unify_X_Variable 8
+% reg x(2): par=free, seq=free, loc=local
+     Get_Structure v 3 2
+     Unify_X_Variable 9
+     Unify_X_Variable 10
+     Unify_X_Variable 11
+% builtin '$minus'/3
+     Builtin 27 12 3 6
+% reg x(9): par=free, seq=free, loc=local
+% reg x(12): par=gnd, seq=gnd, loc=local
+     Get_X_Value 12 9
+% builtin '$minus'/3
+     Builtin 27 13 4 7
+% reg x(10): par=free, seq=free, loc=local
+% reg x(13): par=gnd, seq=gnd, loc=local
+     Get_X_Value 13 10
+% builtin '$minus'/3
+     Builtin 27 14 5 8
+% reg x(11): par=free, seq=free, loc=local
+% reg x(14): par=gnd, seq=gnd, loc=local
+     Get_X_Value 14 11
+     Proceed
+  Label 4
+     Require_Using 9 3
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure v 2 0
+     Unify_X_Variable 3
+     Unify_X_Variable 4
+% reg x(1): par=any, seq=any, loc=local
+     Get_Structure v 2 1
+     Unify_X_Variable 5
+     Unify_X_Variable 6
+% reg x(2): par=free, seq=free, loc=local
+     Get_Structure v 2 2
+     Unify_X_Variable 7
+     Unify_X_Variable 8
+% builtin '$minus'/3
+     Builtin 27 9 3 5
+% reg x(7): par=free, seq=free, loc=local
+% reg x(9): par=gnd, seq=gnd, loc=local
+     Get_X_Value 9 7
+% builtin '$minus'/3
+     Builtin 27 10 4 6
+% reg x(8): par=free, seq=free, loc=local
+% reg x(10): par=gnd, seq=gnd, loc=local
+     Get_X_Value 10 8
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/vector.pl'
+% Compiled:   vector_scale_length/3
+% Directives: []
+Predicate(vector_scale_length 3
+     Switch_On_Term 1 fail fail fail 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant vector_scale_length 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 8 3
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Structure v 3 0
+     Unify_X_Variable 3
+     Unify_X_Variable 4
+     Unify_X_Variable 5
+% reg x(2): par=free, seq=free, loc=local
+     Get_Structure v 3 2
+     Unify_X_Variable 6
+     Unify_X_Variable 7
+     Unify_X_Variable 8
+% builtin '$times'/3
+     Builtin 29 9 3 3
+% builtin '$times'/3
+     Builtin 29 10 4 4
+% builtin '$plus'/3
+     Builtin 25 11 9 10
+% builtin '$times'/3
+     Builtin 29 12 5 5
+% builtin '$plus'/3
+     Builtin 25 13 11 12
+% builtin '$sqrt'/2
+     Builtin 47 14 13
+% builtin '$div'/3
+     Builtin 30 15 1 14
+% builtin '$times'/3
+     Builtin 29 16 3 15
+% reg x(6): par=free, seq=free, loc=local
+% reg x(16): par=gnd, seq=gnd, loc=local
+     Get_X_Value 16 6
+% builtin '$times'/3
+     Builtin 29 17 4 15
+% reg x(7): par=free, seq=free, loc=local
+% reg x(17): par=gnd, seq=gnd, loc=local
+     Get_X_Value 17 7
+% builtin '$times'/3
+     Builtin 29 18 5 15
+% reg x(8): par=free, seq=free, loc=local
+% reg x(18): par=gnd, seq=gnd, loc=local
+     Get_X_Value 18 8
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   write_ppm_ascii/2
+% Directives: []
+Predicate(write_ppm_ascii 2
+  Label 1
+     Allocate
+     Get_Y_Variable 1 1
+     Put_Constant write 1
+     Put_Y_Variable 0 2
+     Call open 3 2
+     Put_Y_Unsafe_Value 1 0
+     Put_Y_Value 0 1
+     Call write_ppm_stream 2 1
+     Put_Y_Unsafe_Value 0 0
+     Deallocate
+     Execute close 1
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   write_ppm_stream/2
+% Directives: []
+Predicate(write_ppm_stream 2
+  Label 1
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 1 1
+     Put_Y_Value 0 0
+     Put_Y_Variable 2 1
+     Put_Y_Variable 3 2
+     Call size 3 4
+     Put_Y_Value 1 0
+     Put_Constant 'P3' 1
+     Call write 2 4
+     Put_Y_Value 1 0
+     Call nl 1 4
+     Put_Y_Value 1 0
+     Put_Constant '# CREATOR: Prolog ray tracer' 1
+     Call write 2 4
+     Put_Y_Value 1 0
+     Call nl 1 4
+     Require 4
+     Put_Y_Value 1 0
+     Put_Constant '~w ~w~n255~n' 1
+     Put_List 3
+     Unify_Y_Local_Value 3
+     Unify_Nil
+     Put_List 2
+     Unify_Y_Local_Value 2
+     Unify_X_Value 3
+     Call format 3 2
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Deallocate
+     Execute write_ppm_bitmap_rows 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   write_ppm_bitmap_rows/2
+% Directives: []
+Predicate(write_ppm_bitmap_rows 2
+     Switch_On_Term 1 2 fail 3 fail
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Nil 0
+     Proceed
+  Label 3
+     Require_Using 2 2
+     Allocate
+     Get_Y_Variable 1 1
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_X_Variable 0
+     Unify_Y_Variable 0
+     Put_Y_Value 1 1
+     Call write_ppm_row 2 2
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Deallocate
+     Execute write_ppm_bitmap_rows 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   write_ppm_row/2
+% Directives: []
+Predicate(write_ppm_row 2
+     Switch_On_Term 1 2 fail 3 fail
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Nil 0
+     Put_X_Value 1 0
+     Execute nl 1
+  Label 3
+     Require_Using 6 2
+     Allocate
+     Get_Y_Variable 1 1
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_X_Variable 2
+     Unify_Y_Variable 0
+% reg x(2): par=any, seq=any, loc=local
+     Get_Structure rgb 3 2
+     Unify_X_Variable 1
+     Unify_Y_Variable 3
+     Unify_Y_Variable 2
+     Put_Y_Value 1 0
+     Call write 2 4
+     Put_Y_Value 1 0
+     Put_Constant ' ' 1
+     Call write 2 4
+     Put_Y_Value 1 0
+     Put_Y_Value 3 1
+     Call write 2 3
+     Put_Y_Value 1 0
+     Put_Constant ' ' 1
+     Call write 2 3
+     Put_Y_Value 1 0
+     Put_Y_Value 2 1
+     Call write 2 2
+     Put_Y_Value 1 0
+     Put_Constant ' ' 1
+     Call write 2 2
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Deallocate
+     Execute write_ppm_row 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   write_ppm_raw/2
+% Directives: []
+Predicate(write_ppm_raw 2
+  Label 1
+     Allocate
+     Get_Y_Variable 1 1
+     Put_Constant write 1
+     Put_Y_Variable 0 2
+     Call open 3 2
+     Put_Y_Unsafe_Value 1 0
+     Put_Y_Value 0 1
+     Call write_ppm_stream_raw 2 1
+     Put_Y_Unsafe_Value 0 0
+     Deallocate
+     Execute close 1
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   write_ppm_bitmap_rows_raw/2
+% Directives: []
+Predicate(write_ppm_bitmap_rows_raw 2
+     Switch_On_Term 1 2 fail 3 fail
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Nil 0
+     Proceed
+  Label 3
+     Require_Using 2 2
+     Allocate
+     Get_Y_Variable 1 1
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_X_Variable 0
+     Unify_Y_Variable 0
+     Put_Y_Value 1 1
+     Call write_ppm_row_raw 2 2
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Deallocate
+     Execute write_ppm_bitmap_rows_raw 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   write_ppm_row_raw/2
+% Directives: []
+Predicate(write_ppm_row_raw 2
+     Switch_On_Term 1 2 fail 3 fail
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Nil 0
+     Proceed
+  Label 3
+     Require_Using 6 2
+     Allocate
+     Get_Y_Variable 1 1
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_X_Variable 2
+     Unify_Y_Variable 0
+% reg x(2): par=any, seq=any, loc=local
+     Get_Structure rgb 3 2
+     Unify_X_Variable 1
+     Unify_Y_Variable 3
+     Unify_Y_Variable 2
+     Put_Y_Value 1 0
+     Call put 2 4
+     Put_Y_Value 1 0
+     Put_Y_Value 3 1
+     Call put 2 3
+     Put_Y_Value 1 0
+     Put_Y_Value 2 1
+     Call put 2 2
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Deallocate
+     Execute write_ppm_row_raw 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/ppm.pl'
+% Compiled:   write_ppm_stream_raw/2
+% Directives: []
+Predicate(write_ppm_stream_raw 2
+  Label 1
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 1 1
+     Put_Y_Value 0 0
+     Put_Y_Variable 2 1
+     Put_Y_Variable 3 2
+     Call size 3 4
+     Put_Y_Value 1 0
+     Put_Constant 'P6' 1
+     Call write 2 4
+     Put_Y_Value 1 0
+     Call nl 1 4
+     Put_Y_Value 1 0
+     Put_Constant '# CREATOR: Prolog ray tracer' 1
+     Call write 2 4
+     Put_Y_Value 1 0
+     Call nl 1 4
+     Require 4
+     Put_Y_Value 1 0
+     Put_Constant '~w ~w ~n255~n' 1
+     Put_List 3
+     Unify_Y_Local_Value 3
+     Unify_Nil
+     Put_List 2
+     Unify_Y_Local_Value 2
+     Unify_X_Value 3
+     Call format 3 2
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Deallocate
+     Execute write_ppm_bitmap_rows_raw 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   ws/2
+% Directives: []
+Predicate(ws 2
+     Switch_On_Term 1 4 4 1 4
+  Label 1
+     Try 2
+     Retry 3
+     Trust 4
+  Label 2
+     Require_Using 2 2
+     Choice_X 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_X_Variable 3
+     Unify_X_Variable 0
+     Put_Constant 32 4
+% builtin '$le'/2
+     Builtin 15 3 4
+     Cut_X 2
+     Execute ws 2
+  Label 3
+     Require_Using 2 2
+     Allocate
+     Get_Y_Variable 1 1
+     Choice_X 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 35
+     Unify_X_Variable 0
+     Cut_X 2
+     Put_Y_Variable 0 1
+     Call skip_to_nl 2 2
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Deallocate
+     Execute ws 2
+  Label 4
+% reg x(1): par=any, seq=any, loc=local
+% reg x(0): par=any, seq=any, loc=local
+     Get_X_Value 0 1
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/Tracer/parser.pl'
+% Compiled:   ws1/2
+% Directives: []
+Predicate(ws1 2
+  Label 1
+     Require_Using 2 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_X_Variable 2
+     Unify_X_Variable 0
+     Put_Constant 32 3
+% builtin '$le'/2
+     Builtin 15 2 3
+     Execute ws 2
+)

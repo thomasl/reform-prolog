@@ -1,0 +1,942 @@
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   test/0
+% Directives: []
+Predicate(test 0
+  Label 1
+     Allocate
+     Put_Y_Variable 3 0
+     Init 3 0 1 2
+     Call read 1 4
+     Require 1
+     Put_Y_Unsafe_Value 3 6
+% builtin '$integer'/1
+     Builtin 23 6
+     Put_Y_Value 3 0
+     Put_Y_Value 0 1
+     Put_Y_Value 1 2
+     Put_Y_Value 2 3
+     Put_Constant 17 4
+     Put_X_Void 5
+     Call test_tsp 6 3
+     Require 6
+     Put_Constant 'tsp: path: ~w~ncost: ~w~ntime: ~w~n' 0
+     Put_List 2
+     Unify_Y_Local_Value 2
+     Unify_Nil
+     Put_List 3
+     Unify_Y_Local_Value 1
+     Unify_X_Value 2
+     Put_List 1
+     Unify_Y_Local_Value 0
+     Unify_X_Value 3
+     Deallocate
+     Execute format 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   all_but_this_vertex/3
+% Directives: []
+Predicate(all_but_this_vertex 3
+     Switch_On_Term 4 1 2 1 1
+  Label 1
+     Try 6
+     Trust 7
+  Label 2
+     Switch_On_Constant 1 (
+        0 3
+     ) 1
+  Label 3
+     Try 5
+     Retry 6
+     Trust 7
+  Label 4
+     Put_Constant gnd 1
+     Put_Constant all_but_this_vertex 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 5
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Constant 0 0
+     Cut
+% reg x(2): par=free, seq=free, loc=local
+     Get_Nil 2
+     Proceed
+  Label 6
+     Require_Using 1 3
+     Get_X_Variable 3 0
+     Choice_X 4
+% builtin '$eq'/2
+     Builtin 11 3 1
+     Cut_X 4
+% builtin '$minus_1'/2
+     Builtin 28 5 3
+     Put_X_Value 5 0
+     Put_X_Value 3 1
+     Execute all_but_this_vertex 3
+  Label 7
+     Require_Using 2 3
+% reg x(2): par=free, seq=free, loc=local
+     Get_List 2
+% reg x(0): par=gnd, seq=gnd, loc=local
+% heap: par=free, seq=free, loc=local
+     Unify_X_Local_Value 0
+     Unify_X_Variable 2
+% builtin '$minus_1'/2
+     Builtin 28 3 0
+     Put_X_Value 3 0
+     Execute all_but_this_vertex 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   minimal_cost/5
+% Directives: []
+Predicate(minimal_cost 5
+     Switch_On_Term 1 2 1 2 1
+  Label 1
+     Put_Constant list_g_n 1
+     Put_Constant minimal_cost 2
+     Put_Constant 5 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 2 5
+     Put_Constant 100000 5
+     Put_X_Void 6
+     Put_X_Void 7
+     Execute minimal_cost 8
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   cost/3
+% Directives: []
+Predicate(cost 3
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant nv 1
+     Put_Constant cost 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+     Put_Constant 0 3
+     Execute cost 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   append_once/3
+% Directives: []
+Predicate(append_once 3
+     Switch_On_Term 2 2 1 2 1
+  Label 1
+     Put_Constant list_a_fn 1
+     Put_Constant append_once 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+     Allocate
+     Choice_Y 0
+     Call append 3 1
+     Cut_Y 0
+     Deallocate
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   append/3
+% Directives: []
+Predicate(append 3
+     Switch_On_Term 1 3 2 4 2
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant list_a_fn 1
+     Put_Constant append 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 3
+% reg x(0): par=list_a_fn, seq=free_nil, loc=local
+     Get_Nil 0
+% reg x(2): par=any, seq=any, loc=local
+% reg x(1): par=any, seq=any, loc=local
+     Get_X_Value 1 2
+     Proceed
+  Label 4
+     Require_Using 4 3
+     Allocate
+% reg x(0): par=list_a_fn, seq=list_a_fn, loc=local
+     Get_List 0
+     Unify_X_Variable 3
+     Unify_X_Variable 0
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+% reg x(3): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Value 3
+     Unify_X_Variable 2
+     Deallocate
+     Execute append 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   cost/4
+% Directives: []
+Predicate(cost 4
+     Switch_On_Term 2 fail fail 1 fail
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant nv 1
+     Put_Constant cost 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 3
+     Require_Using 2 4
+% reg x(0): par=nv, seq=nv, loc=local
+     Get_List 0
+     Unify_Void 1
+% heap: par=any, seq=any, loc=local
+     Unify_Nil
+     Cut
+% reg x(2): par=free, seq=free, loc=local
+% reg x(3): par=gnd, seq=gnd, loc=local
+     Get_X_Value 3 2
+     Proceed
+  Label 4
+     Require_Using 8 4
+% reg x(0): par=nv, seq=nv, loc=local
+     Get_List 0
+     Unify_X_Variable 4
+% heap: par=any, seq=any, loc=local
+     Unify_List
+     Unify_X_Variable 5
+     Unify_X_Variable 6
+     Put_X_Variable 8 7
+% builtin '$arg'/3
+     Builtin 2 4 1 7
+     Put_X_Variable 10 9
+% builtin '$arg'/3
+     Builtin 2 5 8 9
+% builtin '$plus'/3
+     Builtin 25 11 3 10
+     Put_List 0
+     Unify_X_Value 5
+     Unify_X_Value 6
+     Put_X_Value 11 3
+     Execute cost 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   delete_vertex/3
+% Directives: []
+Predicate(delete_vertex 3
+     Switch_On_Term 2 3 2 1 2
+  Label 1
+     Try 4
+     Trust 5
+  Label 2
+     Put_Constant list_g_n 1
+     Put_Constant delete_vertex 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 3
+% reg x(0): par=list_g_n, seq=nil, loc=local
+     Get_Nil 0
+% reg x(2): par=free, seq=free, loc=local
+     Get_Nil 2
+     Proceed
+  Label 4
+     Require_Using 2 3
+% reg x(0): par=list_g_n, seq=list_g_n, loc=local
+     Get_List 0
+% reg x(1): par=free, seq=free, loc=local
+% heap: par=gnd, seq=gnd, loc=local
+     Unify_X_Local_Value 1
+     Unify_X_Variable 0
+     Cut
+     Execute delete_vertex 3
+  Label 5
+     Require_Using 4 3
+% reg x(0): par=list_g_n, seq=list_g_n, loc=local
+     Get_List 0
+     Unify_X_Variable 3
+     Unify_X_Variable 0
+% reg x(2): par=free, seq=free, loc=local
+     Get_List 2
+% reg x(3): par=gnd, seq=gnd, loc=local
+% heap: par=free, seq=free, loc=local
+     Unify_X_Value 3
+     Unify_X_Variable 2
+     Execute delete_vertex 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   minimal_cost/8
+% Directives: []
+Predicate(minimal_cost 8
+     Switch_On_Term 1 2 1 3 1
+  Label 1
+     Put_Constant list_g_n 1
+     Put_Constant minimal_cost 2
+     Put_Constant 8 3
+     Execute mode_error 4
+  Label 2
+% reg x(0): par=list_g_n, seq=nil, loc=local
+     Get_Nil 0
+     Cut
+% reg x(3): par=free, seq=free, loc=local
+% reg x(6): par=any, seq=any, loc=local
+     Get_X_Value 6 3
+% reg x(4): par=free, seq=free, loc=local
+% reg x(7): par=any, seq=any, loc=local
+     Get_X_Value 7 4
+     Proceed
+  Label 3
+     Require_Using 3 8
+     Allocate
+     Get_Y_Variable 1 1
+     Get_Y_Variable 2 2
+     Get_Y_Variable 3 3
+     Get_Y_Variable 4 4
+     Get_Y_Variable 11 5
+     Get_Y_Variable 12 6
+     Get_Y_Variable 13 7
+% reg x(0): par=list_g_n, seq=list_g_n, loc=local
+     Get_List 0
+     Unify_Y_Variable 9
+     Unify_Y_Variable 0
+     Put_Y_Value 9 8
+     Put_Y_Value 1 9
+     Put_X_Variable 1 10
+     Init 5 5 6 7 8 10
+% builtin '$arg'/3
+     Builtin 2 8 9 10
+     Put_Y_Value 2 0
+     Put_Y_Value 10 2
+     Put_Y_Value 8 3
+     Call row_min 4 14
+     Put_Y_Unsafe_Value 8 0
+     Put_Y_Value 9 1
+     Put_Y_Unsafe_Value 10 2
+     Put_Y_Unsafe_Value 11 3
+     Put_Y_Unsafe_Value 12 4
+     Put_Y_Unsafe_Value 13 5
+     Put_Y_Value 5 6
+     Put_Y_Value 6 7
+     Put_Y_Value 7 8
+     Call update_minimum2 9 8
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Put_Y_Unsafe_Value 5 5
+     Put_Y_Unsafe_Value 6 6
+     Put_Y_Unsafe_Value 7 7
+     Deallocate
+     Execute minimal_cost 8
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   row_min/4
+% Directives: []
+Predicate(row_min 4
+  Label 1
+     Require_Using 1 4
+     Put_X_Void 4
+     Put_Constant 100000 5
+     Execute row_min 6
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   random_matrix/4
+% Directives: []
+Predicate(random_matrix 4
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant random_matrix 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 3 4
+     Allocate
+     Get_X_Variable 6 0
+     Get_Y_Variable 0 1
+     Get_X_Variable 7 2
+     Get_X_Variable 8 3
+     Put_Constant 2 9
+% builtin '$div'/3
+     Builtin 30 10 6 9
+% builtin '$plus'/3
+     Builtin 25 11 6 10
+     Put_Constant 1 12
+% builtin '$intdiv'/3
+     Builtin 31 13 11 12
+     Put_X_Value 6 0
+     Put_X_Value 6 1
+     Put_X_Value 13 2
+     Put_Y_Variable 1 3
+     Put_X_Value 7 4
+     Put_X_Value 8 5
+     Call random_rows 6 2
+     Require 2
+     Put_Y_Unsafe_Value 0 0
+     Put_List 1
+     Unify_Constant matrix
+     Unify_Y_Local_Value 1
+% builtin '$univ'/2
+     Builtin 3 0 1
+     Deallocate
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   random_elts/5
+% Directives: []
+Predicate(random_elts 5
+     Switch_On_Term 3 5 1 5 5
+  Label 1
+     Switch_On_Constant 1 (
+        0 2
+     ) 5
+  Label 2
+     Try 4
+     Trust 5
+  Label 3
+     Put_Constant gnd 1
+     Put_Constant random_elts 2
+     Put_Constant 5 3
+     Execute mode_error 4
+  Label 4
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 0 0
+     Cut
+% reg x(2): par=any, seq=any, loc=local
+     Get_Nil 2
+% reg x(3): par=any, seq=any, loc=local
+% reg x(4): par=any, seq=any, loc=local
+     Get_X_Value 4 3
+     Proceed
+  Label 5
+     Require_Using 2 5
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 1 1
+     Get_Y_Variable 4 4
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+     Unify_X_Variable 1
+     Unify_Y_Variable 2
+     Put_Y_Value 0 5
+     Put_Constant 0 6
+     Init 1 3
+% builtin '$gt'/2
+     Builtin 14 5 6
+     Put_Y_Value 1 0
+     Put_X_Value 3 2
+     Put_Y_Value 3 3
+     Call random 4 5
+     Put_Y_Unsafe_Value 0 5
+% builtin '$minus_1'/2
+     Builtin 28 6 5
+     Put_X_Value 6 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Deallocate
+     Execute random_elts 5
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   random/4
+% Directives: []
+Predicate(random 4
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant random 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 2
+% builtin '$mod'/3
+     Builtin 32 4 2 0
+% builtin '$plus_1'/2
+     Builtin 26 5 4
+% reg x(1): par=any, seq=any, loc=local
+% reg x(5): par=any, seq=any, loc=local
+     Get_X_Value 5 1
+     Put_Constant 125 6
+% builtin '$times'/3
+     Builtin 29 7 6 2
+% builtin '$plus_1'/2
+     Builtin 26 8 7
+     Put_Constant 4096 9
+% builtin '$mod'/3
+     Builtin 32 10 8 9
+% reg x(3): par=any, seq=any, loc=local
+% reg x(10): par=any, seq=any, loc=local
+     Get_X_Value 10 3
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   random_rows/6
+% Directives: []
+Predicate(random_rows 6
+     Switch_On_Term 3 5 1 5 5
+  Label 1
+     Switch_On_Constant 1 (
+        0 2
+     ) 5
+  Label 2
+     Try 4
+     Trust 5
+  Label 3
+     Put_Constant gnd 1
+     Put_Constant random_rows 2
+     Put_Constant 6 3
+     Execute mode_error 4
+  Label 4
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 0 0
+     Cut
+% reg x(3): par=any, seq=any, loc=local
+     Get_Nil 3
+% reg x(4): par=any, seq=any, loc=local
+% reg x(5): par=any, seq=any, loc=local
+     Get_X_Value 5 4
+     Proceed
+  Label 5
+     Require_Using 2 6
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 1 1
+     Get_Y_Variable 2 2
+     Get_Y_Variable 5 5
+% reg x(3): par=any, seq=any, loc=local
+     Get_List 3
+     Unify_X_Variable 2
+     Unify_Y_Variable 3
+     Put_Y_Value 0 6
+     Put_Constant 0 7
+     Init 1 4
+% builtin '$gt'/2
+     Builtin 14 6 7
+     Put_Y_Value 1 0
+     Put_Y_Value 2 1
+     Put_X_Value 4 3
+     Put_Y_Value 4 4
+     Call random_row 5 6
+     Put_Y_Unsafe_Value 0 6
+% builtin '$minus_1'/2
+     Builtin 28 7 6
+     Put_X_Value 7 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Put_Y_Unsafe_Value 5 5
+     Deallocate
+     Execute random_rows 6
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   random_row/5
+% Directives: []
+Predicate(random_row 5
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant random_row 2
+     Put_Constant 5 3
+     Execute mode_error 4
+  Label 2
+     Allocate
+     Get_Y_Variable 0 2
+     Put_Y_Variable 1 2
+     Call random_elts 5 2
+     Require 2
+     Put_Y_Unsafe_Value 0 0
+     Put_List 1
+     Unify_Constant row
+     Unify_Y_Local_Value 1
+% builtin '$univ'/2
+     Builtin 3 0 1
+     Deallocate
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   row_min/6
+% Directives: []
+Predicate(row_min 6
+     Switch_On_Term 1 1 fail 2 fail
+  Label 1
+% reg x(0): par=any, seq=any, loc=local
+     Get_Nil 0
+     Cut
+% reg x(2): par=free, seq=free, loc=local
+% reg x(4): par=any, seq=any, loc=local
+     Get_X_Value 4 2
+% reg x(3): par=free, seq=free, loc=local
+% reg x(5): par=gnd, seq=gnd, loc=local
+     Get_X_Value 5 3
+     Proceed
+  Label 2
+     Require_Using 3 6
+     Allocate
+     Get_Y_Variable 1 1
+     Get_Y_Variable 2 2
+     Get_Y_Variable 3 3
+% reg x(0): par=any, seq=nv, loc=local
+     Get_List 0
+     Unify_X_Variable 1
+     Unify_Y_Variable 0
+     Put_Y_Value 1 6
+     Put_X_Variable 0 7
+% builtin '$arg'/3
+     Builtin 2 1 6 7
+     Put_X_Value 5 2
+     Put_X_Value 4 3
+     Put_Y_Variable 5 4
+     Put_Y_Variable 4 5
+     Call update_minimum3 6 6
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Put_Y_Unsafe_Value 5 5
+     Deallocate
+     Execute row_min 6
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   test_tsp/6
+% Directives: []
+Predicate(test_tsp 6
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant test_tsp 2
+     Put_Constant 6 3
+     Execute mode_error 4
+  Label 2
+     Allocate
+     Get_Y_Variable 3 0
+     Get_Y_Variable 5 1
+     Get_Y_Variable 6 2
+     Get_Y_Variable 2 3
+     Put_Y_Value 3 0
+     Put_Y_Variable 4 1
+     Put_X_Value 4 2
+     Put_X_Value 5 3
+     Init 2 0 1
+     Call random_matrix 4 7
+     Require 2
+     Put_Constant runtime 0
+     Put_List 1
+     Unify_Y_Local_Value 1
+     Unify_Void 1
+     Call statistics 2 7
+     Put_Y_Unsafe_Value 3 0
+     Put_Y_Value 3 1
+     Put_Y_Unsafe_Value 4 2
+     Put_Y_Unsafe_Value 5 3
+     Put_Y_Unsafe_Value 6 4
+     Call tsp 5 3
+     Require 2
+     Put_Constant runtime 0
+     Put_List 1
+     Unify_Y_Local_Value 0
+     Unify_Void 1
+     Call statistics 2 3
+     Require 2
+     Put_Y_Value 0 2
+     Put_Y_Value 1 3
+% builtin '$minus'/3
+     Builtin 27 4 2 3
+% reg y(2): par=any, seq=any, loc=local
+% reg x(4): par=any, seq=any, loc=local
+     Get_Y_Value 2 4
+     Put_Constant 'map: ~w instructions executed~n' 0
+     Put_List 1
+     Unify_Void 1
+     Unify_Nil
+     Deallocate
+     Execute format 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   tsp/5
+% Directives: []
+Predicate(tsp 5
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant tsp 2
+     Put_Constant 5 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 3 5
+     Get_X_Variable 7 3
+     Get_X_Variable 8 4
+     Put_X_Void 3
+     Put_Constant 100000 4
+     Put_X_Value 7 5
+     Put_X_Value 8 6
+     Execute tsp 7
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   travel/4
+% Directives: []
+Predicate(travel 4
+     Switch_On_Term 1 2 1 3 1
+  Label 1
+     Put_Constant list_g_n 1
+     Put_Constant travel 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 2
+% reg x(0): par=list_g_n, seq=nil, loc=local
+     Get_Nil 0
+     Cut
+% reg x(2): par=any, seq=any, loc=local
+% reg x(3): par=free, seq=free, loc=local
+     Get_X_Value 3 2
+     Proceed
+  Label 3
+     Require_Using 4 4
+     Allocate
+     Get_Y_Variable 1 1
+     Get_Y_Variable 8 2
+     Get_Y_Variable 3 3
+% reg x(0): par=list_g_n, seq=list_g_n, loc=local
+     Get_List 0
+     Unify_Y_Variable 9
+     Unify_Y_Variable 10
+     Put_List 0
+     Unify_Y_Value 9
+     Unify_Y_Value 10
+     Put_Y_Value 1 1
+     Put_Y_Value 8 2
+     Put_Y_Variable 5 3
+     Put_Y_Variable 6 4
+     Init 4 0 2 4 7
+     Call minimal_cost 5 11
+     Require 2
+     Put_List 0
+     Unify_Y_Value 9
+     Unify_Y_Value 10
+     Put_Y_Value 5 1
+     Put_Y_Value 0 2
+     Call delete_vertex 3 9
+     Require 2
+     Put_Y_Value 4 0
+     Put_List 1
+     Unify_Y_Local_Value 6
+     Unify_Y_Local_Value 7
+     Put_Y_Unsafe_Value 8 2
+     Call append_once 3 8
+     Require 4
+     Put_Y_Unsafe_Value 4 0
+     Put_List 3
+     Unify_Y_Value 6
+     Unify_Y_Value 7
+     Put_List 1
+     Unify_Y_Local_Value 5
+     Unify_X_Value 3
+     Put_Y_Value 2 2
+     Call append_once 3 4
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Deallocate
+     Execute travel 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   tsp/7
+% Directives: [parallel]
+Predicate(tsp 7
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 0 0
+     Cut
+% reg x(3): par=any, seq=any, loc=local
+% reg x(5): par=any, seq=any, loc=local
+     Get_X_Value 5 3
+% reg x(4): par=any, seq=any, loc=local
+% reg x(6): par=any, seq=any, loc=local
+     Get_X_Value 6 4
+     Proceed
+  Label 3
+     Require_Using 1 7
+     Get_X_Variable 7 0
+% builtin '$ceiling'/2
+     Builtin 36 8 0
+     Build_Variables 3 8 9 3
+     Build_Variables 4 8 10 4
+% builtin '$minus'/3
+     Builtin 27 0 0 8
+     Start_Left_Body 4
+        11 { 0 1 2 3 4 5 6 7 8 9 10 } -1
+     Execute tsp 7
+  Label 4
+     Initialize_Left 1
+  Label 5
+     Spawn_Left 1 3 8
+     Allocate
+     Get_Y_Variable 0 3
+     Put_Y_Value 0 4
+     Put_Global_Arg 7 5
+% builtin '$minus'/3
+     Builtin 27 6 5 4
+     Put_Global_Arg 1 0
+     Put_X_Value 6 1
+     Put_Y_Variable 3 2
+     Init 2 1 2
+     Call all_but_this_vertex 3 4
+     Require 2
+     Put_Y_Value 0 4
+     Put_Global_Arg 7 5
+% builtin '$minus'/3
+     Builtin 27 6 5 4
+     Put_Y_Unsafe_Value 3 0
+     Put_Global_Arg 2 1
+     Put_List 2
+     Unify_X_Local_Value 6
+     Unify_Nil
+     Put_Y_Value 2 3
+     Call travel 4 3
+     Require 2
+     Put_Y_Value 0 3
+     Put_Global_Arg 7 4
+% builtin '$minus'/3
+     Builtin 27 5 4 3
+     Put_List 0
+     Unify_X_Local_Value 5
+     Unify_Y_Local_Value 2
+     Put_Global_Arg 2 1
+     Put_Y_Value 1 2
+     Call cost 3 3
+     Put_Y_Value 0 7
+     Put_Global_Arg 7 8
+% builtin '$minus'/3
+     Builtin 27 9 8 7
+     Put_Y_Unsafe_Value 1 0
+     Put_Y_Value 2 1
+     Put_X_Value 9 2
+     Put_Y_Value 0 10
+     Put_Nth_Head 10 10 0 3
+     Put_Nth_Head 9 10 0 4
+     Put_Nth_Head 10 10 1 5
+     Put_Nth_Head 9 10 1 6
+     Call update_minimum1 7 1
+     Deallocate
+     Jump 5
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   update_minimum1/7
+% Directives: []
+Predicate(update_minimum1 7
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant update_minimum1 2
+     Put_Constant 7 3
+     Execute mode_error 4
+  Label 3
+     Choice_X 7
+% par builtin '$le'/2
+     Par_Builtin 15
+        1 { 3 } 0
+        8 { 0 1 2 3 4 5 6 7 } 3 0
+     Cut_X 7
+% reg x(5): par=any, seq=free, loc=robust
+% reg x(3): par=gnd, seq=gnd, loc=local
+     Get_X_Value 3 5
+% reg x(6): par=any, seq=free, loc=robust
+% reg x(4): par=any, seq=any, loc=robust
+     Get_X_Value 4 6
+     Proceed
+  Label 4
+     Require_Using 2 7
+% reg x(5): par=any, seq=free, loc=robust
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_X_Value 0 5
+% reg x(6): par=any, seq=free, loc=robust
+     Lock_And_Get_List 6 7
+% reg x(2): par=gnd, seq=gnd, loc=local
+% heap: par=any, seq=free, loc=robust
+     Global_Unify_X_Local_Value 2
+% reg x(1): par=list_a_n, seq=list_a_n, loc=local
+% heap: par=any, seq=free, loc=robust
+     Global_Unify_X_Local_Value 1
+     Unlock 6 7
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   update_minimum2/9
+% Directives: []
+Predicate(update_minimum2 9
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant update_minimum2 2
+     Put_Constant 9 3
+     Execute mode_error 4
+  Label 3
+     Choice_X 9
+% builtin '$le'/2
+     Builtin 15 3 0
+     Cut_X 9
+% reg x(6): par=free, seq=free, loc=local
+% reg x(3): par=gnd, seq=gnd, loc=local
+     Get_X_Value 3 6
+% reg x(7): par=free, seq=free, loc=local
+% reg x(4): par=any, seq=any, loc=local
+     Get_X_Value 4 7
+% reg x(8): par=free, seq=free, loc=local
+% reg x(5): par=any, seq=any, loc=local
+     Get_X_Value 5 8
+     Proceed
+  Label 4
+% reg x(6): par=free, seq=free, loc=local
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_X_Value 0 6
+% reg x(7): par=free, seq=free, loc=local
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_X_Value 1 7
+% reg x(8): par=free, seq=free, loc=local
+% reg x(2): par=any, seq=any, loc=local
+     Get_X_Value 2 8
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/tsp.pl'
+% Compiled:   update_minimum3/6
+% Directives: []
+Predicate(update_minimum3 6
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant update_minimum3 2
+     Put_Constant 6 3
+     Execute mode_error 4
+  Label 3
+     Choice_X 6
+% builtin '$le'/2
+     Builtin 15 2 0
+     Cut_X 6
+% reg x(4): par=free, seq=free, loc=local
+% reg x(2): par=gnd, seq=gnd, loc=local
+     Get_X_Value 2 4
+% reg x(3): par=any, seq=any, loc=local
+% reg x(5): par=free, seq=free, loc=local
+     Get_X_Value 5 3
+     Proceed
+  Label 4
+% reg x(4): par=free, seq=free, loc=local
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_X_Value 0 4
+% reg x(5): par=free, seq=free, loc=local
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_X_Value 1 5
+     Proceed
+)

@@ -1,0 +1,1294 @@
+Directive('$$LOAD_DIRECTIVE$$' 0
+Label 1
+ X20 9 0
+ X52 / 2 1
+ X62 format
+ X62 2
+ X52 / 2 2
+ X62 format
+ X62 3
+ X52 ',' 2 0
+ X58 1
+ X58 2
+ X26 public 1
+)
+Predicate(format 2
+Label 1
+ X21
+ X30 1 0
+ X30 2 1
+ X45 0 0
+ X25 current_output 1 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 format 3
+)
+Predicate('$format_3_399_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 1
+ X30 3 2
+ X11 0
+ X45 1 1
+ X25 format_check 2 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X50 [] 3
+ X23
+ X26 format_parse 4
+Label 3
+ X20 3 3
+ X29 3 0
+ X50 'illegal control directive: ~s' 0
+ X53 1
+ X60 3
+ X63
+ X26 format_error 2
+)
+Predicate(default_count 3
+ X1 1 2 4 4 4
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 1 (
+        nil 1
+) 4
+Label 3
+ X34 nil 0
+ X32 1 2
+ X12
+ X27
+Label 4
+ X32 0 2
+ X16 23 0
+ X27
+)
+Predicate(arg_check 3
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X50 'argument list exhausted' 0
+ X50 [] 1
+ X26 format_error 2
+Label 3
+ X20 2 3
+ X37 0
+ X60 1
+ X60 2
+ X27
+)
+Predicate('$format_out_1_457_0' 1
+ X1 3 3 1 3 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 1
+ X16 23 0
+ X13 1
+ X26 put 1
+Label 3
+ X18 0
+)
+Predicate('$write_atom_1_462_0' 1
+ X1 2 1 2 2 2
+Label 1
+ X10 1
+ X16 18 0
+ X13 1
+ X26 write 1
+Label 2
+ X20 7 1
+ X29 2 0
+ X50 'argument is not ~w ~w: ~q' 0
+ X53 3
+ X60 2
+ X63
+ X53 4
+ X62 atom
+ X58 3
+ X53 1
+ X62 an
+ X58 4
+ X26 format_error 2
+)
+Predicate('$write_char_1_463_0' 1
+ X1 3 3 1 3 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 1
+ X16 23 0
+ X13 1
+ X26 put 1
+Label 3
+ X20 7 1
+ X29 2 0
+ X50 'argument is not ~w ~w: ~q' 0
+ X53 3
+ X60 2
+ X63
+ X53 4
+ X62 character
+ X58 3
+ X53 1
+ X62 a
+ X58 4
+ X26 format_error 2
+)
+Predicate('$write_float_3_464_0' 3
+ X1 3 3 1 3 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 3
+ X29 3 0
+ X29 4 1
+ X10 5
+ X16 22 3
+ X13 5
+ X46 2 0
+ X46 3 1
+ X46 4 2
+ X26 '$write_float' 3
+Label 3
+ X20 7 3
+ X29 3 0
+ X50 'argument is not ~w ~w: ~q' 0
+ X53 4
+ X60 3
+ X63
+ X53 5
+ X62 float
+ X58 4
+ X53 1
+ X62 a
+ X58 5
+ X26 format_error 2
+)
+Predicate('$write_radix_3_465_0' 3
+ X1 3 3 1 3 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 3
+ X29 3 0
+ X29 4 1
+ X10 5
+ X16 23 3
+ X13 5
+ X46 2 0
+ X46 3 1
+ X46 4 2
+ X26 '$write_radix' 3
+Label 3
+ X20 7 3
+ X29 3 0
+ X50 'argument is not ~w ~w: ~q' 0
+ X53 4
+ X60 3
+ X63
+ X53 5
+ X62 integer
+ X58 4
+ X53 1
+ X62 an
+ X58 5
+ X26 format_error 2
+)
+Predicate('$write_integer_3_466_0' 3
+ X1 3 3 1 3 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 3
+ X29 3 0
+ X29 4 1
+ X10 5
+ X16 23 3
+ X13 5
+ X46 2 0
+ X46 3 1
+ X46 4 2
+ X26 '$write_integer' 3
+Label 3
+ X20 7 3
+ X29 3 0
+ X50 'argument is not ~w ~w: ~q' 0
+ X53 4
+ X60 3
+ X63
+ X53 5
+ X62 integer
+ X58 4
+ X53 1
+ X62 an
+ X58 5
+ X26 format_error 2
+)
+Predicate(format 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 0
+ X11 0
+ X46 1 0
+ X46 2 1
+ X45 1 2
+ X25 '$format_3_399_0' 3 3
+ X14 0
+ X49 1 0
+ X49 2 1
+ X23
+ X26 format_output 2
+Label 3
+ X20 3 3
+ X29 3 1
+ X50 'unable to follow control directive: ~s' 0
+ X53 1
+ X60 3
+ X63
+ X26 format_error 2
+)
+Predicate(format_check 2
+ X1 2 1 2 2 2
+Label 1
+ X10 2
+ X16 18 0
+ X13 2
+ X26 name 2
+Label 2
+ X21
+ X30 1 0
+ X30 0 1
+ X47 1 0
+ X25 format_check 1 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+)
+Predicate(format_check 1
+ X1 1 2 fail 3 fail
+Label 1
+ X10 1
+ X16 17 0
+ X13 1
+ X28
+ X27
+Label 2
+ X35 0
+ X27
+Label 3
+ X20 2 1
+ X37 0
+ X55 1
+ X55 0
+ X16 23 1
+ X26 format_check 1
+)
+Predicate(format_aux 2
+ X1 1 2 4 8 8
+Label 1
+ X4 6
+ X5 7
+ X6 8
+Label 2
+ X2 1 (
+        nil 3
+) 8
+Label 3
+ X4 6
+ X6 8
+Label 4
+ X2 1 (
+        1 5
+) 8
+Label 5
+ X4 7
+ X6 8
+Label 6
+ X34 nil 0
+ X46 1 0
+ X18 0
+Label 7
+ X34 1 0
+ X46 1 0
+ X18 0
+Label 8
+ X21
+ X30 0 0
+ X30 1 1
+ X49 0 2
+ X50 1 3
+ X16 14 2 3
+ X49 1 0
+ X17 0 2
+ X47 0 2
+ X16 28 3 2
+ X46 3 0
+ X47 1 1
+ X23
+ X26 format_aux 2
+)
+Predicate(format_parse 4
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X32 2 3
+ X27
+Label 3
+ X20 5 4
+ X29 5 1
+ X29 6 2
+ X29 7 3
+ X37 0
+ X55 0
+ X55 1
+ X46 5 2
+ X46 6 3
+ X46 7 4
+ X26 format_parse 5
+)
+Predicate(format_count 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 0 1
+ X30 7 2
+ X30 3 3
+ X30 4 4
+ X30 5 5
+ X11 6
+ X45 2 1
+ X24 1 1
+ X25 is_digit 2 8
+ X14 6
+ X49 7 0
+ X50 0 1
+ X47 1 2
+ X25 default_count 3 6
+ X19 2
+ X49 0 6
+ X37 6
+ X55 0
+ X55 1
+ X50 10 7
+ X49 1 8
+ X16 29 9 7 8
+ X49 2 10
+ X16 25 11 9 10
+ X46 11 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X23
+ X26 format_count 6
+Label 3
+ X32 2 3
+ X32 0 4
+ X32 1 5
+ X27
+)
+Predicate(format_output 2
+Label 1
+ X20 5 2
+ X29 2 0
+ X46 1 0
+ X52 format_out 1 3
+ X60 2
+ X52 'SYSCALL' 1 1
+ X58 3
+ X26 with_default_output 2
+)
+Predicate(format_out 1
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X27
+Label 3
+ X20 2 1
+ X21
+ X37 0
+ X55 0
+ X56 0
+ X25 '$format_out_1_457_0' 1 1
+ X47 0 0
+ X23
+ X26 format_out 1
+)
+Predicate(format_error 2
+Label 1
+ X21
+ X30 0 0
+ X30 1 1
+ X50 '{Error: format failed - ' 0
+ X25 write 1 2
+ X49 0 0
+ X49 1 1
+ X25 format 2 0
+ X50 '}' 0
+ X25 write 1 0
+ X23
+ X26 nl 0
+)
+Predicate(format_parse 5
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        126 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X20 2 5
+ X21
+ X30 3 2
+ X30 4 3
+ X30 5 4
+ X34 126 0
+ X12
+ X37 1
+ X55 0
+ X55 1
+ X50 nil 2
+ X45 2 3
+ X45 0 4
+ X45 1 5
+ X25 format_count 6 6
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X23
+ X26 format_tilde 6
+Label 4
+ X20 2 5
+ X37 3
+ X60 0
+ X55 5
+ X46 1 0
+ X46 2 1
+ X46 5 2
+ X46 4 3
+ X26 format_parse 4
+)
+Predicate(is_digit 2
+ X1 1 fail 2 fail fail
+Label 1
+ X4 3
+ X5 4
+ X5 5
+ X5 6
+ X5 7
+ X5 8
+ X5 9
+ X5 10
+ X5 11
+ X6 12
+Label 2
+ X2 10 (
+        48 3
+        49 4
+        50 5
+        51 6
+        52 7
+        53 8
+        54 9
+        55 10
+        56 11
+        57 12
+) fail
+Label 3
+ X34 48 0
+ X34 0 1
+ X27
+Label 4
+ X34 49 0
+ X34 1 1
+ X27
+Label 5
+ X34 50 0
+ X34 2 1
+ X27
+Label 6
+ X34 51 0
+ X34 3 1
+ X27
+Label 7
+ X34 52 0
+ X34 4 1
+ X27
+Label 8
+ X34 53 0
+ X34 5 1
+ X27
+Label 9
+ X34 54 0
+ X34 6 1
+ X27
+Label 10
+ X34 55 0
+ X34 7 1
+ X27
+Label 11
+ X34 56 0
+ X34 8 1
+ X27
+Label 12
+ X34 57 0
+ X34 9 1
+ X27
+)
+Predicate(format_tilde 6
+ X1 1 fail 2 fail fail
+Label 1
+ X4 3
+ X5 4
+ X5 5
+ X5 6
+ X5 7
+ X5 8
+ X5 9
+ X5 10
+ X5 11
+ X5 12
+ X5 13
+ X5 14
+ X5 15
+ X5 16
+ X5 17
+ X5 18
+ X5 19
+ X5 20
+ X5 21
+ X5 22
+ X5 23
+ X6 24
+Label 2
+ X2 22 (
+        126 3
+        42 4
+        97 5
+        99 6
+        100 7
+        101 8
+        69 9
+        102 10
+        103 11
+        71 12
+        105 13
+        107 14
+        110 15
+        78 16
+        112 17
+        113 18
+        81 19
+        114 20
+        82 21
+        115 22
+        116 23
+        119 24
+) fail
+Label 3
+ X20 2 6
+ X34 126 0
+ X37 4
+ X62 126
+ X55 2
+ X46 1 0
+ X46 3 1
+ X46 5 3
+ X26 format_parse 4
+Label 4
+ X21
+ X30 1 1
+ X30 3 4
+ X30 4 5
+ X34 42 0
+ X46 3 0
+ X45 0 1
+ X45 2 2
+ X25 arg_check 3 5
+ X19 2
+ X49 0 6
+ X16 23 6
+ X49 1 7
+ X37 7
+ X55 0
+ X55 1
+ X47 0 2
+ X49 2 3
+ X49 3 4
+ X49 4 5
+ X23
+ X26 format_tilde 6
+Label 5
+ X21
+ X30 3 1
+ X30 1 2
+ X30 0 4
+ X30 5 5
+ X34 97 0
+ X46 3 0
+ X45 2 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 7
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X61 1
+ X64 write_atom 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 6
+ X21
+ X30 3 1
+ X30 1 2
+ X30 0 4
+ X30 5 5
+ X34 99 0
+ X46 3 0
+ X45 2 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 7
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X61 1
+ X64 write_char 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 7
+ X21
+ X30 3 1
+ X30 2 2
+ X30 0 4
+ X30 5 5
+ X34 100 0
+ X46 3 0
+ X45 1 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 9
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X62 1
+ X64 write_integer 3
+ X62 100
+ X61 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 8
+ X21
+ X30 3 1
+ X30 2 2
+ X30 0 4
+ X30 5 5
+ X34 101 0
+ X46 3 0
+ X45 1 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 9
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X62 1
+ X64 write_float 3
+ X62 101
+ X61 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 9
+ X21
+ X30 3 1
+ X30 2 2
+ X30 0 4
+ X30 5 5
+ X34 69 0
+ X46 3 0
+ X45 1 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 9
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X62 1
+ X64 write_float 3
+ X62 69
+ X61 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 10
+ X21
+ X30 3 1
+ X30 2 2
+ X30 0 4
+ X30 5 5
+ X34 102 0
+ X46 3 0
+ X45 1 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 9
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X62 1
+ X64 write_float 3
+ X62 102
+ X61 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 11
+ X21
+ X30 3 1
+ X30 2 2
+ X30 0 4
+ X30 5 5
+ X34 103 0
+ X46 3 0
+ X45 1 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 9
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X62 1
+ X64 write_float 3
+ X62 103
+ X61 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 12
+ X21
+ X30 3 1
+ X30 2 2
+ X30 0 4
+ X30 5 5
+ X34 71 0
+ X46 3 0
+ X45 1 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 9
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X62 1
+ X64 write_float 3
+ X62 71
+ X61 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 13
+ X21
+ X30 0 1
+ X30 5 3
+ X30 2 4
+ X30 3 5
+ X34 105 0
+ X46 2 0
+ X50 1 1
+ X45 4 2
+ X24 1 1
+ X25 default_count 3 6
+ X49 4 0
+ X49 5 1
+ X47 1 2
+ X25 ignore_arg 3 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 format_parse 4
+Label 14
+ X21
+ X30 3 1
+ X30 1 2
+ X30 0 4
+ X30 5 5
+ X34 107 0
+ X46 3 0
+ X45 2 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 7
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X61 1
+ X64 write_canonical 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 15
+ X20 5 6
+ X34 110 0
+ X37 4
+ X55 6
+ X55 7
+ X36 format_aux 2 6
+ X60 2
+ X62 nl
+ X46 1 0
+ X46 3 1
+ X46 7 2
+ X46 5 3
+ X26 format_parse 4
+Label 16
+ X20 5 6
+ X34 78 0
+ X37 4
+ X55 6
+ X55 7
+ X36 format_aux 2 6
+ X60 2
+ X62 nl
+ X46 1 0
+ X46 3 1
+ X46 7 2
+ X46 5 3
+ X26 format_parse 4
+Label 17
+ X21
+ X30 3 1
+ X30 1 2
+ X30 0 4
+ X30 5 5
+ X34 112 0
+ X46 3 0
+ X45 2 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 7
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X61 1
+ X64 print 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 18
+ X21
+ X30 3 1
+ X30 1 2
+ X30 0 4
+ X30 5 5
+ X34 113 0
+ X46 3 0
+ X45 2 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 7
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X61 1
+ X64 writeq 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 19
+ X21
+ X30 3 1
+ X30 1 2
+ X30 0 4
+ X30 5 5
+ X34 81 0
+ X46 3 0
+ X45 2 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 7
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X61 1
+ X64 writeqq 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 20
+ X21
+ X30 3 1
+ X30 2 2
+ X30 0 4
+ X30 5 5
+ X34 114 0
+ X46 3 0
+ X45 1 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 9
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X62 1
+ X64 write_radix 3
+ X62 114
+ X61 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 21
+ X21
+ X30 3 1
+ X30 2 2
+ X30 0 4
+ X30 5 5
+ X34 82 0
+ X46 3 0
+ X45 1 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 9
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X62 1
+ X64 write_radix 3
+ X62 82
+ X61 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+Label 22
+ X21
+ X30 0 1
+ X30 5 4
+ X30 3 5
+ X34 115 0
+ X46 3 0
+ X45 4 1
+ X45 1 2
+ X24 1 2
+ X25 arg_check 3 6
+ X49 4 0
+ X49 5 1
+ X47 2 2
+ X25 string_check 3 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 format_parse 4
+Label 23
+ X20 5 6
+ X34 116 0
+ X37 4
+ X55 6
+ X55 7
+ X36 format_aux 2 6
+ X60 2
+ X62 write_tab
+ X46 1 0
+ X46 3 1
+ X46 7 2
+ X46 5 3
+ X26 format_parse 4
+Label 24
+ X21
+ X30 3 1
+ X30 1 2
+ X30 0 4
+ X30 5 5
+ X34 119 0
+ X46 3 0
+ X45 2 1
+ X45 4 2
+ X25 arg_check 3 6
+ X19 7
+ X49 0 4
+ X37 4
+ X55 5
+ X55 2
+ X36 format_aux 2 5
+ X61 1
+ X64 write 1
+ X61 2
+ X49 3 0
+ X49 4 1
+ X49 5 3
+ X23
+ X26 format_parse 4
+)
+Predicate(ignore_arg 3
+ X1 1 4 2 4 4
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 1 (
+        0 1
+) 4
+Label 3
+ X34 0 0
+ X32 1 2
+ X27
+Label 4
+ X20 1 3
+ X21
+ X30 0 0
+ X30 2 2
+ X47 0 3
+ X50 0 4
+ X24 1 1
+ X16 14 3 4
+ X46 1 0
+ X42 1
+ X47 1 2
+ X25 arg_check 3 3
+ X49 0 3
+ X16 28 4 3
+ X46 4 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 ignore_arg 3
+)
+Predicate(string_check 3
+ X1 2 1 6 4 fail
+Label 1
+ X2 1 (
+        [] 3
+) 5
+Label 2
+ X20 7 3
+ X21
+ X29 3 0
+ X30 1 1
+ X30 0 2
+ X10 4
+ X16 17 3
+ X13 4
+ X50 'argument is not ~w ~w: ~q' 0
+ X53 5
+ X60 3
+ X63
+ X53 6
+ X62 'proper string'
+ X58 5
+ X53 1
+ X62 a
+ X58 6
+ X25 format_error 2 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+Label 3
+ X35 0
+ X12
+ X32 1 2
+ X27
+Label 4
+ X20 2 3
+ X21
+ X30 2 2
+ X37 0
+ X55 0
+ X56 0
+ X45 1 2
+ X25 string_check 3 3
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 string_check 3
+Label 5
+ X21
+ X30 1 1
+ X30 2 2
+ X10 3
+ X24 1 0
+ X16 18 0
+ X13 3
+ X47 0 1
+ X25 name 2 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 string_check 3
+Label 6
+ X20 2 3
+ X16 23 0
+ X37 1
+ X60 0
+ X60 2
+ X27
+)
+Predicate(write_tab 0
+Label 1
+ X50 9 0
+ X26 put 1
+)
+Predicate(write_atom 1
+Label 1
+ X26 '$write_atom_1_462_0' 1
+)
+Predicate(write_char 1
+Label 1
+ X26 '$write_char_1_463_0' 1
+)
+Predicate(write_float 3
+Label 1
+ X21
+ X30 2 0
+ X30 0 1
+ X46 2 0
+ X50 6 1
+ X45 1 2
+ X25 default_count 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 '$write_float_3_464_0' 3
+)
+Predicate(write_radix 3
+Label 1
+ X21
+ X30 2 0
+ X30 0 1
+ X46 2 0
+ X50 16 1
+ X45 1 2
+ X25 default_count 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 '$write_radix_3_465_0' 3
+)
+Predicate(write_integer 3
+Label 1
+ X21
+ X30 2 0
+ X30 0 1
+ X46 2 0
+ X50 0 1
+ X45 1 2
+ X25 default_count 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 '$write_integer_3_466_0' 3
+)

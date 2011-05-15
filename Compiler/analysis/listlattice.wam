@@ -1,0 +1,6186 @@
+Predicate('$actual_param_is_inst_6_1503_0' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 1
+ X30 2 2
+ X30 3 3
+ X11 0
+ X25 possibly_variable_type 1 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 arg_is_inst 3
+Label 3
+ X32 3 2
+ X27
+)
+Predicate('$abstract_list_9_1715_0' 10
+ X1 4 1 2 2 3
+Label 1
+ X2 1 (
+        nil 4
+) 2
+Label 2
+ X4 7
+ X6 8
+Label 3
+ X3 2 (
+        free 3 5
+        free_nil 3 6
+) 2
+Label 4
+ X21
+ X30 0 9
+ X10 10
+ X34 nil 0
+ X13 10
+ X46 5 0
+ X46 6 1
+ X46 7 2
+ X46 8 3
+ X45 1 4
+ X45 2 5
+ X25 list_has_head_type 6 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X50 n 3
+ X50 none 4
+ X23
+ X26 list_type 5
+Label 5
+ X20 4 10
+ X21
+ X30 0 9
+ X10 10
+ X36 free 3 0
+ X56 3
+ X56 4
+ X56 5
+ X13 10
+ X46 5 0
+ X46 6 1
+ X46 7 2
+ X46 8 3
+ X45 1 4
+ X45 2 5
+ X25 list_has_head_type 6 6
+ X19 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X50 f 3
+ X52 b 3 4
+ X59 3
+ X59 4
+ X59 5
+ X23
+ X26 list_type 5
+Label 6
+ X20 4 10
+ X21
+ X30 0 9
+ X10 10
+ X36 free_nil 3 0
+ X56 3
+ X56 4
+ X56 5
+ X13 10
+ X46 5 0
+ X46 6 1
+ X46 7 2
+ X46 8 3
+ X45 1 4
+ X45 2 5
+ X25 list_has_head_type 6 6
+ X19 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X50 fn 3
+ X52 b 3 4
+ X59 3
+ X59 4
+ X59 5
+ X23
+ X26 list_type 5
+Label 7
+ X20 2 10
+ X21
+ X30 1 0
+ X30 8 5
+ X30 9 6
+ X30 10 7
+ X30 11 8
+ X30 2 9
+ X11 7
+ X47 1 0
+ X42 1
+ X42 2
+ X45 5 3
+ X45 6 4
+ X24 3 0 3 4
+ X25 list_type 5 12
+ X14 7
+ X49 8 0
+ X49 9 1
+ X49 10 2
+ X49 11 3
+ X47 3 4
+ X47 4 5
+ X25 list_has_head_type 6 7
+ X47 0 0
+ X49 3 1
+ X49 4 2
+ X49 5 3
+ X49 6 4
+ X25 list_type 5 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 lub_types 3
+Label 8
+ X20 7 10
+ X29 10 1
+ X29 11 2
+ X29 12 4
+ X52 '$VAR' 1 13
+ X60 3
+ X52 f 1 0
+ X58 13
+ X46 5 1
+ X46 6 2
+ X46 7 3
+ X46 8 4
+ X46 12 5
+ X46 10 6
+ X46 11 7
+ X46 9 8
+ X26 abstract_list 9
+)
+Predicate('$abstract_list_9_1716_0' 4
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X10 4
+ X16 5 2 1
+ X13 4
+ X46 3 0
+ X26 make_nonlinear 1
+Label 3
+ X21
+ X30 1 3
+ X11 0
+ X25 '$abstract_list_9_1716_1' 1 2
+ X14 0
+ X49 1 0
+ X23
+ X26 make_indlist 1
+Label 4
+ X27
+)
+Predicate('$abstract_list_9_1716_1' 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X26 nonlinear 1
+Label 3
+ X26 indlist 1
+)
+Predicate('$abstract_list_9_1717_0' 8
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X21
+ X30 1 7
+ X11 0
+ X25 '$abstract_list_9_1717_1' 1 2
+ X14 0
+ X49 1 0
+ X34 gnd 0
+ X23
+ X27
+Label 3
+ X21
+ X30 1 1
+ X30 3 3
+ X30 0 4
+ X30 5 5
+ X30 2 6
+ X30 4 7
+ X10 8
+ X47 0 9
+ X47 1 10
+ X16 5 9 10
+ X13 8
+ X47 5 0
+ X25 make_nonlinear 1 6
+ X19 4
+ X49 1 0
+ X33 0 0
+ X49 3 1
+ X33 2 1
+ X49 4 2
+ X36 nv 3 2
+ X61 0
+ X61 5
+ X61 2
+ X23
+ X27
+Label 4
+ X20 4 8
+ X32 1 4
+ X32 3 6
+ X32 2 5
+ X36 nv 3 7
+ X60 4
+ X60 5
+ X60 6
+ X27
+)
+Predicate('$abstract_list_9_1717_1' 1
+ X1 1 2 fail fail fail
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X2 3 (
+        nil 3
+        gnd 4
+        list_g_n 5
+) fail
+Label 3
+ X34 nil 0
+ X27
+Label 4
+ X34 gnd 0
+ X27
+Label 5
+ X34 list_g_n 0
+ X27
+)
+Predicate('$abstract_struct_9_1721_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 4
+ X11 0
+ X25 '$abstract_struct_9_1721_1' 1 2
+ X14 0
+ X49 1 0
+ X34 gnd 0
+ X23
+ X27
+Label 3
+ X20 6 5
+ X29 5 1
+ X29 6 2
+ X46 4 0
+ X50 nv 1
+ X52 a 3 2
+ X60 5
+ X60 6
+ X60 3
+ X26 simple_type 3
+)
+Predicate('$abstract_struct_9_1721_1' 1
+ X1 1 2 fail fail fail
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X2 3 (
+        gnd 3
+        nil 4
+        list_g_n 5
+) fail
+Label 3
+ X34 gnd 0
+ X27
+Label 4
+ X34 nil 0
+ X27
+Label 5
+ X34 list_g_n 0
+ X27
+)
+Predicate('$abstract_struct_9_1722_0' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 4
+ X16 5 2 0
+ X13 4
+ X46 3 0
+ X26 make_nonlinear 1
+Label 3
+ X32 1 3
+ X27
+)
+Predicate('$absunify_4_2201_1' 4
+ X1 5 4 2 1 3
+Label 1
+ X4 6
+ X5 7
+ X6 8
+Label 2
+ X4 4
+ X5 6
+ X5 7
+ X6 8
+Label 3
+ X3 1 (
+        '$VAR' 1 5
+) 1
+Label 4
+ X20 1 4
+ X29 4 0
+ X10 5
+ X16 19 4
+ X13 5
+ X46 1 0
+ X46 4 1
+ X26 '$absunify_4_2201_3' 4
+Label 5
+ X20 2 4
+ X21
+ X30 0 1
+ X30 2 2
+ X30 4 3
+ X10 4
+ X36 '$VAR' 1 0
+ X56 1
+ X13 4
+ X47 1 0
+ X47 2 1
+ X45 3 2
+ X25 lookup_env 3 5
+ X49 0 0
+ X47 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 '$absunify_4_2201_2' 5
+Label 6
+ X20 2 4
+ X21
+ X30 0 0
+ X30 7 2
+ X30 4 3
+ X10 4
+ X36 '$VAR' 1 1
+ X56 5
+ X13 4
+ X47 5 0
+ X47 7 1
+ X45 9 2
+ X24 5 1 2 3 6 8
+ X25 lookup_env 3 10
+ X47 0 0
+ X47 7 1
+ X47 8 2
+ X25 abstract 3 10
+ X47 8 0
+ X47 9 1
+ X47 2 2
+ X25 instantiated_by 3 10
+ X47 9 0
+ X47 8 1
+ X47 6 2
+ X25 instantiated_by 3 10
+ X49 8 0
+ X49 9 1
+ X47 1 2
+ X25 absu 3 8
+ X47 5 0
+ X47 1 1
+ X49 6 2
+ X49 7 3
+ X47 3 4
+ X25 update_env 5 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 update_i_state_term_1 5
+Label 7
+ X10 4
+ X16 19 1
+ X13 4
+ X46 2 0
+ X46 3 1
+ X26 failed_state 2
+Label 8
+ X20 7 4
+ X29 8 0
+ X29 9 2
+ X29 10 3
+ X44 4 11
+ X44 5 12
+ X16 1 8 11 12
+ X44 0 13
+ X44 2 14
+ X16 1 1 13 14
+ X46 8 3
+ X46 9 6
+ X46 10 7
+ X26 '$absunify_4_2201_0' 8
+)
+Predicate('$absunify_4_2201_0' 8
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 4 8
+ X10 8
+ X32 0 4
+ X16 11 5 2
+ X13 8
+ X53 9
+ X54 1
+ X55 0
+ X16 3 3 9
+ X53 10
+ X54 1
+ X55 11
+ X16 3 1 10
+ X46 11 1
+ X46 6 2
+ X46 7 3
+ X26 absunify_list 4
+Label 3
+ X46 6 0
+ X46 7 1
+ X26 failed_state 2
+)
+Predicate('$absu_t_3_2210_3' 3
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X6 5
+Label 2
+ X21
+ X30 2 0
+ X30 1 1
+ X30 5 2
+ X11 0
+ X47 2 0
+ X45 3 1
+ X45 4 2
+ X25 simple_free_type 3 6
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X23
+ X26 '$absu_t_3_2210_13' 5
+Label 3
+ X21
+ X30 2 0
+ X30 1 1
+ X30 5 2
+ X11 0
+ X47 2 0
+ X45 3 1
+ X45 4 2
+ X25 simple_bound_type 3 6
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X23
+ X26 '$absu_t_3_2210_11' 5
+Label 4
+ X21
+ X30 2 0
+ X30 1 1
+ X30 7 2
+ X11 0
+ X47 2 0
+ X45 3 1
+ X45 4 2
+ X45 5 3
+ X45 6 4
+ X25 list_type 5 8
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X49 6 5
+ X49 7 6
+ X23
+ X26 '$absu_t_3_2210_4' 7
+Label 5
+ X20 1 3
+ X21
+ X30 2 0
+ X30 1 1
+ X30 4 2
+ X11 0
+ X47 2 0
+ X45 3 1
+ X42 2
+ X25 system_type 3 5
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X23
+ X26 '$absu_t_3_2210_0' 4
+)
+Predicate('$absu_t_3_2210_0' 4
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X21
+ X30 3 1
+ X30 4 2
+ X30 5 3
+ X11 0
+ X45 1 1
+ X45 2 2
+ X25 simple_free_type 3 6
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X23
+ X26 '$absu_t_3_2210_2' 5
+Label 3
+ X20 1 4
+ X21
+ X30 2 1
+ X30 3 2
+ X30 4 3
+ X11 0
+ X45 1 1
+ X42 2
+ X25 system_type 3 5
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X23
+ X26 '$absu_t_3_2210_1' 4
+Label 4
+ X20 5 4
+ X29 4 0
+ X50 'system type ~q unified with ~q' 0
+ X53 5
+ X60 4
+ X63
+ X53 1
+ X60 2
+ X58 5
+ X26 sys_error 2
+)
+Predicate('$absu_list_n_other_3_2273_0' 3
+ X1 2 1 fail fail fail
+Label 1
+ X2 7 (
+        bot 2
+        nil 3
+        gnd 4
+        nv 5
+        any 6
+        free 7
+        free_nil 8
+) fail
+Label 2
+ X10 3
+ X34 bot 0
+ X13 3
+ X34 bot 2
+ X27
+Label 3
+ X10 3
+ X34 nil 0
+ X13 3
+ X34 nil 2
+ X27
+Label 4
+ X10 3
+ X34 gnd 0
+ X13 3
+ X34 list_g_n 2
+ X27
+Label 5
+ X10 3
+ X34 nv 0
+ X13 3
+ X46 1 0
+ X46 2 1
+ X26 '$absu_list_n_other_3_2273_2' 2
+Label 6
+ X10 3
+ X34 any 0
+ X13 3
+ X46 1 0
+ X46 2 1
+ X26 '$absu_list_n_other_3_2273_1' 2
+Label 7
+ X10 3
+ X34 free 0
+ X13 3
+ X46 2 0
+ X50 n 2
+ X26 list_types 3
+Label 8
+ X10 3
+ X34 free_nil 0
+ X13 3
+ X46 2 0
+ X50 n 2
+ X26 list_types 3
+)
+Predicate('$absu_list_fn_other_4_2274_0' 4
+ X1 2 1 4 4 4
+Label 1
+ X2 2 (
+        free 2
+        free_nil 3
+) 4
+Label 2
+ X10 4
+ X34 free 0
+ X13 4
+ X46 3 0
+ X26 list_types 3
+Label 3
+ X10 4
+ X34 free_nil 0
+ X13 4
+ X46 3 0
+ X50 free_nil 2
+ X26 list_types 3
+Label 4
+ X32 0 3
+ X27
+)
+Predicate('$absu_hd_n_3_2301_0' 2
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        g 2
+) 3
+Label 2
+ X10 2
+ X34 g 0
+ X13 2
+ X34 g 1
+ X27
+Label 3
+ X34 nv 1
+ X27
+)
+Predicate('$absu_hd_fn_3_2305_0' 2
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        f 2
+) 3
+Label 2
+ X10 2
+ X34 f 0
+ X13 2
+ X34 a 1
+ X27
+Label 3
+ X32 0 1
+ X27
+)
+Predicate('$absu_hd_fn_3_2306_0' 2
+ X1 2 1 4 4 4
+Label 1
+ X2 2 (
+        g 2
+        nv 3
+) 4
+Label 2
+ X10 2
+ X34 g 0
+ X13 2
+ X34 nv 1
+ X27
+Label 3
+ X10 2
+ X34 nv 0
+ X13 2
+ X34 nv 1
+ X27
+Label 4
+ X34 a 1
+ X27
+)
+Predicate('$absu_hd_fn_3_2308_0' 2
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        f 2
+) 3
+Label 2
+ X10 2
+ X34 f 0
+ X13 2
+ X34 f 1
+ X27
+Label 3
+ X34 a 1
+ X27
+)
+Predicate('$absu_hd_n_3_2302_0' 2
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        f 2
+) 3
+Label 2
+ X10 2
+ X34 f 0
+ X13 2
+ X34 a 1
+ X27
+Label 3
+ X32 0 1
+ X27
+)
+Predicate('$absu_list_n_other_3_2273_1' 2
+ X1 2 1 4 4 4
+Label 1
+ X2 2 (
+        g 2
+        nv 3
+) 4
+Label 2
+ X10 2
+ X34 g 0
+ X13 2
+ X34 list_g_n 1
+ X27
+Label 3
+ X10 2
+ X34 nv 0
+ X13 2
+ X34 list_nv_n 1
+ X27
+Label 4
+ X34 list_a_n 1
+ X27
+)
+Predicate('$absu_list_n_other_3_2273_2' 2
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        g 2
+) 3
+Label 2
+ X10 2
+ X34 g 0
+ X13 2
+ X34 list_g_n 1
+ X27
+Label 3
+ X34 list_nv_n 1
+ X27
+)
+Predicate('$absu_lists_t_6_2276_0' 4
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        n 2
+) 3
+Label 2
+ X10 4
+ X34 n 0
+ X13 4
+ X46 1 0
+ X46 2 1
+ X46 3 2
+ X26 absu_hd_n 3
+Label 3
+ X46 1 0
+ X46 2 1
+ X46 3 2
+ X26 absu_hd_fn 3
+)
+Predicate('$absu_lists_t_6_2276_1' 3
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 1 3
+ X21
+ X29 3 0
+ X30 1 2
+ X11 0
+ X46 1 0
+ X46 3 1
+ X25 '$absu_lists_t_6_2276_3' 2 2
+ X14 0
+ X49 1 0
+ X34 n 0
+ X23
+ X27
+Label 3
+ X20 1 3
+ X21
+ X29 3 0
+ X30 1 2
+ X11 0
+ X46 1 0
+ X46 3 1
+ X25 '$absu_lists_t_6_2276_2' 2 2
+ X14 0
+ X49 1 0
+ X34 fn 0
+ X23
+ X27
+Label 4
+ X34 f 2
+ X27
+)
+Predicate('$absu_lists_t_6_2276_2' 2
+ X1 1 2 4 4 4
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 1 (
+        fn 1
+) 4
+Label 3
+ X34 fn 0
+ X27
+Label 4
+ X34 fn 1
+ X27
+)
+Predicate('$absu_lists_t_6_2276_3' 2
+ X1 1 2 4 4 4
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 1 (
+        n 1
+) 4
+Label 3
+ X34 n 0
+ X27
+Label 4
+ X34 n 1
+ X27
+)
+Predicate('$absu_t_3_2210_1' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 4
+ X16 5 2 0
+ X13 4
+ X32 1 3
+ X27
+Label 3
+ X20 5 4
+ X29 4 0
+ X50 'system type ~q unified with system type ~q' 0
+ X53 5
+ X60 4
+ X63
+ X53 1
+ X60 2
+ X58 5
+ X26 sys_error 2
+)
+Predicate('$absu_t_3_2210_2' 5
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        free 2
+) 3
+Label 2
+ X10 5
+ X34 free 0
+ X13 5
+ X32 2 4
+ X46 1 0
+ X46 2 1
+ X26 bind 2
+Label 3
+ X20 5 5
+ X29 5 0
+ X50 'system type ~q unified with ~q' 0
+ X53 6
+ X60 5
+ X63
+ X53 1
+ X60 3
+ X58 6
+ X26 sys_error 2
+)
+Predicate('$absu_t_3_2210_11' 5
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 1 5
+ X21
+ X30 2 1
+ X30 1 4
+ X11 0
+ X42 1
+ X45 3 2
+ X25 simple_free_type 3 4
+ X14 0
+ X49 2 2
+ X33 1 2
+ X49 3 0
+ X47 2 1
+ X23
+ X26 bind 2
+Label 3
+ X21
+ X30 6 2
+ X30 10 3
+ X30 2 4
+ X11 9
+ X45 7 1
+ X45 8 2
+ X24 5 0 1 3 4 5
+ X25 simple_bound_type 3 11
+ X14 9
+ X49 10 0
+ X47 3 1
+ X47 4 2
+ X47 5 3
+ X25 instantiate 4 9
+ X49 8 0
+ X47 3 1
+ X47 4 2
+ X47 5 3
+ X25 instantiate 4 8
+ X19 4
+ X52 a 3 3
+ X61 3
+ X61 4
+ X61 5
+ X30 1 3
+ X49 6 0
+ X49 7 1
+ X47 0 2
+ X25 absu_other_other 3 3
+ X49 0 0
+ X47 1 1
+ X49 2 2
+ X23
+ X26 '$absu_t_3_2210_12' 3
+Label 4
+ X21
+ X30 5 1
+ X30 6 2
+ X30 7 3
+ X30 8 4
+ X11 0
+ X45 2 1
+ X45 3 2
+ X45 1 3
+ X45 4 4
+ X25 list_type 5 9
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X49 6 5
+ X49 7 6
+ X49 8 7
+ X23
+ X26 '$absu_t_3_2210_9' 8
+)
+Predicate('$absu_t_3_2210_10' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 0
+ X30 1 4
+ X11 0
+ X47 2 0
+ X25 ground_type 1 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 3
+ X20 8 5
+ X29 5 0
+ X29 6 1
+ X46 4 0
+ X46 5 1
+ X52 a 3 7
+ X60 6
+ X60 2
+ X60 3
+ X53 2
+ X58 7
+ X63
+ X26 the_type 3
+)
+Predicate('$absu_t_3_2210_12' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 0
+ X30 1 2
+ X11 0
+ X47 2 0
+ X25 ground_type 1 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 3
+ X20 2 3
+ X29 3 0
+ X29 4 1
+ X46 2 0
+ X46 3 1
+ X46 4 2
+ X26 simple_bound_type 3
+)
+Predicate('$absu_t_3_2210_13' 5
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X6 5
+Label 2
+ X20 1 5
+ X21
+ X30 2 0
+ X30 1 2
+ X30 4 3
+ X30 5 4
+ X11 0
+ X47 2 0
+ X45 3 1
+ X42 2
+ X25 system_type 3 6
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X23
+ X26 '$absu_t_3_2210_17' 5
+Label 3
+ X21
+ X30 2 0
+ X30 5 1
+ X30 1 2
+ X30 6 3
+ X30 7 4
+ X11 0
+ X47 2 0
+ X45 3 1
+ X45 4 2
+ X25 simple_free_type 3 8
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X49 6 5
+ X49 7 6
+ X23
+ X26 '$absu_t_3_2210_15' 7
+Label 4
+ X20 2 5
+ X21
+ X30 2 0
+ X30 3 3
+ X30 1 4
+ X11 0
+ X47 2 0
+ X42 1
+ X42 2
+ X25 simple_bound_type 3 4
+ X14 0
+ X49 2 2
+ X33 1 2
+ X49 3 0
+ X47 2 1
+ X23
+ X26 bind 2
+Label 5
+ X20 4 5
+ X21
+ X30 2 0
+ X30 3 3
+ X30 1 4
+ X11 0
+ X47 2 0
+ X42 1
+ X42 2
+ X42 3
+ X42 4
+ X25 list_type 5 4
+ X14 0
+ X49 2 2
+ X33 1 2
+ X49 3 0
+ X47 2 1
+ X23
+ X26 bind 2
+)
+Predicate('$absu_t_3_2210_15' 7
+ X1 2 1 fail fail fail
+Label 1
+ X2 2 (
+        free 2
+        free_nil 3
+) fail
+Label 2
+ X20 2 7
+ X29 7 0
+ X29 8 1
+ X10 9
+ X34 free 7
+ X13 9
+ X46 2 0
+ X46 7 1
+ X46 8 2
+ X46 5 4
+ X46 6 5
+ X26 '$absu_t_3_2210_16' 6
+Label 3
+ X20 2 7
+ X29 7 0
+ X29 8 1
+ X10 9
+ X34 free_nil 7
+ X13 9
+ X46 2 0
+ X46 7 1
+ X46 8 2
+ X26 '$absu_t_3_2210_14' 7
+)
+Predicate('$absu_t_3_2210_14' 7
+ X1 2 1 fail fail fail
+Label 1
+ X2 2 (
+        free 2
+        free_nil 3
+) fail
+Label 2
+ X21
+ X30 1 4
+ X30 0 6
+ X10 7
+ X34 free 0
+ X13 7
+ X46 3 0
+ X47 1 1
+ X25 bind 2 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+Label 3
+ X20 1 7
+ X21
+ X29 7 0
+ X30 1 2
+ X30 0 6
+ X10 8
+ X34 free_nil 7
+ X13 8
+ X46 1 0
+ X46 7 1
+ X46 5 2
+ X25 join_free_types 4 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+)
+Predicate('$absu_t_3_2210_16' 6
+ X1 2 1 fail fail fail
+Label 1
+ X2 2 (
+        free_nil 2
+        free 3
+) fail
+Label 2
+ X21
+ X30 1 2
+ X30 0 5
+ X10 6
+ X34 free_nil 0
+ X13 6
+ X46 4 0
+ X47 1 1
+ X25 bind 2 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+Label 3
+ X20 1 6
+ X21
+ X29 6 0
+ X30 1 2
+ X30 0 5
+ X10 7
+ X34 free 6
+ X13 7
+ X46 1 0
+ X46 6 1
+ X46 4 2
+ X25 join_free_types 4 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+)
+Predicate('$absu_t_3_2210_17' 5
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        free 2
+) 3
+Label 2
+ X10 5
+ X34 free 0
+ X13 5
+ X32 1 4
+ X46 3 0
+ X26 bind 2
+Label 3
+ X20 5 5
+ X29 5 0
+ X50 'system type ~q unified with ~q' 0
+ X53 6
+ X60 5
+ X63
+ X53 1
+ X60 2
+ X58 6
+ X26 sys_error 2
+)
+Predicate('$absu_t_3_2210_4' 7
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 1 7
+ X21
+ X30 2 1
+ X30 1 6
+ X11 0
+ X42 1
+ X45 3 2
+ X25 simple_free_type 3 4
+ X14 0
+ X49 2 2
+ X33 1 2
+ X49 3 0
+ X47 2 1
+ X23
+ X26 bind 2
+Label 3
+ X21
+ X30 2 0
+ X30 5 2
+ X30 6 3
+ X30 1 4
+ X30 7 5
+ X30 8 6
+ X11 0
+ X47 2 0
+ X45 3 1
+ X45 4 2
+ X25 simple_bound_type 3 9
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X49 6 5
+ X49 7 6
+ X49 8 7
+ X23
+ X26 '$absu_t_3_2210_6' 8
+Label 4
+ X21
+ X30 13 2
+ X30 14 3
+ X30 16 4
+ X30 19 5
+ X30 0 6
+ X11 20
+ X45 17 1
+ X45 18 2
+ X45 12 3
+ X45 15 4
+ X24 11 1 2 3 4 5 6 7 8 9 10 11
+ X25 list_type 5 21
+ X14 20
+ X47 13 0
+ X47 17 1
+ X47 16 2
+ X47 12 3
+ X47 10 4
+ X47 11 5
+ X25 absu_lists_t 6 20
+ X47 17 0
+ X47 14 1
+ X47 4 2
+ X47 5 3
+ X47 6 4
+ X25 maybe_instantiate 5 20
+ X47 13 0
+ X47 18 1
+ X47 4 2
+ X47 5 3
+ X47 6 4
+ X25 maybe_instantiate 5 20
+ X49 16 0
+ X49 17 1
+ X49 18 2
+ X47 11 3
+ X49 19 4
+ X47 7 5
+ X47 8 6
+ X47 9 7
+ X25 maybe_bind 8 16
+ X49 12 0
+ X49 13 1
+ X49 14 2
+ X47 11 3
+ X49 15 4
+ X47 7 5
+ X47 8 6
+ X47 9 7
+ X25 maybe_bind 8 12
+ X19 8
+ X52 a 3 3
+ X61 4
+ X61 5
+ X61 6
+ X30 2 3
+ X52 b 3 4
+ X61 7
+ X61 8
+ X61 9
+ X30 3 4
+ X47 1 0
+ X49 10 1
+ X49 11 2
+ X25 list_types 3 4
+ X19 4
+ X49 0 0
+ X49 1 1
+ X53 3
+ X59 3
+ X63
+ X53 2
+ X59 2
+ X58 3
+ X23
+ X26 the_type 3
+)
+Predicate('$absu_t_3_2210_6' 8
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        n 2
+) 3
+Label 2
+ X21
+ X30 6 3
+ X30 5 5
+ X30 4 7
+ X10 8
+ X34 n 0
+ X13 8
+ X46 4 0
+ X46 2 1
+ X45 0 2
+ X24 3 1 2 3
+ X25 absu_list_n_other 3 7
+ X49 6 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X25 instantiate 4 6
+ X49 5 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X25 instantiate 4 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 '$absu_t_3_2210_7' 5
+Label 3
+ X20 1 8
+ X21
+ X29 8 0
+ X30 7 1
+ X30 8 3
+ X30 9 5
+ X30 5 6
+ X30 4 7
+ X46 4 0
+ X46 8 1
+ X45 0 3
+ X24 4 1 2 3 6
+ X25 absu_list_fn_other 4 10
+ X49 9 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X25 instantiate 4 9
+ X49 8 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X25 instantiate 4 8
+ X19 1
+ X49 7 0
+ X42 1
+ X47 6 2
+ X25 norm 3 7
+ X49 5 0
+ X49 6 1
+ X25 bind 2 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 '$absu_t_3_2210_5' 5
+)
+Predicate('$absu_t_3_2210_5' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 0
+ X30 1 4
+ X11 0
+ X47 2 0
+ X25 ground_type 1 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 3
+ X20 8 5
+ X29 5 0
+ X29 6 1
+ X46 4 0
+ X46 5 1
+ X52 a 3 7
+ X60 6
+ X60 2
+ X60 3
+ X53 2
+ X58 7
+ X63
+ X26 the_type 3
+)
+Predicate('$absu_t_3_2210_7' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 0
+ X30 1 4
+ X11 0
+ X47 2 0
+ X25 ground_type 1 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 3
+ X20 8 5
+ X29 5 0
+ X29 6 1
+ X46 4 0
+ X46 5 1
+ X52 a 3 7
+ X60 6
+ X60 2
+ X60 3
+ X53 2
+ X58 7
+ X63
+ X26 the_type 3
+)
+Predicate('$absu_t_3_2210_9' 8
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        n 2
+) 3
+Label 2
+ X21
+ X30 5 2
+ X30 6 6
+ X30 4 7
+ X10 8
+ X34 n 0
+ X13 8
+ X46 1 0
+ X46 5 1
+ X45 0 2
+ X24 3 1 2 3
+ X25 absu_list_n_other 3 7
+ X49 6 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X25 instantiate 4 6
+ X49 5 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X25 instantiate 4 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 '$absu_t_3_2210_10' 5
+Label 3
+ X20 1 8
+ X21
+ X29 8 0
+ X30 9 2
+ X30 5 3
+ X30 7 4
+ X30 8 6
+ X30 4 7
+ X46 1 0
+ X46 8 1
+ X46 5 2
+ X45 0 3
+ X24 4 1 2 3 6
+ X25 absu_list_fn_other 4 10
+ X49 9 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X25 instantiate 4 9
+ X49 8 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X25 instantiate 4 8
+ X19 1
+ X49 7 0
+ X42 1
+ X47 6 2
+ X25 norm 3 7
+ X49 5 0
+ X49 6 1
+ X25 bind 2 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 '$absu_t_3_2210_8' 5
+)
+Predicate('$absu_t_3_2210_8' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 0
+ X30 1 4
+ X11 0
+ X47 2 0
+ X25 ground_type 1 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 3
+ X20 8 5
+ X29 5 0
+ X29 6 1
+ X46 4 0
+ X46 5 1
+ X52 a 3 7
+ X60 6
+ X60 2
+ X60 3
+ X53 2
+ X58 7
+ X63
+ X26 the_type 3
+)
+Predicate('$absunify_4_2201_2' 5
+ X1 2 3 3 3 1
+Label 1
+ X3 1 (
+        '$VAR' 1 2
+) 3
+Label 2
+ X20 2 5
+ X21
+ X30 5 1
+ X30 7 2
+ X30 8 3
+ X30 4 4
+ X10 5
+ X36 '$VAR' 1 0
+ X56 0
+ X13 5
+ X47 0 0
+ X47 7 1
+ X45 9 2
+ X24 4 1 2 3 6
+ X25 lookup_env 3 10
+ X47 8 0
+ X47 9 1
+ X47 6 2
+ X25 instantiated_by 3 10
+ X47 9 0
+ X47 8 1
+ X47 2 2
+ X25 instantiated_by 3 10
+ X49 8 0
+ X49 9 1
+ X47 1 2
+ X25 absu 3 8
+ X49 5 0
+ X47 1 1
+ X49 6 2
+ X49 7 3
+ X47 3 4
+ X25 update_env 5 5
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 update_env 5
+Label 3
+ X21
+ X30 0 0
+ X30 5 1
+ X30 7 2
+ X30 8 3
+ X30 4 4
+ X47 0 0
+ X47 7 1
+ X45 9 2
+ X24 4 1 2 3 6
+ X25 abstract 3 10
+ X47 8 0
+ X47 9 1
+ X47 6 2
+ X25 instantiated_by 3 10
+ X47 9 0
+ X47 8 1
+ X47 2 2
+ X25 instantiated_by 3 10
+ X49 8 0
+ X49 9 1
+ X47 1 2
+ X25 absu 3 8
+ X49 5 0
+ X47 1 1
+ X49 6 2
+ X49 7 3
+ X47 3 4
+ X25 update_env 5 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 update_i_state_term_1 5
+)
+Predicate('$absunify_4_2201_3' 4
+ X1 4 3 1 5 2
+Label 1
+ X4 3
+ X6 5
+Label 2
+ X3 1 (
+        '$VAR' 1 4
+) 5
+Label 3
+ X10 4
+ X16 19 0
+ X13 4
+ X26 '$absunify_4_2201_5' 4
+Label 4
+ X20 2 4
+ X21
+ X30 0 1
+ X30 2 2
+ X30 4 3
+ X10 4
+ X36 '$VAR' 1 0
+ X56 1
+ X13 4
+ X47 4 5
+ X33 2 5
+ X47 1 0
+ X47 2 1
+ X45 3 2
+ X25 lookup_env 3 5
+ X49 0 0
+ X47 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 '$absunify_4_2201_4' 5
+Label 5
+ X46 2 0
+ X46 3 1
+ X26 failed_state 2
+)
+Predicate('$absunify_4_2201_4' 5
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        [] 2
+) 3
+Label 2
+ X21
+ X30 0 1
+ X30 3 2
+ X30 5 3
+ X30 4 4
+ X10 5
+ X35 0
+ X13 5
+ X47 5 0
+ X50 nil 1
+ X45 2 2
+ X24 1 1
+ X25 instantiated_by 3 6
+ X50 nil 0
+ X49 5 1
+ X47 1 2
+ X25 absu 3 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 update_env 5
+Label 3
+ X21
+ X30 0 1
+ X30 3 2
+ X30 5 3
+ X30 4 4
+ X47 5 0
+ X50 gnd 1
+ X45 2 2
+ X24 1 1
+ X25 instantiated_by 3 6
+ X50 gnd 0
+ X49 5 1
+ X47 1 2
+ X25 absu 3 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 update_env 5
+)
+Predicate('$absunify_4_2201_5' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 4
+ X16 5 1 0
+ X13 4
+ X32 3 2
+ X27
+Label 3
+ X46 2 0
+ X46 3 1
+ X26 failed_state 2
+)
+Predicate('$actual_param_is_inst_6_1504_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 4 1
+ X30 1 2
+ X30 2 3
+ X30 3 4
+ X11 0
+ X25 possibly_variable_type 1 5
+ X49 4 0
+ X25 possibly_bound_type 1 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 arg_is_inst 3
+Label 3
+ X32 4 3
+ X27
+)
+Predicate('$actual_param_is_inst_6_1505_0' 6
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X6 5
+Label 2
+ X21
+ X30 1 4
+ X30 2 5
+ X11 0
+ X25 ground_type 1 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 3
+ X21
+ X30 1 2
+ X30 2 4
+ X30 3 5
+ X11 0
+ X25 possibly_variable_type 1 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 arg_is_inst 3
+Label 4
+ X20 1 6
+ X21
+ X30 1 1
+ X30 3 2
+ X30 2 3
+ X30 4 4
+ X30 5 5
+ X11 0
+ X50 nv 1
+ X42 2
+ X25 simple_bound_type 3 6
+ X19 2
+ X14 0
+ X49 1 5
+ X53 6
+ X54 1
+ X55 1
+ X16 3 5 6
+ X49 2 0
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X23
+ X26 '$actual_param_is_inst_6_1505_1' 5
+Label 5
+ X32 5 4
+ X27
+)
+Predicate('$actual_param_is_inst_6_1505_1' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 5
+ X21
+ X29 5 0
+ X30 1 3
+ X30 2 4
+ X11 0
+ X46 1 0
+ X46 5 1
+ X25 subterms_are_free 2 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 3
+ X46 2 0
+ X46 3 1
+ X46 4 2
+ X26 arg_is_inst 3
+)
+Predicate('$analyse_arg_6_1680_0' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 1
+ X11 0
+ X25 ground_type 1 2
+ X19 1
+ X14 0
+ X49 1 0
+ X50 gnd 1
+ X42 2
+ X23
+ X26 absu 3
+Label 3
+ X20 9 2
+ X21
+ X30 0 1
+ X52 nv 3 1
+ X55 3
+ X55 4
+ X55 5
+ X52 any 3 6
+ X58 3
+ X58 4
+ X58 5
+ X30 1 6
+ X42 2
+ X25 absu 3 2
+ X19 1
+ X49 0 0
+ X47 1 1
+ X42 2
+ X23
+ X26 absu 3
+)
+Predicate('$aliasing_vars_of_4_1694_0' 3
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 1 3
+ X21
+ X30 2 1
+ X11 0
+ X42 1
+ X45 1 2
+ X25 simple_bound_type 3 3
+ X14 0
+ X49 1 0
+ X49 2 1
+ X23
+ X26 al_var 2
+Label 3
+ X20 1 3
+ X21
+ X30 2 1
+ X11 0
+ X42 1
+ X45 1 2
+ X25 simple_free_type 3 3
+ X14 0
+ X49 1 0
+ X49 2 1
+ X23
+ X26 al_var 2
+Label 4
+ X20 2 3
+ X21
+ X30 4 1
+ X30 1 2
+ X11 2
+ X42 1
+ X45 3 2
+ X42 3
+ X45 0 4
+ X25 list_type 5 5
+ X14 2
+ X49 3 0
+ X49 4 1
+ X25 al_var 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 al_var 2
+)
+Predicate('$analyse_meta_primitive_15_1653_1' 18
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 16 0
+ X30 2 1
+ X30 3 2
+ X30 4 4
+ X30 5 5
+ X30 1 6
+ X30 6 7
+ X30 7 8
+ X30 8 9
+ X30 9 10
+ X30 10 11
+ X30 11 14
+ X30 12 15
+ X30 13 16
+ X30 14 17
+ X11 15
+ X47 16 0
+ X24 1 0
+ X25 is_var 1 17
+ X19 1
+ X14 15
+ X49 16 0
+ X47 1 1
+ X42 2
+ X47 0 3
+ X25 abstract 4 15
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X49 10 10
+ X49 11 11
+ X49 12 12
+ X49 13 13
+ X49 14 14
+ X23
+ X26 '$analyse_meta_primitive_15_1653_2' 15
+Label 3
+ X21
+ X30 1 0
+ X30 0 3
+ X30 15 4
+ X30 10 6
+ X30 11 7
+ X30 17 8
+ X30 4 9
+ X30 18 10
+ X30 6 11
+ X30 19 12
+ X30 7 13
+ X30 20 14
+ X30 21 15
+ X30 22 16
+ X30 9 17
+ X47 21 18
+ X33 20 18
+ X45 16 0
+ X24 8 2 3 5 8 12 13 14 23
+ X25 empty_dict 1 24
+ X47 10 0
+ X47 1 1
+ X47 23 2
+ X25 apply_i_state 3 24
+ X19 1
+ X49 23 0
+ X47 13 1
+ X47 15 2
+ X47 16 3
+ X42 4
+ X25 worst_callpat 5 23
+ X47 0 0
+ X47 1 1
+ X47 13 2
+ X47 14 3
+ X49 17 4
+ X47 3 5
+ X49 18 6
+ X47 5 7
+ X47 12 8
+ X49 19 9
+ X47 7 10
+ X49 20 11
+ X49 21 12
+ X49 22 13
+ X47 8 14
+ X25 callpat_computed 15 17
+ X49 12 0
+ X49 13 1
+ X49 14 2
+ X49 15 3
+ X49 16 4
+ X47 2 5
+ X25 '$analyse_meta_primitive_15_1653_0' 6 12
+ X47 1 0
+ X47 2 1
+ X49 10 2
+ X49 11 3
+ X25 update_i_state 4 10
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X23
+ X26 update_succpat 10
+)
+Predicate('$analyse_meta_primitive_15_1653_0' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 6
+ X10 6
+ X50 no 7
+ X16 5 0 7
+ X13 6
+ X46 1 0
+ X46 5 1
+ X46 3 2
+ X46 4 3
+ X42 4
+ X26 worst_succpat 5
+Label 3
+ X10 6
+ X50 yes 7
+ X16 5 0 7
+ X13 6
+ X32 2 5
+ X27
+)
+Predicate('$analyse_meta_call_16_1659_0' 16
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 14 0
+ X30 1 1
+ X30 2 2
+ X30 3 3
+ X30 4 4
+ X30 5 5
+ X30 6 6
+ X30 7 9
+ X30 8 10
+ X30 9 11
+ X30 10 12
+ X30 11 13
+ X30 12 15
+ X11 13
+ X47 14 0
+ X24 1 0
+ X25 is_var 1 15
+ X19 1
+ X14 13
+ X49 14 0
+ X47 1 1
+ X42 2
+ X47 0 3
+ X25 abstract 4 13
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X49 10 10
+ X49 11 11
+ X49 12 12
+ X23
+ X26 '$analyse_meta_call_16_1659_1' 13
+Label 3
+ X20 15 16
+ X29 16 1
+ X29 17 2
+ X29 18 3
+ X29 19 4
+ X29 20 5
+ X29 21 6
+ X29 22 7
+ X29 23 8
+ X29 24 9
+ X29 25 10
+ X29 26 11
+ X29 27 12
+ X29 28 13
+ X29 29 14
+ X42 1
+ X46 16 2
+ X46 17 3
+ X46 18 4
+ X46 19 5
+ X46 20 6
+ X46 21 7
+ X46 22 8
+ X46 23 9
+ X46 24 10
+ X46 25 11
+ X46 26 12
+ X46 27 13
+ X46 28 14
+ X46 29 15
+ X26 analyse_goal 16
+)
+Predicate('$analyse_meta_call_16_1659_1' 13
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 13
+ X21
+ X30 11 0
+ X30 0 1
+ X30 1 2
+ X30 2 3
+ X30 3 4
+ X30 4 5
+ X30 5 6
+ X30 6 7
+ X30 7 8
+ X30 8 9
+ X30 9 10
+ X11 10
+ X47 11 0
+ X42 1
+ X42 2
+ X25 simple_bound_type 3 12
+ X19 5
+ X14 10
+ X49 11 0
+ X52 any 3 1
+ X54 3
+ X42 2
+ X25 absu 3 10
+ X49 1 0
+ X33 0 0
+ X49 3 1
+ X33 2 1
+ X49 5 2
+ X33 4 2
+ X49 7 3
+ X33 6 3
+ X49 9 4
+ X33 8 4
+ X23
+ X27
+Label 3
+ X20 2 13
+ X21
+ X30 8 1
+ X30 9 2
+ X30 0 3
+ X30 1 4
+ X30 2 5
+ X30 3 6
+ X30 4 7
+ X30 5 8
+ X30 6 9
+ X30 7 10
+ X30 10 11
+ X50 'call to ~q with nonvalid goal will generate a runtime error' 0
+ X53 1
+ X60 12
+ X63
+ X25 warning 2 11
+ X49 10 0
+ X25 show_ancestors 1 10
+ X49 8 0
+ X49 9 1
+ X25 failed_state 2 8
+ X49 1 0
+ X33 0 0
+ X49 3 1
+ X33 2 1
+ X49 5 2
+ X33 4 2
+ X49 7 3
+ X33 6 3
+ X23
+ X27
+)
+Predicate('$analyse_meta_primitive_15_1653_2' 15
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 15
+ X21
+ X30 10 0
+ X30 0 1
+ X30 11 2
+ X30 13 3
+ X30 12 5
+ X30 1 6
+ X30 2 7
+ X30 3 8
+ X30 4 9
+ X30 5 10
+ X30 6 11
+ X30 7 12
+ X30 8 13
+ X30 9 14
+ X11 14
+ X47 10 0
+ X42 1
+ X42 2
+ X25 simple_bound_type 3 15
+ X14 14
+ X47 13 0
+ X25 make_freeze 1 14
+ X19 5
+ X49 10 0
+ X52 any 3 1
+ X61 11
+ X61 12
+ X61 13
+ X42 2
+ X25 absu 3 10
+ X49 1 0
+ X33 0 0
+ X49 3 1
+ X33 2 1
+ X49 5 2
+ X33 4 2
+ X49 7 3
+ X33 6 3
+ X49 9 4
+ X33 8 4
+ X23
+ X27
+Label 3
+ X21
+ X30 8 1
+ X30 10 4
+ X30 9 6
+ X30 0 7
+ X30 1 8
+ X30 2 9
+ X30 3 10
+ X30 4 11
+ X30 5 12
+ X30 6 13
+ X30 7 14
+ X50 'call to freeze/2 with nonvalid goal will generate a runtime error' 0
+ X25 warning 1 11
+ X49 10 0
+ X25 show_ancestors 1 10
+ X49 8 0
+ X49 9 1
+ X25 failed_state 2 8
+ X49 1 0
+ X33 0 0
+ X49 3 1
+ X33 2 1
+ X49 5 2
+ X33 4 2
+ X49 7 3
+ X33 6 3
+ X23
+ X27
+)
+Predicate('$analyse_meta_primitive_15_1653_3' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 5 6
+ X21
+ X30 3 0
+ X30 0 1
+ X30 5 2
+ X30 6 3
+ X30 1 4
+ X30 2 5
+ X11 4
+ X47 0 0
+ X42 1
+ X52 b 3 2
+ X54 1
+ X61 1
+ X61 3
+ X25 simple_free_type 3 7
+ X14 4
+ X47 3 0
+ X49 5 1
+ X49 6 2
+ X25 '$analyse_meta_primitive_15_1653_5' 3 4
+ X47 3 0
+ X25 make_freeze 1 4
+ X19 5
+ X49 0 0
+ X52 any 3 1
+ X59 1
+ X61 2
+ X59 3
+ X42 2
+ X23
+ X26 absu 3
+Label 3
+ X27
+)
+Predicate('$analyse_meta_primitive_15_1653_5' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X11 0
+ X25 local 1 1
+ X14 0
+ X23
+ X27
+Label 3
+ X21
+ X30 1 1
+ X30 0 2
+ X47 0 0
+ X50 sequential 1
+ X25 compile_mode 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 '$analyse_meta_primitive_15_1653_4' 2
+)
+Predicate('$analyse_meta_primitive_15_1653_4' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 0 1
+ X11 1
+ X50 parallel 1
+ X25 analyse_mode 2 2
+ X14 1
+ X50 'call to freeze/2 in parallel context suspends on nonlocal variable' 0
+ X25 warning 1 1
+ X49 0 0
+ X23
+ X26 show_ancestors 1
+Label 3
+ X27
+)
+Predicate('$analyse_primitive_4_1548_0' 3
+ X1 3 2 4 4 1
+Label 1
+ X3 1 (
+        '$VAR' 1 3
+) 4
+Label 2
+ X20 3 3
+ X29 3 0
+ X10 4
+ X16 18 3
+ X13 4
+ X32 2 1
+ X50 '% useless test: atom(~q)~n' 0
+ X53 1
+ X60 3
+ X63
+ X26 notify 2
+Label 3
+ X20 2 3
+ X21
+ X30 2 1
+ X30 3 2
+ X10 3
+ X36 '$VAR' 1 0
+ X56 1
+ X13 3
+ X47 3 4
+ X33 2 4
+ X47 1 0
+ X47 2 1
+ X45 0 2
+ X25 lookup_env 3 4
+ X49 0 0
+ X47 1 1
+ X50 ground 2
+ X49 2 3
+ X49 3 4
+ X23
+ X26 type_test 5
+Label 4
+ X32 2 1
+ X46 1 0
+ X50 failed 1
+ X26 set_comp_state 2
+)
+Predicate('$analyse_primitive_4_1549_0' 3
+ X1 4 3 1 5 2
+Label 1
+ X4 3
+ X6 5
+Label 2
+ X3 1 (
+        '$VAR' 1 4
+) 5
+Label 3
+ X20 3 3
+ X29 3 0
+ X10 4
+ X16 19 3
+ X13 4
+ X32 2 1
+ X50 '% useless test: atomic(~q)~n' 0
+ X53 1
+ X60 3
+ X63
+ X26 notify 2
+Label 4
+ X20 2 3
+ X21
+ X30 2 1
+ X30 3 2
+ X10 3
+ X36 '$VAR' 1 0
+ X56 1
+ X13 3
+ X47 3 4
+ X33 2 4
+ X47 1 0
+ X47 2 1
+ X45 0 2
+ X25 lookup_env 3 4
+ X49 0 0
+ X47 1 1
+ X50 ground 2
+ X49 2 3
+ X49 3 4
+ X23
+ X26 type_test 5
+Label 5
+ X32 2 1
+ X46 1 0
+ X50 failed 1
+ X26 set_comp_state 2
+)
+Predicate('$analyse_primitive_4_1550_0' 3
+ X1 4 5 1 5 2
+Label 1
+ X4 3
+ X6 5
+Label 2
+ X3 1 (
+        '$VAR' 1 4
+) 5
+Label 3
+ X20 3 3
+ X29 3 0
+ X10 4
+ X16 23 3
+ X13 4
+ X32 2 1
+ X50 '% useless test: integer(~q)~n' 0
+ X53 1
+ X60 3
+ X63
+ X26 notify 2
+Label 4
+ X20 2 3
+ X21
+ X30 2 1
+ X30 3 2
+ X10 3
+ X36 '$VAR' 1 0
+ X56 1
+ X13 3
+ X47 3 4
+ X33 2 4
+ X47 1 0
+ X47 2 1
+ X45 0 2
+ X25 lookup_env 3 4
+ X49 0 0
+ X47 1 1
+ X50 ground 2
+ X49 2 3
+ X49 3 4
+ X23
+ X26 type_test 5
+Label 5
+ X21
+ X30 0 0
+ X32 2 1
+ X46 1 0
+ X50 failed 1
+ X25 set_comp_state 2 1
+ X19 2
+ X50 '% useless test: integer(~q)~n' 0
+ X53 1
+ X61 0
+ X63
+ X23
+ X26 notify 2
+)
+Predicate('$analyse_primitive_4_1551_0' 3
+ X1 4 5 1 5 2
+Label 1
+ X4 3
+ X6 5
+Label 2
+ X3 1 (
+        '$VAR' 1 4
+) 5
+Label 3
+ X20 3 3
+ X29 3 0
+ X10 4
+ X16 22 3
+ X13 4
+ X32 2 1
+ X50 '% useless test: float(~q)~n' 0
+ X53 1
+ X60 3
+ X63
+ X26 notify 2
+Label 4
+ X20 2 3
+ X21
+ X30 2 1
+ X30 3 2
+ X10 3
+ X36 '$VAR' 1 0
+ X56 1
+ X13 3
+ X47 3 4
+ X33 2 4
+ X47 1 0
+ X47 2 1
+ X45 0 2
+ X25 lookup_env 3 4
+ X49 0 0
+ X47 1 1
+ X50 ground 2
+ X49 2 3
+ X49 3 4
+ X23
+ X26 type_test 5
+Label 5
+ X21
+ X30 0 0
+ X32 2 1
+ X46 1 0
+ X50 failed 1
+ X25 set_comp_state 2 1
+ X19 2
+ X50 '% useless test: float(~q)~n' 0
+ X53 1
+ X61 0
+ X63
+ X23
+ X26 notify 2
+)
+Predicate('$analyse_primitive_4_1552_0' 3
+ X1 2 3 3 3 1
+Label 1
+ X3 1 (
+        '$VAR' 1 2
+) 3
+Label 2
+ X20 2 3
+ X21
+ X30 2 1
+ X30 3 2
+ X10 3
+ X36 '$VAR' 1 0
+ X56 1
+ X13 3
+ X47 3 4
+ X33 2 4
+ X47 1 0
+ X47 2 1
+ X45 0 2
+ X25 lookup_env 3 4
+ X49 0 0
+ X47 1 1
+ X50 nonvar 2
+ X49 2 3
+ X49 3 4
+ X23
+ X26 type_test 5
+Label 3
+ X20 3 3
+ X29 3 0
+ X32 2 1
+ X50 '% useless test: nonvar(~q)~n' 0
+ X53 1
+ X60 3
+ X63
+ X26 notify 2
+)
+Predicate('$analyse_primitive_4_1553_0' 3
+ X1 4 5 1 5 2
+Label 1
+ X4 3
+ X6 5
+Label 2
+ X3 1 (
+        '$VAR' 1 4
+) 5
+Label 3
+ X20 3 3
+ X29 3 0
+ X10 4
+ X16 21 3
+ X13 4
+ X32 2 1
+ X50 '% useless test: number(~q)~n' 0
+ X53 1
+ X60 3
+ X63
+ X26 notify 2
+Label 4
+ X20 2 3
+ X21
+ X30 2 1
+ X30 3 2
+ X10 3
+ X36 '$VAR' 1 0
+ X56 1
+ X13 3
+ X47 1 0
+ X47 2 1
+ X45 0 2
+ X25 lookup_env 3 4
+ X49 0 0
+ X47 1 1
+ X50 ground 2
+ X49 2 3
+ X49 3 4
+ X23
+ X26 type_test 5
+Label 5
+ X21
+ X30 0 0
+ X32 2 1
+ X46 1 0
+ X50 failed 1
+ X25 set_comp_state 2 1
+ X19 2
+ X50 '% useless test: number(~q)~n' 0
+ X53 1
+ X61 0
+ X63
+ X23
+ X26 notify 2
+)
+Predicate('$analyse_primitive_4_1554_0' 3
+ X1 2 3 3 3 1
+Label 1
+ X3 1 (
+        '$VAR' 1 2
+) 3
+Label 2
+ X20 2 3
+ X21
+ X30 2 1
+ X30 3 2
+ X10 3
+ X36 '$VAR' 1 0
+ X56 1
+ X13 3
+ X47 1 0
+ X47 2 1
+ X45 0 2
+ X25 lookup_env 3 4
+ X49 0 0
+ X47 1 1
+ X50 free 2
+ X49 2 3
+ X49 3 4
+ X23
+ X26 type_test 5
+Label 3
+ X21
+ X30 0 0
+ X32 2 1
+ X46 1 0
+ X50 failed 1
+ X25 set_comp_state 2 1
+ X19 2
+ X50 '% useless test: var(~q)~n' 0
+ X53 1
+ X61 0
+ X63
+ X23
+ X26 notify 2
+)
+Predicate('$analyse_primitive_4_1612_0' 2
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 1 2
+ X21
+ X30 2 1
+ X11 0
+ X42 1
+ X45 1 2
+ X25 simple_bound_type 3 3
+ X19 2
+ X14 0
+ X49 1 0
+ X42 1
+ X49 2 2
+ X42 3
+ X23
+ X26 instantiate 4
+Label 3
+ X20 1 2
+ X21
+ X30 2 1
+ X11 0
+ X42 1
+ X45 1 2
+ X25 simple_free_type 3 3
+ X19 4
+ X14 0
+ X49 1 0
+ X52 any 3 1
+ X54 1
+ X61 2
+ X54 1
+ X23
+ X26 bind 2
+Label 4
+ X20 2 2
+ X21
+ X30 2 1
+ X11 4
+ X42 1
+ X45 5 2
+ X42 3
+ X45 0 4
+ X24 2 1 3
+ X25 list_type 5 6
+ X14 4
+ X49 5 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X25 instantiate 4 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 instantiate 4
+)
+Predicate('$analyse_primitive_4_1613_0' 2
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 1 2
+ X21
+ X30 2 1
+ X11 0
+ X42 1
+ X45 1 2
+ X25 simple_bound_type 3 3
+ X19 2
+ X14 0
+ X49 1 0
+ X42 1
+ X49 2 2
+ X42 3
+ X23
+ X26 instantiate 4
+Label 3
+ X20 1 2
+ X21
+ X30 2 1
+ X11 0
+ X42 1
+ X45 1 2
+ X25 simple_free_type 3 3
+ X19 4
+ X14 0
+ X49 1 0
+ X52 any 3 1
+ X54 1
+ X61 2
+ X54 1
+ X23
+ X26 bind 2
+Label 4
+ X20 2 2
+ X21
+ X30 2 1
+ X11 4
+ X42 1
+ X45 5 2
+ X42 3
+ X45 0 4
+ X24 2 1 3
+ X25 list_type 5 6
+ X14 4
+ X49 5 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X25 instantiate 4 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 instantiate 4
+)
+Predicate('$analyse_primitive_4_1615_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 5
+ X21
+ X30 0 1
+ X30 2 3
+ X30 1 4
+ X11 3
+ X50 free 1
+ X42 2
+ X25 simple_free_type 3 4
+ X14 3
+ X50 'call to sort/2 will generate a runtime error' 0
+ X25 warning 1 3
+ X49 2 0
+ X25 show_ancestors 1 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 failed_state 2
+Label 3
+ X20 1 5
+ X21
+ X30 2 0
+ X32 4 1
+ X46 2 0
+ X42 2
+ X45 0 3
+ X24 1 1
+ X25 abstract 4 3
+ X19 4
+ X52 list_f_n 3 1
+ X54 3
+ X49 2 0
+ X47 1 2
+ X25 absu 3 2
+ X19 1
+ X49 0 0
+ X49 1 1
+ X42 2
+ X23
+ X26 absu 3
+)
+Predicate('$analyse_primitive_4_1616_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 5
+ X21
+ X30 0 1
+ X30 2 3
+ X30 1 4
+ X11 3
+ X50 free 1
+ X42 2
+ X25 simple_free_type 3 4
+ X14 3
+ X50 'call to keysort/2 will generate a runtime error' 0
+ X25 warning 1 3
+ X49 2 0
+ X25 show_ancestors 1 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 failed_state 2
+Label 3
+ X20 1 5
+ X21
+ X30 2 0
+ X32 4 1
+ X46 2 0
+ X42 2
+ X45 0 3
+ X24 1 1
+ X25 abstract 4 3
+ X19 4
+ X52 list_nv_n 3 1
+ X54 3
+ X49 2 0
+ X47 1 2
+ X25 absu 3 2
+ X19 1
+ X49 0 0
+ X49 1 1
+ X42 2
+ X23
+ X26 absu 3
+)
+Predicate('$analyse_primitive_4_1637_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 5
+ X21
+ X30 2 1
+ X30 4 2
+ X30 3 4
+ X11 1
+ X50 gnd 1
+ X42 2
+ X24 1 0
+ X25 simple_bound_type 3 5
+ X19 1
+ X14 1
+ X49 3 4
+ X33 2 4
+ X49 4 0
+ X49 2 1
+ X42 2
+ X47 0 3
+ X25 abstract 4 1
+ X19 1
+ X49 0 0
+ X50 gnd 1
+ X42 2
+ X23
+ X26 absu 3
+Label 3
+ X21
+ X30 0 1
+ X30 2 3
+ X30 1 4
+ X50 'call to absolute_file_name/2 will generate a runtime error' 0
+ X25 warning 1 3
+ X49 2 0
+ X25 show_ancestors 1 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 failed_state 2
+)
+Predicate('$analyse_univ_4_1678_0' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 0 0
+ X30 2 1
+ X11 1
+ X47 2 0
+ X47 0 1
+ X25 '$analyse_univ_4_1678_1' 2 3
+ X19 1
+ X14 1
+ X49 2 0
+ X50 gnd 1
+ X42 2
+ X25 absu 3 1
+ X19 1
+ X49 0 0
+ X50 list_g_n 1
+ X42 2
+ X23
+ X26 absu 3
+Label 3
+ X20 9 2
+ X21
+ X30 0 0
+ X52 any 3 3
+ X55 4
+ X55 5
+ X55 6
+ X52 list_a_n 3 7
+ X58 4
+ X58 5
+ X58 6
+ X30 1 7
+ X46 1 0
+ X46 3 1
+ X42 2
+ X25 absu 3 2
+ X19 1
+ X49 0 0
+ X47 1 1
+ X42 2
+ X23
+ X26 absu 3
+)
+Predicate('$analyse_univ_4_1678_1' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X26 ground_type 1
+Label 3
+ X46 1 0
+ X26 ground_type 1
+)
+Predicate('$apply_i_state_3_1517_0' 4
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        failed 2
+) 3
+Label 2
+ X10 4
+ X34 failed 0
+ X13 4
+ X34 bot 3
+ X27
+Label 3
+ X20 2 4
+ X21
+ X30 0 0
+ X30 2 3
+ X53 6
+ X54 1
+ X55 0
+ X24 1 1
+ X16 3 2 6
+ X50 1 2
+ X50 0 3
+ X45 3 4
+ X47 1 5
+ X25 abstract_and_norm 6 4
+ X19 7
+ X44 0 3
+ X53 4
+ X61 0
+ X61 1
+ X16 3 3 4
+ X49 2 5
+ X36 shr 3 5
+ X55 1
+ X61 3
+ X55 2
+ X23
+ X26 aliasing_of_tuple 3
+)
+Predicate('$attr_of_3_1723_3' 3
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 4 3
+ X21
+ X30 1 2
+ X11 0
+ X52 b 3 2
+ X54 1
+ X56 2
+ X56 3
+ X25 simple_free_type 3 4
+ X19 4
+ X14 0
+ X49 1 0
+ X36 a 3 0
+ X59 2
+ X54 1
+ X59 3
+ X23
+ X27
+Label 3
+ X21
+ X30 2 2
+ X11 0
+ X45 1 2
+ X25 simple_bound_type 3 3
+ X14 0
+ X49 1 0
+ X49 2 1
+ X23
+ X26 '$attr_of_3_1723_4' 2
+Label 4
+ X21
+ X30 4 1
+ X30 2 2
+ X11 3
+ X45 5 1
+ X45 0 2
+ X45 6 3
+ X45 1 4
+ X25 list_type 5 7
+ X14 3
+ X49 4 0
+ X49 5 1
+ X49 6 2
+ X25 list_types 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 '$attr_of_3_1723_1' 3
+)
+Predicate('$attr_of_3_1723_1' 3
+ X1 1 1 fail fail 2
+Label 1
+ X10 3
+ X34 none 0
+ X13 3
+ X46 1 0
+ X46 2 1
+ X26 '$attr_of_3_1723_2' 2
+Label 2
+ X20 6 3
+ X29 6 0
+ X29 7 2
+ X10 8
+ X36 a 3 6
+ X55 2
+ X55 3
+ X55 4
+ X13 8
+ X46 1 0
+ X46 6 1
+ X46 7 5
+ X26 '$attr_of_3_1723_0' 6
+)
+Predicate('$attr_of_3_1723_0' 6
+ X1 1 1 fail fail 2
+Label 1
+ X10 6
+ X34 none 0
+ X13 6
+ X32 1 5
+ X27
+Label 2
+ X20 8 6
+ X10 6
+ X36 b 3 0
+ X54 1
+ X55 7
+ X55 8
+ X13 6
+ X32 7 2
+ X32 8 4
+ X36 a 3 5
+ X60 2
+ X60 3
+ X60 4
+ X27
+)
+Predicate('$attr_of_3_1723_2' 2
+ X1 1 1 fail fail 2
+Label 1
+ X20 4 2
+ X10 2
+ X34 none 0
+ X13 2
+ X36 a 3 1
+ X54 3
+ X27
+Label 2
+ X20 8 2
+ X10 2
+ X36 b 3 0
+ X54 1
+ X55 3
+ X55 4
+ X13 2
+ X36 a 3 1
+ X58 3
+ X54 1
+ X58 4
+ X27
+)
+Predicate('$attr_of_3_1723_4' 2
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        none 2
+) 3
+Label 2
+ X20 4 2
+ X10 2
+ X34 none 0
+ X13 2
+ X36 a 3 1
+ X54 3
+ X27
+Label 3
+ X32 0 1
+ X27
+)
+Predicate('$bind_2_2212_4' 4
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X6 5
+Label 2
+ X21
+ X30 6 0
+ X30 5 1
+ X30 7 2
+ X30 0 3
+ X11 2
+ X47 6 0
+ X45 3 1
+ X45 4 2
+ X24 1 1
+ X25 simple_free_type 3 8
+ X19 5
+ X14 2
+ X49 3 4
+ X34 free_nil 4
+ X49 4 5
+ X36 b 3 5
+ X54 1
+ X55 1
+ X61 1
+ X49 6 6
+ X33 5 6
+ X49 7 0
+ X42 2
+ X47 1 3
+ X25 instantiate_var 4 2
+ X47 1 0
+ X33 0 0
+ X23
+ X27
+Label 3
+ X20 1 4
+ X21
+ X30 4 0
+ X30 5 1
+ X30 7 2
+ X11 6
+ X47 4 0
+ X42 1
+ X45 0 2
+ X24 3 1 2 3
+ X25 simple_bound_type 3 8
+ X14 6
+ X49 7 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X25 norm_alias_var 4 6
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X23
+ X26 '$bind_2_2212_5' 6
+Label 4
+ X20 2 4
+ X21
+ X30 2 0
+ X30 1 1
+ X30 3 2
+ X30 4 3
+ X11 0
+ X47 2 0
+ X42 1
+ X42 2
+ X25 system_type 3 5
+ X19 4
+ X14 0
+ X49 2 0
+ X33 1 0
+ X49 3 1
+ X36 any 3 1
+ X54 2
+ X61 4
+ X23
+ X27
+Label 5
+ X20 2 4
+ X21
+ X30 5 0
+ X30 6 1
+ X30 1 2
+ X30 2 3
+ X11 3
+ X47 5 0
+ X42 1
+ X45 0 2
+ X42 3
+ X45 4 4
+ X25 list_type 5 7
+ X14 3
+ X49 4 0
+ X49 5 1
+ X49 6 2
+ X47 1 3
+ X47 2 4
+ X25 '$bind_2_2212_1' 5 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 '$bind_2_2212_0' 3
+)
+Predicate('$bind_2_2212_0' 3
+ X1 3 1 5 5 2
+Label 1
+ X2 1 (
+        none 3
+) 5
+Label 2
+ X3 1 (
+        a 3 4
+) 5
+Label 3
+ X10 3
+ X34 none 0
+ X13 3
+ X27
+Label 4
+ X20 4 3
+ X21
+ X30 6 1
+ X30 4 2
+ X10 4
+ X36 a 3 0
+ X55 0
+ X56 3
+ X56 5
+ X13 4
+ X47 3 1
+ X47 5 2
+ X45 0 3
+ X24 2 1 2
+ X25 norm_alias_var 4 7
+ X49 6 0
+ X49 2 1
+ X49 4 2
+ X47 1 3
+ X25 norm_alias_var 4 6
+ X49 1 0
+ X33 0 0
+ X47 3 1
+ X33 2 1
+ X47 5 2
+ X33 4 2
+ X23
+ X27
+Label 5
+ X50 'bind/2: b(...) attribute disallowed for head' 0
+ X26 sys_error 1
+)
+Predicate('$bind_2_2212_1' 5
+ X1 3 1 5 5 2
+Label 1
+ X2 1 (
+        none 3
+) 5
+Label 2
+ X3 1 (
+        b 3 4
+) 5
+Label 3
+ X10 5
+ X34 none 0
+ X13 5
+ X32 1 2
+ X27
+Label 4
+ X20 4 5
+ X21
+ X30 4 3
+ X30 5 4
+ X10 5
+ X36 b 3 0
+ X55 0
+ X56 0
+ X56 2
+ X13 5
+ X24 2 1 3
+ X25 '$bind_2_2212_3' 3 6
+ X47 0 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X25 norm_alias_var 4 6
+ X47 0 0
+ X49 1 1
+ X47 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X23
+ X26 '$bind_2_2212_2' 6
+Label 5
+ X50 'bind/2: a(...) attribute disallowed for tail' 0
+ X26 sys_error 1
+)
+Predicate('$bind_2_2212_2' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 4 6
+ X10 6
+ X16 5 4 0
+ X13 6
+ X36 any 3 4
+ X54 1
+ X60 1
+ X60 2
+ X32 2 5
+ X27
+Label 3
+ X20 4 6
+ X36 any 3 4
+ X60 3
+ X60 1
+ X60 2
+ X32 2 5
+ X27
+)
+Predicate('$bind_2_2212_3' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 3
+ X16 5 2 0
+ X13 3
+ X50 'circular unify of list -- only poss inst' 0
+ X26 warning 1
+Label 3
+ X32 1 2
+ X27
+)
+Predicate('$bind_2_2212_5' 6
+ X1 1 1 fail fail 2
+Label 1
+ X20 4 6
+ X10 6
+ X34 none 0
+ X13 6
+ X32 4 5
+ X36 any 3 3
+ X54 1
+ X60 1
+ X60 2
+ X27
+Label 2
+ X20 4 6
+ X21
+ X30 0 2
+ X10 6
+ X36 a 3 0
+ X55 1
+ X55 2
+ X56 1
+ X13 6
+ X32 4 5
+ X46 3 0
+ X47 1 3
+ X25 instantiate_var 4 2
+ X47 1 0
+ X33 0 0
+ X23
+ X27
+)
+Predicate('$determine_aliasing_sharing_3_1483_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 3
+ X10 3
+ X50 yes 4
+ X16 5 0 4
+ X13 3
+ X37 1
+ X62 indep
+ X60 2
+ X27
+Label 3
+ X20 2 3
+ X37 1
+ X62 dep
+ X60 2
+ X27
+)
+Predicate('$determinacy_of_env_2_1778_0' 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 1
+ X50 det 2
+ X16 5 0 2
+ X13 1
+ X27
+Label 3
+ X10 1
+ X50 nondet 2
+ X16 5 0 2
+ X13 1
+ X27
+)
+Predicate('$elt_to_lub_num_2_1823_0' 2
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 1 2
+ X21
+ X11 0
+ X42 2
+ X25 simple_free_type 3 1
+ X14 0
+ X23
+ X27
+Label 3
+ X20 1 2
+ X21
+ X11 0
+ X42 2
+ X25 simple_bound_type 3 1
+ X14 0
+ X23
+ X27
+Label 4
+ X20 2 2
+ X21
+ X30 1 1
+ X11 0
+ X45 2 1
+ X42 2
+ X45 3 3
+ X42 4
+ X25 list_type 5 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 list_types 3
+)
+Predicate('$final_i_state_3_1516_0' 3
+ X1 3 1 5 5 2
+Label 1
+ X2 1 (
+        bot 3
+) 5
+Label 2
+ X3 1 (
+        shr 3 4
+) 5
+Label 3
+ X10 3
+ X34 bot 0
+ X13 3
+ X34 bot 2
+ X27
+Label 4
+ X20 8 3
+ X10 3
+ X36 shr 3 0
+ X55 4
+ X55 5
+ X55 6
+ X13 3
+ X16 55 7 5 1
+ X36 shr 3 2
+ X58 4
+ X60 7
+ X58 6
+ X27
+Label 5
+ X21
+ X30 2 1
+ X30 0 2
+ X45 1 1
+ X45 3 2
+ X25 aliasing_of_tuple 3 4
+ X19 4
+ X49 0 0
+ X36 shr 3 0
+ X61 1
+ X61 2
+ X61 3
+ X23
+ X27
+)
+Predicate('$free_terms_3_1515_0' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 2
+ X21
+ X29 2 0
+ X11 0
+ X46 1 0
+ X46 2 1
+ X25 member 2 1
+ X14 0
+ X28
+ X23
+ X27
+Label 3
+ X27
+)
+Predicate('$free_collapsed_3_2191_0' 2
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        a 2
+) 3
+Label 2
+ X10 2
+ X34 a 0
+ X13 2
+ X34 a 1
+ X27
+Label 3
+ X34 f 1
+ X27
+)
+Predicate('$get_cert_aliases_5_1792_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 5
+ X21
+ X29 5 0
+ X30 3 2
+ X30 1 3
+ X30 4 4
+ X11 0
+ X46 1 0
+ X45 2 1
+ X46 5 2
+ X25 has_cert_alias 3 5
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X23
+ X26 insert_alias 4
+Label 3
+ X32 4 3
+ X32 1 0
+ X27
+)
+Predicate('$generate_tuple_2_2343_0' 1
+ X1 1 2 fail fail fail
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 2 (
+        det 3
+        nondet 4
+) fail
+Label 3
+ X34 det 0
+ X27
+Label 4
+ X34 nondet 0
+ X27
+)
+Predicate('$independent_of_5_1485_0' 3
+ X1 1 2 4 4 4
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 1 (
+        [] 1
+) 4
+Label 3
+ X10 3
+ X35 0
+ X35 1
+ X13 3
+ X34 yes 2
+ X27
+Label 4
+ X34 no 2
+ X27
+)
+Predicate('$has_cert_alias_3_1793_1' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 4 3
+ X21
+ X30 1 0
+ X30 5 2
+ X11 0
+ X46 1 0
+ X45 2 1
+ X52 b 3 2
+ X61 1
+ X56 3
+ X56 4
+ X25 simple_free_type 3 6
+ X14 0
+ X47 1 0
+ X49 2 1
+ X47 3 2
+ X47 4 3
+ X49 5 4
+ X23
+ X26 '$has_cert_alias_3_1793_2' 5
+Label 3
+ X20 4 3
+ X21
+ X30 1 0
+ X30 7 2
+ X11 0
+ X46 1 0
+ X45 2 1
+ X45 3 2
+ X45 4 3
+ X52 b 3 4
+ X61 1
+ X56 5
+ X56 6
+ X25 list_type 5 8
+ X14 0
+ X47 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X47 5 4
+ X47 6 5
+ X49 7 6
+ X23
+ X26 '$has_cert_alias_3_1793_0' 7
+)
+Predicate('$has_cert_alias_3_1793_0' 7
+ X1 1 2 2 2 2
+Label 1
+ X20 5 7
+ X29 7 4
+ X10 8
+ X16 17 0
+ X13 8
+ X46 6 0
+ X52 b 3 4
+ X54 1
+ X60 7
+ X60 5
+ X26 list_type 5
+Label 2
+ X50 'has_cert_alias/3: cert alias non-normalized' 0
+ X26 sys_error 1
+)
+Predicate('$has_cert_alias_3_1793_2' 5
+ X1 1 2 2 2 2
+Label 1
+ X20 5 5
+ X29 5 2
+ X10 6
+ X16 17 0
+ X13 6
+ X46 4 0
+ X52 b 3 2
+ X54 1
+ X60 5
+ X60 3
+ X26 simple_free_type 3
+Label 2
+ X50 'has_cert_alias/3: cert alias non-normalized' 0
+ X26 sys_error 1
+)
+Predicate('$initial_i_state_5_1472_0' 4
+ X1 3 1 5 5 2
+Label 1
+ X2 1 (
+        bot 3
+) 5
+Label 2
+ X3 1 (
+        shr 3 4
+) 5
+Label 3
+ X10 4
+ X34 bot 0
+ X13 4
+ X32 3 1
+ X46 3 0
+ X50 failed 1
+ X26 set_comp_state 2
+Label 4
+ X20 4 4
+ X21
+ X30 6 1
+ X30 7 2
+ X30 0 3
+ X10 4
+ X36 shr 3 0
+ X55 0
+ X54 1
+ X56 8
+ X13 4
+ X47 8 1
+ X24 5 1 2 3 4 5
+ X25 install_aliases 2 9
+ X19 4
+ X49 7 2
+ X53 3
+ X54 1
+ X61 2
+ X16 3 2 3
+ X47 8 4
+ X53 5
+ X55 0
+ X61 3
+ X16 3 4 5
+ X47 6 1
+ X25 initialize_det 2 7
+ X47 5 0
+ X25 empty_arg_inst 1 7
+ X47 3 0
+ X47 4 1
+ X25 independence_of_args 2 7
+ X47 2 0
+ X47 3 1
+ X49 4 2
+ X50 1 3
+ X49 5 4
+ X47 1 5
+ X49 6 6
+ X47 0 7
+ X25 initialize_i_state_args 8 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 set_arg_inst_state 2
+Label 5
+ X20 4 4
+ X21
+ X30 6 1
+ X30 0 3
+ X53 4
+ X55 5
+ X56 3
+ X24 4 1 2 4 5
+ X16 3 0 4
+ X53 6
+ X54 1
+ X61 2
+ X16 3 2 6
+ X46 5 0
+ X47 6 1
+ X25 initialize_det 2 7
+ X47 5 0
+ X25 empty_arg_inst 1 7
+ X47 3 0
+ X47 4 1
+ X25 independence_of_args 2 7
+ X47 2 0
+ X47 3 1
+ X49 4 2
+ X50 1 3
+ X49 5 4
+ X47 1 5
+ X49 6 6
+ X47 0 7
+ X25 initialize_i_state_args 8 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 set_arg_inst_state 2
+)
+Predicate('$initialize_i_state_term_1_5_1496_0' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 6
+ X21
+ X30 1 0
+ X30 5 1
+ X30 0 2
+ X30 2 3
+ X30 7 4
+ X30 4 5
+ X11 8
+ X47 1 0
+ X45 9 1
+ X45 10 2
+ X42 3
+ X42 4
+ X24 2 3 6
+ X25 list_type 5 11
+ X14 8
+ X47 2 0
+ X49 9 1
+ X49 10 2
+ X47 6 3
+ X25 list_head_subinst 4 8
+ X49 5 0
+ X49 6 1
+ X47 2 2
+ X49 7 3
+ X47 3 4
+ X25 initialize_i_state_term_1 5 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 initialize_i_state_term_1 5
+Label 3
+ X21
+ X30 5 0
+ X30 6 1
+ X30 0 2
+ X30 2 3
+ X30 8 4
+ X30 4 5
+ X47 5 0
+ X47 2 1
+ X45 7 2
+ X24 2 1 3
+ X25 subinst 3 9
+ X49 6 0
+ X49 7 1
+ X47 2 2
+ X49 8 3
+ X47 3 4
+ X25 initialize_i_state_term_1 5 6
+ X49 5 0
+ X47 2 1
+ X47 1 2
+ X25 subinst 3 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 initialize_i_state_term_1 5
+)
+Predicate('$initialize_env_4_1501_0' 6
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        uninit 2
+) 3
+Label 2
+ X10 6
+ X34 uninit 0
+ X13 6
+ X46 4 0
+ X46 5 1
+ X26 setarg 3
+Label 3
+ X21
+ X30 6 0
+ X30 0 4
+ X30 1 5
+ X46 3 0
+ X45 5 2
+ X24 3 2 3 4
+ X25 absu_t 3 7
+ X19 1
+ X49 6 0
+ X47 3 1
+ X42 2
+ X25 norm 3 6
+ X49 5 0
+ X47 4 1
+ X47 2 2
+ X25 norm 3 5
+ X49 3 3
+ X49 4 4
+ X16 55 5 3 4
+ X47 0 0
+ X46 5 1
+ X47 1 2
+ X25 update_inst 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 setarg 3
+)
+Predicate('$insert_alias_4_1795_0' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 5 6
+ X10 6
+ X16 5 1 0
+ X13 6
+ X50 1 7
+ X16 59 8 7 4
+ X16 25 9 2 8
+ X37 5
+ X55 10
+ X60 3
+ X36 ',' 2 10
+ X60 1
+ X60 9
+ X27
+Label 3
+ X20 6 6
+ X29 6 0
+ X37 5
+ X55 7
+ X55 8
+ X36 ',' 2 7
+ X60 1
+ X60 2
+ X46 3 0
+ X46 6 1
+ X46 4 2
+ X46 8 3
+ X26 insert_alias 4
+)
+Predicate('$inst_by_2_2205_0' 2
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X21
+ X11 0
+ X25 ground_type 1 1
+ X14 0
+ X28
+ X23
+ X27
+Label 3
+ X20 1 2
+ X21
+ X30 2 0
+ X11 0
+ X46 1 0
+ X45 1 1
+ X42 2
+ X25 simple_type 3 3
+ X14 0
+ X49 1 0
+ X49 2 1
+ X23
+ X26 '$inst_by_2_2205_1' 2
+Label 4
+ X27
+)
+Predicate('$inst_by_2_2205_1' 2
+ X1 2 1 fail fail fail
+Label 1
+ X2 2 (
+        free_nil 2
+        free 3
+) fail
+Label 2
+ X10 2
+ X34 free_nil 0
+ X13 2
+ X46 1 0
+ X26 '$inst_by_2_2205_2' 1
+Label 3
+ X10 2
+ X34 free 0
+ X13 2
+ X28
+ X27
+)
+Predicate('$inst_by_2_2205_2' 1
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X6 5
+Label 2
+ X20 1 1
+ X21
+ X11 0
+ X50 free 1
+ X42 2
+ X25 simple_free_type 3 1
+ X14 0
+ X23
+ X27
+Label 3
+ X20 1 1
+ X21
+ X11 0
+ X50 any 1
+ X42 2
+ X25 simple_bound_type 3 1
+ X14 0
+ X23
+ X27
+Label 4
+ X20 3 1
+ X21
+ X11 0
+ X42 1
+ X42 2
+ X50 f 3
+ X42 4
+ X25 list_type 5 1
+ X14 0
+ X23
+ X27
+Label 5
+ X28
+ X27
+)
+Predicate('$install_cert_alias_2_1805_0' 2
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 5 2
+ X21
+ X30 2 1
+ X11 0
+ X42 1
+ X52 b 3 2
+ X56 1
+ X54 2
+ X25 simple_free_type 3 3
+ X14 0
+ X47 1 0
+ X49 2 1
+ X23
+ X26 '$install_cert_alias_2_1805_2' 2
+Label 3
+ X20 7 2
+ X21
+ X30 2 1
+ X11 0
+ X42 1
+ X42 2
+ X42 3
+ X52 b 3 4
+ X56 1
+ X54 2
+ X25 list_type 5 3
+ X14 0
+ X47 1 0
+ X49 2 1
+ X23
+ X26 '$install_cert_alias_2_1805_1' 2
+Label 4
+ X27
+)
+Predicate('$install_cert_alias_2_1805_1' 2
+ X1 1 2 2 2 2
+Label 1
+ X10 2
+ X16 17 0
+ X13 2
+ X32 0 1
+ X27
+Label 2
+ X27
+)
+Predicate('$install_cert_alias_2_1805_2' 2
+ X1 1 2 2 2 2
+Label 1
+ X10 2
+ X16 17 0
+ X13 2
+ X32 0 1
+ X27
+Label 2
+ X27
+)
+Predicate('$instantiated_by_3_2204_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 3
+ X21
+ X29 3 0
+ X30 1 2
+ X11 0
+ X46 1 0
+ X46 3 1
+ X25 inst_by 2 2
+ X14 0
+ X49 1 0
+ X34 3 0
+ X23
+ X27
+Label 3
+ X34 0 2
+ X27
+)
+Predicate('$instantiate_var_4_2213_0' 4
+ X1 1 2 2 2 2
+Label 1
+ X20 1 4
+ X29 4 0
+ X10 5
+ X16 17 4
+ X13 5
+ X46 1 0
+ X46 4 1
+ X26 '$instantiate_var_4_2213_1' 4
+Label 2
+ X21
+ X30 0 1
+ X30 2 2
+ X30 3 3
+ X47 2 1
+ X47 3 2
+ X45 1 3
+ X25 norm_alias_var 4 4
+ X19 4
+ X49 0 0
+ X36 any 3 0
+ X61 1
+ X61 2
+ X61 3
+ X23
+ X27
+)
+Predicate('$instantiate_var_4_2213_1' 4
+ X1 1 2 2 2 2
+Label 1
+ X20 1 4
+ X29 4 0
+ X10 5
+ X16 17 4
+ X13 5
+ X46 1 0
+ X46 4 1
+ X26 '$instantiate_var_4_2213_2' 4
+Label 2
+ X21
+ X30 4 1
+ X30 1 2
+ X30 3 3
+ X45 0 1
+ X45 2 2
+ X45 5 3
+ X25 norm_alias_var 4 6
+ X19 4
+ X49 1 0
+ X33 0 0
+ X49 3 1
+ X33 2 1
+ X49 4 2
+ X36 any 3 2
+ X61 5
+ X61 0
+ X61 2
+ X23
+ X27
+)
+Predicate('$instantiate_var_4_2213_2' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 4
+ X16 5 1 0
+ X13 4
+ X27
+Label 3
+ X20 4 4
+ X36 any 3 1
+ X60 0
+ X60 2
+ X60 3
+ X27
+)
+Predicate('$join_attr_2_1763_0' 4
+ X1 2 2 fail fail 1
+Label 1
+ X3 2 (
+        a 3 3
+        b 3 4
+) fail
+Label 2
+ X10 4
+ X34 none 0
+ X13 4
+ X27
+Label 3
+ X20 4 4
+ X10 4
+ X36 a 3 0
+ X55 5
+ X55 6
+ X55 7
+ X13 4
+ X32 5 1
+ X32 6 2
+ X32 7 3
+ X27
+Label 4
+ X20 4 4
+ X10 4
+ X36 b 3 0
+ X54 1
+ X55 5
+ X55 6
+ X13 4
+ X32 5 1
+ X32 6 3
+ X27
+)
+Predicate('$join_attr_2_1764_0' 4
+ X1 2 2 fail fail 1
+Label 1
+ X3 2 (
+        a 3 3
+        b 3 4
+) fail
+Label 2
+ X10 4
+ X34 none 0
+ X13 4
+ X27
+Label 3
+ X20 4 4
+ X10 4
+ X36 a 3 0
+ X55 5
+ X54 1
+ X55 6
+ X13 4
+ X32 5 2
+ X32 6 3
+ X27
+Label 4
+ X20 4 4
+ X10 4
+ X36 b 3 0
+ X55 5
+ X55 6
+ X55 7
+ X13 4
+ X32 5 1
+ X32 6 2
+ X32 7 3
+ X27
+)
+Predicate('$join_free_types_4_2211_0' 2
+ X1 1 2 4 4 4
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 1 (
+        f 1
+) 4
+Label 3
+ X10 2
+ X34 f 0
+ X34 f 1
+ X13 2
+ X27
+Label 4
+ X27
+)
+Predicate('$least_3_2298_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 3
+ X16 13 1 0
+ X13 3
+ X32 1 2
+ X27
+Label 3
+ X32 0 2
+ X27
+)
+Predicate('$less_than_2_2322_0' 3
+ X1 3 1 5 5 2
+Label 1
+ X2 1 (
+        bot 3
+) 5
+Label 2
+ X3 1 (
+        shr 3 4
+) 5
+Label 3
+ X10 3
+ X34 bot 0
+ X13 3
+ X28
+ X27
+Label 4
+ X20 4 3
+ X21
+ X30 2 2
+ X10 3
+ X36 shr 3 0
+ X56 4
+ X54 1
+ X56 3
+ X13 3
+ X46 1 0
+ X47 2 1
+ X24 2 0 1
+ X25 install_aliases 2 5
+ X47 4 0
+ X47 3 1
+ X25 install_aliases 2 4
+ X19 4
+ X49 2 2
+ X53 3
+ X55 0
+ X61 0
+ X16 3 2 3
+ X47 3 4
+ X53 5
+ X55 1
+ X61 1
+ X16 3 4 5
+ X25 less_than_det 2 2
+ X47 0 0
+ X47 1 1
+ X23
+ X26 all_less_than 2
+Label 5
+ X21
+ X30 4 1
+ X30 2 2
+ X45 5 1
+ X45 3 2
+ X24 2 0 1
+ X25 aliasing_of_tuple 3 6
+ X49 4 0
+ X49 5 1
+ X25 less_than_cert_aliases 2 4
+ X19 4
+ X49 2 2
+ X53 3
+ X55 0
+ X61 0
+ X16 3 2 3
+ X49 3 4
+ X53 5
+ X55 1
+ X61 1
+ X16 3 4 5
+ X25 less_than_det 2 2
+ X47 0 0
+ X47 1 1
+ X23
+ X26 all_less_than 2
+)
+Predicate('$less_than_type_2_2330_0' 2
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X6 5
+Label 2
+ X21
+ X30 1 1
+ X11 0
+ X45 2 1
+ X45 3 2
+ X25 simple_free_type 3 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 '$less_than_type_2_2330_3' 3
+Label 3
+ X21
+ X30 1 1
+ X11 0
+ X45 2 1
+ X45 3 2
+ X25 simple_bound_type 3 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 '$less_than_type_2_2330_2' 3
+Label 4
+ X21
+ X30 1 1
+ X11 0
+ X45 2 1
+ X45 3 2
+ X45 4 3
+ X45 5 4
+ X25 list_type 5 6
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X23
+ X26 '$less_than_type_2_2330_1' 5
+Label 5
+ X21
+ X30 5 1
+ X11 4
+ X45 2 1
+ X45 0 2
+ X24 2 1 3
+ X25 system_type 3 6
+ X14 4
+ X49 5 0
+ X47 3 1
+ X47 1 2
+ X25 system_type 3 4
+ X49 2 0
+ X49 3 1
+ X25 less_than_sys_type 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 less_than_attr 2
+)
+Predicate('$less_than_attr_2_2336_0' 2
+ X1 2 fail fail fail 1
+Label 1
+ X3 2 (
+        a 3 2
+        b 3 3
+) fail
+Label 2
+ X20 4 2
+ X10 2
+ X36 a 3 0
+ X54 2
+ X55 3
+ X13 2
+ X46 1 0
+ X46 3 1
+ X26 less_than_loc 2
+Label 3
+ X20 4 2
+ X10 2
+ X36 b 3 0
+ X54 2
+ X55 3
+ X13 2
+ X46 1 0
+ X46 3 1
+ X26 less_than_loc 2
+)
+Predicate('$less_than_type_2_2330_1' 5
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 2 5
+ X21
+ X11 0
+ X42 1
+ X42 2
+ X25 simple_free_type 3 1
+ X14 0
+ X28
+ X23
+ X27
+Label 3
+ X21
+ X30 8 1
+ X30 2 2
+ X30 5 3
+ X30 0 4
+ X11 7
+ X45 4 1
+ X45 1 2
+ X24 2 3 6
+ X25 simple_bound_type 3 9
+ X14 7
+ X49 8 0
+ X47 6 1
+ X25 cnv_lub 2 7
+ X49 6 0
+ X47 4 1
+ X25 less_than_t 2 6
+ X49 5 0
+ X47 3 1
+ X25 cnv_lub 2 5
+ X49 3 0
+ X49 4 1
+ X25 less_than_t 2 3
+ X49 2 0
+ X47 1 1
+ X25 less_than_attr 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 less_than_attr 2
+Label 4
+ X21
+ X30 12 1
+ X30 2 2
+ X30 7 3
+ X30 0 4
+ X11 11
+ X45 10 1
+ X45 3 2
+ X45 6 3
+ X45 1 4
+ X24 4 4 5 8 9
+ X25 list_type 5 13
+ X14 11
+ X49 12 0
+ X47 8 1
+ X25 cnv_lub 2 11
+ X49 10 0
+ X47 9 1
+ X25 cnv_lub 2 10
+ X49 8 0
+ X49 9 1
+ X25 less_than_t 2 8
+ X49 7 0
+ X47 4 1
+ X25 cnv_lub 2 7
+ X49 6 0
+ X47 5 1
+ X25 cnv_lub 2 6
+ X49 4 0
+ X49 5 1
+ X25 less_than_t 2 4
+ X49 2 0
+ X49 3 1
+ X25 less_than_attr 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 less_than_attr 2
+)
+Predicate('$less_than_type_2_2330_2' 3
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 1 3
+ X21
+ X30 1 1
+ X11 0
+ X45 2 1
+ X42 2
+ X25 simple_free_type 3 3
+ X14 0
+ X49 1 0
+ X34 nil 0
+ X49 2 1
+ X34 free_nil 1
+ X23
+ X27
+Label 3
+ X21
+ X30 3 1
+ X30 0 2
+ X11 2
+ X45 4 1
+ X45 1 2
+ X25 simple_bound_type 3 5
+ X14 2
+ X49 3 0
+ X49 4 1
+ X25 less_than_t 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 less_than_attr 2
+Label 4
+ X20 2 3
+ X21
+ X30 2 1
+ X30 0 2
+ X11 4
+ X42 1
+ X42 2
+ X45 5 3
+ X45 1 4
+ X24 1 3
+ X25 list_type 5 6
+ X14 4
+ X49 5 0
+ X47 3 1
+ X25 cnv_lub 2 4
+ X49 2 0
+ X49 3 1
+ X25 less_than_t 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 less_than_attr 2
+)
+Predicate('$less_than_type_2_2330_3' 3
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X21
+ X30 3 1
+ X30 0 2
+ X11 2
+ X45 4 1
+ X45 1 2
+ X25 simple_free_type 3 5
+ X14 2
+ X49 3 0
+ X49 4 1
+ X25 less_than_t 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 less_than_attr 2
+Label 3
+ X20 1 3
+ X21
+ X11 0
+ X45 1 1
+ X42 2
+ X25 simple_bound_type 3 2
+ X14 0
+ X49 1 0
+ X34 any 0
+ X23
+ X27
+Label 4
+ X20 2 3
+ X21
+ X30 2 1
+ X30 0 2
+ X11 4
+ X42 1
+ X42 2
+ X45 5 3
+ X45 1 4
+ X24 1 3
+ X25 list_type 5 6
+ X14 4
+ X49 5 0
+ X47 3 1
+ X25 cnv_lub 2 4
+ X49 2 0
+ X49 3 1
+ X25 less_than_t 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 less_than_attr 2
+)
+Predicate('$list_head_subinst_4_1500_0' 7
+ X1 3 1 2 2 2
+Label 1
+ X2 1 (
+        indep 3
+) 2
+Label 2
+ X4 4
+ X6 5
+Label 3
+ X10 7
+ X34 indep 0
+ X13 7
+ X46 3 0
+ X46 4 3
+ X46 5 4
+ X46 6 5
+ X26 '$list_head_subinst_4_1500_2' 6
+Label 4
+ X20 5 7
+ X29 7 2
+ X10 8
+ X34 free 5
+ X13 8
+ X46 6 0
+ X46 5 1
+ X52 b 3 2
+ X54 1
+ X60 7
+ X60 4
+ X26 simple_type 3
+Label 5
+ X20 1 7
+ X29 7 1
+ X46 6 0
+ X46 5 1
+ X46 7 2
+ X26 simple_type 3
+)
+Predicate('$list_has_head_type_6_1718_0' 6
+ X1 1 2 3 3 3
+Label 1
+ X4 4
+ X5 5
+ X5 6
+ X6 7
+Label 2
+ X2 1 (
+        free 1
+) 3
+Label 3
+ X4 4
+ X5 5
+ X6 6
+Label 4
+ X21
+ X30 1 4
+ X30 2 5
+ X11 0
+ X25 '$list_has_head_type_6_1718_3' 1 3
+ X14 0
+ X49 1 0
+ X34 g 0
+ X49 2 1
+ X34 none 1
+ X23
+ X27
+Label 5
+ X21
+ X30 3 1
+ X30 4 2
+ X30 5 3
+ X30 1 4
+ X30 2 5
+ X11 0
+ X25 '$list_has_head_type_6_1718_2' 1 6
+ X19 4
+ X14 0
+ X49 1 0
+ X34 nv 0
+ X49 2 1
+ X36 a 3 1
+ X61 3
+ X61 4
+ X61 5
+ X23
+ X27
+Label 6
+ X21
+ X30 3 1
+ X30 4 2
+ X30 5 3
+ X30 1 4
+ X30 2 5
+ X11 0
+ X25 '$list_has_head_type_6_1718_1' 1 6
+ X19 4
+ X14 0
+ X49 1 0
+ X34 a 0
+ X49 2 1
+ X36 a 3 1
+ X61 3
+ X61 4
+ X61 5
+ X23
+ X27
+Label 7
+ X20 4 6
+ X10 6
+ X34 free 0
+ X13 6
+ X34 f 4
+ X36 a 3 5
+ X60 1
+ X60 2
+ X60 3
+ X27
+)
+Predicate('$list_has_head_type_6_1718_1' 1
+ X1 1 2 fail fail fail
+Label 1
+ X4 7
+ X5 8
+ X5 9
+ X5 10
+ X5 11
+ X5 12
+ X5 13
+ X5 14
+ X5 15
+ X6 16
+Label 2
+ X2 6 (
+        any 7
+        free_nil 8
+        list_a_fn 3
+        list_nv_fn 4
+        list_g_fn 5
+        list_f_fn 6
+) fail
+Label 3
+ X4 9
+ X6 13
+Label 4
+ X4 10
+ X6 14
+Label 5
+ X4 11
+ X6 15
+Label 6
+ X4 12
+ X6 16
+Label 7
+ X34 any 0
+ X27
+Label 8
+ X34 free_nil 0
+ X27
+Label 9
+ X34 list_a_fn 0
+ X27
+Label 10
+ X34 list_nv_fn 0
+ X27
+Label 11
+ X34 list_g_fn 0
+ X27
+Label 12
+ X34 list_f_fn 0
+ X27
+Label 13
+ X34 list_a_fn 0
+ X27
+Label 14
+ X34 list_nv_fn 0
+ X27
+Label 15
+ X34 list_g_fn 0
+ X27
+Label 16
+ X34 list_f_fn 0
+ X27
+)
+Predicate('$list_has_head_type_6_1718_2' 1
+ X1 1 2 fail fail fail
+Label 1
+ X4 3
+ X5 4
+ X5 5
+ X6 6
+Label 2
+ X2 4 (
+        nv 3
+        list_a_n 4
+        list_nv_n 5
+        list_f_n 6
+) fail
+Label 3
+ X34 nv 0
+ X27
+Label 4
+ X34 list_a_n 0
+ X27
+Label 5
+ X34 list_nv_n 0
+ X27
+Label 6
+ X34 list_f_n 0
+ X27
+)
+Predicate('$list_has_head_type_6_1718_3' 1
+ X1 1 2 fail fail fail
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X2 3 (
+        nil 3
+        gnd 4
+        list_g_n 5
+) fail
+Label 3
+ X34 nil 0
+ X27
+Label 4
+ X34 gnd 0
+ X27
+Label 5
+ X34 list_g_n 0
+ X27
+)
+Predicate('$list_head_subinst_4_1500_2' 6
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X21
+ X30 2 3
+ X30 1 4
+ X30 3 5
+ X11 0
+ X25 linear 1 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 '$list_head_subinst_4_1500_4' 3
+Label 3
+ X21
+ X30 2 3
+ X30 1 4
+ X30 3 5
+ X11 0
+ X25 indlist 1 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 '$list_head_subinst_4_1500_3' 3
+Label 4
+ X21
+ X30 2 1
+ X30 3 2
+ X30 4 3
+ X30 1 4
+ X30 5 5
+ X11 0
+ X25 nonlinear 1 6
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X23
+ X26 '$list_head_subinst_4_1500_1' 5
+)
+Predicate('$list_head_subinst_4_1500_1' 5
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        free 2
+) 3
+Label 2
+ X20 6 5
+ X29 5 0
+ X29 6 2
+ X10 7
+ X34 free 5
+ X13 7
+ X46 4 0
+ X46 5 1
+ X52 b 3 2
+ X54 1
+ X60 6
+ X60 3
+ X26 simple_type 3
+Label 3
+ X20 2 5
+ X29 5 0
+ X29 6 1
+ X46 4 0
+ X46 5 1
+ X46 6 2
+ X26 simple_type 3
+)
+Predicate('$list_head_subinst_4_1500_3' 3
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        free 2
+) 3
+Label 2
+ X20 6 3
+ X29 3 0
+ X29 4 1
+ X10 5
+ X34 free 3
+ X13 5
+ X46 2 0
+ X46 3 1
+ X52 b 3 2
+ X54 2
+ X60 4
+ X26 simple_type 3
+Label 3
+ X21
+ X30 1 0
+ X30 3 1
+ X30 0 2
+ X45 2 0
+ X25 make_nonlinear 1 4
+ X19 4
+ X49 0 0
+ X49 1 1
+ X52 a 3 2
+ X54 1
+ X61 2
+ X61 3
+ X23
+ X26 simple_type 3
+)
+Predicate('$list_head_subinst_4_1500_4' 3
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        free 2
+) 3
+Label 2
+ X20 6 3
+ X29 3 0
+ X29 4 1
+ X10 5
+ X34 free 3
+ X13 5
+ X46 2 0
+ X46 3 1
+ X52 b 3 2
+ X54 2
+ X60 4
+ X26 simple_type 3
+Label 3
+ X21
+ X30 1 0
+ X30 3 1
+ X30 0 2
+ X45 2 0
+ X25 make_linear 1 4
+ X19 4
+ X49 0 0
+ X49 1 1
+ X52 a 3 2
+ X54 1
+ X61 2
+ X61 3
+ X23
+ X26 simple_type 3
+)
+Predicate('$list_head_subinst_4_1500_5' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 4 4
+ X36 a 3 1
+ X60 2
+ X60 3
+ X60 0
+ X27
+Label 3
+ X34 none 1
+ X27
+)
+Predicate('$list_of_bitvector_subset_2_2327_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 4 0
+ X30 1 1
+ X30 3 2
+ X11 2
+ X45 0 0
+ X47 4 1
+ X25 member 2 5
+ X49 0 2
+ X49 1 3
+ X16 56 4 2 3
+ X33 1 4
+ X14 2
+ X49 3 0
+ X49 4 1
+ X23
+ X26 list_of_bitvector_subset 2
+Label 3
+ X28
+ X27
+)
+Predicate('$locality_of_type_2_2230_0' 2
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 1 2
+ X21
+ X30 2 1
+ X11 0
+ X42 1
+ X45 1 2
+ X25 simple_type 3 3
+ X14 0
+ X49 1 0
+ X49 2 1
+ X23
+ X26 locality_of_attr 2
+Label 3
+ X20 2 2
+ X21
+ X30 2 1
+ X11 4
+ X42 1
+ X45 5 2
+ X42 3
+ X45 3 4
+ X24 2 0 1
+ X25 list_type 5 6
+ X14 4
+ X49 5 0
+ X47 0 1
+ X25 locality_of_attr 2 4
+ X49 3 0
+ X47 1 1
+ X25 locality_of_attr 2 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 worst_of_loc 3
+Label 4
+ X20 2 2
+ X21
+ X30 1 1
+ X11 0
+ X42 1
+ X42 2
+ X25 system_type 3 2
+ X14 0
+ X49 1 0
+ X23
+ X26 make_local 1
+)
+Predicate('$lub_tuples_3_1787_1' 5
+ X1 3 1 5 5 2
+Label 1
+ X2 1 (
+        bot 3
+) 5
+Label 2
+ X3 1 (
+        shr 3 4
+) 5
+Label 3
+ X20 4 5
+ X10 5
+ X34 bot 0
+ X13 5
+ X36 shr 3 4
+ X60 1
+ X60 2
+ X60 3
+ X27
+Label 4
+ X20 5 5
+ X21
+ X29 9 3
+ X30 0 4
+ X10 10
+ X36 shr 3 0
+ X55 11
+ X55 3
+ X55 5
+ X13 10
+ X46 1 0
+ X46 11 1
+ X46 9 4
+ X45 1 6
+ X45 2 7
+ X45 3 8
+ X25 lub_shr 9 4
+ X19 4
+ X49 0 0
+ X36 shr 3 0
+ X61 1
+ X61 2
+ X61 3
+ X23
+ X27
+Label 5
+ X21
+ X30 6 0
+ X30 1 1
+ X30 2 2
+ X30 5 3
+ X30 0 4
+ X11 4
+ X47 6 0
+ X24 1 3
+ X25 '$lub_tuples_3_1787_0' 1 7
+ X14 4
+ X49 5 0
+ X49 6 1
+ X47 3 2
+ X25 lub_det 3 4
+ X19 4
+ X49 0 0
+ X36 shr 3 0
+ X61 1
+ X61 2
+ X61 3
+ X23
+ X27
+)
+Predicate('$lub_tuples_3_1787_0' 1
+ X1 1 2 fail fail fail
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 2 (
+        det 3
+        nondet 4
+) fail
+Label 3
+ X34 det 0
+ X27
+Label 4
+ X34 nondet 0
+ X27
+)
+Predicate('$lub_alias_set_4_1813_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 3
+ X50 0 4
+ X16 11 0 4
+ X13 3
+ X32 2 1
+ X27
+Label 3
+ X20 2 3
+ X37 2
+ X60 0
+ X60 1
+ X27
+)
+Predicate('$lub_attr_3_1821_0' 5
+ X1 2 2 fail fail 1
+Label 1
+ X3 2 (
+        a 3 3
+        b 3 4
+) fail
+Label 2
+ X20 4 5
+ X10 5
+ X34 none 0
+ X13 5
+ X36 a 3 4
+ X60 1
+ X60 2
+ X60 3
+ X27
+Label 3
+ X20 4 5
+ X21
+ X30 6 2
+ X30 4 3
+ X30 0 4
+ X10 5
+ X36 a 3 0
+ X55 6
+ X56 7
+ X56 5
+ X13 5
+ X46 1 0
+ X46 6 1
+ X45 1 2
+ X24 2 2 3
+ X25 join_poss 3 8
+ X49 6 0
+ X47 7 1
+ X47 2 2
+ X25 join_share 3 6
+ X49 4 0
+ X47 5 1
+ X47 3 2
+ X25 join_loc 3 4
+ X19 4
+ X49 0 0
+ X36 a 3 0
+ X61 1
+ X61 2
+ X61 3
+ X23
+ X27
+Label 4
+ X20 4 5
+ X21
+ X30 2 2
+ X30 4 3
+ X30 0 4
+ X10 5
+ X36 b 3 0
+ X54 1
+ X55 6
+ X56 5
+ X13 5
+ X46 1 0
+ X46 6 1
+ X45 1 2
+ X24 1 3
+ X25 join_poss 3 6
+ X49 4 0
+ X47 5 1
+ X47 3 2
+ X25 join_loc 3 4
+ X19 4
+ X49 0 0
+ X36 a 3 0
+ X61 1
+ X61 2
+ X61 3
+ X23
+ X27
+)
+Predicate('$lub_attr_3_1822_0' 5
+ X1 2 2 fail fail 1
+Label 1
+ X3 2 (
+        a 3 3
+        b 3 4
+) fail
+Label 2
+ X20 4 5
+ X10 5
+ X34 none 0
+ X13 5
+ X36 b 3 4
+ X60 1
+ X60 2
+ X60 3
+ X27
+Label 3
+ X20 4 5
+ X21
+ X30 4 3
+ X30 0 4
+ X10 5
+ X36 a 3 0
+ X55 1
+ X56 2
+ X56 5
+ X13 5
+ X46 2 0
+ X45 1 2
+ X24 1 3
+ X25 join_poss 3 6
+ X49 4 0
+ X47 5 1
+ X47 3 2
+ X25 join_loc 3 4
+ X19 4
+ X49 0 0
+ X36 a 3 0
+ X61 1
+ X59 2
+ X61 3
+ X23
+ X27
+Label 4
+ X20 4 5
+ X21
+ X30 3 3
+ X30 0 4
+ X10 5
+ X36 b 3 0
+ X54 1
+ X55 1
+ X56 4
+ X13 5
+ X46 2 0
+ X45 1 2
+ X24 1 2
+ X25 join_poss 3 5
+ X49 3 0
+ X47 4 1
+ X47 2 2
+ X25 join_loc 3 3
+ X19 4
+ X49 0 0
+ X36 b 3 0
+ X54 1
+ X61 1
+ X61 2
+ X23
+ X27
+)
+Predicate('$lub_types_3_1819_2' 3
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X6 5
+Label 2
+ X21
+ X30 0 1
+ X30 3 2
+ X11 4
+ X45 5 1
+ X45 2 2
+ X24 1 1
+ X25 simple_free_type 3 6
+ X14 4
+ X49 5 0
+ X47 1 1
+ X25 t_to_num 2 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 '$lub_types_3_1819_9' 4
+Label 3
+ X21
+ X30 0 1
+ X30 3 2
+ X11 4
+ X45 5 1
+ X45 2 2
+ X24 1 1
+ X25 simple_bound_type 3 6
+ X14 4
+ X49 5 0
+ X47 1 1
+ X25 t_to_num 2 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 '$lub_types_3_1819_7' 4
+Label 4
+ X21
+ X30 1 1
+ X30 6 2
+ X11 0
+ X45 2 1
+ X45 3 2
+ X45 4 3
+ X45 5 4
+ X25 list_type 5 7
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X49 6 5
+ X23
+ X26 '$lub_types_3_1819_3' 6
+Label 5
+ X21
+ X30 1 1
+ X30 4 2
+ X11 0
+ X45 2 1
+ X45 3 2
+ X25 system_type 3 5
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X23
+ X26 '$lub_types_3_1819_0' 4
+)
+Predicate('$lub_types_3_1819_0' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 1
+ X30 5 2
+ X30 3 3
+ X11 4
+ X45 0 1
+ X45 6 2
+ X24 1 1
+ X25 system_type 3 7
+ X14 4
+ X49 5 0
+ X49 6 1
+ X47 1 2
+ X25 lub_attr 3 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 '$lub_types_3_1819_1' 4
+Label 3
+ X34 none 3
+ X27
+)
+Predicate('$lub_types_3_1819_1' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 4
+ X29 4 1
+ X10 5
+ X16 5 2 0
+ X13 5
+ X46 3 0
+ X46 2 1
+ X46 4 2
+ X26 system_type 3
+Label 3
+ X34 none 3
+ X27
+)
+Predicate('$lub_types_3_1819_3' 6
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X21
+ X30 12 1
+ X30 2 2
+ X30 13 3
+ X30 5 4
+ X30 3 5
+ X11 11
+ X45 9 1
+ X45 4 2
+ X24 6 0 1 6 7 8 10
+ X25 simple_free_type 3 14
+ X14 11
+ X47 10 0
+ X49 12 1
+ X49 13 2
+ X25 list_types 3 11
+ X49 10 0
+ X47 7 1
+ X25 t_to_num 2 10
+ X49 9 0
+ X47 8 1
+ X25 t_to_num 2 9
+ X49 7 0
+ X49 8 1
+ X47 6 2
+ X25 num_lub 3 7
+ X49 6 0
+ X47 0 1
+ X25 num_to_t 2 6
+ X49 4 0
+ X49 5 1
+ X47 1 2
+ X25 lub_attr 3 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 '$lub_types_3_1819_5' 4
+Label 3
+ X21
+ X30 13 1
+ X30 5 2
+ X30 14 3
+ X30 6 4
+ X30 3 5
+ X11 12
+ X45 10 1
+ X45 4 2
+ X24 7 0 1 2 7 8 9 11
+ X25 simple_bound_type 3 15
+ X14 12
+ X47 11 0
+ X49 13 1
+ X49 14 2
+ X25 list_types 3 12
+ X49 11 0
+ X47 8 1
+ X25 t_to_num 2 11
+ X49 10 0
+ X47 9 1
+ X25 t_to_num 2 10
+ X49 8 0
+ X49 9 1
+ X47 7 2
+ X25 num_lub 3 8
+ X49 7 0
+ X47 0 1
+ X25 num_to_t 2 7
+ X47 4 0
+ X49 6 1
+ X47 2 2
+ X25 lub_attr 3 6
+ X49 4 0
+ X49 5 1
+ X47 1 2
+ X25 lub_attr 3 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 '$lub_types_3_1819_4' 4
+Label 4
+ X21
+ X30 18 1
+ X30 7 2
+ X30 19 3
+ X30 5 4
+ X30 0 5
+ X11 17
+ X45 15 1
+ X45 8 2
+ X45 16 3
+ X45 6 4
+ X24 10 1 2 3 4 9 10 11 12 13 14
+ X25 list_type 5 20
+ X14 17
+ X47 14 0
+ X49 18 1
+ X49 19 2
+ X25 list_types 3 17
+ X47 13 0
+ X49 15 1
+ X49 16 2
+ X25 list_types 3 15
+ X49 14 0
+ X47 11 1
+ X25 t_to_num 2 14
+ X49 13 0
+ X47 12 1
+ X25 t_to_num 2 13
+ X49 11 0
+ X49 12 1
+ X47 10 2
+ X25 num_lub 3 11
+ X49 10 0
+ X47 9 1
+ X25 num_to_t 2 10
+ X49 9 0
+ X47 1 1
+ X47 3 2
+ X25 list_types 3 9
+ X49 7 0
+ X49 8 1
+ X47 2 2
+ X25 lub_attr 3 7
+ X49 5 0
+ X49 6 1
+ X47 4 2
+ X25 lub_attr 3 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 list_type 5
+)
+Predicate('$lub_types_3_1819_4' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 4
+ X21
+ X30 2 0
+ X30 3 1
+ X30 4 2
+ X30 1 3
+ X11 0
+ X47 2 0
+ X42 1
+ X42 2
+ X25 list_types 3 5
+ X19 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X53 3
+ X61 4
+ X63
+ X53 2
+ X61 3
+ X58 3
+ X23
+ X26 the_type 3
+Label 3
+ X20 1 4
+ X29 4 0
+ X46 3 0
+ X46 4 1
+ X26 simple_type 3
+)
+Predicate('$lub_types_3_1819_5' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 4
+ X21
+ X30 2 0
+ X30 4 1
+ X30 3 2
+ X30 1 3
+ X11 0
+ X47 2 0
+ X42 1
+ X42 2
+ X25 list_types 3 5
+ X19 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X53 3
+ X61 4
+ X63
+ X53 2
+ X61 3
+ X58 3
+ X23
+ X26 the_type 3
+Label 3
+ X20 2 4
+ X29 4 0
+ X29 5 1
+ X46 3 0
+ X46 4 1
+ X46 5 2
+ X26 simple_type 3
+)
+Predicate('$lub_types_3_1819_7' 4
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X21
+ X30 6 1
+ X30 3 2
+ X30 0 3
+ X11 8
+ X45 9 1
+ X45 4 2
+ X24 4 1 2 5 7
+ X25 simple_free_type 3 10
+ X14 8
+ X49 9 0
+ X47 7 1
+ X25 t_to_num 2 8
+ X49 6 0
+ X49 7 1
+ X47 5 2
+ X25 num_lub 3 6
+ X49 5 0
+ X47 1 1
+ X25 num_to_t 2 5
+ X49 3 0
+ X49 4 1
+ X47 2 2
+ X25 lub_attr 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 simple_type 3
+Label 3
+ X21
+ X30 6 1
+ X30 3 2
+ X30 0 3
+ X11 8
+ X45 9 1
+ X45 4 2
+ X24 4 1 2 5 7
+ X25 simple_bound_type 3 10
+ X14 8
+ X49 9 0
+ X47 7 1
+ X25 t_to_num 2 8
+ X49 6 0
+ X49 7 1
+ X47 5 2
+ X25 num_lub 3 6
+ X49 5 0
+ X47 1 1
+ X25 num_to_t 2 5
+ X49 3 0
+ X49 4 1
+ X47 2 2
+ X25 lub_attr 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 simple_type 3
+Label 4
+ X21
+ X30 8 1
+ X30 4 2
+ X30 3 3
+ X11 11
+ X45 12 1
+ X45 5 2
+ X45 13 3
+ X45 6 4
+ X24 6 0 1 2 7 9 10
+ X25 list_type 5 14
+ X14 11
+ X47 10 0
+ X49 12 1
+ X49 13 2
+ X25 list_types 3 11
+ X49 10 0
+ X47 9 1
+ X25 t_to_num 2 10
+ X49 8 0
+ X49 9 1
+ X47 7 2
+ X25 num_lub 3 8
+ X49 7 0
+ X47 0 1
+ X25 num_to_t 2 7
+ X47 4 0
+ X49 6 1
+ X47 2 2
+ X25 lub_attr 3 6
+ X49 4 0
+ X49 5 1
+ X47 1 2
+ X25 lub_attr 3 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 '$lub_types_3_1819_6' 4
+)
+Predicate('$lub_types_3_1819_6' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 4
+ X21
+ X30 2 0
+ X30 3 1
+ X30 4 2
+ X30 1 3
+ X11 0
+ X47 2 0
+ X42 1
+ X42 2
+ X25 list_types 3 5
+ X19 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X53 3
+ X61 4
+ X63
+ X53 2
+ X61 3
+ X58 3
+ X23
+ X26 the_type 3
+Label 3
+ X20 1 4
+ X29 4 0
+ X46 3 0
+ X46 4 1
+ X26 simple_type 3
+)

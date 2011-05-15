@@ -1,0 +1,4601 @@
+Predicate(vector_mult 3
+Label 1
+ X20 8 3
+ X36 v 3 0
+ X55 3
+ X55 4
+ X55 5
+ X36 v 3 1
+ X55 6
+ X55 7
+ X55 8
+ X16 29 9 3 6
+ X16 29 10 4 7
+ X16 25 11 9 10
+ X16 29 12 5 8
+ X16 25 13 11 12
+ X32 13 2
+ X27
+)
+Predicate(scale_vector_length 3
+Label 1
+ X20 8 3
+ X36 v 3 0
+ X55 3
+ X55 4
+ X55 5
+ X36 v 3 2
+ X55 6
+ X55 7
+ X55 8
+ X16 29 9 3 3
+ X16 29 10 4 4
+ X16 25 11 9 10
+ X16 29 12 5 5
+ X16 25 13 11 12
+ X16 47 14 13
+ X16 30 15 1 14
+ X16 29 16 3 15
+ X32 16 6
+ X16 29 17 4 15
+ X32 17 7
+ X16 29 18 5 15
+ X32 18 8
+ X27
+)
+Predicate(normalize_vector 2
+Label 1
+ X20 1 2
+ X29 3 1
+ X50 1 1
+ X46 3 2
+ X26 scale_vector_length 3
+)
+Predicate(cross_product 3
+Label 1
+ X20 12 3
+ X36 v 3 0
+ X55 3
+ X55 4
+ X55 5
+ X36 v 3 1
+ X55 6
+ X55 7
+ X55 8
+ X36 v 3 2
+ X55 9
+ X55 10
+ X55 11
+ X16 29 12 4 8
+ X16 29 13 5 7
+ X16 27 14 12 13
+ X32 14 9
+ X16 29 15 5 6
+ X16 29 16 3 8
+ X16 27 17 15 16
+ X32 17 10
+ X16 29 18 3 7
+ X16 29 19 4 6
+ X16 27 20 18 19
+ X32 20 11
+ X27
+)
+Predicate(combine_ref_shad 4
+Label 1
+ X20 12 4
+ X36 rgb 3 1
+ X55 4
+ X55 5
+ X55 6
+ X36 rgb 3 2
+ X55 7
+ X55 8
+ X55 9
+ X36 rgb 3 3
+ X55 10
+ X55 11
+ X55 12
+ X16 29 13 0 4
+ X50 1 14
+ X16 27 15 14 0
+ X16 29 16 15 7
+ X16 25 17 13 16
+ X16 33 18 17
+ X32 18 10
+ X16 29 19 0 5
+ X50 1 20
+ X16 27 21 20 0
+ X16 29 22 21 8
+ X16 25 23 19 22
+ X16 33 24 23
+ X32 24 11
+ X16 29 25 0 6
+ X50 1 26
+ X16 27 27 26 0
+ X16 29 28 27 9
+ X16 25 29 25 28
+ X16 33 30 29
+ X32 30 12
+ X27
+)
+Predicate(color_add 3
+Label 1
+ X20 12 3
+ X21
+ X36 rgb 3 0
+ X55 3
+ X55 4
+ X55 5
+ X36 rgb 3 1
+ X55 6
+ X55 7
+ X55 8
+ X36 rgb 3 2
+ X55 2
+ X56 3
+ X56 1
+ X24 2 0 2
+ X16 25 9 3 6
+ X16 25 10 4 7
+ X30 2 10
+ X16 25 11 5 8
+ X30 0 11
+ X46 9 0
+ X50 255 1
+ X25 max 3 4
+ X49 2 0
+ X50 255 1
+ X47 3 2
+ X25 max 3 2
+ X49 0 0
+ X50 255 1
+ X47 1 2
+ X23
+ X26 max 3
+)
+Predicate(camera_point 4
+Label 1
+ X20 11 4
+ X21
+ X29 4 0
+ X30 7 1
+ X36 camera 6 2
+ X55 5
+ X56 2
+ X55 0
+ X56 6
+ X54 2
+ X36 ray 2 3
+ X55 6
+ X56 1
+ X32 5 6
+ X46 4 1
+ X45 4 2
+ X24 3 0 3 5
+ X25 vector_scalar_mult 3 8
+ X47 6 0
+ X49 7 1
+ X47 5 2
+ X25 vector_scalar_mult 3 6
+ X49 4 0
+ X49 5 1
+ X47 3 2
+ X25 vector_add 3 4
+ X47 2 0
+ X49 3 1
+ X47 0 2
+ X25 vector_add 3 2
+ X49 0 0
+ X47 1 1
+ X23
+ X26 vector_normalize 2
+)
+Predicate(camera_height 2
+Label 1
+ X20 7 2
+ X36 camera 6 0
+ X54 5
+ X60 1
+ X27
+)
+Predicate('$intersect_5_23_1' 6
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        no_map 2
+) 3
+Label 2
+ X10 6
+ X34 no_map 0
+ X13 6
+ X32 2 5
+ X27
+Label 3
+ X21
+ X30 2 0
+ X30 9 1
+ X30 3 2
+ X30 12 3
+ X30 11 4
+ X47 12 0
+ X47 11 1
+ X45 8 2
+ X24 7 0 1 4 5 6 7 10
+ X25 vector_cross_product 3 13
+ X47 9 0
+ X49 12 1
+ X47 10 2
+ X25 vector_mult 3 12
+ X50 -1 3
+ X49 10 4
+ X16 29 5 3 4
+ X16 53 6 5
+ X30 6 6
+ X47 6 7
+ X50 3.141592654 8
+ X16 30 9 7 8
+ X30 1 9
+ X47 9 0
+ X49 11 1
+ X47 7 2
+ X25 vector_mult 3 10
+ X49 6 3
+ X16 49 4 3
+ X49 7 5
+ X16 30 6 5 4
+ X16 53 7 6
+ X50 6.283185308 8
+ X16 30 9 7 8
+ X30 5 9
+ X49 8 0
+ X49 9 1
+ X47 4 2
+ X25 vector_mult 3 6
+ X49 4 0
+ X49 5 1
+ X47 0 2
+ X25 '$intersect_5_23_0' 3 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 get_map_color 4
+)
+Predicate('$intersect_5_23_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 3
+ X50 0 4
+ X16 14 0 4
+ X13 3
+ X32 1 2
+ X27
+Label 3
+ X50 1 3
+ X16 27 4 3 1
+ X32 4 2
+ X27
+)
+Predicate('$combine_hits_5_45_0' 6
+ X1 1 1 fail fail 2
+Label 1
+ X10 6
+ X34 hit 0
+ X13 6
+ X46 1 0
+ X46 2 1
+ X46 3 2
+ X46 4 3
+ X46 5 4
+ X26 combine_hits 5
+Label 2
+ X20 3 6
+ X21
+ X30 0 1
+ X30 1 2
+ X30 2 3
+ X30 6 4
+ X30 4 5
+ X36 ray 2 0
+ X54 1
+ X56 10
+ X47 1 0
+ X47 10 1
+ X45 9 2
+ X24 4 3 5 7 8
+ X25 vector_mult 3 11
+ X47 1 0
+ X47 7 1
+ X25 vector_length 2 11
+ X47 10 0
+ X47 8 1
+ X25 vector_length 2 10
+ X49 7 3
+ X49 8 4
+ X16 29 5 3 4
+ X49 9 6
+ X16 30 7 6 5
+ X16 42 8 7
+ X47 2 0
+ X46 8 1
+ X47 5 2
+ X25 scale_color 3 7
+ X49 5 0
+ X49 6 1
+ X47 3 2
+ X25 color_add 3 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 combine_hits 5
+)
+Predicate('$file_to_list_2_164_0' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 2
+ X21
+ X29 2 0
+ X30 1 1
+ X11 0
+ X47 1 0
+ X46 2 1
+ X25 read_file 2 2
+ X14 0
+ X49 1 0
+ X23
+ X26 close 1
+Label 3
+ X21
+ X46 1 0
+ X25 close 1 0
+ X28
+ X23
+ X27
+)
+Predicate('$initialize_3_174_0' 2
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        no_map 2
+) 3
+Label 2
+ X10 2
+ X34 no_map 0
+ X13 2
+ X34 no_map 1
+ X27
+Label 3
+ X26 read_map 2
+)
+Predicate('$initialize_3_176_0' 2
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        no_map 2
+) 3
+Label 2
+ X10 2
+ X34 no_map 0
+ X13 2
+ X34 no_map 1
+ X27
+Label 3
+ X26 read_map 2
+)
+Predicate('$intersect_5_23_2' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 4
+ X16 16 2 0
+ X13 4
+ X50 0 5
+ X16 14 1 5
+ X16 27 6 0 2
+ X16 29 7 1 1
+ X16 25 8 6 7
+ X50 0 9
+ X16 14 8 9
+ X16 47 10 8
+ X16 27 11 1 10
+ X32 11 3
+ X27
+Label 3
+ X16 27 4 0 2
+ X16 29 5 1 1
+ X16 25 6 4 5
+ X16 47 7 6
+ X16 25 8 1 7
+ X32 8 3
+ X27
+)
+Predicate('$intersect_5_25_0' 5
+ X1 2 1 3 3 3
+Label 1
+ X2 1 (
+        no_map 2
+) 3
+Label 2
+ X10 5
+ X34 no_map 0
+ X13 5
+ X32 3 4
+ X27
+Label 3
+ X20 1 5
+ X29 5 0
+ X46 1 0
+ X46 2 1
+ X46 5 2
+ X46 4 3
+ X26 get_map_color 4
+)
+Predicate('$intersect_plane_7_26_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 3
+ X50 0 4
+ X16 13 0 4
+ X13 3
+ X32 1 2
+ X27
+Label 3
+ X46 1 0
+ X50 -1 1
+ X26 vector_scalar_mult 3
+)
+Predicate('$trace_ray_5_31_0' 9
+ X1 2 3 3 3 1
+Label 1
+ X3 1 (
+        ray 2 2
+) 3
+Label 2
+ X20 6 9
+ X21
+ X29 9 0
+ X29 10 1
+ X30 4 2
+ X29 11 3
+ X30 0 4
+ X30 8 5
+ X30 5 6
+ X30 3 7
+ X10 12
+ X36 ray 2 9
+ X56 6
+ X56 7
+ X13 12
+ X47 0 0
+ X46 9 1
+ X46 10 2
+ X47 4 3
+ X46 11 4
+ X47 5 5
+ X46 8 6
+ X45 2 7
+ X24 1 1
+ X25 '$trace_ray_5_31_3' 8 9
+ X47 0 0
+ X49 4 1
+ X49 5 2
+ X47 6 3
+ X47 7 4
+ X49 8 5
+ X47 1 6
+ X25 '$trace_ray_5_31_2' 7 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 '$trace_ray_5_31_1' 4
+Label 3
+ X32 3 7
+ X27
+)
+Predicate('$shadow_hit_any_4_42_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 3 5
+ X21
+ X29 5 0
+ X30 1 3
+ X30 3 4
+ X11 2
+ X46 1 0
+ X46 5 1
+ X45 0 2
+ X42 3
+ X42 4
+ X25 intersect 5 4
+ X49 0 0
+ X49 1 1
+ X16 13 0 1
+ X14 2
+ X49 3 2
+ X34 hit 2
+ X23
+ X27
+Label 3
+ X20 1 5
+ X29 5 0
+ X46 2 0
+ X46 5 1
+ X46 3 2
+ X46 4 3
+ X26 shadow_hit_any 4
+)
+Predicate('$read_ppm_stream_2_62_0' 5
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        6 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X10 5
+ X34 6 0
+ X13 5
+ X46 2 0
+ X46 4 2
+ X26 read_ppm_raw 4
+Label 4
+ X46 2 0
+ X46 4 2
+ X26 read_ppm_ascii 4
+)
+Predicate('$read_digits_2_76_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 0
+ X30 3 1
+ X30 1 2
+ X11 0
+ X47 2 0
+ X25 is_digit 1 4
+ X19 2
+ X14 0
+ X49 1 2
+ X37 2
+ X61 2
+ X55 1
+ X49 3 0
+ X23
+ X26 read_digits 2
+Label 3
+ X35 2
+ X27
+)
+Predicate('$process_world_5_170_0' 8
+ X1 2 1 fail fail fail
+Label 1
+ X2 4 (
+        object 2
+        light 3
+        config 4
+        camera 5
+) fail
+Label 2
+ X20 2 8
+ X10 8
+ X34 object 0
+ X13 8
+ X37 5
+ X60 1
+ X60 7
+ X32 4 6
+ X27
+Label 3
+ X20 2 8
+ X10 8
+ X34 light 0
+ X13 8
+ X32 5 7
+ X37 4
+ X60 1
+ X60 6
+ X27
+Label 4
+ X10 8
+ X34 config 0
+ X13 8
+ X32 1 2
+ X32 5 7
+ X32 4 6
+ X27
+Label 5
+ X10 8
+ X34 camera 0
+ X13 8
+ X32 1 3
+ X32 5 7
+ X32 4 6
+ X27
+)
+Predicate('$skip_nondigits_2_77_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 0
+ X30 1 2
+ X11 0
+ X47 2 0
+ X25 is_digit 1 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 3
+ X46 1 0
+ X46 2 1
+ X26 skip_nondigits 2
+)
+Predicate('$skip_to_char_2_79_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 3
+ X32 0 2
+ X13 3
+ X27
+Label 3
+ X20 1 3
+ X29 3 0
+ X46 1 0
+ X46 3 1
+ X26 skip_to_char 2
+)
+Predicate('$trace_ray_5_31_1' 4
+ X1 4 6 1 6 6
+Label 1
+ X2 2 (
+        0 2
+        1 3
+) 6
+Label 2
+ X4 4
+ X6 6
+Label 3
+ X4 5
+ X6 6
+Label 4
+ X10 4
+ X34 0 0
+ X13 4
+ X32 1 3
+ X27
+Label 5
+ X10 4
+ X34 1 0
+ X13 4
+ X32 2 3
+ X27
+Label 6
+ X20 1 4
+ X29 4 1
+ X46 2 1
+ X46 4 2
+ X26 combine_ref_shad 4
+)
+Predicate('$trace_ray_5_31_2' 7
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 7
+ X29 7 1
+ X29 8 2
+ X10 9
+ X50 1 10
+ X16 12 0 10
+ X13 9
+ X46 3 0
+ X46 4 1
+ X46 7 2
+ X46 8 3
+ X46 5 4
+ X46 6 5
+ X26 trace_shadow 6
+Label 3
+ X20 4 7
+ X36 rgb 3 6
+ X62 0
+ X62 0
+ X62 0
+ X27
+)
+Predicate('$trace_ray_5_31_3' 8
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 3
+ X30 2 5
+ X30 3 7
+ X10 8
+ X50 0 9
+ X24 1 0
+ X16 12 0 9
+ X50 0 10
+ X16 14 6 10
+ X13 8
+ X16 28 11 6
+ X30 4 11
+ X46 2 0
+ X47 0 2
+ X25 reflection_ray 3 5
+ X19 3
+ X49 0 0
+ X52 world 2 1
+ X61 1
+ X61 2
+ X49 3 2
+ X49 4 3
+ X23
+ X26 trace_ray 4
+Label 3
+ X32 4 7
+ X27
+)
+Predicate('$trace_ray_7_33_0' 8
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 8
+ X21
+ X29 8 0
+ X30 1 2
+ X30 3 5
+ X30 4 6
+ X30 6 7
+ X11 2
+ X46 1 0
+ X46 8 1
+ X45 0 2
+ X45 5 3
+ X45 7 4
+ X25 intersect 5 8
+ X49 0 0
+ X49 1 1
+ X16 13 0 1
+ X14 2
+ X47 0 2
+ X33 3 2
+ X49 5 3
+ X33 4 3
+ X49 7 4
+ X33 6 4
+ X23
+ X27
+Label 3
+ X32 2 5
+ X32 3 6
+ X32 4 7
+ X27
+)
+Predicate(camera 4
+Label 1
+ X20 12 4
+ X21
+ X30 1 0
+ X30 2 1
+ X30 4 3
+ X37 2
+ X62 99
+ X65
+ X62 97
+ X65
+ X62 109
+ X65
+ X62 101
+ X65
+ X62 114
+ X65
+ X62 97
+ X56 3
+ X45 0 0
+ X25 new_camera 1 5
+ X47 0 0
+ X47 3 1
+ X49 4 2
+ X25 camera_opts 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 member_add 3
+)
+Predicate(add_object 3
+Label 1
+ X20 2 3
+ X37 2
+ X60 0
+ X60 1
+ X27
+)
+Predicate(camera_opts 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 0 0
+ X30 2 2
+ X46 1 0
+ X45 3 1
+ X24 1 1
+ X25 ws 2 4
+ X47 0 0
+ X49 3 1
+ X47 1 2
+ X25 copt 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 camera_opts 3
+Label 3
+ X32 1 2
+ X27
+)
+Predicate(camera_width 2
+Label 1
+ X20 7 2
+ X36 camera 6 0
+ X54 4
+ X60 1
+ X54 1
+ X27
+)
+Predicate(color 3
+Label 1
+ X20 4 3
+ X21
+ X30 1 2
+ X36 rgb 3 0
+ X56 7
+ X56 5
+ X56 3
+ X46 1 0
+ X45 6 1
+ X24 3 0 2 4
+ X25 ws 2 8
+ X19 2
+ X49 6 3
+ X37 3
+ X62 40
+ X55 1
+ X47 7 0
+ X47 4 2
+ X25 intnumber 3 6
+ X19 2
+ X49 4 3
+ X37 3
+ X62 44
+ X55 1
+ X47 5 0
+ X47 2 2
+ X25 intnumber 3 4
+ X19 2
+ X49 2 3
+ X37 3
+ X62 44
+ X55 1
+ X47 3 0
+ X47 0 2
+ X25 intnumber 3 2
+ X19 2
+ X49 0 0
+ X37 0
+ X62 41
+ X61 1
+ X23
+ X27
+)
+Predicate(combine 4
+Label 1
+ X20 5 4
+ X29 5 3
+ X52 rgb 3 3
+ X62 0
+ X62 0
+ X62 0
+ X46 5 4
+ X26 combine_hits 5
+)
+Predicate(combine_hits 5
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X32 3 4
+ X27
+Label 3
+ X20 6 5
+ X29 6 1
+ X29 7 2
+ X29 8 3
+ X29 9 4
+ X37 0
+ X55 0
+ X55 1
+ X46 6 2
+ X46 7 3
+ X46 8 4
+ X46 9 5
+ X26 '$combine_hits_5_45_0' 6
+)
+Predicate(config_reflection 2
+Label 1
+ X20 6 2
+ X36 config 3 0
+ X54 1
+ X55 2
+ X54 1
+ X36 reflection 1 2
+ X60 1
+ X27
+)
+Predicate(config_background 2
+Label 1
+ X20 4 2
+ X36 config 3 0
+ X60 1
+ X54 2
+ X27
+)
+Predicate(config 4
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X5 5
+ X6 6
+Label 2
+ X20 20 4
+ X21
+ X30 1 0
+ X30 2 1
+ X37 2
+ X62 98
+ X65
+ X62 97
+ X65
+ X62 99
+ X65
+ X62 107
+ X65
+ X62 103
+ X65
+ X62 114
+ X65
+ X62 111
+ X65
+ X62 117
+ X65
+ X62 110
+ X65
+ X62 100
+ X55 1
+ X45 0 0
+ X46 3 2
+ X25 color 3 3
+ X19 4
+ X52 config 3 0
+ X61 0
+ X54 2
+ X49 1 1
+ X49 2 2
+ X23
+ X26 member_add 3
+Label 3
+ X20 6 4
+ X21
+ X30 2 0
+ X30 3 1
+ X30 1 3
+ X37 2
+ X62 117
+ X65
+ X62 115
+ X65
+ X62 101
+ X55 0
+ X45 0 1
+ X25 ws 2 4
+ X19 26
+ X49 0 3
+ X37 3
+ X62 114
+ X65
+ X62 101
+ X65
+ X62 102
+ X65
+ X62 108
+ X65
+ X62 101
+ X65
+ X62 99
+ X65
+ X62 116
+ X65
+ X62 105
+ X65
+ X62 111
+ X65
+ X62 110
+ X61 1
+ X52 reflection 1 4
+ X54 1
+ X52 config 3 0
+ X54 1
+ X58 4
+ X54 1
+ X49 2 1
+ X49 3 2
+ X23
+ X26 member_add 3
+Label 4
+ X20 6 4
+ X21
+ X30 2 0
+ X30 3 1
+ X30 1 3
+ X37 2
+ X62 117
+ X65
+ X62 115
+ X65
+ X62 101
+ X55 0
+ X45 0 1
+ X25 ws 2 4
+ X19 18
+ X49 0 3
+ X37 3
+ X62 115
+ X65
+ X62 104
+ X65
+ X62 97
+ X65
+ X62 100
+ X65
+ X62 105
+ X65
+ X62 110
+ X65
+ X62 103
+ X61 1
+ X52 config 3 0
+ X54 2
+ X62 shading
+ X49 2 1
+ X49 3 2
+ X23
+ X26 member_add 3
+Label 5
+ X20 6 4
+ X21
+ X30 2 0
+ X30 3 1
+ X30 1 3
+ X37 2
+ X62 117
+ X65
+ X62 115
+ X65
+ X62 101
+ X55 0
+ X45 0 1
+ X25 ws 2 4
+ X19 16
+ X49 0 3
+ X37 3
+ X62 115
+ X65
+ X62 104
+ X65
+ X62 97
+ X65
+ X62 100
+ X65
+ X62 111
+ X65
+ X62 119
+ X61 1
+ X52 config 3 0
+ X54 2
+ X62 shading
+ X49 2 1
+ X49 3 2
+ X23
+ X26 member_add 3
+Label 6
+ X20 6 4
+ X21
+ X30 1 0
+ X30 2 1
+ X30 4 3
+ X37 2
+ X62 109
+ X65
+ X62 97
+ X65
+ X62 120
+ X55 0
+ X45 5 1
+ X24 2 0 3
+ X25 ws 2 6
+ X19 20
+ X49 5 2
+ X37 2
+ X62 114
+ X65
+ X62 101
+ X65
+ X62 102
+ X65
+ X62 108
+ X65
+ X62 101
+ X65
+ X62 99
+ X65
+ X62 116
+ X65
+ X62 105
+ X65
+ X62 111
+ X65
+ X62 110
+ X55 0
+ X47 3 1
+ X25 ws 2 5
+ X19 10
+ X49 3 3
+ X37 3
+ X62 100
+ X65
+ X62 101
+ X65
+ X62 112
+ X65
+ X62 116
+ X65
+ X62 104
+ X55 1
+ X47 0 0
+ X49 4 2
+ X25 intnumber 3 3
+ X19 6
+ X52 reflection 1 3
+ X61 0
+ X52 config 3 0
+ X54 1
+ X58 3
+ X54 1
+ X49 1 1
+ X49 2 2
+ X23
+ X26 member_add 3
+)
+Predicate(copt 3
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X5 5
+ X5 6
+ X5 7
+ X6 8
+Label 2
+ X20 24 3
+ X36 camera 7 0
+ X55 0
+ X54 6
+ X10 3
+ X37 1
+ X62 101
+ X65
+ X62 121
+ X65
+ X62 101
+ X65
+ X62 112
+ X65
+ X62 111
+ X65
+ X62 105
+ X65
+ X62 110
+ X65
+ X62 116
+ X55 1
+ X13 3
+ X26 vector 3
+Label 3
+ X20 26 3
+ X36 camera 7 0
+ X54 1
+ X55 0
+ X54 5
+ X10 3
+ X37 1
+ X62 108
+ X65
+ X62 111
+ X65
+ X62 111
+ X65
+ X62 107
+ X65
+ X62 112
+ X65
+ X62 111
+ X65
+ X62 105
+ X65
+ X62 110
+ X65
+ X62 116
+ X55 1
+ X13 3
+ X26 vector 3
+Label 4
+ X20 16 3
+ X36 camera 7 0
+ X54 2
+ X55 0
+ X54 4
+ X10 3
+ X37 1
+ X62 122
+ X65
+ X62 111
+ X65
+ X62 111
+ X65
+ X62 109
+ X55 1
+ X13 3
+ X26 number 3
+Label 5
+ X20 12 3
+ X36 camera 7 0
+ X54 3
+ X55 0
+ X54 3
+ X10 3
+ X37 1
+ X62 117
+ X65
+ X62 112
+ X55 1
+ X13 3
+ X26 vector 3
+Label 6
+ X20 18 3
+ X36 camera 7 0
+ X54 4
+ X55 0
+ X54 2
+ X10 3
+ X37 1
+ X62 119
+ X65
+ X62 105
+ X65
+ X62 100
+ X65
+ X62 116
+ X65
+ X62 104
+ X55 1
+ X13 3
+ X26 number 3
+Label 7
+ X20 20 3
+ X36 camera 7 0
+ X54 5
+ X55 0
+ X54 1
+ X10 3
+ X37 1
+ X62 104
+ X65
+ X62 101
+ X65
+ X62 105
+ X65
+ X62 103
+ X65
+ X62 104
+ X65
+ X62 116
+ X55 1
+ X13 3
+ X26 number 3
+Label 8
+ X20 28 3
+ X36 camera 7 0
+ X54 6
+ X55 0
+ X10 3
+ X37 1
+ X62 114
+ X65
+ X62 101
+ X65
+ X62 115
+ X65
+ X62 111
+ X65
+ X62 108
+ X65
+ X62 117
+ X65
+ X62 116
+ X65
+ X62 105
+ X65
+ X62 111
+ X65
+ X62 110
+ X55 1
+ X13 3
+ X26 number 3
+)
+Predicate(max 3
+Label 1
+ X16 40 3 0 1
+ X32 3 2
+ X27
+)
+Predicate(intersect 5
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X3 3 (
+        sphere 8 3
+        plane 3 4
+        triangle 8 5
+) fail
+Label 3
+ X20 18 5
+ X21
+ X30 12 2
+ X36 sphere 8 0
+ X56 6
+ X56 14
+ X56 9
+ X56 2
+ X55 5
+ X56 0
+ X56 3
+ X56 4
+ X36 ray 2 1
+ X56 10
+ X56 13
+ X36 surface 2 3
+ X58 5
+ X56 5
+ X36 ray 2 4
+ X56 8
+ X56 1
+ X47 9 0
+ X47 10 1
+ X45 17 2
+ X24 4 7 11 15 16
+ X25 vector_sub 3 18
+ X47 17 0
+ X47 17 1
+ X47 16 2
+ X25 vector_mult 3 18
+ X49 17 0
+ X47 13 1
+ X47 15 2
+ X25 vector_mult 3 17
+ X47 14 0
+ X49 15 1
+ X49 16 2
+ X47 12 3
+ X25 '$intersect_5_23_2' 4 14
+ X49 12 3
+ X16 42 4 3
+ X50 1.0e-05 5
+ X16 14 4 5
+ X47 13 0
+ X47 12 1
+ X47 11 2
+ X25 vector_scalar_mult 3 12
+ X47 10 0
+ X49 11 1
+ X47 8 2
+ X25 vector_add 3 10
+ X47 8 0
+ X47 9 1
+ X47 7 2
+ X25 vector_sub 3 8
+ X50 1 3
+ X47 6 4
+ X16 30 5 3 4
+ X49 7 0
+ X46 5 1
+ X47 1 2
+ X25 vector_scalar_mult 3 6
+ X47 0 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X47 4 4
+ X47 5 5
+ X23
+ X26 '$intersect_5_23_1' 6
+Label 4
+ X20 14 5
+ X29 7 2
+ X36 plane 3 0
+ X55 0
+ X55 8
+ X55 9
+ X36 ray 2 1
+ X55 10
+ X55 2
+ X36 surface 2 3
+ X62 0
+ X58 9
+ X36 ray 2 4
+ X55 5
+ X55 6
+ X46 8 1
+ X46 10 3
+ X46 7 4
+ X26 intersect_plane 7
+Label 5
+ X20 19 5
+ X21
+ X29 7 2
+ X36 triangle 8 0
+ X56 13
+ X56 10
+ X56 9
+ X55 0
+ X55 8
+ X56 6
+ X55 9
+ X56 5
+ X36 ray 2 1
+ X55 10
+ X55 2
+ X36 surface 2 3
+ X58 9
+ X56 7
+ X36 ray 2 4
+ X56 12
+ X55 6
+ X46 8 1
+ X46 10 3
+ X46 7 4
+ X47 12 5
+ X24 7 0 1 2 3 4 8 11
+ X25 intersect_plane 7 14
+ X47 12 0
+ X47 13 1
+ X47 8 2
+ X25 vector_sub 3 12
+ X47 9 0
+ X47 9 1
+ X47 0 2
+ X25 vector_mult 3 12
+ X47 10 0
+ X47 10 1
+ X47 4 2
+ X25 vector_mult 3 12
+ X47 8 0
+ X47 8 1
+ X47 11 2
+ X25 vector_mult 3 12
+ X50 2 3
+ X49 11 4
+ X16 29 5 3 4
+ X47 0 6
+ X47 4 7
+ X16 25 8 6 7
+ X16 13 5 8
+ X47 8 0
+ X47 10 1
+ X47 1 2
+ X25 vector_mult 3 11
+ X47 10 0
+ X47 9 1
+ X47 2 2
+ X25 vector_mult 3 10
+ X49 8 0
+ X47 9 1
+ X47 3 2
+ X25 vector_mult 3 8
+ X49 0 5
+ X49 1 6
+ X16 29 7 5 6
+ X49 2 8
+ X49 3 9
+ X16 29 10 8 9
+ X16 27 11 7 10
+ X49 4 12
+ X47 0 13
+ X16 29 14 12 13
+ X47 2 15
+ X47 2 16
+ X16 29 17 15 16
+ X16 27 18 14 17
+ X16 30 19 11 18
+ X50 0 20
+ X16 16 19 20
+ X50 1 21
+ X16 15 19 21
+ X47 2 22
+ X16 29 23 19 22
+ X47 3 24
+ X16 27 25 24 23
+ X47 0 26
+ X16 30 27 25 26
+ X50 0 28
+ X16 16 27 28
+ X50 1 29
+ X16 15 27 29
+ X16 25 30 19 27
+ X50 1 31
+ X16 15 30 31
+ X47 5 0
+ X46 19 1
+ X46 27 2
+ X47 6 3
+ X47 7 4
+ X23
+ X26 '$intersect_5_25_0' 5
+)
+Predicate(empty_world 1
+Label 1
+ X35 0
+ X27
+)
+Predicate(digit 2
+Label 1
+ X50 48 2
+ X16 16 0 2
+ X50 57 3
+ X16 15 0 3
+ X50 48 4
+ X16 27 5 0 4
+ X32 5 1
+ X27
+)
+Predicate(default 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X32 0 1
+ X12
+ X27
+Label 3
+ X27
+)
+Predicate(gen_light_rays 3
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X35 2
+ X27
+Label 3
+ X20 12 3
+ X21
+ X30 1 1
+ X37 0
+ X55 3
+ X56 0
+ X36 light 1 3
+ X55 0
+ X37 2
+ X55 4
+ X56 2
+ X36 light 2 4
+ X55 5
+ X56 5
+ X36 ray 2 5
+ X61 1
+ X56 4
+ X47 1 1
+ X45 3 2
+ X25 vector_sub 3 6
+ X47 3 0
+ X47 5 1
+ X25 vector_length 2 5
+ X49 3 0
+ X47 4 1
+ X25 normalize_vector 2 3
+ X47 0 0
+ X47 1 1
+ X47 2 2
+ X23
+ X26 gen_light_rays 3
+)
+Predicate(fraction 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 3 4
+ X21
+ X30 0 0
+ X30 2 1
+ X29 5 3
+ X10 6
+ X37 2
+ X62 46
+ X55 3
+ X13 6
+ X50 10 0
+ X50 0 1
+ X45 1 2
+ X46 5 4
+ X25 num_frac 5 3
+ X49 0 0
+ X49 1 1
+ X16 25 2 0 1
+ X33 2 2
+ X23
+ X27
+Label 3
+ X32 0 1
+ X32 2 3
+ X27
+)
+Predicate(file_to_list 2
+Label 1
+ X21
+ X30 0 1
+ X50 read 1
+ X45 1 2
+ X25 open 3 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 '$file_to_list_2_164_0' 2
+)
+Predicate(entry 0
+Label 1
+ X50 'test.desc' 0
+ X50 'test.ppm' 1
+ X26 trace 2
+)
+Predicate(get_map_color 4
+Label 1
+ X20 9 4
+ X21
+ X36 map 2 2
+ X55 4
+ X55 5
+ X36 size 2 4
+ X55 6
+ X55 7
+ X36 surface 2 3
+ X62 0
+ X56 2
+ X24 2 0 1
+ X16 29 8 6 0
+ X16 33 9 8
+ X30 0 9
+ X16 29 10 7 1
+ X16 33 11 10
+ X46 11 0
+ X46 5 1
+ X47 1 2
+ X25 nth 3 3
+ X49 0 0
+ X49 1 1
+ X47 2 2
+ X23
+ X26 nth 3
+)
+Predicate(initialize 3
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X5 4
+ X5 5
+ X5 6
+ X5 7
+ X6 8
+Label 2
+ X3 6 (
+        config 3 3
+        light 1 4
+        camera 7 5
+        sphere 7 6
+        plane 3 7
+        triangle 6 8
+) fail
+Label 3
+ X20 12 3
+ X21
+ X36 config 3 0
+ X55 0
+ X56 0
+ X55 3
+ X34 config 1
+ X36 config 3 2
+ X58 0
+ X59 0
+ X58 3
+ X52 rgb 3 1
+ X62 0
+ X62 0
+ X62 0
+ X25 default 2 1
+ X19 2
+ X47 0 0
+ X52 reflection 1 1
+ X62 0
+ X23
+ X26 default 2
+Label 4
+ X20 8 3
+ X36 light 1 0
+ X55 0
+ X34 light 1
+ X36 light 1 2
+ X58 0
+ X52 v 3 1
+ X62 0
+ X62 100
+ X62 -100
+ X26 default 2
+Label 5
+ X20 19 3
+ X21
+ X36 camera 7 0
+ X56 6
+ X56 22
+ X56 20
+ X56 18
+ X56 0
+ X56 3
+ X56 1
+ X34 camera 1
+ X36 camera 6 2
+ X59 6
+ X56 7
+ X56 14
+ X56 12
+ X56 2
+ X56 4
+ X47 6 0
+ X52 v 3 1
+ X62 0
+ X62 0
+ X62 -8
+ X24 11 5 8 9 10 11 13 15 16 17 19 21
+ X25 default 2 23
+ X19 4
+ X47 22 0
+ X52 v 3 1
+ X62 0
+ X62 0
+ X62 0
+ X25 default 2 23
+ X47 20 0
+ X50 10 1
+ X25 default 2 23
+ X19 4
+ X47 18 0
+ X52 v 3 1
+ X62 0
+ X62 1
+ X62 0
+ X25 default 2 23
+ X47 0 0
+ X50 4 1
+ X25 default 2 23
+ X47 3 0
+ X50 4 1
+ X25 default 2 23
+ X47 1 0
+ X50 0.025 1
+ X25 default 2 23
+ X47 22 0
+ X47 6 1
+ X47 21 2
+ X25 vector_sub 3 22
+ X49 21 0
+ X47 19 1
+ X25 vector_normalize 2 21
+ X49 19 0
+ X47 20 1
+ X47 17 2
+ X25 vector_scalar_mult 3 19
+ X47 6 0
+ X47 17 1
+ X47 8 2
+ X25 vector_add 3 19
+ X47 18 0
+ X47 17 1
+ X47 16 2
+ X25 vector_cross_product 3 18
+ X47 16 0
+ X49 17 1
+ X47 15 2
+ X25 vector_cross_product 3 17
+ X49 16 0
+ X47 1 1
+ X47 14 2
+ X25 vector_scale_length 3 16
+ X49 15 0
+ X47 1 1
+ X47 12 2
+ X25 vector_scale_length 3 15
+ X47 3 3
+ X50 2 4
+ X16 30 5 3 4
+ X30 13 5
+ X47 0 6
+ X50 2 7
+ X16 30 8 6 7
+ X47 14 0
+ X46 8 1
+ X47 10 2
+ X25 vector_scale_length 3 14
+ X47 12 0
+ X49 13 1
+ X47 11 2
+ X25 vector_scale_length 3 12
+ X49 10 0
+ X49 11 1
+ X47 9 2
+ X25 vector_add 3 10
+ X49 8 0
+ X49 9 1
+ X47 5 2
+ X25 vector_sub 3 8
+ X49 5 0
+ X47 6 1
+ X47 7 2
+ X25 vector_sub 3 5
+ X47 0 0
+ X47 1 1
+ X16 30 2 0 1
+ X16 33 3 2
+ X33 2 3
+ X47 3 4
+ X47 1 5
+ X16 30 6 4 5
+ X16 33 7 6
+ X33 4 7
+ X23
+ X27
+Label 6
+ X20 17 3
+ X21
+ X36 sphere 7 0
+ X56 4
+ X56 10
+ X56 9
+ X56 8
+ X56 0
+ X56 6
+ X56 2
+ X34 object 1
+ X36 sphere 8 2
+ X59 4
+ X56 5
+ X59 10
+ X59 9
+ X59 8
+ X56 1
+ X56 7
+ X56 3
+ X47 4 0
+ X50 3 1
+ X25 default 2 11
+ X19 4
+ X47 10 0
+ X52 v 3 1
+ X62 0
+ X62 0
+ X62 100
+ X25 default 2 10
+ X19 4
+ X47 9 0
+ X52 rgb 3 1
+ X62 255
+ X62 0
+ X62 0
+ X25 default 2 9
+ X47 8 0
+ X50 0 1
+ X25 default 2 8
+ X47 0 0
+ X50 no_map 1
+ X25 default 2 8
+ X19 4
+ X47 6 0
+ X52 v 3 1
+ X62 0
+ X62 1
+ X62 0
+ X25 default 2 8
+ X19 4
+ X47 2 0
+ X52 v 3 1
+ X62 1
+ X62 0
+ X62 0
+ X25 default 2 8
+ X47 4 2
+ X47 4 3
+ X16 29 4 2 3
+ X33 5 4
+ X47 6 0
+ X47 7 1
+ X25 vector_normalize 2 4
+ X47 2 0
+ X47 3 1
+ X25 vector_normalize 2 2
+ X47 0 0
+ X47 1 1
+ X23
+ X26 '$initialize_3_174_0' 2
+Label 7
+ X20 12 3
+ X21
+ X36 plane 3 0
+ X56 0
+ X56 3
+ X56 2
+ X34 object 1
+ X36 plane 3 2
+ X56 1
+ X59 3
+ X59 2
+ X47 0 0
+ X52 v 3 1
+ X62 -1
+ X62 0
+ X62 2
+ X25 default 2 4
+ X47 3 0
+ X50 150 1
+ X25 default 2 3
+ X19 4
+ X47 2 0
+ X52 rgb 3 1
+ X62 70
+ X62 190
+ X62 70
+ X25 default 2 2
+ X47 0 0
+ X47 1 1
+ X23
+ X26 vector_normalize 2
+Label 8
+ X20 20 3
+ X21
+ X36 triangle 6 0
+ X56 2
+ X56 6
+ X56 7
+ X56 9
+ X56 8
+ X56 0
+ X34 object 1
+ X36 triangle 8 2
+ X59 2
+ X59 6
+ X59 7
+ X56 3
+ X56 4
+ X59 9
+ X59 8
+ X56 1
+ X47 2 0
+ X52 v 3 1
+ X62 0
+ X62 0
+ X62 90
+ X24 1 5
+ X25 default 2 10
+ X19 4
+ X47 6 0
+ X52 v 3 1
+ X62 30
+ X62 0
+ X62 30
+ X25 default 2 10
+ X19 4
+ X47 7 0
+ X52 v 3 1
+ X62 30
+ X62 30
+ X62 5
+ X25 default 2 10
+ X19 4
+ X47 9 0
+ X52 rgb 3 1
+ X62 40
+ X62 40
+ X62 120
+ X25 default 2 9
+ X47 8 0
+ X50 0 1
+ X25 default 2 8
+ X47 0 0
+ X50 no_map 1
+ X25 default 2 8
+ X47 6 0
+ X47 7 1
+ X47 5 2
+ X25 vector_cross_product 3 6
+ X49 5 0
+ X47 3 1
+ X25 vector_normalize 2 5
+ X47 2 0
+ X47 3 1
+ X47 4 2
+ X25 vector_mult 3 2
+ X47 0 0
+ X47 1 1
+ X23
+ X26 '$initialize_3_176_0' 2
+)
+Predicate(intersect_plane 7
+Label 1
+ X21
+ X30 1 0
+ X30 6 1
+ X30 9 2
+ X30 4 3
+ X30 8 4
+ X30 5 5
+ X30 2 6
+ X47 1 0
+ X47 9 1
+ X45 0 2
+ X24 2 3 7
+ X25 vector_mult 3 10
+ X47 0 3
+ X50 0 4
+ X16 12 3 4
+ X47 1 0
+ X47 4 1
+ X47 7 2
+ X25 vector_mult 3 10
+ X49 6 3
+ X49 7 4
+ X16 27 5 3 4
+ X47 0 6
+ X16 30 7 5 6
+ X33 8 7
+ X49 8 8
+ X50 0 9
+ X16 14 8 9
+ X49 9 0
+ X47 8 1
+ X47 3 2
+ X25 vector_scalar_mult 3 6
+ X49 3 0
+ X49 4 1
+ X49 5 2
+ X25 vector_add 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 '$intersect_plane_7_26_0' 3
+)
+Predicate(is_digit 1
+Label 1
+ X50 57 1
+ X16 15 0 1
+ X50 48 2
+ X16 16 0 2
+ X27
+)
+Predicate(intnumber 3
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X21
+ X30 1 0
+ X30 4 2
+ X11 3
+ X46 1 0
+ X45 2 1
+ X24 1 0
+ X25 ws 2 5
+ X19 2
+ X49 2 4
+ X37 4
+ X62 45
+ X55 2
+ X14 3
+ X50 0 0
+ X47 0 1
+ X49 4 3
+ X25 num_int 4 2
+ X50 -1 0
+ X49 0 1
+ X16 29 2 0 1
+ X33 1 2
+ X23
+ X27
+Label 3
+ X21
+ X30 2 0
+ X30 3 2
+ X11 1
+ X46 1 0
+ X45 0 1
+ X25 ws 2 4
+ X19 2
+ X49 0 4
+ X37 4
+ X62 43
+ X55 2
+ X14 1
+ X50 0 0
+ X49 2 1
+ X49 3 3
+ X23
+ X26 num_int 4
+Label 4
+ X21
+ X30 0 0
+ X30 2 2
+ X46 1 0
+ X45 1 1
+ X25 ws 2 3
+ X50 0 0
+ X49 0 1
+ X49 1 2
+ X49 2 3
+ X23
+ X26 num_int 4
+)
+Predicate(light_opts 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 0
+ X30 3 2
+ X11 0
+ X46 1 0
+ X45 4 1
+ X24 1 2
+ X25 ws 2 5
+ X47 1 0
+ X49 4 1
+ X47 2 2
+ X25 lopt 3 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 light_opts 3
+Label 3
+ X32 1 2
+ X27
+)
+Predicate(lopt 3
+Label 1
+ X20 14 3
+ X36 light 1 0
+ X55 0
+ X10 3
+ X37 1
+ X62 99
+ X65
+ X62 101
+ X65
+ X62 110
+ X65
+ X62 116
+ X65
+ X62 101
+ X65
+ X62 114
+ X55 1
+ X13 3
+ X26 vector 3
+)
+Predicate(load_world 4
+Label 1
+ X20 3 4
+ X21
+ X30 1 1
+ X30 2 2
+ X36 world 2 3
+ X56 4
+ X56 3
+ X45 0 1
+ X25 parse 2 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X47 3 3
+ X47 4 4
+ X23
+ X26 process_world 5
+)
+Predicate(map_size 3
+Label 1
+ X21
+ X30 0 0
+ X30 1 1
+ X47 0 0
+ X46 2 1
+ X25 length 2 2
+ X19 2
+ X49 0 2
+ X37 2
+ X55 0
+ X54 1
+ X49 1 1
+ X23
+ X26 length 2
+)
+Predicate(next_object 3
+Label 1
+ X20 2 3
+ X37 0
+ X60 1
+ X60 2
+ X27
+)
+Predicate(new_camera 1
+Label 1
+ X20 8 1
+ X36 camera 7 0
+ X54 7
+ X27
+)
+Predicate(name 3
+Label 1
+ X21
+ X30 2 0
+ X30 1 2
+ X46 1 0
+ X45 4 1
+ X24 2 0 3
+ X25 ws 2 5
+ X19 2
+ X49 4 3
+ X37 3
+ X62 39
+ X55 1
+ X47 3 0
+ X47 0 2
+ X25 name_inner 3 4
+ X19 2
+ X49 0 2
+ X37 2
+ X62 39
+ X61 1
+ X49 2 0
+ X49 3 1
+ X23
+ X26 name 2
+)
+Predicate(member_add 3
+Label 1
+ X20 1 3
+ X29 3 0
+ X46 1 0
+ X46 3 1
+ X26 member_add_inx 3
+)
+Predicate(member_add_inx 3
+ X1 1 3 fail 2 fail
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X4 4
+ X6 5
+Label 3
+ X20 2 3
+ X35 0
+ X37 2
+ X60 1
+ X63
+ X27
+Label 4
+ X20 4 3
+ X37 0
+ X60 1
+ X55 3
+ X12
+ X37 2
+ X58 1
+ X58 3
+ X27
+Label 5
+ X20 4 3
+ X37 0
+ X55 3
+ X55 0
+ X37 2
+ X58 3
+ X55 2
+ X26 member_add_inx 3
+)
+Predicate(name_inner 3
+ X1 1 3 fail 2 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 4 3
+ X37 0
+ X55 3
+ X55 0
+ X37 1
+ X58 3
+ X55 1
+ X50 39 4
+ X16 12 3 4
+ X26 name_inner 3
+Label 3
+ X35 0
+ X32 1 2
+ X27
+)
+Predicate(new_sphere 1
+Label 1
+ X20 8 1
+ X36 sphere 7 0
+ X54 7
+ X27
+)
+Predicate(new_plane 1
+Label 1
+ X20 4 1
+ X36 plane 3 0
+ X54 3
+ X27
+)
+Predicate(new_light 1
+Label 1
+ X20 2 1
+ X36 light 1 0
+ X54 1
+ X27
+)
+Predicate(new_config 1
+Label 1
+ X20 4 1
+ X36 config 3 0
+ X54 3
+ X27
+)
+Predicate(new_triangle 1
+Label 1
+ X20 7 1
+ X36 triangle 6 0
+ X54 6
+ X27
+)
+Predicate(scale_color 3
+Label 1
+ X20 8 3
+ X21
+ X36 rgb 3 0
+ X55 3
+ X55 4
+ X55 5
+ X36 rgb 3 2
+ X55 2
+ X56 3
+ X56 1
+ X24 2 0 2
+ X16 29 6 3 1
+ X16 33 7 6
+ X16 29 8 4 1
+ X16 33 9 8
+ X30 2 9
+ X16 29 10 5 1
+ X16 33 11 10
+ X30 0 11
+ X46 7 0
+ X50 255 1
+ X25 max 3 4
+ X49 2 0
+ X50 255 1
+ X47 3 2
+ X25 max 3 2
+ X49 0 0
+ X50 255 1
+ X47 1 2
+ X23
+ X26 max 3
+)
+Predicate(reflection_ray 3
+Label 1
+ X20 9 3
+ X21
+ X36 ray 2 0
+ X54 1
+ X56 0
+ X36 ray 2 1
+ X55 3
+ X56 4
+ X36 ray 2 2
+ X58 3
+ X56 2
+ X47 4 0
+ X47 0 1
+ X45 3 2
+ X24 1 1
+ X25 vector_mult 3 5
+ X50 2 3
+ X49 3 4
+ X16 29 5 3 4
+ X47 4 0
+ X46 5 1
+ X47 1 2
+ X25 vector_scalar_mult 3 3
+ X47 0 0
+ X49 1 1
+ X47 2 2
+ X23
+ X26 vector_sub 3
+)
+Predicate(nth 3
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X20 2 3
+ X34 0 0
+ X12
+ X37 1
+ X60 2
+ X54 1
+ X27
+Label 4
+ X20 2 3
+ X37 1
+ X54 1
+ X55 1
+ X16 28 3 0
+ X46 3 0
+ X26 nth 3
+)
+Predicate(read_ppm 2
+Label 1
+ X21
+ X30 1 1
+ X50 read 1
+ X45 0 2
+ X25 open 3 2
+ X47 0 0
+ X49 1 1
+ X25 read_ppm_stream 2 1
+ X49 0 0
+ X23
+ X26 close 1
+)
+Predicate(read_chars 3
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 0 0
+ X12
+ X35 2
+ X27
+Label 4
+ X20 2 3
+ X21
+ X30 0 0
+ X30 1 1
+ X37 2
+ X55 1
+ X56 2
+ X47 0 3
+ X50 0 4
+ X16 14 3 4
+ X47 1 0
+ X25 get0 2 3
+ X49 0 3
+ X16 28 4 3
+ X46 4 0
+ X49 1 1
+ X47 2 2
+ X23
+ X26 read_chars 3
+)
+Predicate(parse 2
+Label 1
+ X21
+ X30 3 1
+ X11 0
+ X45 4 1
+ X24 2 1 2
+ X25 file_to_list 2 5
+ X47 1 0
+ X25 new_camera 1 5
+ X47 2 0
+ X25 new_config 1 5
+ X19 4
+ X53 4
+ X61 2
+ X63
+ X53 0
+ X61 1
+ X58 4
+ X49 3 1
+ X49 4 2
+ X50 [] 3
+ X25 specs 4 1
+ X14 0
+ X23
+ X27
+)
+Predicate(object 4
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X6 5
+Label 2
+ X20 12 4
+ X21
+ X30 1 0
+ X30 2 1
+ X30 4 3
+ X10 4
+ X37 2
+ X62 115
+ X65
+ X62 112
+ X65
+ X62 104
+ X65
+ X62 101
+ X65
+ X62 114
+ X65
+ X62 101
+ X56 3
+ X13 4
+ X45 0 0
+ X25 new_sphere 1 5
+ X47 0 0
+ X47 3 1
+ X49 4 2
+ X25 sphere_opts 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 add_object 3
+Label 3
+ X20 10 4
+ X21
+ X30 1 0
+ X30 2 1
+ X30 4 3
+ X10 4
+ X37 2
+ X62 112
+ X65
+ X62 108
+ X65
+ X62 97
+ X65
+ X62 110
+ X65
+ X62 101
+ X56 3
+ X13 4
+ X45 0 0
+ X25 new_plane 1 5
+ X47 0 0
+ X47 3 1
+ X49 4 2
+ X25 plane_opts 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 add_object 3
+Label 4
+ X20 16 4
+ X21
+ X30 1 0
+ X30 2 1
+ X30 4 3
+ X10 4
+ X37 2
+ X62 116
+ X65
+ X62 114
+ X65
+ X62 105
+ X65
+ X62 97
+ X65
+ X62 110
+ X65
+ X62 103
+ X65
+ X62 108
+ X65
+ X62 101
+ X56 3
+ X13 4
+ X45 0 0
+ X25 new_triangle 1 5
+ X47 0 0
+ X47 3 1
+ X49 4 2
+ X25 triangle_opts 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 add_object 3
+Label 5
+ X20 10 4
+ X21
+ X30 1 0
+ X30 2 1
+ X30 4 3
+ X10 4
+ X37 2
+ X62 108
+ X65
+ X62 105
+ X65
+ X62 103
+ X65
+ X62 104
+ X65
+ X62 116
+ X56 3
+ X13 4
+ X45 0 0
+ X25 new_light 1 5
+ X47 0 0
+ X47 3 1
+ X49 4 2
+ X25 light_opts 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 add_object 3
+)
+Predicate(number 3
+Label 1
+ X21
+ X30 1 0
+ X30 3 2
+ X45 0 0
+ X45 2 2
+ X25 intnumber 3 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 fraction 4
+)
+Predicate(num_int 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 4
+ X21
+ X30 1 0
+ X30 3 1
+ X30 5 3
+ X11 0
+ X37 2
+ X55 0
+ X56 4
+ X45 2 1
+ X25 digit 2 6
+ X14 0
+ X49 1 4
+ X50 10 5
+ X16 29 6 4 5
+ X49 2 7
+ X16 25 8 6 7
+ X46 8 0
+ X49 3 1
+ X47 4 2
+ X49 5 3
+ X23
+ X26 num_int 4
+Label 3
+ X32 0 1
+ X32 2 3
+ X27
+)
+Predicate(num_frac 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 5
+ X21
+ X30 2 0
+ X30 3 1
+ X30 4 2
+ X30 6 4
+ X11 0
+ X37 3
+ X55 0
+ X56 5
+ X45 1 1
+ X25 digit 2 7
+ X14 0
+ X49 1 5
+ X49 2 6
+ X16 30 7 5 6
+ X49 3 8
+ X16 25 9 8 7
+ X47 2 10
+ X50 10 11
+ X16 29 12 10 11
+ X46 12 0
+ X46 9 1
+ X49 4 2
+ X47 5 3
+ X49 6 4
+ X23
+ X26 num_frac 5
+Label 3
+ X32 1 2
+ X32 3 4
+ X27
+)
+Predicate(plane_opts 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 0
+ X30 3 2
+ X11 0
+ X46 1 0
+ X45 4 1
+ X24 1 2
+ X25 ws 2 5
+ X47 1 0
+ X49 4 1
+ X47 2 2
+ X25 popt 3 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 plane_opts 3
+Label 3
+ X32 1 2
+ X27
+)
+Predicate(popt 3
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 16 3
+ X36 plane 3 0
+ X55 0
+ X54 2
+ X10 3
+ X37 1
+ X62 110
+ X65
+ X62 111
+ X65
+ X62 114
+ X65
+ X62 109
+ X65
+ X62 97
+ X65
+ X62 108
+ X55 1
+ X13 3
+ X26 vector 3
+Label 3
+ X20 20 3
+ X36 plane 3 0
+ X54 1
+ X55 0
+ X54 1
+ X10 3
+ X37 1
+ X62 100
+ X65
+ X62 105
+ X65
+ X62 115
+ X65
+ X62 116
+ X65
+ X62 97
+ X65
+ X62 110
+ X65
+ X62 99
+ X65
+ X62 101
+ X55 1
+ X13 3
+ X26 number 3
+Label 4
+ X20 14 3
+ X36 plane 3 0
+ X54 2
+ X55 0
+ X10 3
+ X37 1
+ X62 99
+ X65
+ X62 111
+ X65
+ X62 108
+ X65
+ X62 111
+ X65
+ X62 114
+ X55 1
+ X13 3
+ X26 color 3
+)
+Predicate(process_world 5
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X35 3
+ X35 4
+ X27
+Label 3
+ X20 2 5
+ X21
+ X30 1 1
+ X30 2 2
+ X30 7 3
+ X30 8 4
+ X37 0
+ X55 0
+ X56 0
+ X45 5 1
+ X45 6 2
+ X24 2 3 4
+ X25 initialize 3 9
+ X49 5 0
+ X49 6 1
+ X47 1 2
+ X47 2 3
+ X49 7 4
+ X49 8 5
+ X47 3 6
+ X47 4 7
+ X25 '$process_world_5_170_0' 8 5
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 process_world 5
+)
+Predicate(read_digit 2
+Label 1
+ X21
+ X30 3 0
+ X30 0 1
+ X47 3 0
+ X45 1 1
+ X24 1 2
+ X25 skip_nondigits 2 4
+ X49 3 0
+ X47 2 1
+ X25 read_digits 2 3
+ X19 2
+ X49 0 0
+ X53 1
+ X61 1
+ X61 2
+ X23
+ X26 number_chars 2
+)
+Predicate(read_digits 2
+Label 1
+ X21
+ X30 1 0
+ X30 2 1
+ X47 1 0
+ X45 0 1
+ X25 get0 2 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 '$read_digits_2_76_0' 3
+)
+Predicate(read_file 2
+Label 1
+ X21
+ X30 1 0
+ X30 2 1
+ X47 1 0
+ X45 0 1
+ X25 get0 2 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 read_file_ch 3
+)
+Predicate(read_file_ch 3
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        -1 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 -1 0
+ X12
+ X35 2
+ X27
+Label 4
+ X20 2 3
+ X21
+ X30 1 1
+ X37 2
+ X60 0
+ X56 2
+ X47 1 0
+ X45 0 1
+ X25 get0 2 3
+ X49 0 0
+ X49 1 1
+ X47 2 2
+ X23
+ X26 read_file_ch 3
+)
+Predicate(read_map 2
+Label 1
+ X20 6 2
+ X21
+ X36 map 2 1
+ X55 2
+ X56 0
+ X36 size 2 2
+ X56 1
+ X56 2
+ X47 0 1
+ X25 read_ppm 2 3
+ X47 0 0
+ X47 1 1
+ X47 2 2
+ X23
+ X26 map_size 3
+)
+Predicate(read_ppm_stream 2
+Label 1
+ X21
+ X30 3 0
+ X30 4 1
+ X45 0 0
+ X45 1 1
+ X45 2 2
+ X47 3 3
+ X25 read_ppm_spec 4 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 '$read_ppm_stream_2_62_0' 5
+)
+Predicate(read_ppm_spec 4
+Label 1
+ X20 1 4
+ X21
+ X29 4 0
+ X30 2 1
+ X30 1 2
+ X30 0 3
+ X47 0 0
+ X46 4 1
+ X25 read_digit 2 3
+ X47 0 0
+ X25 skip_to_nl 1 3
+ X47 0 0
+ X49 2 1
+ X25 read_digit 2 2
+ X47 0 0
+ X49 1 1
+ X25 read_digit 2 1
+ X19 1
+ X49 0 0
+ X42 1
+ X23
+ X26 read_digit 2
+)
+Predicate(read_ppm_raw 4
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 0 0
+ X12
+ X35 2
+ X27
+Label 4
+ X20 2 4
+ X21
+ X30 0 0
+ X30 1 1
+ X30 3 3
+ X37 2
+ X55 1
+ X56 2
+ X47 1 0
+ X47 3 2
+ X25 read_ppm_raw_row 3 4
+ X49 0 4
+ X16 28 5 4
+ X46 5 0
+ X49 1 1
+ X47 2 2
+ X49 3 3
+ X23
+ X26 read_ppm_raw 4
+)
+Predicate(read_ppm_ascii 4
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 0 0
+ X12
+ X35 2
+ X27
+Label 4
+ X20 2 4
+ X21
+ X30 0 0
+ X30 1 1
+ X30 3 3
+ X37 2
+ X55 1
+ X56 2
+ X47 1 0
+ X47 3 2
+ X25 read_ppm_ascii_row 3 4
+ X49 0 4
+ X16 28 5 4
+ X46 5 0
+ X49 1 1
+ X47 2 2
+ X49 3 3
+ X23
+ X26 read_ppm_ascii 4
+)
+Predicate(read_ppm_ascii_row 3
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 0 0
+ X12
+ X35 1
+ X27
+Label 4
+ X20 6 3
+ X21
+ X30 0 0
+ X30 2 2
+ X37 1
+ X55 3
+ X56 1
+ X36 rgb 3 3
+ X55 1
+ X56 4
+ X56 3
+ X47 2 0
+ X25 read_digit 2 5
+ X47 2 0
+ X47 4 1
+ X25 read_digit 2 4
+ X47 2 0
+ X47 3 1
+ X25 read_digit 2 3
+ X49 0 3
+ X16 28 4 3
+ X46 4 0
+ X47 1 1
+ X49 2 2
+ X23
+ X26 read_ppm_ascii_row 3
+)
+Predicate(read_ppm_raw_row 3
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 0 0
+ X12
+ X35 1
+ X27
+Label 4
+ X20 6 3
+ X21
+ X30 0 0
+ X30 2 2
+ X37 1
+ X55 3
+ X56 1
+ X36 rgb 3 3
+ X55 1
+ X56 4
+ X56 3
+ X47 2 0
+ X25 get0 2 5
+ X47 2 0
+ X47 4 1
+ X25 get0 2 4
+ X47 2 0
+ X47 3 1
+ X25 get0 2 3
+ X49 0 3
+ X16 28 4 3
+ X46 4 0
+ X47 1 1
+ X49 2 2
+ X23
+ X26 read_ppm_raw_row 3
+)
+Predicate(vector_add 3
+Label 1
+ X20 12 3
+ X36 v 3 0
+ X55 3
+ X55 4
+ X55 5
+ X36 v 3 1
+ X55 6
+ X55 7
+ X55 8
+ X36 v 3 2
+ X55 9
+ X55 10
+ X55 11
+ X16 25 12 3 6
+ X32 12 9
+ X16 25 13 4 7
+ X32 13 10
+ X16 25 14 5 8
+ X32 14 11
+ X27
+)
+Predicate(trace_pict 4
+Label 1
+ X21
+ X30 4 0
+ X30 5 1
+ X30 6 2
+ X30 0 3
+ X47 4 0
+ X45 3 1
+ X24 2 1 2
+ X25 camera_width 2 7
+ X47 4 0
+ X47 2 1
+ X25 camera_height 2 7
+ X47 1 0
+ X47 2 1
+ X25 length 2 7
+ X47 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X49 6 5
+ X25 trace_rows 6 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+)
+Predicate(trace_columns 6
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 0 0
+ X12
+ X35 2
+ X27
+Label 4
+ X20 2 6
+ X21
+ X30 0 0
+ X30 1 1
+ X30 3 3
+ X30 4 4
+ X30 5 5
+ X37 2
+ X56 7
+ X56 2
+ X47 0 0
+ X47 1 1
+ X47 3 2
+ X45 6 3
+ X25 camera_point 4 8
+ X49 6 0
+ X47 5 1
+ X47 4 2
+ X47 7 3
+ X25 trace_ray 4 6
+ X49 0 6
+ X16 28 7 6
+ X46 7 0
+ X49 1 1
+ X47 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X23
+ X26 trace_columns 6
+)
+Predicate(shadow_hit_any 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 1
+ X30 1 3
+ X11 0
+ X25 empty_world 1 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 3
+ X21
+ X30 0 1
+ X30 3 2
+ X30 4 3
+ X45 1 1
+ X45 2 2
+ X25 next_object 3 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 '$shadow_hit_any_4_42_0' 5
+)
+Predicate(skip_to_nl 1
+Label 1
+ X50 10 1
+ X26 skip_to_char 2
+)
+Predicate(skip_nondigits 2
+Label 1
+ X21
+ X30 1 0
+ X30 2 1
+ X47 1 0
+ X45 0 1
+ X25 get0 2 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 '$skip_nondigits_2_77_0' 3
+)
+Predicate(size 3
+Label 1
+ X21
+ X30 0 0
+ X30 1 1
+ X47 0 0
+ X46 2 1
+ X25 length 2 2
+ X19 2
+ X49 0 2
+ X37 2
+ X55 0
+ X54 1
+ X49 1 1
+ X23
+ X26 length 2
+)
+Predicate(skip_to_char 2
+Label 1
+ X21
+ X30 1 0
+ X30 0 1
+ X47 1 0
+ X45 2 1
+ X25 get0 2 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 '$skip_to_char_2_79_0' 3
+)
+Predicate(specs 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 5 0
+ X30 2 1
+ X30 4 3
+ X11 0
+ X46 2 0
+ X45 6 1
+ X24 2 1 3
+ X25 ws 2 7
+ X49 5 0
+ X47 1 1
+ X49 6 2
+ X47 3 3
+ X25 spec 4 5
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X23
+ X26 specs 4
+Label 3
+ X32 0 1
+ X46 2 0
+ X46 3 1
+ X26 ws 2
+)
+Predicate(spec 4
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X21
+ X11 0
+ X25 camera 4 1
+ X14 0
+ X23
+ X27
+Label 3
+ X21
+ X11 0
+ X25 object 4 1
+ X14 0
+ X23
+ X27
+Label 4
+ X26 config 4
+)
+Predicate(sopt 3
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X5 5
+ X5 6
+ X5 7
+ X6 8
+Label 2
+ X20 20 3
+ X36 sphere 7 0
+ X55 0
+ X54 6
+ X10 3
+ X37 1
+ X62 114
+ X65
+ X62 97
+ X65
+ X62 100
+ X65
+ X62 105
+ X65
+ X62 117
+ X65
+ X62 115
+ X55 1
+ X13 3
+ X26 number 3
+Label 3
+ X20 20 3
+ X36 sphere 7 0
+ X54 1
+ X55 0
+ X54 5
+ X10 3
+ X37 1
+ X62 99
+ X65
+ X62 101
+ X65
+ X62 110
+ X65
+ X62 116
+ X65
+ X62 101
+ X65
+ X62 114
+ X55 1
+ X13 3
+ X26 vector 3
+Label 4
+ X20 18 3
+ X36 sphere 7 0
+ X54 2
+ X55 0
+ X54 4
+ X10 3
+ X37 1
+ X62 99
+ X65
+ X62 111
+ X65
+ X62 108
+ X65
+ X62 111
+ X65
+ X62 114
+ X55 1
+ X13 3
+ X26 color 3
+Label 5
+ X20 28 3
+ X36 sphere 7 0
+ X54 3
+ X55 0
+ X54 3
+ X10 3
+ X37 1
+ X62 114
+ X65
+ X62 101
+ X65
+ X62 102
+ X65
+ X62 108
+ X65
+ X62 101
+ X65
+ X62 99
+ X65
+ X62 116
+ X65
+ X62 105
+ X65
+ X62 111
+ X65
+ X62 110
+ X55 1
+ X13 3
+ X26 number 3
+Label 6
+ X20 20 3
+ X36 sphere 7 0
+ X54 4
+ X55 0
+ X54 2
+ X10 3
+ X37 1
+ X62 98
+ X65
+ X62 105
+ X65
+ X62 116
+ X65
+ X62 109
+ X65
+ X62 97
+ X65
+ X62 112
+ X55 1
+ X13 3
+ X26 name 3
+Label 7
+ X20 16 3
+ X36 sphere 7 0
+ X54 5
+ X55 0
+ X54 1
+ X10 3
+ X37 1
+ X62 112
+ X65
+ X62 111
+ X65
+ X62 108
+ X65
+ X62 101
+ X55 1
+ X13 3
+ X26 vector 3
+Label 8
+ X20 22 3
+ X36 sphere 7 0
+ X54 6
+ X55 0
+ X10 3
+ X37 1
+ X62 101
+ X65
+ X62 113
+ X65
+ X62 117
+ X65
+ X62 97
+ X65
+ X62 116
+ X65
+ X62 111
+ X65
+ X62 114
+ X55 1
+ X13 3
+ X26 vector 3
+)
+Predicate(skip_to_nl 2
+ X1 1 3 3 1 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 2
+ X10 2
+ X37 0
+ X55 3
+ X55 0
+ X50 10 4
+ X16 12 3 4
+ X13 2
+ X26 skip_to_nl 2
+Label 3
+ X32 0 1
+ X27
+)
+Predicate(sphere_opts 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 0
+ X30 3 2
+ X11 0
+ X46 1 0
+ X45 4 1
+ X24 1 2
+ X25 ws 2 5
+ X47 1 0
+ X49 4 1
+ X47 2 2
+ X25 sopt 3 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 sphere_opts 3
+Label 3
+ X32 1 2
+ X27
+)
+Predicate(topt 3
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X5 5
+ X5 6
+ X6 7
+Label 2
+ X20 19 3
+ X36 triangle 6 0
+ X55 0
+ X54 5
+ X10 3
+ X37 1
+ X62 99
+ X65
+ X62 101
+ X65
+ X62 110
+ X65
+ X62 116
+ X65
+ X62 101
+ X65
+ X62 114
+ X55 1
+ X13 3
+ X26 vector 3
+Label 3
+ X20 19 3
+ X36 triangle 6 0
+ X54 1
+ X55 0
+ X54 4
+ X10 3
+ X37 1
+ X62 120
+ X65
+ X62 45
+ X65
+ X62 97
+ X65
+ X62 120
+ X65
+ X62 105
+ X65
+ X62 115
+ X55 1
+ X13 3
+ X26 vector 3
+Label 4
+ X20 19 3
+ X36 triangle 6 0
+ X54 2
+ X55 0
+ X54 3
+ X10 3
+ X37 1
+ X62 121
+ X65
+ X62 45
+ X65
+ X62 97
+ X65
+ X62 120
+ X65
+ X62 105
+ X65
+ X62 115
+ X55 1
+ X13 3
+ X26 vector 3
+Label 5
+ X20 17 3
+ X36 triangle 6 0
+ X54 3
+ X55 0
+ X54 2
+ X10 3
+ X37 1
+ X62 99
+ X65
+ X62 111
+ X65
+ X62 108
+ X65
+ X62 111
+ X65
+ X62 114
+ X55 1
+ X13 3
+ X26 color 3
+Label 6
+ X20 27 3
+ X36 triangle 6 0
+ X54 4
+ X55 0
+ X54 1
+ X10 3
+ X37 1
+ X62 114
+ X65
+ X62 101
+ X65
+ X62 102
+ X65
+ X62 108
+ X65
+ X62 101
+ X65
+ X62 99
+ X65
+ X62 116
+ X65
+ X62 105
+ X65
+ X62 111
+ X65
+ X62 110
+ X55 1
+ X13 3
+ X26 number 3
+Label 7
+ X20 19 3
+ X36 triangle 6 0
+ X54 5
+ X55 0
+ X10 3
+ X37 1
+ X62 98
+ X65
+ X62 105
+ X65
+ X62 116
+ X65
+ X62 109
+ X65
+ X62 97
+ X65
+ X62 112
+ X55 1
+ X13 3
+ X26 name 3
+)
+Predicate(trace 2
+Label 1
+ X20 2 2
+ X21
+ X30 8 0
+ X30 3 1
+ X50 walltime 0
+ X53 1
+ X56 1
+ X54 1
+ X24 6 0 2 4 5 6 7
+ X25 statistics 2 9
+ X49 8 0
+ X47 6 1
+ X47 5 2
+ X47 7 3
+ X25 load_world 4 8
+ X49 5 0
+ X49 6 1
+ X49 7 2
+ X47 4 3
+ X25 trace_pict 4 5
+ X19 2
+ X50 walltime 0
+ X53 1
+ X61 2
+ X54 1
+ X25 statistics 2 5
+ X19 2
+ X47 2 2
+ X47 1 3
+ X16 27 4 2 3
+ X50 'tracing: ~w~n' 0
+ X53 1
+ X60 4
+ X63
+ X25 format 2 5
+ X49 3 0
+ X49 4 1
+ X25 write_ppm_raw 2 3
+ X19 2
+ X50 walltime 0
+ X53 1
+ X61 0
+ X54 1
+ X25 statistics 2 3
+ X19 2
+ X47 0 2
+ X47 2 3
+ X16 27 4 2 3
+ X50 'print: ~w~n' 0
+ X53 1
+ X58 4
+ X63
+ X25 format 2 2
+ X19 2
+ X47 0 2
+ X47 1 3
+ X16 27 4 2 3
+ X50 'picture traced in ~w mseconds user time~n' 0
+ X53 1
+ X58 4
+ X63
+ X23
+ X26 format 2
+)
+Predicate(trace_light_rays 3
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X35 2
+ X27
+Label 3
+ X20 7 3
+ X21
+ X30 1 1
+ X37 0
+ X55 4
+ X56 0
+ X36 light 2 4
+ X55 1
+ X55 5
+ X37 2
+ X55 3
+ X56 2
+ X47 1 0
+ X46 5 2
+ X25 shadow_hit_any 4 3
+ X47 0 0
+ X49 1 1
+ X47 2 2
+ X23
+ X26 trace_light_rays 3
+)
+Predicate(trace_rows 6
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X12
+ X27
+Label 3
+ X20 2 6
+ X21
+ X30 0 1
+ X30 2 2
+ X30 3 3
+ X30 4 4
+ X30 5 5
+ X37 0
+ X55 2
+ X56 1
+ X47 2 0
+ X47 0 1
+ X47 3 3
+ X47 4 4
+ X47 5 5
+ X25 trace_columns 6 6
+ X49 0 6
+ X16 28 7 6
+ X47 1 0
+ X46 7 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X23
+ X26 trace_rows 6
+)
+Predicate(trace_ray 4
+Label 1
+ X21
+ X30 0 0
+ X30 1 1
+ X30 5 2
+ X30 2 3
+ X47 5 0
+ X45 3 1
+ X24 1 4
+ X25 config_reflection 2 6
+ X49 5 0
+ X47 4 1
+ X25 config_background 2 5
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 trace_ray 5
+)
+Predicate(trace_ray 5
+Label 1
+ X20 9 5
+ X21
+ X30 1 0
+ X30 7 2
+ X30 8 3
+ X30 3 4
+ X36 world 2 1
+ X56 2
+ X56 6
+ X47 1 0
+ X47 2 1
+ X50 999999 2
+ X52 surface 2 3
+ X62 0
+ X61 3
+ X52 surface 2 4
+ X56 4
+ X56 5
+ X50 nohit 5
+ X45 0 6
+ X25 trace_ray 7 9
+ X49 0 0
+ X49 1 1
+ X47 2 2
+ X47 3 3
+ X47 4 4
+ X47 5 5
+ X47 6 6
+ X49 7 7
+ X49 8 8
+ X23
+ X26 '$trace_ray_5_31_0' 9
+)
+Predicate(trace_ray 7
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 3
+ X30 1 4
+ X30 4 5
+ X30 3 6
+ X11 0
+ X46 1 0
+ X25 empty_world 1 5
+ X14 0
+ X49 2 0
+ X33 1 0
+ X49 4 1
+ X33 3 1
+ X23
+ X27
+Label 3
+ X21
+ X30 0 0
+ X30 8 2
+ X30 9 3
+ X30 4 4
+ X30 10 5
+ X30 6 6
+ X46 1 0
+ X45 7 1
+ X45 1 2
+ X24 3 2 3 5
+ X25 next_object 3 11
+ X47 0 0
+ X49 7 1
+ X49 8 2
+ X49 9 3
+ X49 10 4
+ X47 2 5
+ X47 3 6
+ X47 5 7
+ X25 '$trace_ray_7_33_0' 8 7
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X23
+ X26 trace_ray 7
+)
+Predicate(trace_shadow 6
+Label 1
+ X21
+ X30 8 0
+ X30 1 1
+ X30 5 2
+ X30 6 3
+ X30 2 4
+ X30 3 5
+ X47 1 0
+ X50 0.0001 1
+ X45 9 2
+ X24 3 0 4 7
+ X25 vector_scalar_mult 3 10
+ X49 8 0
+ X49 9 1
+ X47 7 2
+ X25 vector_add 3 8
+ X49 6 0
+ X49 7 1
+ X47 4 2
+ X25 gen_light_rays 3 6
+ X49 4 0
+ X49 5 1
+ X47 0 2
+ X25 trace_light_rays 3 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 combine 4
+)
+Predicate(triangle_opts 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 0
+ X30 3 2
+ X11 0
+ X46 1 0
+ X45 4 1
+ X24 1 2
+ X25 ws 2 5
+ X47 1 0
+ X49 4 1
+ X47 2 2
+ X25 topt 3 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 triangle_opts 3
+Label 3
+ X32 1 2
+ X27
+)
+Predicate(vector 3
+Label 1
+ X20 4 3
+ X21
+ X30 1 2
+ X36 v 3 0
+ X56 7
+ X56 5
+ X56 3
+ X46 1 0
+ X45 6 1
+ X24 3 0 2 4
+ X25 ws 2 8
+ X19 2
+ X49 6 3
+ X37 3
+ X62 91
+ X55 1
+ X47 7 0
+ X47 4 2
+ X25 number 3 6
+ X19 2
+ X49 4 3
+ X37 3
+ X62 44
+ X55 1
+ X47 5 0
+ X47 2 2
+ X25 number 3 4
+ X19 2
+ X49 2 3
+ X37 3
+ X62 44
+ X55 1
+ X47 3 0
+ X47 0 2
+ X25 number 3 2
+ X19 2
+ X49 0 0
+ X37 0
+ X62 93
+ X61 1
+ X23
+ X27
+)
+Predicate(vector_length_sq 2
+Label 1
+ X20 2 2
+ X29 3 0
+ X29 4 1
+ X46 3 0
+ X46 3 1
+ X46 4 2
+ X26 vector_mult 3
+)
+Predicate(vector_length 2
+Label 1
+ X20 4 2
+ X36 v 3 0
+ X55 2
+ X55 3
+ X55 4
+ X16 29 5 2 2
+ X16 29 6 3 3
+ X16 25 7 5 6
+ X16 29 8 4 4
+ X16 25 9 7 8
+ X16 47 10 9
+ X32 10 1
+ X27
+)
+Predicate(vector_cross_product 3
+Label 1
+ X20 12 3
+ X36 v 3 0
+ X55 3
+ X55 4
+ X55 5
+ X36 v 3 1
+ X55 6
+ X55 7
+ X55 8
+ X36 v 3 2
+ X55 9
+ X55 10
+ X55 11
+ X16 29 12 4 8
+ X16 29 13 5 7
+ X16 27 14 12 13
+ X32 14 9
+ X16 29 15 5 6
+ X16 29 16 3 8
+ X16 27 17 15 16
+ X32 17 10
+ X16 29 18 3 7
+ X16 29 19 4 6
+ X16 27 20 18 19
+ X32 20 11
+ X27
+)
+Predicate(vector_scalar_mult 3
+Label 1
+ X20 8 3
+ X36 v 3 0
+ X55 3
+ X55 4
+ X55 5
+ X36 v 3 2
+ X55 6
+ X55 7
+ X55 8
+ X16 29 9 3 1
+ X32 9 6
+ X16 29 10 4 1
+ X32 10 7
+ X16 29 11 5 1
+ X32 11 8
+ X27
+)
+Predicate(vector_normalize 2
+Label 1
+ X20 1 2
+ X29 3 1
+ X50 1 1
+ X46 3 2
+ X26 scale_vector_length 3
+)
+Predicate(vector_sub 3
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X3 2 (
+        v 3 3
+        v 2 4
+) fail
+Label 3
+ X20 12 3
+ X36 v 3 0
+ X55 3
+ X55 4
+ X55 5
+ X36 v 3 1
+ X55 6
+ X55 7
+ X55 8
+ X36 v 3 2
+ X55 9
+ X55 10
+ X55 11
+ X16 27 12 3 6
+ X32 12 9
+ X16 27 13 4 7
+ X32 13 10
+ X16 27 14 5 8
+ X32 14 11
+ X27
+Label 4
+ X20 9 3
+ X36 v 2 0
+ X55 3
+ X55 4
+ X36 v 2 1
+ X55 5
+ X55 6
+ X36 v 2 2
+ X55 7
+ X55 8
+ X16 27 9 3 5
+ X32 9 7
+ X16 27 10 4 6
+ X32 10 8
+ X27
+)
+Predicate(vector_scale_length 3
+Label 1
+ X20 8 3
+ X36 v 3 0
+ X55 3
+ X55 4
+ X55 5
+ X36 v 3 2
+ X55 6
+ X55 7
+ X55 8
+ X16 29 9 3 3
+ X16 29 10 4 4
+ X16 25 11 9 10
+ X16 29 12 5 5
+ X16 25 13 11 12
+ X16 47 14 13
+ X16 30 15 1 14
+ X16 29 16 3 15
+ X32 16 6
+ X16 29 17 4 15
+ X32 17 7
+ X16 29 18 5 15
+ X32 18 8
+ X27
+)
+Predicate(write_ppm_ascii 2
+Label 1
+ X21
+ X30 1 1
+ X50 write 1
+ X45 0 2
+ X25 open 3 2
+ X49 1 0
+ X47 0 1
+ X25 write_ppm_stream 2 1
+ X49 0 0
+ X23
+ X26 close 1
+)
+Predicate(write_ppm_stream 2
+Label 1
+ X21
+ X30 0 0
+ X30 1 1
+ X47 0 0
+ X45 2 1
+ X45 3 2
+ X25 size 3 4
+ X47 1 0
+ X50 'P3' 1
+ X25 write 2 4
+ X47 1 0
+ X25 nl 1 4
+ X47 1 0
+ X50 '# CREATOR: Prolog ray tracer' 1
+ X25 write 2 4
+ X47 1 0
+ X25 nl 1 4
+ X19 4
+ X47 1 0
+ X50 '~w ~w~n255~n' 1
+ X53 3
+ X61 3
+ X63
+ X53 2
+ X61 2
+ X58 3
+ X25 format 3 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 write_ppm_bitmap_rows 2
+)
+Predicate(write_ppm_bitmap_rows 2
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X27
+Label 3
+ X20 2 2
+ X21
+ X30 1 1
+ X37 0
+ X55 0
+ X56 0
+ X47 1 1
+ X25 write_ppm_row 2 2
+ X47 0 0
+ X49 1 1
+ X23
+ X26 write_ppm_bitmap_rows 2
+)
+Predicate(write_ppm_row 2
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X46 1 0
+ X26 nl 1
+Label 3
+ X20 6 2
+ X21
+ X30 1 1
+ X37 0
+ X55 2
+ X56 0
+ X36 rgb 3 2
+ X55 1
+ X56 3
+ X56 2
+ X47 1 0
+ X25 write 2 4
+ X47 1 0
+ X50 ' ' 1
+ X25 write 2 4
+ X47 1 0
+ X47 3 1
+ X25 write 2 3
+ X47 1 0
+ X50 ' ' 1
+ X25 write 2 3
+ X47 1 0
+ X47 2 1
+ X25 write 2 2
+ X47 1 0
+ X50 ' ' 1
+ X25 write 2 2
+ X47 0 0
+ X49 1 1
+ X23
+ X26 write_ppm_row 2
+)
+Predicate(write_ppm_raw 2
+Label 1
+ X21
+ X30 1 1
+ X50 write 1
+ X45 0 2
+ X25 open 3 2
+ X49 1 0
+ X47 0 1
+ X25 write_ppm_stream_raw 2 1
+ X49 0 0
+ X23
+ X26 close 1
+)
+Predicate(write_ppm_bitmap_rows_raw 2
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X27
+Label 3
+ X20 2 2
+ X21
+ X30 1 1
+ X37 0
+ X55 0
+ X56 0
+ X47 1 1
+ X25 write_ppm_row_raw 2 2
+ X47 0 0
+ X49 1 1
+ X23
+ X26 write_ppm_bitmap_rows_raw 2
+)
+Predicate(write_ppm_row_raw 2
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X27
+Label 3
+ X20 6 2
+ X21
+ X30 1 1
+ X37 0
+ X55 2
+ X56 0
+ X36 rgb 3 2
+ X55 1
+ X56 3
+ X56 2
+ X47 1 0
+ X25 put 2 4
+ X47 1 0
+ X47 3 1
+ X25 put 2 3
+ X47 1 0
+ X47 2 1
+ X25 put 2 2
+ X47 0 0
+ X49 1 1
+ X23
+ X26 write_ppm_row_raw 2
+)
+Predicate(write_ppm_stream_raw 2
+Label 1
+ X21
+ X30 0 0
+ X30 1 1
+ X47 0 0
+ X45 2 1
+ X45 3 2
+ X25 size 3 4
+ X47 1 0
+ X50 'P6' 1
+ X25 write 2 4
+ X47 1 0
+ X25 nl 1 4
+ X47 1 0
+ X50 '# CREATOR: Prolog ray tracer' 1
+ X25 write 2 4
+ X47 1 0
+ X25 nl 1 4
+ X19 4
+ X47 1 0
+ X50 '~w ~w ~n255~n' 1
+ X53 3
+ X61 3
+ X63
+ X53 2
+ X61 2
+ X58 3
+ X25 format 3 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 write_ppm_bitmap_rows_raw 2
+)
+Predicate(ws 2
+ X1 1 4 4 1 4
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 2 2
+ X10 2
+ X37 0
+ X55 3
+ X55 0
+ X50 32 4
+ X16 15 3 4
+ X13 2
+ X26 ws 2
+Label 3
+ X20 2 2
+ X21
+ X30 1 1
+ X10 2
+ X37 0
+ X62 35
+ X55 0
+ X13 2
+ X45 0 1
+ X25 skip_to_nl 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 ws 2
+Label 4
+ X32 0 1
+ X27
+)
+Predicate(ws1 2
+Label 1
+ X20 2 2
+ X37 0
+ X55 2
+ X55 0
+ X50 32 3
+ X16 15 2 3
+ X26 ws 2
+)

@@ -1,0 +1,10 @@
+Predicate(run 0
+     Allocate
+     Put_Y_Variable 0 0
+     Put_X_Void 1
+     Put_Y_Variable 1 2
+     Call compare 3 2
+     Put_Y_Value 0 0
+     Deallocate
+     Execute write 1
+)

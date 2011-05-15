@@ -1,0 +1,2 @@
+cc -static  -L/home/groucho/csd/jb/Reform/Luther/gmp -o luther.seq main.o initial.o error.o inout.o char_table.o engine.o unify.o expand_file_name.o load.o qload.o time.o statistics.o builtin.o inline.o assert.o array.o bignum.o bnlib.o term.o storage.o database.o atom_table.o functor_table.o instrdef.o labelsort.o display.o display_code.o think.o debug.o unix.o signal.o semaphore.o parallel.o gc.o copy-gc-ali.o segment.o trail.o shift.o socket.o parser.o lexer.o  -lm  -lfl -lgmp
+

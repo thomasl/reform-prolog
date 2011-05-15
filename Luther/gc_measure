@@ -1,0 +1,105 @@
+2 workers sharing
+
+     6.010 sec. (7.374 sec. wall) for 112 garbage collections which 
+	collected 94001344 bytes
+                (0.475 pre; 2.685 mark [1070975]; 3.236 copy [1123456];
+                 0.289 wait; 0.686 post)
+
+     3.320 sec. (7.185 sec. wall) garbage collections 
+                (0.006 pre; 1.889 mark [689398]; 2.102 copy [444075];
+                 3.638 wait; 1.728 post)
+     3.010 sec. (7.197 sec. wall) garbage collections 
+                (0.007 pre; 1.730 mark [556814]; 2.166 copy [581017];
+                 3.676 wait; 1.696 post)
+
+
+1 worker sharing
+
+     5.960 sec. (7.318 sec. wall) for 112 garbage collections which 
+	collected 94006788 bytes
+                (0.448 pre; 2.705 mark [1196506]; 3.293 copy [1188091];
+                 0.192 wait; 0.626 post)
+
+     4.790 sec. (7.156 sec. wall) garbage collections 
+                (0.005 pre; 2.422 mark [1118886]; 3.291 copy [959101];
+                 1.916 wait; 0.633 post)
+
+
+
+1 worker parallel copy
+
+     6.310 sec. (7.761 sec. wall) for 112 garbage collections which 
+	collected 94006768 bytes
+                (0.462 pre; 3.171 mark [2287101]; 3.293 copy [1179502];
+                 0.166 wait; 0.666 post)
+
+     2.530 sec. (7.598 sec. wall) garbage collections 
+                (0.005 pre; 0.049 mark [28233]; 3.368 copy [967690];
+                 4.519 wait; 0.589 post)
+
+         0 page faults not requiring physical I/O
+         0 page faults requiring physical I/O
+
+1 worker no sharing
+
+     7.650 sec. (9.120 sec. wall) for 112 garbage collections which 
+	collected 94006888 bytes
+                (0.472 pre; 3.256 mark [2288302]; 4.656 copy [2126288];
+                 0.064 wait; 0.563 post)
+
+     0.130 sec. user time in worker nr 1
+     0.120 sec. (8.957 sec. wall) garbage collections 
+                (0.005 pre; 0.074 mark [27040]; 0.159 copy [20904];
+                 8.848 wait; 5.062 post)
+
+
+
+Sequential
+
+     6.960 sec. (8.636 sec. wall) for 112 garbage collections which 
+	collected 94006836 bytes
+                (0.418 pre; 3.017 mark [2315334]; 4.533 copy [2147192];
+                 0.000 wait; 0.538 post)
+
+         0 page faults not requiring physical I/O
+         0 page faults requiring physical I/O
+
+
+
+----------------------------------------------------------------------
+
+Build tree no sharing
+
+     6.790 sec. (8.481 sec. wall) for 33 garbage collections which 
+	collected 23184120 bytes
+                (0.039 pre; 3.273 mark [3122339]; 5.098 copy [3121806];
+                 0.025 wait; 0.011 post)
+
+     0.020 sec. (8.427 sec. wall) garbage collections 
+                (0.003 pre; 0.001 mark [0]; 0.001 copy [0];
+                 8.468 wait; 5.109 post)
+
+Build tree 1 worker
+
+     3.570 sec. (5.892 sec. wall) for 33 garbage collections which 
+	collected 23184120 bytes
+                (0.038 pre; 1.720 mark [1579551]; 2.817 copy [1474150];
+                 1.269 wait; 1.249 post)
+
+     3.940 sec. (5.833 sec. wall) garbage collections 
+                (0.003 pre; 1.718 mark [1542788]; 3.234 copy [1647656];
+                 0.991 wait; 0.826 post)
+
+Build tree 2 worker
+
+     3.230 sec. (5.696 sec. wall) for 33 garbage collections which 
+	collected 23183988 bytes
+                (0.049 pre; 1.455 mark [1284594]; 2.835 copy [1422654];
+                 1.302 wait; 1.273 post)
+
+     2.720 sec. (5.622 sec. wall) garbage collections 
+                (0.003 pre; 0.924 mark [808069]; 2.593 copy [1282564];
+                 2.253 wait; 1.507 post)
+     1.660 sec. (5.632 sec. wall) garbage collections 
+                (0.003 pre; 1.184 mark [1029728]; 1.045 copy [416612];
+                 3.485 wait; 2.963 post)

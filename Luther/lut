@@ -1,0 +1,44 @@
+#!/bin/sh
+##
+##
+
+LUTHERHOME="/home/groucho/csd/jb/Reform/Luther"
+LUTHERXTERM="/usr/sup/X11/bin/xterm"
+
+BINDIR="$LUTHERHOME/bin"
+LIBDIR="$LUTHERHOME/Library"
+
+LUTHERLISTNER="$BINDIR/debuglistner"
+
+export LUTHERHOME
+export LUTHERXTERM
+export LUTHERLISTNER
+
+LUTHERARGS=
+LUTHERTEMP="$*"
+
+# The default version is the fast sequential system (without
+# debug information).
+
+VERSION="fseq"
+
+for ARG in $LUTHERTEMP; do
+  case "$ARG" in
+	-s)	VERSION="seq";;
+	-p)	VERSION="par";;
+	-fs)	VERSION="fseq";;
+	-fp)	VERSION="fpar";;
+	-sp)	VERSION="spar";;
+
+	*) LUTHERARGS="$LUTHERARGS $ARG" ;;
+  esac
+done
+
+EXECUTABLE="$BINDIR/luther.$VERSION";
+
+if test -f $EXECUTABLE; then
+  $EXECUTABLE -b $LIBDIR/boot.wam $LUTHERARGS;
+else
+  echo "Unable to find execuatble."
+fi
+

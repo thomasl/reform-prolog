@@ -1,0 +1,5948 @@
+\def\sub #1{\var{#1}}
+\input epsf
+\input texinfo @c -*- texinfo -*-
+
+@setfilename emulator.info
+@settitle Luther WAM Emulator
+@setchapternewpage odd
+
+@ifinfo
+
+This text documents the Luther WAM emulator.
+The text is copyright @copyright{} Johan Bevemyr, 1991. Permission is granted
+to copy as long as this notice is preserved.
+
+@end ifinfo
+
+@titlepage
+@vskip -5cm
+@hfill UPMAIL Technical Report No. 72 @*
+@hfill Mars 3, 1992 @*
+@sp 3
+@titlefont{The Luther WAM Emulator}@*
+{@bf Version 1.1 (Parallel)}
+
+{@bf Johan Bevemyr}
+
+Computing Science Dept., Uppsala University@*
+Box 311, S-751 05 Uppsala, Sweden@*
+Electronic mail: bevemyr@@csd.uu.se@*
+
+{@bf Abstract.} This manual describes the implementation of 
+the Luther WAM Emulator, both the sequential version and the 
+recursion-parallel version. The Luther WAM Emulator is a portable
+C implementation of Warren's abstract machine with extensions
+for recursion-parallel execution. It is designed to be easily
+modified and understood, but at the same time reasonably efficient.
+Implementational detailes are given for the instruction set as well
+as the storage model and the runtime system. We also describe how
+to proceed when extending the emulator in several different 
+directions.
+
+@page
+@vskip 0pt plus 1fill
+
+This text documents the Luther WAM emulator.  The text is copyright
+@copyright{} Johan Bevemyr, 1991, 1992, 1994. Permission is granted to
+copy as long as this notice is preserved.
+
+@end titlepage
+
+@node Top, Intro, (dir), (dir)
+
+@menu
+
+* Intro::               Introduction to this manual.
+
+@end menu
+
+@node Intro, Notational Conventions, Top, Top
+
+@chapter Introduction
+@cindex introduction
+
+This document describes the internal structure and implementation of the 
+Luther WAM emulator. The intention of this manual is to give the reader 
+enough knowledge about how the emulator works to be able to understand 
+its finer points and to be able to modify it for his or her own needs.
+
+The sequential parts of the Luther WAM emulator is inspired by 
+the SICStus Prolog emulator. A number of things present in the 
+SICStus emulator has been left out, e.g., the shallow backtracking scheme 
+and the support for native code.
+
+This version of the emulator is the first step towards a
+recursion-parallel implementation. Since we plan to run the emulator
+on various machines and architectures we have tried to take this into
+account when constructing the emulator. The current emulator is
+capable of recursion-parallel execution on shared memory mashines,
+such as the Symmetry Sequent and the Sun Galaxy. The sequential
+emulator has also been tested on the HP 9000/700, the Macintosh, and
+the Sun 4 family. It has also been modified for executing bounded
+quantifications on the Connection Machine model 200.
+
+The manual is split into a number of sections. We start off by giving
+an overview of the storage model---the heap, the stack, the trail and
+various other data areas. Thereafter we have a short outline of the
+structure of the emulator, followed by a detailed description of each
+WAM instruction. The section following contains the macros used when 
+describing the implementation of the instruction set. The WAM code format
+in its three forms are described and the builtin predicates are listed.
+Finally a few hints are given as how to extend the emulator in several 
+different directions.
+
+This manual is based on SICStus Prolog Internals Manual.
+
+@node Notational Conventions, Storage Model, Introduction, Top
+
+@section Notational Conventions
+@cindex notational conventions
+@cindex notation
+The semantics of the various instructions will be given in a style
+similar to the C programming language. The descriptions of the
+instructions will closely follow the actual emulator code.  However, a
+number of optimizations have been omitted from this exposition in order
+to (we hope) make it clearer.
+
+Whenever we give C code for an algorithm that behaves differently in the
+parallel version and in the sequential version, we use the @code{ifdef}
+notation from C. An example is given below.
+@example
+#ifdef PARALLEL
+ <C code used in the parallel version>
+#else
+ <C code used in the sequential version>
+#endif /* PARALLEL */
+@end example
+We shall use the following notation for address arithmetic:
+
+@itemize @bullet
+@item
+The expression @code{@var{X}++} denotes postincrement with respect to the
+growth direction of the relevant memory area.  @refill
+
+@item
+The expression @code{--@var{X}} denotes predecrement with respect to the
+growth direction of the relevant memory area.  @refill
+
+@item
+The expression @code{*@var{X}} denotes a contents-of operation.  @refill
+
+@item
+The expression @code{&@var{X}} denotes an address-of operation.  @refill
+
+@end itemize
+
+Macros are given names starting with a capital letter.
+
+@chapter Storage Model
+@cindex storage model
+@cindex model, storage
+The abstract machine described herein is a modified Warren abstract
+machine. Our model addresses certain issues not treated in the 
+original WAM, e.g. arithmetic, cut, generic objects and garbage collection.
+It inherits all major properties of Warren's model, such as
+structure copying, separate choicepoints and environments, and tagged
+pointers.
+
+The sequential storage model is similar to the original WAM. We have 
+three stacks, the heap, the stack, and the trail. 
+
+The storage model of the parallel engine is slightly different. The
+parallel engine consists of a set of sequential engines
+(@emph{workers}), each with its own heap, stack, and trail. All workers
+have shared access to all heaps, with the right to bind any variable on
+any heap. The stack and trail is only accessible to the worker who
+manage it.
+
+The parallel engine also facilitate shared access, between worker, to
+common areas such as the atom table and the data base.
+
+@node Terms and ...
+@section Terms and their Representation
+@cindex term
+@cindex representation
+The main types of terms are @dfn{variables}, @dfn{constants},
+@dfn{compound terms} and @dfn{generic objects}. @refill
+@cindex variable
+@cindex valuecell
+@cindex constant
+@cindex compound term
+@cindex structure object
+@cindex generic object
+
+A @dfn{temporary} variable is a variable that fulfills all of the following
+conditions. 
+
+@itemize @bullet
+@item
+        The first occurrence of the variable is in the head, in a structure, 
+        or in the last goal's argument.
+@item   
+        The variable does not occur in two distinct goals.
+@item
+        If the variable occurs in the head, it does not occur in any goal
+        other than the first.
+@end itemize
+
+For example,
+in: @refill
+@cindex variable, permanent
+@cindex variable, temporary
+@cindex permanent variable
+@cindex temporary variable
+@example
+p([X|Xs],Z) :- q(Xs,Rs), r(U,U), s(Rs,[X],Z).
+@end example
+@noindent
+@code{X}, @code{Rs}, and @code{Z} are permanent, and @code{U} and
+@code{Xs} are temporary. @refill
+
+In essence, the value of a temporary variable does not have to be
+preserved across procedure calls, while the value of a permanent
+variable must be preserved across some procecure calls.
+
+Clauses that contain permanent variables will store their values in an
+environment at run time. In WAM notation, registers that contain
+temporary variables are denoted by X@var{n}, and permanent variable 
+registers by Y@var{n}. @refill
+
+A variable can be @dfn{unbound}, @dfn{conditionally bound} or
+@dfn{unconditionally bound} to another term. A process known as
+@dfn{dereferencing} follows a chain of bound variables until an
+unbound variable or a non-variable is encountered. A binding is
+conditional if there can be another execution path which may
+bind the variable to something else. Conditional bindings can be 
+undone and are recorded on the trail stack. @refill
+@cindex dereferencing
+@cindex bound variable
+@cindex conditionally bound variable
+@cindex unconditionally bound variable
+@cindex unbound variable
+@cindex variable, bound
+@cindex variable, unbound
+@cindex variable, conditionally bound
+@cindex variable, unconditionally bound
+@cindex variable, constrained
+
+A constant is an @dfn{atom} or a @dfn{number}. A compound term is
+composed of a @dfn{functor} and some @dfn{arguments} (arbitrary terms).
+A @dfn{list} is a special case of compound term with the functor
+@code{./2}. A generic object is composed of a @dfn{method table} and a 
+@dfn{data array}. The method table contains functions that perform 
+operations on the generic object. @refill
+@cindex atom
+@cindex number
+@cindex functor
+@cindex list object
+@cindex compound term
+@cindex structure object
+@cindex generic object
+
+Terms are represented as tagged pointers to objects. A tagged pointer
+has the following parts (on a 32 bit architecture):
+
+@c @group
+@example
+    111 111111111111111111111111111 11
+    === =========================== ==
+    tag value                       gc
+@end example
+@c @end group
+
+@noindent
+The @dfn{tag} field distinguishes the type of the term, the @dfn{value}
+field is usually a points to an object, and the @dfn{gc} field is used by the
+garbage collector. 
+
+At some systems the memory allocated by malloc starts at a high address 
+and the tag may thus interfere with the address. At those systems a 
+constant (MALLOCBASE) is added to the pointer when converting from a 
+tagged to an untagged object. In this implementation stack variables
+and heap variables have different tags, instead of a common @code{REF}
+tag. The reason behind this is that if the same tag is used for both 
+stack and heap variables then the stack has to be physically allocated 
+at a higher address in the memory. Using different tags for heap and
+stack variables allow the implementation to allocate the stack independently
+of the heap.
+@cindex tag bits
+@cindex value bits
+@cindex gc bits
+@tindex MALLOCBASE
+
+It would be more efficient to store the tag in the lower part of a TAGGED
+pointer. The reason is that untagging and dereferening of a pointer can
+sometimes be compiled into a singel machine instruction. For example, suppose
+stack variables were tagged with 1, then untagging a stack variable could
+be done by substracting 1. Further, suppose X is such a variable, accessing
+its value would require the following operation *(X-1). This can be compiled
+into @code{move.l A2, -1(A1)}, if X is stored in register @code{A1}. If
+the tag is stored in the topmost bits in a word, then three machine 
+instructions are needed to perform the same operation.
+
+Why do we not store the tag in the lower bits? The reason is that there
+is only room for two tag bits. This can be worked around by using
+subtags, but this complicates the implementation and makes it harder to
+experiment with different term representations.
+
+@c @group
+@example
+Type of term              Tag    Value
+============              ===    =====
+
+Heap Variable (HVA)         0    term pointer
+#ifdef CONSTR
+Constrained Variable (CVA)  1    term pointer
+#endif 
+Stack Variable (SVA)        2    term pointer
+Small Integer (NUM)         3    integer value
+Floating point (FLT)        4    object pointer
+Atom (ATM)                  5    table index
+List (LST)                  6    object pointer
+Compound Term (STR)         7    object pointer
+Generic Object (GEN)        8    object pointer
+
+#ifdef PARALLEL && UNBOUND 
+Unbound Variable (UVA)      9    timestamp
+#endif 
+@end example
+@c @end group
+
+Functors are represented as tagged pointers to entries in the
+functor_table. Functors are uniquely stored in the table. The name and
+the arity of a functor is accessed using the macros
+@code{FunctorToAtom(Term)} and @code{ArityOf(Term)}. Functors are
+constructed using the macro @code{StoreFunctor(Name,Arity)}. The macros
+are defined in @code{term.h}.
+@cindex functor
+@cindex term, functor
+
+@section Parallel Engine Specifics
+
+In WAM the postion of a variable in the heap is used for determining
+whether binding it has to be recorded on the trail. The criteria for
+recording a variable binding is that the binding has to be undone on
+backtracking. This is determined by comparing a variables address with
+the heap top of the last choicepoint. If the variable reside in the area
+below the saved heap top pointer then it was created before the
+choicepoint and any modification to it has to be recorded. Now, in a
+parallel setting with multiple heaps it is no longer possible to use a
+single saved heap top pointer for determinig whether a variable was
+created before a given choicepoint or not. We solve this problem by
+extending all unbound variables with a timestamp. We have experimented
+with two methods for doing this.
+@cindex timestamp
+@cindex variable, unbound
+
+@enumerate
+@item   The representation of variables is extended
+        with an extra word in which the timestamp is stored.
+@item   A special tag is used for representing unbound variables and
+        the value field is used for storing the timestamp.
+@end enumerate
+
+The first solution result in that twice as much heap memory is
+used by a program. In order for the second solution to work the
+mechanism for dereferencing variables has to be modified, this
+modification result in an overall execution overhead of approximately
+7\%. Using a speical tag for unbound variables require the use of
+4 tag bits instead of 3.
+
+Both solutions using timestamp require some slight modfication to 
+the trailing test and each choicepoint have to be extended with 
+an extra field.
+@c----------------------------------------------------------------------
+@c----------------------------------------------------------------------
+@c----------------------------------------------------------------------
+@section Data Areas
+@cindex data area
+@cindex area, data
+The data areas are divided into the @dfn{static areas}, for information which
+is saved from one query to another, and the @dfn{dynamic areas}, for 
+information which is not needed upon backtracking. The dynamic areas are 
+operated as stacks; the static areas as a memory pool in which objects of 
+arbitrary size can be allocated. The address order of the various areas is 
+not critical, and neither is the growth direction of the stacks. @refill
+@cindex static area
+@cindex dynamic area
+@cindex area, static
+@cindex area, dynamic
+
+In contrast to Warrens's model there is no explicit PDL, just the
+implicit C PDL.
+@cindex pdl
+
+A brief description of each memory area follows, listing for each
+area the kind of objects that it may contain.
+
+@subsection Basic Type Definitions
+We define shorthands for some C declarations as follows:
+@example
+typedef long s32;                   /* signed 32 bit  */
+typedef unsigned long u32;          /* unsigned 32 bit */
+typedef u32 TAGGED;                 /* terms */
+typedef u32 UNTAGGED;               /* terms */
+typedef enum @{                      /* false or true */
+    FALSE = 0,
+    TRUE = 1
+@} BOOL;
+typedef u32 code;                   /* instructions with arguments */
+@end example
+@tindex s32
+@tindex u32
+@tindex TAGGED
+@tindex UNTAGGED
+@tindex BOOL
+@tindex code
+
+@subsection The Code Area
+@cindex code area
+@cindex area, code
+The code area contains WAM code. There may be pointers from the code area
+into the database area. The following global variables define the bounds 
+of the code area. These variables are defined in a data structure called
+@code{globalvar}. In the parallel version all workers have shared access 
+these variables.
+@example
+    code *code_start,    /* low bound of area    */
+         *code_end,      /* high bound of area   */
+         *code_current;  /* first unused element */
+@end example
+
+@subsection The Static area
+@cindex static area
+@cindex area, static
+The static area contains a variety of objects described below.
+@table @dfn
+@item Atom Definition
+@cindex atom, table
+@cindex atom, definition
+@cindex atom, mode
+@cindex atom, print name
+Atoms are stored in a fixed size hash table. Each entry in the table is
+a bucket and the buckets are stored in the atom area. Each bucket
+contains a TAGGED pointer to the printname of the atom and a pointer to
+the next atom in the bucket.
+@example
+typedef struct atom_bucket @{
+    TAGGED atom;
+    struct atom_bucket *next;
+@} atom_bucket;
+@end example
+@tindex atom_bucket
+
+The printname and the mode of each atom is stored here. The mode
+indicates whether the atom has to be quoted etc.
+@example
+struct atom @{
+    TAGGED mode;
+    char *pname;
+@};
+@end example
+@tindex atom
+
+@item Permanent Floats
+@cindex float, object
+@cindex object, float
+Floating point numbers appearing in the compiled code are stored in this
+area. They cannot be stored on the heap since backtracking would remove
+them. A floating point number is represented as a boxed object. 
+@example
+struct float @{
+    TAGGED start;
+    double value;
+    TAGGED end;
+@};
+@end example
+@tindex float
+
+The start and end objects are tagged as atoms with a flag bit set to
+TRUE to indicate that they surround a boxed object. The reason for all
+this is that when we store a float on the heap there is no room for the
+gc bits in the machine representation of a @code{double}. It has to be
+represented as a bit string. The start and end parts contain a atom
+tagged object with the @code{box} bit set and the @code{static/dynamic}
+bit set depending on whether it appear in compiled code (in the static
+area) or not, the size of the box, and bits reserved for the garbage
+collector. The static/dynamic distinction has to be made in order for
+the garbage collector to know whether it reside in the heap or not.
+@example
+    111 1 1 1111111111111111111111111 11
+    === = = ========================= ==
+    ATM | |      size of box          gc
+       /   \    
+     box  static/dynamic
+@end example
+
+@item Predicate Definitions
+@cindex compiled clause
+@cindex clause, compiled
+@cindex builtin C predicate
+@cindex predicate, builtin
+@cindex inlineable predicate
+@cindex predicate, inlineable
+@cindex predicate, definition
+@cindex predicate, interpreted
+@cindex interpreted predicate
+Predicate definition structures are stored in this area. There are 
+three kinds of predicates: @dfn{compiled clauses}, @dfn{C predicates},
+and @dfn{interpreted predicates}.
+@example
+typedef struct definition @{
+    enter_instruction enter_instruction;
+    TAGGED name;
+    TAGGED module;
+    union definfo code;
+    struct definition *next;
+@} definition;
+
+union definfo @{
+  code *incoreinfo;     /* pointer to start of WAM code    */
+  BOOL (*cinfo)();      /* pointer to C function           */
+  in_switch *indexinfo; /* pointer to indexing information 
+                           for interpreted predicates      */
+@};
+
+typedef enum @{
+    ENTER_INTERPRETED,
+    ENTER_EMULATED,
+    ENTER_C,
+    ENTER_UNDEFINED
+@} enter_instruction;
+@end example
+@end table 
+@tindex enter_instruction
+@tindex definfo
+@tindex definition
+
+@node Heap
+@subsection The Heap
+@cindex heap
+@cindex global stack
+@cindex stack, global
+This area is sometimes called the global stack. It consists of variables,
+constants, lists, structures, and generic objects. Each object
+contains a sequence of words representing terms. It growth towards 
+increasing addresses. @refill
+
+The bounds of the heap is defined by the current worker.
+
+@cindex worker, heap
+
+It may contain the objects described below.
+
+@table @dfn
+@item floats 
+Float objects residing in the heap are represented in the same way 
+as float objects residing in the static area (see float above).
+
+@item lists
+@cindex list object
+@cindex object, list
+They consist of the two arguments of the list (car and cdr). @refill
+@example
+struct list @{
+    TAGGED car;
+    TAGGED cdr;
+@};
+
+typedef struct list *list;
+@end example
+@tindex list
+
+@item structures
+@cindex structure object
+@cindex compound term
+@cindex object, structure
+They consist of the functor followed by the arguments of the structure.
+The representation of the functor is described above.
+@refill
+@example
+struct structure @{
+    TAGGED functor;
+    TAGGED arg[ARITY];
+@};
+
+typedef struct structure *structure;
+@end example
+@tindex structure
+
+@item generic objects
+@cindex generic object
+@cindex object, generic
+@cindex method
+They consist of a pointer to a method table containing methods for
+operations on the object, followed by object data. The sub-tag of the
+generic object is the pointer to the method table. All objects of the
+same kind has the same method table pointer.
+@example
+struct generic @{
+    struct method *method;
+    TAGGED data[ANY];
+@};
+
+typedef struct generic *generic;
+
+@group
+typedef struct method @{
+    int    (*size)();       /* size of object          */
+    BOOL   (*unify)();      /* unifies two objects     */
+    void   (*print)();      /* prints object           */
+    SIZE   (*compare)();    /* compare two objects     */
+    void   (*undo)();       /* undo on backtracking    */
+    void   (*gc)();         /* used by the gc          */
+    TAGGED (*deref)();      /* used when dereferencing */
+@} method;
+@end group
+
+typedef enum @{
+    LESS  = -1,
+    EQUAL = 0,
+    GREATER = 1
+@} SIZE;
+@end example
+@tindex generic
+@tindex method
+@tindex SIZE
+
+The @code{undo} method is called on backtracking, the @code{unify} method
+is called when trying to unify the generic objects with any other object.
+The @code{print} method is called when printing the object and @code{compare}
+is called when comparing two generic objects with the same tag. The
+@code{gc} method is called when doing garbage collection.
+
+@item variables
+@cindex variable
+@cindex valuecell
+@cindex timestamp
+@cindex variable, unbound
+
+They consist of just one word: the @dfn{valuecell}, where the binding is
+stored. An unbound variable is represented as if bound to itself unless
+a special tag is used for unbound variables (in the parallel version
+only). Then unbound variables are represented by UVA tagged objects in
+the parallel version, the value field is used to store the creation time
+(timestamp) of the object.
+@refill
+@example
+#ifdef PARALLEL && TIMESTAMP
+struct variable @{
+        TAGGED val;
+        u32 timestamp;
+@};
+#else
+typedef TAGGED variable;
+#endif TIMESTAMP
+@end example
+@tindex variable
+@tindex variable, constrained
+@cindex variable, constrained
+Constrained variables occupy two words, one to store the binding and one
+to store the constrains (a pointer to a list of frozen goals). Bindings
+of constrained variables are always trailed and a counter
+@code{wake_counter} is incremented (if it is the first constrained
+variable that is bound after a call then an event (@code{EVENT_WAKE}) is
+signaled). At the next call the waked goals are found by searching the
+trail for @code{CVA} entries. The @code{wake_counter} is used for
+restricting the search.
+@c
+@example
+struct constrained_var @{
+        TAGGED val;
+        TAGGED constr;
+@};
+@end example
+
+A heap variable may be bound to any term @emph{except} to a stack
+variable. A process known as @dfn{globalizing} creates a new heap
+variable and binds a stack variable to it, ensuring that the stack
+variable henceforth dereferences to the heap. @refill
+@cindex globalizing
+@cindex illegal binding
+@cindex binding, illegal
+
+@end table
+
+This area grows during forward execution and contracts on backtracking.
+
+@subsection The Stack
+@cindex stack
+@cindex environment stack
+@cindex choicepoint stack
+@cindex stack, choicepoint
+@cindex stack, environment
+@cindex local stack
+@cindex stack, local
+
+This area contains @dfn{choicepoints} and @dfn{environments}. A choicepoint 
+is established when entering a procedure @var{Q} with arity @var{n} which 
+has more than one clause that can match the goal.  When no alternatives 
+remain, the choicepoint is discarded. An environment represents
+a list of goals still to be executed. It consists of a number of variables
+which the compiler has classified as permanent, occurring in the body of
+a clause, plus a pointer into the body of a continuation clause and its
+environment. @refill
+
+This area grows at recursive calls and contracts on
+determinate calls and on backtracking.  It grows towards increasing
+addresses.  @refill
+
+The bounds of the stack are defined by the current worker.
+
+@cindex worker, stack
+
+A choicepoint consists of a snapshot of the crucial abstract machine
+registers:
+@example
+@group
+typedef struct choicepoint @{
+    TAGGED             *trail_top;   /* (TR) top of trail stack    */
+    TAGGED             *global_top;  /* (H)  top of global stack   */
+    struct choicepoint *last_choice; /* (B)  previous choice pt.   */
+    struct environment *cont_env;    /* (CE) cont. environment     */
+    code               *next_instr;  /* (CP) cont. code            */
+    code               *next_clause; /* (BP) next clause to try    */
+    indx               arity;        /* (n)  number of saved aregs */
+#ifdef PARALLEL && TIMESTAMP
+    s32                timestamp     /*      current time          */
+#endif
+    TAGGED             areg[ANY];    /* (Ai) saved argument reg.   */
+@} choicepoint;
+@end group
+@end example
+@tindex choicepoint
+
+An environment is represented by the following record
+@example
+typedef struct environment @{
+    struct environment *cont_env;   /* (CE) cont. environment */
+    code               *next_instr; /* (CP) cont. code        */
+    TAGGED yreg[ANY];
+@} environment;
+@end example
+@tindex environment
+
+The permanent variables are often abbreviated as @code{Y0}, @code{Y1},
+...  A permanent variable Yi may be bound to any term, @emph{except} to
+another variable on the environment stack if the other variable is
+located at a higher address. @refill
+@cindex illegal binding
+@cindex binding, illegal
+
+At procedure calls, the current environment's active size is found at an
+offset from the continuation pointer.  This information is needed by
+certain instructions and is denoted @code{FrameSize(@var{L})}.  @refill
+
+@node Trail
+@subsection The Trail
+@cindex trail stack
+@cindex stack, trail
+
+The main use of this area is to record conditional variable bindings.  A
+variable is conditionally bound iff the variable is older than the
+youngest choicepoint.  Upon backtracking, entries are simply popped off
+the trail stack and the bound variables are reset to unbound. @refill
+
+If, during backtracking a generic object is encountered on the trail
+stack, its @code{undo} method is called. It can be used to ensure 
+that a side-effect that had effect over a finitely failed subcomputation 
+is undone.
+@cindex generic object
+
+The value trail is interleaved with the normal trail. A value trail 
+entry is identified by a list tag. The following byte is the old
+value of the word pointed to by the list tagged pointer.
+@cindex trail, value
+@cindex value trail
+
+In the parallel version the trail has been extended to handel two more
+situations. NUM tagged entries are used by parallel workers for
+indicating that a new parallel computation has started. On backtracking
+each parallel worker unwinds the trail until a NUM tagged entry is
+found. The value field is used for storing the heap top before the
+parallel computation started. On backtracking the heap is reset to this
+value. On the sequential trail a STR tagged objects are used for
+indicating that a parallel computation have taken place. When the
+sequential worker find a STR tagged entry it force all parallel workers
+to unwind their trails until they find a NUM tagged entry.
+
+The trail stack grows towards increasing addresses and its bounds
+are defined by the current worker.
+@cindex worker, trail
+
+@section WAM Registers
+@cindex wam register
+@cindex register, wam
+@cindex worker
+@cindex worker, heap
+@cindex worker, stack
+@cindex worker, trail
+
+All global WAM registers are stored in a worker structure. This 
+makes it possible to have several concurrent workers going at the
+same time. It also makes for a cleaner interface. On the other hand
+we might loose on the efficiency side, but it turned out that no
+performance decrease can be observed if we cache relevant variables
+in registers inside procedure calls e.g. the engine.
+
+The worker structure looks like this.
+@example
+typedef struct worker @{
+    code        *pc;                  /* program counter         */
+    code        *next_instr;          /* continuation pointer    */
+    choicepoint *choice;              /* last choicepoint        */
+    choicepoint *choice0;             /* cut pointer             */
+    environment *frame;               /* environment pointer     */
+    u32         event_flag;           /* event flag              */
+    int         lut_trace;            /* trace mode flag         */
+#ifdef PARALLEL && TIMESTAMP                                     
+    s32         time;                 /* current time            */
+    s32         uncond;               /* saved timestamp         */
+#else                                                            
+    TAGGED      *uncond;              /* first uncond variable   */
+#endif                                                           
+    TAGGED      *s;                   /* structure arg. reg.     */
+    TAGGED      *regs;                /* argument and X reg.     */
+    TAGGED      *trail_top,                                      
+                *trail_start,                                    
+                *trail_end;           /* Trail stack bounds      */
+    TAGGED      *heap_margin,                                    
+                *heap_top,                                       
+                *heap_start,                                     
+                *heap_end;            /* Heap bounds             */
+    TAGGED      *stack_start,                                    
+                *stack_end;           /* Stack bounds            */
+    statistics  *stats;               /* statistics structure    */
+    globalvar   *global;              /* global variables        */
+    gc_info_t	gc_info;              /* info needed by GC       */
+    u32         wake_count;           /* nr bound CVAs to wake   */
+#ifdef PARALLEL                                                  
+    int         pid;                  /* worker number           */
+    s32         *level;               /* current iteration       */
+    s32         direction;            /* direction of iteration  */
+#endif 
+@} worker;
+@end example
+    
+All fields are not necessary kept up to date at all times in the
+emulator, their values might be cached in registers. When calling c
+predicates or inlineable predicates all cached registers are flushed
+with exception of the @code{pc} register which is never used outside the
+emulator loop.
+
+In addition to the worker structure there are variables which are 
+shared between different workers (in the sequential version there
+is only one worker). These variables are stored in the @code{globalvar}
+structure.
+@cindex global variables
+@tindex globalvar
+@example
+typedef struct globalvar @{
+    heap *atom_start,                 /* Atom table bounds       */
+         *atom_end,                
+         *atom_current,            
+         *atomoffset;              
+    heap *patch_start,                /* Area used by parser     */
+         *patch_current,           
+         *patch_end;               
+    code *code_start,                 /* Code area bounds        */
+         *code_end,                
+         *code_current;            
+    struct definition **predtable;    /* Predicate database      */
+    atom_bucket **atomtable;          /* Atom database           */
+    s32 active_workers;               /* Number of active workers*/
+    prologflag flags;                 /* Execution flags         */
+    struct definition *interrupt_code;/* Interrupt handler       */
+#ifdef PARALLEL
+    TAGGED *global_regs;              /* Global registers        */
+    worker_command parallel_start;    /* worke activation record */
+    BOOL global_fail;                 /* global fail flag        */
+    s32 scheduling;                   /* static/dynamic sched.   */
+    s32 scheduling_mode;              /* vertical/horizontal shed*/
+    s32 sched_level;                  /* dynamic shed. queue     */
+    double *reduction_results;        /* parallel reduction res. */
+    TAGGED *collect;                  /* compiled reduc. result. */
+    s32 debugsig;                     /* WAM-level debug flag    */
+#endif 
+@};
+@end example
+
+@section The Database
+
+There are three kinds of predicates which has to be stored in the
+database---emulated predicates (WAM code), C predicates (C code),
+and interpreted predicates (clauses). The first two predicate types
+are described elsewhere and will only briefly be described here.
+
+All predicates in the emulator are associated with a definition
+structure which contains information about its type, its name (and arity),
+which module it belongs to, and a pointer to the code for the predicate
+(the @code{definfo} field). The definfo field of an emulated predicate
+contains a pointer to the WAM code that defines the predicate, for
+a C predicate there is a pointer to the C function that defines it, 
+and for an interpreted predicate we have a pointer to code that
+does the head unification for clause/2 (a dynamic, or interpreted
+predicate, can be seen as a number of clause/2 assertions).
+
+The code for an interpreted predicate is executed by a specialized
+version of the WAM emulator loop called @code{match_term}. The predicate
+code is originally constructed, when a clause is asserted, by a
+one pass compiler written in C (@code{compile_clause}). The instruction
+set is designed to do depth first unification. A complete description
+of the method can be found in ``Fast Head Unification'' by Johan
+Bevemyr and Thomas Lindgren (UPMAIL Technical Report).
+
+@subsection Instruction Set for Assert
+
+For a complete description see the chapter ``Instruction Set''.
+@example
+a_get_x_variable <X reg> <X reg>
+a_get_x_value <X reg> <X reg>
+a_get_constant <Constant> <Xreg>
+a_read_list_top <X reg> <K>
+a_read_struct_top <Functor> <X reg> <K>
+a_read_list <K>
+a_read_struct <Functor> <K>
+a_read_list_tail <K>
+a_read_struct_tail <Functor> <K>
+a_unify_constant_up <Constant>
+a_unify_x_variable_up <X reg>
+a_unify_x_value_up <X reg>
+a_unify_x_local_value_up <X reg>
+a_unify_void_up 
+a_unify_void
+a_unify_x_variable <X reg> 
+a_unify_x_value <X reg>
+a_unify_x_local_value <X reg>
+a_unify_constant <Constant>
+@end example
+
+@chapter Emulator Overview
+@cindex emulator overview
+@section Usage
+The emulator is started either by typing @code{lut} or @code{luther}. 
+Lut is a shell script which in turn calls luther with the minimal 
+arguments needed to get a working prolog. The following arguments
+are accepted by luther.
+@c
+@cindex command line
+@table @code
+@item -debug
+Starts emulator with WAM level debugger in action.
+
+@item -list_all
+Tells the emulator to list all predicates in the database.
+
+@item -list
+Tells the emulator to list all prolog defined predicates in the 
+database.
+
+@item -memory <bytes>
+Tells the emulator how much memory it is allowed to allocate for
+the sequential worker. The default is 3072 kbytes. 
+
+@item -wmemory <bytes>
+Tells the emulator how much memory each parallel worker is allowed
+to allocate. The default is 1536 kbytes.
+
+@item -opcode
+Tells the emulator to output opcode tables for WAM instructions and 
+quickload instructions, and the inline predicate table.
+
+@item -ql <filename>
+(quick load) Tells the emulator to read predicate definitions from 
+@code{<filename>} in quickload format.
+
+@item -verbose
+Tells the emulator to notify the user when a predicate is added 
+to the database.
+
+@item -w <N>
+Tells the emulator to use N parallel workers. The default is to use 
+one parallel worker.
+
+@item -wam <filename>
+(wam load) Tells the emulator to read predicate definitions from 
+@code{<filename>} in wam code format.
+
+@end table
+
+@section Booting
+@cindex booting
+Booting is done in two stages. First the internal of the machine is 
+initialized by calling @code{initialize} (initial.c). Initialize in
+turn calls @code{init_once}, init_once 
+allocates memory areas and initializes the database with the builtin
+predicates. Each worker is initialized by @code{init_worker}.
+In the second stage, code is read from the boot files given by the
+@code{-wam} or @code{-ql} argument switch, e.g. @code{luther -ql 
+boot1.ql -wam boot2.ql}. When all boot files has been processed the 
+WAM is started by calling the predicate @code{start/0}.
+
+@section Internal Overview
+@cindex internal overview
+The instruction set in the emulator is based on the SICStus WAM emulator
+with extensions for recursion-parallel execution (see Bevemyr, Lindgren
+and Millroth, ``Reform Prolog: The Language and its Implementation'', in
+ICLP'93, MIT Press, 1993).
+
+The kernel of the emulator consists of two switch statements, one for
+read mode and one for write mode. This eliminates the need to check whether
+we are in read or write mode. We know that once we have entered write mode 
+we will remain there while we are executing unify instructions.
+
+If the case statements inside the switch are arranged in a proper way
+(depending on how advanced your C compiler is) the following code will
+be compiled to an efficient table lookup and a jump instruction. The
+table contains a mapping from opcode to memory address.
+@c
+@example
+  /***********************************************************************
+   * Main emulator loop. Instruction is decoded then switched on.
+   */
+
+ instructions:
+  switch(Get_Op(pc)) 
+    @{
+    case SWITCH_ON_TERM:
+    switch_on_term:
+    ...
+    @}
+
+ write_instructions:
+  switch(Get_Op(instruction)) 
+    @{
+    case SWITCH_ON_TERM:
+       goto switch_on_term;
+    ...
+    @}
+@end example
+@c
+A more efficient method for instruction decoding is to use threaded
+code.  The idea is to let the opcode point directly at the memory
+address for the instruction. This way the cost of doing the table lookup
+is eliminated.  On the other hand, since we do not have two lookup
+tables, we cannot eliminate the write mode flag. The overall result is a
+speed improvement of approximately 25%. 
+@c
+@example
+  goto Get_Op(pc);  /* initially */
+
+ switch_on_term:
+    ...
+  goto Get_Op(pc);
+ switch_on_structure:
+    ...
+ unify_constant:
+  if(write_mode) @{
+   ...
+  @} else @{
+   ...
+  @}
+ ...
+@end example
+The drawback is that most C compilers do not treat labels as first
+class objects---it is not in the ANSI standard. However, GCC has
+this feature for the purpose of supporting efficient emulation. 
+The emulator can be compiled to use threaded code if the compiler
+allow labels as first class objects.
+@c----------------------------------------------------------------------
+@c----------------------------------------------------------------------
+@subsection The Parallel Machine
+@cindex internal overview, parallel
+@center @epsfbox{overview-parallel.ps}
+The parallel machinery consists of a set of workers numbered
+0,1,@dots,$n-1$, one per processor. Each worker is implemented as a
+separate process running a WAM-based Prolog engine with extensions to
+support parallel execution. The execution of a program alternates
+between two modes: sequential execution and parallel execution.  A
+phase of sequential execution is referred to as a @emph{sequential
+phase} and a phase of parallel execution as a @emph{parallel phase}.
+One worker is responsible for sequential execution (the @emph{
+sequential} worker). During sequential execution all other workers
+(the @emph{parallel} workers) are idle, during parallel execution the
+sequential worker is idle. The terms created by the sequential worker
+must be accessible to the parallel workers during parallel phases.
+This includes variables, numbers, structures, and lists. Terms created
+by the parallel workers must likewise be accessible to other workers
+during the parallel phase, and to the sequential worker during the
+next sequential phase. Sharing of data is implemented by letting all
+workers have restricted access to each others heaps.
+
+It is the sequential worker's responsibility to initiate parallel
+execution and to resume sequential execution when the parallel workers
+have executed all recursion levels. The sequential worker sets up
+the arguments for each recursion level in its own argument registers,
+which are globally accessible. 
+
+@section The WAM-code Debugger
+@cindex debug
+@cindex wam, debug
+
+It is possible to follow the execution of the emulator with the
+WAM level debugger. Spy points and break points may be set, clauses
+skipped, and variables examined. A call to @code{wamdebug/0} starts
+the debugger. The debugger can also be invoked by interrupting the
+execution (using CTRL-C). The following commands are available:
+@example
++           -- spy on instruction
+++ <P>      -- spy on instruction P
++p <P> <A>  -- spy on predicate P/A
+-           -- remove spy on instruction
+-- <P>      -- remove spy on instruction P
+-p <P> <A>  -- remove spy on predicate P/A
+a           -- abort
+b           -- breakpoint on this instruction
+c           -- creep
+e           -- toggle display env info
+db          -- display break points
+ds          -- display spy points
+dt          -- toggle display arguments
+da <Nr>     -- display a register nr Nr in choicepoint 
+df          -- toggle display fail
+dx <Nr>     -- display x register nr Nr
+dy <Nr>     -- display y register nr Nr
+dp          -- display as prolog terms
+f           -- toggle break at fail
+g <Nr>      -- force garbage collection (Nr live X)
+l           -- leap
+n           -- turn off debugger
+o <file>    -- redirect error info to <file>
+py          -- print y register
+pa          -- print a register in choicepoint
+px <Nr>     -- print x register to reg.nr Nr
+q           -- quit
+r           -- remove breakpoint at this instruction
+s           -- skip (break, leap)
+t           -- trace (leap and print debug info.)
+tc          -- trace (leap and print calls)
+@end example
+When examining variables and registers it is important that they are 
+initialized or set to @code{NULL}, there is otherwise a good possibility
+of a fault occurring in the display function.
+
+If you 'skip' a call or execute to a clause that fails you will lose
+control of the trace.
+
+@section Handling Events
+@cindex event
+@cindex delay
+@cindex freeze
+@cindex variable, constrained
+The emulator contains an mechanism for handling asynchronous
+events such as signal handlers, garbage collection, and waking
+frozen goals. Events are signaled by setting the appropriate
+bits in the event_flag. This flag is checked at each call (when
+executing the call and execute instructions).
+
+For example, if the emulator receives an interrupt signal, then the
+@code{EVENT_INTERRUPT} bit is set in the event_flag of the worker. At
+the next call the event is handled by calling the Prolog predicate
+interrupt_handler/0. Likewise, an event is signaled when constrained
+variables are bound, and the frozen goals are executed at the next
+call. Interrupts are only handled at calls (when the {@tt call} or
+{@tt execute} instruction is executed). Interrupts are not handled
+when builtin predicates are executed (e.g., {@tt is}/2 and {@tt !}).
+@c
+@example
+d(a) :- !, ...
+d(b) :- ...
+
+p(X) :- freeze(X,X=b),d(X).
+@end example
+@
+This program would fail since {@tt X=b} is evaluated after the cut. 
+The programmer can still force waking of {@tt X=b} before the cut
+by inserting a call to a predicate (e.g., {@tt true}/0).
+
+@subsection Waking Frozen Goals
+@cindex frozen goals, waking
+@cindex waking goals
+@cindex freeze
+@cindex variable, constrained
+
+We want to interrupt the current execution and execute a frozen goal.
+When the goal succeeds we want to continue executing the interrupted
+goal. Clearly, we can only interrupt the execution when the WAM is 
+in a controlled state, remember that we must be able to handle  
+garbage collection during the execution of the waked goal. One of the
+points at which the WAM is in a controlled state is when a call (or
+execute) instruction is about to be executed. At this point it is known
+which X and Y registers are used, and the machine is not in the middle of 
+building a structure on the heap (this could be the case if we allowed
+interrupts at each instruction). 
+
+Suppose the call p/3 is about to be executed and a frozen goal s(b,A) has 
+been waken. We would like to first execute s(b,A) and then p/3. This can
+be done by executing the conjunction of s(b,A) and p/3 using a meta
+interpreter. Instead of calling p/3, we construct the structure p(X0,X1,X2)) 
+on the heap and call the built in predicate ','/2 with X0 pointing to the
+structure s(b,A) and X1 pointing to q(X0,X1,X2). There is a slight 
+complication when the interrupted predicate belong to another module 
+than the current one. In that case we have to wrap the current call
+in a call to {@tt SYSCALL/1} (actually we would like to do {@tt 
+module:goal} but our module system is currently to primitive for this).
+
+The code for doing all this is:
+@example
+case EVENT_INTERRUPT:
+  @{
+    register TAGGED current_goal;
+    register int arity, i;
+
+    Make_STR(w->heap_top,current_goal,def->name);
+    
+    for(i=0, arity = ArityOf(def->name) ; i != arity ; i++)
+      @{
+        if(IsSVA(X(i)))
+          @{
+            WriteLocalValue(w->heap_top,X(i));
+          @}
+        else
+          @{
+            PushOnHeap(w->heap_top,X(i));
+          @}
+      @}
+    
+    if(def->module == module_prolog)
+      @{
+	register TAGGED sgoal = goal;
+	Make_STR(H,goal,functor_syscall);
+	PushOnHeap(H,sgoal);
+      @}
+
+    X(0) = atom_interrupt_handler;
+    X(1) = current_goal;
+        
+    choice0 = w->choice;
+
+    pc = interpret_conj->entry_code.incoreinfo; /* call ','/2 */
+
+    goto instructions;
+  @}
+  break;
+
+case EVENT_WAKE:
+#ifdef CONSTR
+  /* First, find all woken CVAs on the trail */
+  @{
+    register TAGGED woken = atom_nil;
+    register TAGGED *tc;
+    
+    tc = w->trail_top;
+
+    while(w->wake_count > 0)
+      @{
+        tc--;
+        switch(TagOf(*tc))
+          @{
+          case HVA:
+#ifdef UNBOUND
+            tc--;
+#endif /* UNBOUND */
+            break;
+          case CVA:
+            @{
+              if(IsCVA(*RemoveTag(*tc,CVA)))
+                @{
+                  register TAGGED ctl;
+                  LastTail(ctl,GetCVAGoals(*RemoveTag(*tc,CVA)));
+                  Bind(ctl,GetCVAGoals(*tc),{goto fail;});
+                @}
+              else
+                @{
+                  register TAGGED ctl;
+                  LastTail(ctl,GetCVAGoals(*tc));
+                  Bind(ctl,woken,{goto fail;});
+                  woken = GetCVAGoals(*tc);
+                @}
+              w->wake_count--;
+#ifdef UNBOUND
+              tc--;
+#endif /* UNBOUND */
+            @}
+          case SVA:
+          case NUM:
+            break;
+          case LST:
+            tc--;
+            break;
+          case GEN:
+            break;
+          default:
+          @}
+      @}
+    
+
+  /* Second, if there is anything to wake, save current goal in 
+   *  structure on heap 
+   */
+  
+    if (woken != atom_nil)
+      @{
+        register TAGGED goal;
+        register int arity, i;
+
+
+        Make_STR(H,goal,def->name);
+
+        for(i=0, arity = ArityOf(def->name) ; i != arity ; i++)
+          @{
+            if(IsSVA(X(i)))
+              @{
+                WriteLocalValue(H,X(i));
+              @}
+            else
+              @{
+                PushOnHeap(H,X(i));
+              @}
+          @}
+
+        if(def->module == module_prolog)
+          @{
+            register TAGGED sgoal = goal;
+            Make_STR(H,goal,functor_syscall);
+            PushOnHeap(H,sgoal);
+          @}
+
+        X(1) = goal;
+
+        X(0) = woken;
+    
+        choice0 = w->choice;
+
+        pc = interpret_wake->entry_code.incoreinfo; /* call 'wake'/2 */
+
+        goto instructions;
+      @}
+  @}
+#endif /* CONSTR */
+  break;
+@end example
+
+@chapter Instruction Set
+@cindex instruction set
+The descriptions of the instructions will need several support macros
+which are defined in chapter ``Emulator Macros''.  They attempt to hide
+implementation details which may obscure the logic of the various
+instructions.  They also hide the underlying memory model from the
+emulator code.
+
+Most of the differences between the sequential and the parallel
+implementation are hidden in the macro definitions. We have chosen to
+only describe one version of the parallel implementation, the one using
+an atomic swap instruction for binding variables. We have also
+experimented with a version that use explicit locking of variables to
+ensure that only one worker may bind a variable. In order to support
+both versions we had to use a slightly different set of macros.
+Due to this, the actual code in engine.c is slightly different. The
+main difference is that we use a macro DerefLockSwitch(Term,Vcode,Ccode)
+for dereferencing a term, locking it if it is a varaible, and finally 
+execute Vcode if it is dereferenced to a variable and Ccode otherwise.
+@c
+@section Indexing Instructions
+@cindex indexing instructions
+@cindex instructions, indexing
+@table @code
+@item switch_on_term(@var{Lvar},@var{Latom},@var{Lnum},@var{Llist},@var{Lstr})
+@findex switch_on_term
+This represents choosing between a set of clauses depending on the tag of
+the first argument. It is used to make the first selection of clauses that
+can possibly match the call. If X@var{0} is a variable then execution proceeds
+at label @var{Lvar}, if it is an atom then it proceeds at label @var{Latom}
+etc. X@var{0} is left dereferenced.
+@example
+Deref(X(0),X(0));
+switch(TagOf(X(0))) @{
+    case HVA:
+#ifdef CONSTR
+    case CVA:
+#endif /* CONSTR */
+    case SVA:
+      Dispatch(pc,@var{Lvar});
+      goto instructions;
+
+    case NUM:
+      Dispatch(pc,@var{Lnum});
+      goto instructions;
+
+    case FLT:
+      Dispatch(pc,@var{Lnum});
+      goto instructions;
+
+    case ATM:
+      Dispatch(pc,@var{Latom});
+      goto instructions;
+
+    case LST:
+      Dispatch(pc,@var{Llist});
+      goto instructions;
+
+    case STR:
+      Dispatch(pc,@var{Lstr});
+      goto instructions;
+
+    case GEN:
+      /* This could be extended so that switch_on_term has a special
+         field for generic objects, and switch_on_generic could also 
+         be done. For now, we use the same as for variables as they 
+         are the most general. (might be trouble with cut 
+         optimization) 
+       */
+      Dispatch(pc,@var{Lvar});
+        goto instructions;
+@}
+@end example
+
+@item switch_on_constant(@var{i},(@var{C1}-@var{L1}...@var{Ci}-@var{Li}),@var{Ldefault})
+@findex switch_on_constant
+This represents choosing between a set of @var{i} clauses which all have a 
+constant as their first argument. It is used to make the 
+second selection of clauses that can possibly match the call. If X@var{0} 
+is the constant @var{C1} then execution proceeds at label @var{L1}, if it 
+is the constant @var{C2} then execution proceeds at label @var{L2} etc.
+If none of the constants match X@var{0} then execution continues at the
+label @var{Ldefault}. If there are 5 or more alternatives then binary
+search is used, otherwise the table is searched linearly.
+@example
+@{ 
+  if(i < 5) @{ /* linear search */
+      while(i--) @{
+          if(X(0) == @var{Ci}) @{
+              Dispatch(pc,@var{Li});
+              goto instructions;
+          @} else @{
+              Inc_Label(pc);
+          @}
+      @}
+  @} else @{ /* binary search */
+      register int x, l, r;
+
+      l = 0; r = i-1;
+
+      do @{
+          x = (l + r) / 2;
+          if (X(0) < @var{Cx})
+              r = x - 1;
+          else if (X(0) > @var{Cx})
+              l = x + 1;
+          else @{
+              Dispatch(pc,@var{Lx});
+              goto instructions;
+          @}
+      @} while (r >= l);
+  @}
+
+  Dispatch(pc,@var{Ldefault});
+  goto instructions;
+@}
+@end example
+
+@item switch_on_structure(@var{i},(@var{F1}-@var{L1}...@var{Fi}-@var{Li}),@var{Ldefault})
+@findex switch_on_structure
+This represents choosing between a set of @var{i} clauses which all have a 
+structure as their first argument. It is used to make the second selection 
+of clauses that can possibly match the call. If X@var{0} is the structure
+@var{F1} then execution proceeds at label @var{L1}, if it is the structure
+@var{F2} then execution proceeds at label @var{L2} etc. If none of the
+structures match X@var{0} then execution continues at @var{Ldefault}.
+If 5 or more alternative exist then binary search is used, otherwise
+linear search.
+@example
+@{
+  if(i < 5) @{
+      while(i--) @{
+          if(GetFunctor(X(0)) == @var{Fi}) @{
+              Dispatch(pc,@var{Li});
+              goto instructions;
+          @} else @{
+              Inc_Label(pc);
+          @}
+      @}
+  @} else @{
+      register int x, l, r;
+
+      l = 0; r = i-1;
+
+      do @{
+          x = (l + r) / 2;
+          if (X(0) < @var{Fx})
+              r = x - 1;
+          else if (X(0) > @var{Fx})
+              l = x + 1;
+          else @{
+              Dispatch(pc,@var{Lx});
+
+              goto instructions;
+          @}
+      @} while (r >= l);
+  @}
+
+  Dispatch(pc,@var{Ldefault});
+  goto instructions;
+@}
+@end example
+
+@item try(@var{L})
+@findex try
+This is used only in procedures which include multiple alternatives. The
+fist alternative is located at @var{L}. 
+@example
+@{
+  register choicepoint *newchoice;
+  register int i;
+  
+  newchoice = (choicepoint *) Get_Local_Stack_Top;
+  
+#ifdef TIMESTAMP
+  w->time += TIMEUNIT;
+#endif
+
+  newchoice->trail_top =   w->trail_top;
+  newchoice->global_top =  w->heap_top;
+  newchoice->last_choice = w->choice;
+  newchoice->cont_env =    w->frame;
+  newchoice->next_instr =  w->next_instr;
+  newchoice->next_clause = pc+1;
+  newchoice->arity =       w->arity;
+
+  for(i=0; i!=w->arity ; i++)
+    newchoice->areg[i] = X(i);
+  
+#ifdef TIMESTAMP
+  newchoice->timestamp = w->time;
+  w->uncond = w->time;
+#else
+  w->uncond = w->heap_top;
+#endif
+
+  w->choice = newchoice;
+
+  pc = DispatchLabel(pc,@var{L});
+
+  goto instructions;
+@}
+@end example
+
+@item retry(@var{L})
+@findex retry
+In a procedure that contains more than one alternative this must
+precede each clause but the first and the last. The next alternative
+is located at @var{L}.
+@example
+w->choice->next_clause = pc+1;
+pc = DispatchLabel(pc,@var{L});
+goto instructions;
+@end example
+
+@item trust(@var{L})
+@findex trust
+This precedes the last clause in a procedure. 
+@example
+w->choice = w->choice->last_choice;
+#ifdef TIMESTAMP
+w->uncond = w->choice->timestamp;
+#else
+w->uncond = w->choice->global_top;
+#endif
+pc = DispatchLabel(pc,@var{L});
+goto instructions;
+@end example
+
+@item try_me_else(@var{L})
+@findex try_me_else
+This is used only in procedures which include multiple alternatives. The
+next alternative is located at @var{L}.
+@example
+@{
+  register choicepoint *newchoice;
+  register int i;
+  
+#ifdef TIMESTAMP
+  w->time += TIMEUNIT
+#endif
+
+  newchoice = (choicepoint *) Get_Local_Stack_Top;
+  newchoice->trail_top = w->trail_top;
+  newchoice->global_top = w->heap_top;
+  newchoice->last_choice = w->choice;
+  newchoice->cont_env = w->frame;
+  newchoice->next_instr = w->next_instr;
+  newchoice->next_clause = DispatchLabel(pc,@var{L});
+  pc++;
+  newchoice->arity = w->arity;
+
+  for(i=0; i!=w->arity ; i++)
+    newchoice->areg[i] = X(i);
+
+#ifdef TIMESTAMP
+  newchoice->timestamp = w->time;
+  w->uncond = w->time;
+#else
+  w->uncond = w->heap_top;
+#endif  
+
+  w->choice = newchoice;
+
+  goto instructions;
+@}
+@end example
+
+@item retry_me_else(@var{L})
+@findex retry_me_else
+In a procedure that contains more than one alternative this must
+precede each clause but the first and the last. The following alternative
+is located at @var{L}.
+@example
+w->choice->next_clause = DispatchLabel(pc,@var{L});
+pc++;
+goto instructions;
+@end example
+
+@item trust_me
+@findex trust_me
+This precedes the last alternative in a procedure. 
+@example
+w->choice = w->choice->last_choice;
+#ifdef TIMESTAMP
+w->uncond = w->choice->timestamp;
+#else
+w->uncond = w->choice->global_top;
+#endif
+goto instructions;
+@end example
+
+@item get_constant_x0(@var{C})
+@findex get_constant_x0
+This represents a first head argument that is the constant @var{C}.  X0
+is already dereferenced and is either uninstantiated or instantiated to
+@var{C}.  @refill
+@example
+@{
+  if (IsVar(X(0))) @{
+      Bind(X(0),@var{C},{goto fail;});
+  @} else if (X(0) != @var{C})
+      goto fail;
+
+  goto instructions;
+@}
+@end example
+In the parallel version @code{X0} is not guaranteed to be dereferenced
+since some other processor may have bound the variable. We therefore 
+have to deal with the situation that some other processor may bind
+@code{X0} at all times. Therefore the third argument to @code{Bind}.
+
+@item get_nil_x0
+@findex get_nil_x0
+This represents a first head argument that is the empty list.  X0 is
+already dereferenced and is either uninstantiated or instantiated to the
+empty list.
+@example
+@{
+  if (IsVar(X(0))) @{
+    Bind(X(0),atom_nil,{goto fail;});
+  @} else if (X(0) != atom_nil) 
+    goto fail;
+
+  goto instructions;
+@}    
+@end example
+
+@item get_structure_x0(@var{F})
+@findex get_structure_x0
+This represents a first head argument that is a structure whose functor
+is @var{F}.  X0 is already dereferenced and is either uninstantiated or
+instantiated to a structure whose functor is @var{F}.  The instruction
+is followed by a sequence of @code{unify} instructions.  @refill
+@example
+@{
+  if(IsVar(X(0))) @{
+    register TAGGED new;
+    Make_STR(w->heap_top,new,@var{F});
+    Bind(X(0),new,{goto fail;});
+
+    goto write_instructions;
+  @} else @{
+    if(GetFunctor(X(0)) != @var{F})
+      goto fail;
+    s = GetArg(X(0),0);
+
+    goto instructions;
+  @}
+@}
+@end example
+
+@item get_list_x0
+@findex get_list_x0
+This represents a first head argument that is a list.  X0 is already
+dereferenced and is either uninstantiated or instantiated to a list.
+The instruction is followed by a sequence of @code{unify} instructions.  
+@refill
+@example
+@{
+  if (IsVar(X(0))) @{
+    register TAGGED l;
+    
+    Make_LST(w->heap_top,l);
+    Bind(X(0),l,{goto fail;});
+
+    goto write_instructions;
+  @} else if (IsLST(X(0))) @{
+    s = TagToPointer(X(0));
+
+    goto instructions;
+  @} else
+    goto fail;
+@}
+@end example
+@end table
+
+@section Utility Instructions
+@cindex utility instructions
+@cindex instructions, utility
+
+@table @code
+@item choice_x(@var{n})
+@findex choice_x
+This represents the presence of a cut operator in a negation,
+disjunction or implication which is the first procedure call of this clause.
+The cut will reset the current choicepoint from the temporary variable
+X@var{n}.  @refill
+@example
+X(@var{n}) = PointerToTerm(w->choice0);
+goto instructions;
+@end example
+
+@item choice_y(@var{n})
+@findex choice_y
+This represents the presence of a cut operator after the first procedure call
+of this clause.  The cut will reset the current choicepoint from the
+permanent variable Y@var{n}.  @refill
+@example
+Y(@var{n}) = PointerToTerm(w->choice0);
+goto instructions;
+@end example
+
+@item cut
+@findex cut
+This represents a cut operator before the first procedure call not occurring
+in a negation, disjunction, or implication.
+@example
+if(w->choice > w->choice0) @{
+  w->choice = w->choice0;
+#ifdef TIMESTAMP
+  w->uncond = w->choice->timestamp;
+#else
+  w->uncond = w->choice->global_top;
+#endif
+  TidyTrail;
+@}
+goto instructions;
+@end example
+
+@item cut_x(@var{n})
+@findex cut_x
+This represents a cut operator before the first procedure call occurring in a
+negation, disjunction, or implication.  The cut will reset the current
+choicepoint from the temporary variable X@var{n}.  @refill
+@example
+w->choice = (choicepoint *) TermToPointer(X(@var{n}));
+#ifdef TIMESTAMP
+  w->uncond = w->choice->timestamp;
+#else
+w->uncond = w->choice->global_top;
+#endif
+TidyTrail;
+@end example
+
+@item cut_y(@var{n})
+@findex cut_y
+This represents a cut operator after the first procedure call.  The cut will
+reset the current choicepoint from the permanent variable Y@var{n}.  @refill
+@example
+w->choice = (choicepoint *) TermToPointer(Y(@var{n}));
+#ifdef TIMESTAMP
+  w->uncond = w->choice->timestamp;
+#else
+w->uncond = w->choice->global_top;
+#endif
+TidyTrail; 
+@end example
+
+@item builtin(@var{Fnk},@var{n1},...,@var{nn})
+@findex builtin
+This represents a call to the inlineable builtin procedure @var{Fnk}
+with the first argument in X@var{n1}, the second in X@var{n2},...
+@example
+@{
+  if ((GetInlineFnk(@var{Fnk}))(w,Get_UseArgs(pc)) == FALSE) goto fail;
+
+  pc += GetInlineArity(@var{Fnk});
+
+  goto instructions;
+@}
+@end example
+
+@item inline(@var{Faillabel},@var{Fnk},@var{n1},...,@var{nn})
+@findex inline
+This represents a call to the inlineable builtin procedure @var{Fnk}
+with the first argument in X@var{n1}, the second in X@var{n2},...
+If the procedure fails, then the execution proceeds at @var{Faillabel}.
+@example
+@{
+  if ((GetInlineFnk(@var{Fnk}))(w,Get_UseArgs(pc)) == FALSE) @{
+    pc = DispatchLabel(pc,@var{Faillabel})
+  @} else @{
+    pc += GetInlineArity(@var{Fnk});
+  @}
+
+  goto instructions;
+@}
+@end example
+
+@item meta_call(@var{i},@var{k})
+@findex meta_call
+This represents a meta call of the temporary variable X@var{i} not occurring
+last in a clause. The environment has size @var{k}.
+@example
+  pc++;  /* skip environment size */
+  w->next_instr = pc+1;
+  goto meta_execute;
+@end example
+
+@item meta_execute(@var{i})
+@findex meta_execute
+This represents a meta call of the temporary variable X@var{i} occurring
+last in a clause.
+@example
+@{
+  register TAGGED goal;
+  register definition *def;
+  register int k;
+
+  Deref(goal,X(@var{i}));
+
+  /* Get definition */
+
+  if (IsSTR(goal))
+    @{
+      def = get_definition(GetFunctor(goal));
+      k = GetArity(goal);
+    @}
+  else if (IsATM(goal))
+    @{
+      def = get_definition(StoreFunctor(goal,0));
+      k = 0;
+    @}
+  else if (IsLST(goal))
+    @{
+      def = get_definition(functor_list);
+      k = 2;
+    @}
+  else if (IsNumber(goal))
+    @{
+      goto fail;
+    @}
+  else
+    @{
+      luther_error(E_ILLEGAL_GOAL, goal);
+
+      goto fail;
+    @}
+
+  /* check for events */
+
+  switch (def->enter_instruction) @{
+  case ENTER_INTERPRETED:
+    w->choice0 = w->choice;
+    X(0) = goal;
+    if(w->lut_trace == 1) @{
+        pc = interpret_goal_trace->entry_code.incoreinfo;
+    @} else @{
+        pc = interpret_goal->entry_code.incoreinfo;
+    @}
+    break;
+
+  case ENTER_SPY:
+    w->choice0 = w->choice;
+    X(0) = goal;
+    pc = interpret_goal_trace->entry_code.incoreinfo;
+    break;
+
+  case ENTER_EMULATED:
+    /* Copy arguments from structure */
+
+    if(IsLST(goal)) @{
+      X(0) = Ref(GetCar(goal));
+      X(1) = Ref(GetCdr(goal));
+    @} else @{
+      while(i--) @{
+        X(i) = Ref(GetArg(goal,i));
+      @}
+    @}
+
+    /* save the program counter in the continuation */
+    w->choice0 = w->choice;
+    pc = def->entry_code.incoreinfo;
+    break;
+
+  case ENTER_C:
+    /* Copy arguments from structure, must be struct or atom
+       since ','(_,_) is not a C defined predicate */
+    
+    while(i--) @{
+      X(i) = Ref(GetArg(goal,i));
+    @}
+    
+    switch((def->entry_code.cinfo)(w)) @{
+    case FALSE:
+      goto fail;
+    case TRUE:
+      pc = w->next_instr;
+      break;
+    @}
+    break;
+
+  case ENTER_UNDEFINED:
+    luther_error(E_PRED_NOT_DEF, (TAGGED) def);
+    goto fail;
+  @}
+
+  goto instructions;
+@}
+@end example
+
+@end table
+
+@section Procedural Instructions
+@cindex procedural instructions
+@cindex instructions, procedural
+These instructions are used to deal with recursive procedure calls and
+managing the temporary data areas needed on the stack. 
+
+@table @code
+@item allocate
+@findex allocate
+This represents the need for an environment. That is, there are instructions
+after the first procedure call in the clause. A new environment is created
+and pointers to the current environment and the current continuation
+is saved in it.  @refill
+@example
+@{
+  register environment *newframe;
+  
+  newframe = (environment *) Get_Local_Stack_Top;
+  
+  if(newframe > (environment *) w->stack_end) @{
+    FatalError("Local stack overflow");
+  @}
+
+  newframe->cont_env = w->frame;
+  newframe->next_instr = w->next_instr;
+  w->frame = newframe;
+
+  goto instructions;
+@}
+@end example
+
+@item deallocate
+@findex deallocate
+This appear after the last instruction that use any permanent variables in
+a clause that has an @code{allocate} instruction. The environment is 
+deallocated and the environment pointer and the continuation pointer is 
+restored. @refill
+@example
+@{
+  w->next_instr = w->frame->next_instr;
+  w->frame = w->frame->cont_env;
+
+  goto instructions;
+@}
+@end example
+
+@item call(@var{Def},@var{k})
+@findex call
+This represents a procedure call that does not terminate a clause. @var{Def}
+is a definition pointer and @var{k} is the size of the current environment.
+At this point we check the @var{event_flag} for new events. We may need to
+do gc or to display trace information for example.
+@refill
+@cindex event
+@cindex trace
+@cindex gc
+
+@example
+  pc++; /* skip environment size */
+  w->next_instr = pc+1;
+  goto execute;
+@end example
+
+@item execute(@var{Def})
+@findex execute
+This represents the last procedure call in a clause. @var{Def}
+is a definition pointer. At this point we check the @var{event_flag} 
+for new events. We may need to do gc or to display trace information 
+for example.
+@refill
+@cindex event
+@cindex trace
+@cindex gc
+@example
+@{
+  /* check event flag (gc, trace, wake suspended, etc) */
+  
+  if(w->event_flag) handle_event(w);
+
+  /* call definition */
+
+  switch (@var{Def}->enter_instruction) @{
+  case ENTER_INTERPRETED:
+    @{ register TAGGED goal;
+      register int i;
+      register int arity;
+
+      /* Make goal structure on heap */
+      Make_STR(w->heap_top,goal,@var{Def}->name);
+
+      for(i = 0, arity = ArityOf(@var{Def}->name) ; 
+          i != arity ; i++) @{
+        if(IsSVA(X(i)) @{
+          WriteLocalValue(w->heap_top,X(i));
+        @} else @{
+          PushOnHeap(w->heap_top,X(i));
+        @}
+      @}
+
+      X(0) = goal;
+
+      w->choice0 = w->choice;
+      if(w->lut_trace == 1) @{
+          pc = interpret_goal_trace->entry_code.incoreinfo;
+      @} else @{
+          pc = interpret_goal->entry_code.incoreinfo;
+      @}
+      break;
+    @}         
+
+  case ENTER_SPY:
+    @{ register TAGGED goal;
+      register int i;
+
+      /* Make goal structure on heap */
+      Make_STR(w->heap_top,goal,@var{Def}->name);
+
+      for(i = 0, arity = ArityOf(@var{Def}->name) ; 
+          i != arity ; i++) @{
+        if(IsSVA(X(i)) @{
+          WriteLocalValue(w->heap_top,X(i));
+        @} else @{
+          PushOnHeap(w->heap_top,X(i));
+        @}
+      @}
+
+      X(0) = goal;
+
+      w->choice0 = w->choice;
+      pc = interpret_goal_trace->entry_code.incoreinfo;
+      break;
+    @}         
+
+  case ENTER_EMULATED:
+    w->choice0 = w->choice;
+    pc = @var{Def}->entry_code.incoreinfo;
+    break;
+
+  case ENTER_C:
+    switch((@var{Def}->entry_code.cinfo)(w)) @{
+    case FALSE:
+      goto fail;
+    case TRUE:
+      pc = w->next_instr;
+      break;
+    @}
+    break;
+
+  case ENTER_UNDEFINED:
+    luther_error(E_PRED_NOT_DEF, (TAGGED) @var{Def});
+    goto fail;
+  @}
+  goto instructions;
+@}
+@end example
+
+@item proceed
+@findex proceed
+This terminate a clause not terminated by a procedure call.@refill
+@example
+pc = w->next_instr;
+goto instructions;
+@end example
+
+@item fail
+@findex fail
+This backtracks to the last active choicepoint.
+@example
+@{
+  register int i;
+  
+  if(w->choice<=failchoice) 
+    goto global_fail;              /* The entire program failed */
+  
+  Unwind_Trail(w->choice->trail_top);
+  w->heap_top = w->choice->global_top;
+  w->choice0 = w->choice->last_choice;
+  
+  i = w->choice->arity;
+  while(i) @{
+      i--;
+      X(i) = w->choice->areg[i];
+  @}
+  
+#ifdef TIMESTAMP
+  w->uncond = w->time = w->choice->timestamp;
+#else
+  w->uncond = w->heap_top;
+#endif
+  pc = w->choice->next_clause;
+  w->next_instr = w->choice->next_instr;
+  w->frame = w->choice->cont_env;
+  
+  goto instructions;
+@}
+@end example
+@end table
+
+@section Get Instructions
+@cindex get instructions
+@cindex instructions, get
+These instructions correspond to the head arguments of the clause. They 
+are used to match the head against the call.
+
+@table @code
+@item get_x_variable(@var{n},@var{i})
+@findex get_x_variable
+This represents an @var{i}th head argument that is an uninitialized temporary 
+variable X@var{n}. @refill
+@example
+X(@var{n}) = X(@var{i});
+goto instructions;
+@end example
+
+@item get_y_variable(@var{n},@var{i})
+@findex get_y_variable
+This represents an @var{i}th head argument that is an uninitialized permanent 
+variable Y@var{n}. @refill
+@example
+Y(@var{n}) = X(@var{i});
+goto instructions;
+@end example
+
+@item get_y_first_value(@var{n},@var{i})
+@findex get_y_first_value
+This represents an @var{i}th head argument that is an uninitialized permanent 
+variable Y@var{n} occurring after the first procedure call. @refill
+@example
+Y(@var{n}) = X(@var{i});
+goto instructions;
+@end example
+
+@item get_x_value(@var{n},@var{i})
+@findex get_x_value
+This represents an @var{i}th head argument that is an initialized temporary
+variable X@var{n}. @refill
+@example
+Unify(X(@var{n}),X(@var{i}));
+goto instructions;
+@end example
+
+@item get_y_value(@var{n},@var{i})
+@findex get_y_value
+This represents an @var{i}th head argument that is an initialized permanent
+variable Y@var{n}. @refill
+@example
+Unify(Y(@var{n}),X(@var{i}));
+goto instructions;
+@end example
+
+@item get_constant(@var{C},@var{i})
+@findex get_constant
+This represents an @var{i}th head argument that is the constant @var{C}.
+@refill
+@example
+@{
+  register TAGGED Xi;
+  
+  Deref(Xi,X(i));
+  
+  if (IsVar(Xi)) @{
+    Bind(Xi,@var{C},{goto fail;});
+  @} else if (Xi != @var{C})
+    goto fail;
+  
+  goto instructions;
+@}
+@end example
+
+@item get_nil(@var{i})
+@findex get_nil
+This represents an @var{i}th head argument that is the empty list.@refill
+@example
+@{
+  register TAGGED Xi;
+
+  Deref(Xi,X(@var{i}));
+
+  if (IsVar(Xi)) @{
+    Bind(Xi,atom_nil,{goto fail;});
+  @} else if (Xi != atom_nil) 
+    goto fail;
+
+  goto instructions;
+@}
+@end example
+
+@item get_structure(@var{F},@var{i})
+@findex get_structure
+This represents an @var{i}th head argument that is the structure @var{F}.
+@refill
+@example
+@{
+  register TAGGED Xi,new;
+  
+  Deref(Xi,X(@var{i}));
+
+  if(IsVar(Xi)) @{
+    Make_STR(w->heap_top,new,@var{F});
+    Bind(Xi,new,{goto fail;});
+    goto write_instructions;
+  @} else @{
+    if(IsSTR(Xi)) @{
+      if(GetFunctor(Xi) == @var{F}) @{
+        s = GetArg(Xi,0);
+        goto instructions;
+      @} else
+        goto fail;
+    @} else
+      goto fail;
+  @}
+@}
+@end example
+
+@item get_list(@var{i})
+@findex get_list
+This represents an @var{i}th head argument that is a list.@refill
+@example
+@{
+  register TAGGED Xi;
+  
+  Deref(Xi, X(@var{i}));
+  
+  if(IsVar(Xi)) @{
+    register TAGGED l;
+    
+    Make_LST(w->heap_top,l);
+    Bind(Xi,l,{goto fail;});
+    goto write_instructions;
+  @} else @{
+    if(IsLST(Xi)) @{
+      s = TagToPointer(Xi);
+      goto instructions;
+    @} else
+      goto fail;
+  @}
+@}
+@end example
+@end table
+
+@section Put Instructions
+@cindex put instructions
+@cindex instructions, put
+
+These instructions correspond to goal arguments. They are used to 
+prepare arguments for the next procedure call.
+
+@table @code
+@item put_x_void(@var{i})
+@findex put_x_void
+This represents an @var{i}th goal argument that is a singleton variable.
+@refill
+@example
+LoadHVA(w->heap_top,X(@var{i}),w);
+goto instructions;
+@end example
+
+@item put_y_void(@var{i})
+@findex put_y_void
+This represents an @var{i}th permanent variable that has not been initialized
+before the first @code{call} in a clause. All permanent variables must
+be initialized before the first @code{call} because of the GC algorithm. 
+@refill
+@example
+LoadSVA(Y(@var{i}),w);
+goto instructions;
+@end example
+
+@item put_x_variable(@var{n}, @var{i})
+@findex put_x_variable
+This represents an @var{i}th goal argument that is an uninitialized
+temporary variable X@var{n} which does not occur after the next 
+procedure call.
+@refill
+@example
+LoadHVA(w->heap_top,X(@var{n}),w);
+X(@var{i}) = X(@var{n});
+goto instructions;
+@end example
+
+@item put_y_variable(@var{n},@var{i})
+@findex put_y_variable
+This represents an @var{i}th goal argument that is an uninitialized
+permanent variable Y@var{n} which occur in the first procedure call
+and later. If it does not occur in the first procedure call it has
+been initialized by a @code{put_y_void} instruction. @refill
+@example
+LoadSVA(Y(n),w);
+X(@var{i}) = Y(@var{n});
+goto instructions;
+@end example
+
+@item put_x_value(@var{n},@var{i})
+@findex put_x_value
+This represents an @var{i}th goal argument that is an initialized
+temporary variable X@var{n} which cannot point (even before dereferencing)
+to a portion of the stack which is about to be deallocated. @refill
+@example
+X(@var{i}) = X(@var{n});
+goto instructions;
+@end example
+
+@item put_y_value(@var{n},@var{i})
+@findex put_y_value
+This represents an @var{i}th goal argument that is an initialized
+permanent variable Y@var{n} which cannot point (even before dereferencing)
+to a portion of the stack which is about to be deallocated. @refill
+@example
+X(@var{i}) = Y(@var{n});
+goto instructions;
+@end example
+
+@item put_x_unsafe_value(@var{n},@var{i})
+@findex put_x_unsafe_value
+This represents an @var{i}th goal argument that is an initialized
+temporary variable X@var{n} which might point to a portion of the
+stack that is about to be deallocated, i.e. it might need globalizing.
+The variable must be left dereferenced since the compiler trusts the
+instruction to globalize both its arguments. This assumption is not
+made for permanent variables.
+@refill
+@example
+RefStackUnsafe(w->heap_top,X(@var{i}),X(@var{n}));
+X(@var{n}) = X(@var{i});
+goto instructions;
+@end example
+
+@item put_y_unsafe_value(@var{n},@var{i})
+@findex put_y_unsafe_value
+This represents an @var{i}th goal argument that is an initialized
+permanent variable Y@var{n} which might point to a portion of the
+stack that is about to be deallocated, i.e. it might need globalizing.
+@refill
+@example
+RefStackUnsafe(w->heap_top,X(@var{i}),Y(@var{n}));
+goto instructions;
+@end example
+
+@item put_constant(@var{C},@var{i})
+@findex put_constant
+This represents an @var{i}th goal argument that is the constant @var{C}. 
+@refill
+@example
+X(@var{i}) = @var{C};
+goto instructions;
+@end example
+
+@item put_nil(@var{i})
+@findex put_nil
+This represents an @var{i}th goal argument that is the empty list. @refill
+@example
+X(@var{i}) = atom_nil;
+goto instructions;
+@end example
+
+@item put_structure(@var{F}, @var{i})
+@findex put_structure
+This represents an @var{i}th goal argument that is a structure whose
+functor is @var{F}. The instruction is followed by a sequence of @code{
+unify} instructions. @refill
+@example
+Make_STR(w->heap_top,X(@var{i}),@var{F});
+goto write_instructions;
+@end example
+
+@item put_list(@var{i})
+@findex put_list
+This represents an @var{i}th goal argument that is a list. The instruction
+is followed by a sequence of @code{unify} instructions. @refill
+@example
+Make_LST(w->heap_top,X(@var{i}));
+goto write_instructions;
+@end example
+@end table
+
+@section Unify Instructions
+These instructions are used to read and write structures in the usual WAM 
+specified way.
+
+@table @code
+@item unify_void(@var{n})
+@findex unify_void
+This represents @var{n} consecutive singleton variables in a structure. 
+@refill
+
+read mode:
+@example
+s += @var{n}*VARSIZE;
+goto instructions;
+@end example
+write mode:
+@example
+@{
+  do @{
+    CreateHVA(w->heap_top,w);
+  @} while(--@var{n});
+
+  goto write_instructions;
+@}
+@end example
+
+@item unify_x_variable(@var{n})
+@findex unify_x_variable
+This represents a structure argument that is an uninitialized temporary 
+variable X@var{n}. @refill
+
+read mode:
+@example
+X(@var{n}) = Ref(s);
+s += VARSIZE;
+goto instructions;
+@end example
+write mode:
+@example
+@{
+  LoadHVA(w->heap_top,X(@var{n}),w);
+  goto write_instructions;
+@}
+@end example
+
+@item unify_y_variable(@var{n})
+@findex unify_y_variable
+This represents a structure argument  that is an uninitialized permanent
+variable Y@var{n}. @refill
+
+read mode:
+@example
+Y(@var{n}) = Ref(s);
+s += VARSIZE;
+goto instructions;
+@end example
+write mode:
+@example
+@{
+  LoadHVA(w->heap_top,Y(@var{n}),w);
+  goto write_instructions;
+@}
+@end example
+
+@item unify_y_first_value(@var{n})
+@findex unify_y_first_value
+This represents a structure argument that is an uninitialized permanent 
+variable Y@var{n}, occurring after the first procedure call. @refill
+
+read mode:
+@example
+Bind_SVA(Tagify(&(Y(@var{n})),SVA),Ref(s));
+s += VARSIZE;
+@end example
+write mode;
+@example
+@{
+  LoadHVA(w->heap_top,Y(@var{n}),w);
+  goto write_instructions;
+@}
+@end example
+
+@item unify_x_value(@var{n})
+@findex unify_x_value
+This represents a structure argument that is an initialized temporary
+variable X@var{n} which cannot (even before dereferencing) be pointing
+to the stack. @refill
+
+read mode:
+@example
+Unify(Ref(s),X(@var{n}));
+s += VARSIZE;
+goto instructions;
+@end example
+write mode:
+@example
+@{
+  PushOnHeap(w->heap_top,X(@var{n}));
+  goto write_instructions;
+@}
+@end example
+
+@item unify_y_value(@var{n})
+@findex unify_y_value
+This represents a structure argument that is an initialized permanent
+variable Y@var{n} which cannot (even before dereferencing) be pointing
+to the stack. @refill
+
+read mode:
+@example
+Unify(Ref(s),Y(@var{n}));
+s += VARSIZE;
+goto instructions;
+@end example
+write mode:
+@example
+@{
+  PushOnHeap(w->heap_top,Y(@var{n}));
+  goto write_instructions;
+@}
+@end example
+
+@item unify_x_local_value(@var{n})
+@findex unify_x_local_value
+This represents a structure argument that is an initialized temporary
+variable X@var{n} which could be pointing to the stack, i.e. it might
+need globalizing. @refill
+
+read mode:
+@example
+Unify(X(@var{n}),Ref(s));
+s += VARSIZE;
+goto instructions;
+@end example
+write mode:
+@example
+@{
+  WriteLocalValue(w->heap_top,X(@var{n}));
+  goto write_instructions;
+@}
+@end example
+
+@item unify_y_local_value(@var{n})
+@findex unify_y_local_value
+This represents a structure argument that is an initialized permanent
+variable Y@var{n} which could be pointing to the stack, i.e. it might
+need globalizing. @refill
+
+read mode:
+@example
+Unify(Y(@var{n}),Ref(s));
+s += VARSIZE;
+goto instructions;
+@end example
+write mode:
+@example
+@{
+  WriteLocalValue(w->heap_top,Y(@var{n}));
+  goto write_instructions;
+@}
+@end example
+
+@item unify_constant(@var{C})
+@findex unify_constant
+This represents a structure argument that is the constant @var{C}. @refill
+
+read mode:
+@example
+@{ 
+  register TAGGED Si;
+  
+  DerefHVA(Si, Ref(s));
+  s += VARSIZE;
+
+  if (IsHVA(Si)) @{
+    Bind_HVA(Si,@var{C},{goto fail;});
+  @} else if (Si != @var{C}) 
+    goto fail;
+
+  goto instructions;
+@}
+@end example
+write mode:
+@example
+@{
+  PushOnHeap(w->heap_top,@var{C});
+  goto write_instructions;
+@}
+
+@end example
+
+@item unify_nil
+@findex unify_nil
+This represents a structure argument that is the empty list. @refill
+
+read mode:
+@example
+@{
+  DerefHVA(Si, Ref(s));
+  s += VARSIZE;
+
+  if (IsHVA(Si)) @{
+    Bind_HVA(Si,atom_nil,{goto fail;});
+  @} else if (Si != atom_nil) 
+    goto fail;
+
+  goto instructions;
+@}
+@end example
+write mode:
+@example
+@{
+  PushOnHeap(w->heap_top,atom_nil);
+  goto write_instructions;
+@}
+@end example
+
+@item unify_structure(@var{F})
+@findex unify_structure
+This represents a last structure argument that is a structure with the
+functor @var{F}. @refill
+
+read mode:
+@example
+@{
+  register TAGGED Ds,str;
+  
+  DerefHVA(Ds,Ref(s));
+  
+  if(IsVar(Ds)) @{
+    Make_STR(w->heap_top,str, @var{F});
+    Bind(Ds,str,{goto fail;});
+    goto write_instructions;
+  @} else if(IsSTR(Ds)) @{
+    if(GetFunctor(Ds) == @var{F}) @{
+      s = GetArg(Ds,0);
+      goto instructions;
+    @}
+  @}
+
+  goto fail;
+@}
+@end example
+write mode:
+@example
+{ 
+  register TAGGED *tmp;
+
+  tmp = w->heap_top + VARSIZE;
+  PushOnHeap(w->heap_top,Tagify(tmp,STR));
+  PushOnHeap(w->heap_top,@var{F}); 
+}
+@end example
+
+@item unify_list
+@findex unify_list
+This represents a last structure argument that is a list. @refill
+
+read mode:
+@example
+@{ 
+  register TAGGED Ds, lst;
+  
+  DerefHVA(Ds,Ref(s));
+  
+  if(IsVar(Ds)) @{
+    Make_LST(w->heap_top,lst);
+    Bind(Ds,lst,{goto fail;});
+    goto write_instructions;
+  @} else @{
+    if(IsLST(Ds)) @{
+      s = GetCar(Ds);
+      goto instructions;
+    @} else
+      goto fail;
+  @}
+@}
+@end example
+write mode:
+@example
+@{ 
+  register TAGGED *tmp;
+
+  tmp = w->heap_top + VARSIZE;
+  PushOnHeap(w->heap_top,Tagify(tmp,LST));
+@}
+goto write_instructions;
+@end example
+@end table
+@c ----------------------------------------------------------------------
+@section Instructions for Reform Parallelism
+@subsection Vector List Instructions
+These instructions are used to build vector lists that are used for easy
+access of input arguments, and for communication between recursion
+levels during the parallel phase. The instructions prepare the
+environment for the following parallel phase and are as such executed
+by the sequential worker. A list recursive program such as
+@example
+        map([],[]).
+        map([X|Xs],[Y|Ys]) :- rel(X,Y), map(Xs, Ys).
+@end example
+is compiled to extended WAM code according to the following schema:.
+@example
+map/2:  switch_on_term Lv La Ll fail
+
+Lv:     try La
+        trust L1
+
+La:     /* sequential code for first clause */
+
+L1:     /* sequential code for second clause */
+
+Ll:     build_rec_poslist X0 X2 X3 X0  % create vector list Xs
+        build_poslist X1 X2 X4 X1      % create vector list Ys
+        /* code to execute rel/2 by each worker */
+        execute map/2                  % execute the base case
+@end example
+
+@table @code
+@item build_rec_poslist(@var{a}, @var{n}, @var{v}, @var{t})
+@findex build_rec_poslist
+        This instruction is used for the main recursive argument when 
+        compiling list recursion. It verifies that the term referred to 
+        by @code{X}@sub{a} is a list. The list is traversed and a vector list 
+        is built (on the heap) of its elements. A pointer to the vector list is
+        stored in @code{X}@sub{v}. The length of the vector list is stored in 
+        @code{X}@sub{n} (it is used later when constructing other vector lists 
+        and by each worker to determine the bounds of the recursion).
+@example
+   /* Traverse recursion list and build vector */
+
+   Make_LST(w->heap_top,X(@var{v}));
+
+   /* build vector */
+   {
+     register TAGGED List;
+     register s32 len;
+
+     Deref(List, X(@var{a}));
+
+     PushOnHeap(w->heap_top,Ref(GetCar(List)));
+     Deref(List,Ref(GetCdr(List)));
+     
+     for(len = 1 ; IsLST(List) ; len++) {
+       PushOnHeap(w->heap_top,Tagify(w->heap_top+VARSIZE,LST));
+       PushOnHeap(w->heap_top,Ref(GetCar(List)));
+       Deref(List,Ref(GetCdr(List)));
+     }
+
+     PushOnHeap(w->heap_top,List);
+
+     /* Last tail */
+     X(@var{t}) = List;
+     
+     /* Vector length */
+     X(@var{n}) = Make_Integer(len);
+   }
+
+   goto instructions;
+@end example
+
+@item build_poslist(@var{a},@var{n},@var{v},@var{t})
+@findex build_poslist
+        This instruction is used for an argument that performs list
+        recursion but is not the main recursive argument. The term
+        pointed to by @code{X}@sub{a} is verified to be a list of length 
+        at lest @code{X}@sub{n}. 
+        If @code{X}@sub{a} contains a list shorter than @code{X}@sub{n} 
+        elements, ending with an unbound variable, then it is extended 
+        with distinct variables to the length @code{X}@sub{n}. A vector list
+        is constructed (on the heap) of its @code{X}@sub{n} first 
+        elements. A pointer to the vector list is stored in @code{X}@sub{v}. 
+        The @code{X}@sub{n}th tail of the vector list is set to the 
+        @code{X}@sub{n}th tail of the list referred to by @code{X}@sub{a}. 
+        A reference to the @code{X}@sub{n}th tail is also stored 
+        in @code{X}@sub{t}. (This reference is needed when executing the base 
+        case of the predicate.)
+@example
+    /* Traverse recursion list and build vector */
+
+    Make_LST(w->heap_top,X(@var{v}));
+
+    /* build vector */
+    @{
+      register TAGGED List;
+      register s32 len, vectorsize;
+
+      vectorsize = GetNumber(X(@var{n}));
+
+      Deref(List, X(@var{a}));
+
+      len = 0;
+
+      for( ; IsLST(List) && len < (vectorsize - 1) ; len++)
+        @{
+          PushOnHeap(w->heap_top,Ref(GetCar(List)));
+          PushOnHeap(w->heap_top,Tagify(w->heap_top+VARSIZE,LST));
+          Deref(List,Ref(GetCdr(List)));
+        @}
+
+      if(IsLST(List))
+        @{
+          PushOnHeap(w->heap_top,Ref(GetCar(List)));
+          X(@var{t}) = Ref(GetCdr(List));
+          PushOnHeap(w->heap_top,X(@var{t}));
+        @}
+      else
+        @{
+          if(!unify(List,Tagify(w->heap_top,LST),w)) goto fail;
+
+          for( ; len < (vectorsize - 1) ; len++)
+        @{
+          CreateHVA(w->heap_top,w);
+          PushOnHeap(w->heap_top,Tagify(w->heap_top+VARSIZE,LST));
+        @}
+          CreateHVA(w->heap_top,w);
+          LoadHVA(w->heap_top,X(@var{t}),w);
+        @}
+    @}
+    goto instructions;
+@end example
+
+@item build_poslist_value(@var{a},@var{n},@var{v},@var{t})
+@findex build_poslist_value
+        This instruction is used for a subsequent argument that performs 
+        list recursion, using the same element as an earlier list 
+        recusive argument, e.g., the third argument of the second 
+        clause of append/3.
+@example
+            append([X|Xs],Y,[X|Zs]) :- append(Xs,Y,Zs).
+@end example
+        The term referred to by @code{X}@sub{a} is verified to be a list.
+        The first @code{X}@sub{n} elements of the list @code{X}@sub{a} are 
+        unified with the corresponding elements of the vector list referred 
+        to by 
+        @code{X}@sub{v}. If the list @code{X}@sub{a} is shorter than 
+        @code{X}@sub{n} elements then the last tail of the list is unified 
+        with a list of the remaining elements of the vector list, ending with
+        an unbound variable. The @code{X}@sub{n}th tail of @code{X}@sub{a} 
+        is stored in @code{X}@sub{t}.
+@example
+    /* Match list with vector */
+
+    @{
+      TAGGED VectorList, List;
+      s32 vectorsize;
+      
+      Deref(List,X(@var{a}));
+      Deref(VectorList,X(@var{v}));
+      
+      vectorsize = GetNumber(X(@var{n}));
+      
+      while(vectorsize) @{
+        if(IsLST(List)) @{
+          Unify(Ref(GetCar(List)),Ref(GetCar(VectorList)));
+          Deref(List,Ref(GetCdr(List)));
+          VectorList = Ref(GetCdr(VectorList));
+        @} else 
+          break;
+        vectorsize--;
+      @}
+      
+      if(vectorsize) @{
+        register TAGGED Copy;
+        
+        Make_LST(w->heap_top,Copy);
+        PushOnHeap(w->heap_top,Ref(GetCar(VectorList)));
+        vectorsize -= 1;
+        
+        while(vectorsize--) @{
+          PushOnHeap(w->heap_top,Tagify(w->heap_top+VARSIZE,LST));
+          VectorList = Ref(GetCdr(VectorList));
+          PushOnHeap(w->heap_top,Ref(GetCar(VectorList)));
+        @}
+        
+        LoadHVA(w->heap_top,X(@var{t}),w);
+        if(!unify(List,Copy,w)) goto fail;
+        
+      @} else @{
+        X(@var{t}) = List;
+      @}
+    @}
+    goto instructions;
+@end example
+
+@item build_neglist(@var{a},@var{n},@var{v},@var{t})
+@findex build_neglist
+        This instruction is used for a list that is built in the clause
+        body using an accumulator, e.g., the second argument of the 
+        predicate below.
+@example
+            p([X|Xs],Acc,[Y|Ys]) :- p(Xs,[Y|Acc],Ys).
+@end example
+        A `reverse list' vector list of length @code{X}@sub{n} is created 
+        on the heap. A reference to the vector list is stored in 
+        @code{X}@sub{v}. A reference to the first element of the vector 
+        list (viewed as a list) is stored in @code{X}@sub{t}. The last 
+        tail of the vector list (viewed as a list) is set to @code{X}@sub{a}. 
+@example
+    vectorsize = GetNumber(X(@var{n})) - 1;
+
+    X(@var{v}) = Tagify(w->heap_top,LST);
+
+    CreateHVA(w->heap_top,w);
+    PushOnHeap(w->heap_top,X(@var{a}));
+
+    while(vectorsize--)
+      @{
+        CreateHVA(w->heap_top,w);
+        PushOnHeap(w->heap_top,Tagify(w->heap_top-3*VARSIZE,LST));
+      @}
+        
+    X(@var{t}) = Tagify(w->heap_top-2*VARSIZE,LST);
+    
+    goto instructions;
+@end example
+
+@item build_neglist_value(@var{a},@var{n},@var{v},@var{m},@var{t})
+@findex build_neglist_value
+        This instruction is used for a subsequent list that is built 
+        (using the same element as an earlier list argument) in the 
+        clause body using an accumulator, e.g., the second argument 
+        of reverse/3 below.
+@example
+            reverse([X|Xs],Acc,Rev) :- reverse(Xs,[X|Acc],Rev).
+@end example
+        The instruction, analogous to @code{build neglist}, creates a 
+        `reverse list' vector list @code{X}@sub{w}, but elements from the 
+        vector list referred to by @code{X}@sub{v} are stored at the 
+        corresponding vector list positions in @code{X}@sub{w}.
+@example
+    vectorsize = GetNumber(X(@var{n})) - 1;
+    Vector = RemoveTag(X(@var{m}),LST);
+
+    X(v) = Tagify(w->heap_top,LST);
+
+    PushOnHeap(w->heap_top,Ref(Vector));
+    Vector += 2*VARSIZE;
+    PushOnHeap(w->heap_top,X(@var{a}));
+
+    while(vectorsize--)
+      @{
+        PushOnHeap(w->heap_top,Ref(Vector));
+        Vector += 2*VARSIZE;
+        PushOnHeap(w->heap_top,Tagify(w->heap_top-3*VARSIZE,LST));
+      @}
+        
+    X(@var{t}) = Tagify(w->heap_top-2*VARSIZE,LST);
+
+    goto instructions;
+@end example
+
+@item build_variables(@var{a},@var{n},@var{v},@var{t})
+@findex build_variables
+        This instruction is used for a list that is built in the clause
+        body using an accumulator, e.g., the second argument of the 
+        predicate below.
+@example
+            p([X|Xs],Acc,[Y|Ys]) :- p(Xs,[Y|Acc],Ys).
+@end example
+        A `reverse list' vector list of length @code{X}@sub{n} is created 
+        on the heap. A reference to the vector list is stored in 
+        @code{X}@sub{v}. A reference to the first element of the vector 
+        list (viewed as a list) is stored in @code{X}@sub{t}. The last 
+        tail of the vector list (viewed as a list) is set to @code{X}@sub{a}. 
+@example
+    vectorsize = GetNumber(X(@var{n}));
+    
+    Make_LST(w->heap_top,X(@var{v}));
+
+    @{
+      register TAGGED varvar;
+      Deref(varvar,X(@var{a}));
+      
+      if(IsSVA(varvar))
+        @{
+          register TAGGED newvar;
+          LoadHVA(w->heap_top,newvar,w);
+          Bind_SVA(varvar,newvar);
+        @}
+      else
+        PushOnHeap(w->heap_top,varvar);
+    @}
+
+    for(x = 1 ; x < vectorsize ; x++) @{
+      PushOnHeap(w->heap_top,Tagify(w->heap_top+VARSIZE,LST));
+      CreateHVA(w->heap_top,w);
+    @}
+
+    PushOnHeap(w->heap_top,Tagify(w->heap_top+VARSIZE,LST));
+    LoadHVA(w->heap_top,X(@var{t}),w);
+    CreateHVA(w->heap_top,w);
+
+    goto instructions;
+@end example
+@end table
+@c----------------------------------------------------------------------
+@c----------------------------------------------------------------------
+@c----------------------------------------------------------------------
+
+@subsection Put Instructions
+These instructions are used by each worker in the parallel phase to fetch
+the arguments of the recursion level from the sequential worker's heap. 
+The program
+@example
+    map([],[]).
+    map([X|Xs],[Y|Ys]) :- rel(X,Y), map(Xs,Ys).
+@end example
+is compiled to extended WAM code according to the following schema:
+@example
+map/2:  switch_on_term Lv La Ll fail
+
+Lv:     try La
+        trust L1
+
+La:     /* code for first clause */
+
+L1:     /* code for second clause */
+
+Ll:     build_rec_poslist X0 X2 X3 X0   % build vector list Xs
+        build_poslist X0 X2 X4 X1       % build vector list Ys
+        start_left_body L2 3 {X2 X3 X4} % start par. phase
+        execute map/2                   % execute base case
+
+L2:     initialize_left 1               % initialize worker
+L3:     spawn_left 1 X2 G2              % while X2 < G2 do
+        put_nth_head G3 X2 0 X0         % X <- Xs[X2+0]
+        put_nth_head G4 X2 0 X1         % Y <- Ys[X2+0]
+        call rel/2 0                    % rel(X,Y)
+        jump L3                         % next rec. level
+@end example
+@table @code
+@item put_nth_head(@var{v},@var{l},@var{o},@var{i})
+@findex put_nth_head
+        This instruction stores element number @code{X}@sub{l} + 
+        @var{o} of the vector list, pointed to by the sequential 
+        worker's register @code{X}@sub{v}, in @code{X}@sub{i}. Nonzero 
+        values of @var{o} are used by clauses that reduce the 
+        recursion argument by more than 1, or by clauses that 
+        need to refer to values produced by other recursion levels.
+@example
+    X(@var{i}) = Ref(GetNthHead(G(@var{v}),
+                                (GetNumber(X(@var{l})) + @var{o})));
+    goto instructions;
+@end example
+
+@item put_nth_tail(@var{v},@var{l},@var{o},@var{i})
+@findex put_nth_tail
+        This instruction stores tail number @code{X}@sub{l} + @var{o} of
+        the vector list, pointed to by the sequential worker's register 
+        @code{X}@sub{v}, in @code{X}@sub{i}. 
+@example
+    X(@var{i}) = Ref(GetNthTail(G(@var{v}),
+                                (GetNumber(X(@var{l})) + @var{o})));
+    goto instructions;
+@end example
+
+@item put_global_arg(@var{g},@var{i})
+@findex put_global_arg
+        This instruction stores the value of the sequential worker's register 
+        @code{X}@sub{g} in @code{X}@sub{i}.
+@example
+    X(@var{g}) = G(@var{i});
+    goto instructions;
+@end example
+
+@item unify_nth_head(@var{v},@var{l},@var{o})
+@findex unify_nth_head
+        This instruction writes element number @code{X}@sub{l} + @var{o}
+        of the vector list, pointed to by the sequential worker's register 
+        @code{X}@sub{v}, onto the heap. This instruction never occurs in read 
+        mode.
+@example
+    Unify(Ref(s),Ref(GetNthHead(G(@var{v}),
+                                (GetNumber(X(@var{f}))+ @var{o}))));
+    s += VARSIZE;
+    goto instructions;
+@end example
+
+@item unify_nth_tail(@var{v},@var{l},@var{o})
+@findex unify_nth_tail
+        This instruction writes tail number @code{X}@sub{l} + @var{o}
+        of the vector list, pointed to by the sequential worker's register 
+        @code{X}@sub{v}, (viewed as a list) on the heap. This instruction 
+        never occurs in read mode.
+@example
+    Unify(Ref(s),Ref(GetNthTail(G(@var{v}),
+                                (GetNumber(X(@var{l}))+@var{o}))));
+    s += VARSIZE;
+    goto instructions;
+@end example
+
+@item unify_global_arg(@var{g})
+@findex unify_global_arg
+        This instruction writes the value of the sequential worker's 
+        register @code{X}@sub{g} on the heap. This instruction never occurs 
+        in read mode.
+@example
+    Unify(Ref(s), G(@var{g}));
+    s += VARSIZE;
+    goto instructions;
+@end example
+@end table
+
+@c----------------------------------------------------------------------
+@c----------------------------------------------------------------------
+@subsection Procedural Instructions
+These instructions are used to initiate parallel execution and 
+to switch from one recursion level to the next. The @code{spawn}
+instructions corresponds to the @code{while} instruction of C. The 
+program
+@example
+    p([],Y,Y,0).
+    p([X|Xs], Ys, Zs, S1) :-
+            f(X, Y),
+            p(Xs, [Y|Ys], Zs, S2),
+            q(S2, S1).
+@end example
+is compiled to extended WAM code according to the following schema:.
+@example
+p/4:    switch_on_term Lv La Ll fail
+
+Lv:     try La
+        trust L1
+
+La:     /* sequential code for first clause */
+
+L1:     /* sequential code for second clause */
+
+Ll:     allocate
+        build_rec_poslist X0 X4 X5 X0  % create vector list Xs
+        build_neglist X1 X4 X6 X1      % create vector list Ys
+        build_variables X3 X4 X7 X3    % create var. vector list
+        /* code to save X4, X5, X6, X7 in Y-registers */
+                                       % start par. phase
+        start_left_body L2 8 {X0 X1 X2 X3 X4 X5 X6 X7} 4
+        call p/4, 4                    % execute base case
+        /* code to restore X4, X5, X6, X7 from Y-registers */
+                                       % start par. phase
+        start_right_body X4 L4 1 {X4} 0
+        deallocate
+        proceed
+
+L2:     initialize_left 1              % initialize worker
+L3:     spawn_left 1 X2 G4             % while ++X2 < G4 do
+        /* code to set up the arguments for the call to f/2 */
+        call f/2, 0
+        jump L3                        % next recursion level
+
+L4:     initialize_right 1 G4          % initialize worker
+L5:     spawn_right 1 X2               % while --X2 > 0 do
+        /* code to set up the arguments for the call to q/2 */
+        call q/2, 0
+        jump L5                        % next recursion level
+@end example
+@table @code
+@item start_right_body(@var{n},@var{L},@var{NrLive},@var{LiveList},@var{i})
+@findex start_right_body
+        This instruction initiates parallel execution of the `right body'
+        of a predicate. The length of the recursion list is given in 
+        @code{X}@sub{n}. The code at label @var{L} is run in parallel by 
+        all active workers. The sequential execution continues with 
+        the next instruction when the parallel phase is finished.
+        To support garbage collection during a parallel execution all
+        live registers are given in a sorted list @var{LiveList} of
+        length @var{NrLive}. The size of the environment, @var{i}, is an 
+        optional argument..
+@example
+    Deref(Num, X(@var{n}));
+    if(!IsNUM(Num)) goto fail;
+    
+    if(w->global->scheduling == DYNAMIC)
+      @{
+        w->global->sched_level = GetNumber(Num);
+      @}
+
+    /* Reset level count, this could be done in parallel but
+     * would require synchronization.
+     */
+
+    for(i=0 ;
+        i < w->global->active_workers ;
+        w->level[i++] = GetNumber(Num));
+
+    goto start_body;
+@end example
+
+@item start_left_body(@var{L},@var{NrLive},@var{LiveList},@var{i})
+@findex start_left_body
+        This instruction starts parallel execution of the `left body'
+        of a predicate. The code at label @var{L}
+        is run in parallel by all active workers. The sequential 
+        execution continues with the next instruction when the 
+        parallel phase is finished.
+        To support garbage collection during a parallel execution all
+        live registers are given in a sorted list @var{LiveList} of
+        length @var{NrLive}. The size of the environment, @var{i}, is an 
+        optional argument..
+@example
+    if(w->global->scheduling == DYNAMIC)
+      @{
+        w->global->sched_level = 0;
+      @}
+
+    /* Reset level count, this could be done in parallel but
+     * would require synchronization.
+     */
+
+    for(i=0 ; i < w->global->active_workers ; w->level[i++] = 0);
+
+  start_body:
+    @{
+      w->global->parallel_start.type = W_EXECUTE_CODE;
+      w->global->parallel_start.code = @var{L};
+      w->global->global_fail = FALSE;
+
+      /* Activate worker backtracking, mainly to restore their
+       * heaps.
+       */
+      PushOnTrail(w->trail_top,Tagify(NULL,STR));
+
+      ActivateWorkers(w);
+
+      if(w->global->global_fail) goto fail;
+
+#if defined(TIMESTAMP) || defined(UNBOUND)
+      @{
+        register int i;
+        i = w->global->active_workers;
+        while(i--) @{
+          if(w[i].time > w->time) @{
+            w->time = w[i].time;
+          @}
+        @}
+      @}
+#endif  
+    @}
+    goto instructions;
+@end example
+
+@item initialize_right(@var{S},@var{n})
+@findex initialize_right
+        This instruction initializes a worker for parallel execution.
+        The step @var{S}, the number of recursion levels (stored in 
+        the sequential worker's register @code{X}@sub{n}), and the worker 
+        number are used for calculating the initial recursion level in 
+        static schedule mode. When dynamic scheduling is used this 
+        instruction is ignored.
+@example
+    if(w->global->scheduling == STATIC)  
+      @{
+        w->level[w->pid-1] = GetNumber(G(@var{n})) - 1 - 
+                             @var{S}*(w->pid-1) +
+                             @var{S} * w->global->active_workers;
+        
+      @}
+    w->direction = RIGHT_BODY;
+    goto instructions;
+@end example
+
+@item initialize_left(@var{S})
+@findex initialize_left
+        This instruction initializes a worker for parallel execution.
+        The step @var{S} and the worker number is used
+        for calculating the number of the initial recursion level in 
+        static scheduling mode. In dynamic scheduling mode this 
+        instruction is ignored.
+@example
+    if(w->global->scheduling == STATIC)  
+      @{
+        w->level[w->pid-1] =@var{S} * (w->pid-1) -
+          @var{S} * w->global->active_workers;
+      @}
+    w->direction = LEFT_BODY;
+    goto instructions;
+@end example
+
+@item spawn_right(@var{S},@var{i})
+@findex spawn_right
+        This instruction calculates the number of the next recursion 
+        level and stores it in @code{X}@sub{i}. The new level is calculated 
+        from @var{S} and the internal level count. If the number of the 
+        new level is negative, the parallel computation is finished
+        and the worker awaits the next parallel phase, otherwise 
+        processing continues with the next instruction.
+@example
+    if(w->global->global_fail) goto done;
+
+    if(w->global->scheduling == STATIC)
+      @{
+        level = w->level[w->pid-1] - @var{S}*w->global->active_workers;
+      @}
+    else
+      @{
+        GrabLevel(level,w); 
+        w->global->sched_level = level - @var{S};
+      @}
+    
+    w->level[w->pid-1] = level;
+    X(i) = Make_Integer(level);
+
+    if (level < 0) goto done;
+
+    goto instructions;        
+@end example
+
+@item spawn_left(@var{S},@var{i},@var{n})
+@findex spawn_left
+        This instruction calculates the number of the next recursion 
+        level and stores it in @code{X}@sub{i}. The number of the new level 
+        is calculated from @var{S} and the internal level count. 
+        If the number of the new level is greater than the value stored 
+        in the sequential worker's register @code{X}@sub{n}, the parallel 
+        computation is finished and the worker awaits the next parallel 
+        phase, otherwise processing continues with the next instruction.
+@example
+    if(w->global->global_fail) goto done;
+
+    if(w->global->scheduling == STATIC)
+      @{
+        level = w->level[w->pid-1] + @var{S}*w->global->active_workers;
+      @}
+    else
+      @{
+        GrabLevel(level,w) 
+        w->global->sched_level = level + @var{S};
+      @}
+
+    w->level[w->pid-1] = level;
+    X(@var{i}) = Make_Integer(level);
+        
+    if (level >= GetNumber(G(@var{n}))) goto done;
+    goto instructions;
+@end example
+@end table
+
+@section Runtime Test Instructions
+These instructions are used for doing runtime tests in order to
+enforce global binding-determinism. The following program illustrates
+the need for synchronization. Each recursion level must wait until its
+@code{N} variable becomes instantiated before calculating the addition.
+In practice, this program is compiled as a call to a built-in
+reduction predicate.
+@example
+    sum([],S,S).
+    sum([X|Xs],N,S) :- N2 is X + N, sum(Xs,N2,S).
+@end example
+It is compiled into the following extended WAM code.
+@example
+sum/3:  switch_on_term Lv La Ll fail
+Lv:     try La
+        trust L1
+
+La:     get_nil_x0
+        get_value X1 X2 
+        proceed
+
+L1:     get_list X0
+        unify_variable X4
+        unify_variable X0
+        builtin '$plus' X1 X1 X4
+        execute sum/3
+
+Ll:     build_rec_poslist X0 X3 X4 X0   % create vector list Xs
+        build_variables X1 X3 X5 X1     % create vector list NN2
+        start_left_body L2 3 {X3 X4 X5} % start parallel phase
+        execute sum/3                   % execute base case
+
+L2:     initialize_left 1               % initialize worker
+L3:     spawn_left 1 X2 G3              % while X2 < G3 do
+        put_nth_head G4 X2 0 X0         % X <- Xs[X2+0]
+        put_nth_head G5 X2 0 X1         % N <- NN2[X2+0]
+        put_nth_head G5 X2 1 X3         % N2 <- NN2[X2+1]
+        await_strictly_nonvar X1        % wait until N bound
+        builtin '$plus' X4 X0 X1        % X4 <- N + X
+        get_value X4 X3                 % unify N X4
+        jump L3                         % next rec. level
+@end example
+
+@table @code
+@item await_leftmost
+@findex await_leftmost
+        This instruction forces the current recursion level to suspend
+        until it is leftmost in the resolvent, i.e., all
+        preceding recursion levels have terminated.
+@example
+    register BOOL isfirst = FALSE;
+
+    while(!isfirst) @{
+      if(w->direction == LEFT_BODY)
+        @{
+          IsFirstLeft(isfirst,w);
+        @}
+      else
+        @{
+          IsFirstRight(isfirst,w);
+        @}
+      AwaitCountStat(w);
+      if(w->global->global_fail) goto done;
+    @}
+    goto instructions;
+@end example
+
+@item await_nonvar(@var{i})
+@findex await_nonvar
+        This instruction forces the current recursion level to suspend
+        until either the dereferenced contents of @code{X}@sub{i} is a 
+        non-variable, or the current recursion level is leftmost in the 
+        resolvent, i.e., all preceding recursion levels have terminated.
+@example
+    Deref(Xi,X(@var{i}));
+    
+    if(IsHVA(Xi))
+      @{
+        /* Wait until first or bound */
+        register BOOL isfirst;
+
+        AwaitStat(w);
+
+        while(TRUE)
+          @{
+            if(w->direction == LEFT_BODY)
+              @{
+                IsFirstLeft(isfirst,w);
+              @}
+            else
+              @{
+                IsFirstRight(isfirst,w);
+              @}
+            Deref(Xi,Xi);
+            if(!IsVar(Xi) || isfirst)
+              @{
+                X(i) = Xi;
+                goto instructions;
+              @}
+            if(w->global->global_fail) goto done;
+            AwaitCountStat(w);
+          @}
+      @}
+
+    X(@var{i}) = Xi;
+    goto instructions;
+@end example
+
+@item await_strictly_nonvar(@var{i})
+@findex await_strictly_nonvar
+        This instruction forces the current recursion level to suspend
+        until the dereferenced contents of @code{X}@sub{i} is a non-variable. 
+        If the recursion level becomes leftmost in the resolvent and 
+        the result of dereferencing @code{X}@sub{i} is an unbound variable,
+        then a run time error is signalled.
+@example
+    Deref(Xi,X(@var{i}));
+    
+    if(IsVar(Xi))
+      @{
+        /* Wait until bound or first,
+         * if first genereate runtime error
+         */
+        register BOOL isfirst;
+
+        AwaitStat(w);
+
+        while(TRUE)
+          @{
+            if(w->direction == LEFT_BODY)
+              @{
+                IsFirstLeft(isfirst,w);
+              @}
+            else
+              @{
+                IsFirstRight(isfirst,w);
+              @}
+            Deref(Xi,Xi);
+            if(!IsVar(Xi))
+              @{
+                X(i) = Xi;
+                goto instructions;
+              @}
+            else if(isfirst)
+              @{
+                if(IsSVA(Xi)) @{
+                  w->global->global_fail = TRUE;
+                  Error("await_strictly_nonvar: stack variable");
+                  goto done;
+                @}
+                w->global->global_fail = TRUE;
+                Error("await_strictly_nonvar: level first, 
+                       term is variable");
+                goto done;
+              @}
+            if(w->global->global_fail) goto done;
+            AwaitCountStat(w);
+          @}
+      @}
+    else
+      @{
+        X(@var{i}) = Xi;
+      @}
+    goto instructions;
+@end example
+
+@item await_variable(@var{i})
+@findex await_variable
+        This instruction forces the current recursion level to suspend
+        until it is leftmost in the resolvent. If the variable 
+        referred to by @code{X}@sub{i} becomes bound during suspension,
+        a run time error is signalled.
+@example
+    Deref(Xi,X(@var{i}));
+    
+    if(IsVar(Xi))
+      @{
+        register BOOL isfirst;
+        /* Wait until first, fail if bound */
+        if(IsSVA(Xi)) @{
+          goto instructions;
+        @}
+
+        AwaitStat(w);
+        while(TRUE)
+          @{
+            if(w->direction == LEFT_BODY)
+              @{
+                IsFirstLeft(isfirst,w);
+              @}
+            else
+              @{
+                IsFirstRight(isfirst,w);
+              @}
+            Deref(Xi,Xi);
+            if(isfirst) 
+              if(IsVar(Xi)) @{
+                goto instructions;
+              @}
+              else
+                goto fail;
+            if(!IsVar(Xi)) goto fail;
+            if(w->global->global_fail) goto done;
+            AwaitCountStat(w);
+          @}
+      @}
+    else
+      goto fail;
+@end example
+
+@item await_nonvar_unify
+@findex await_nonvar_unify
+        This instruction forces the current recursion level to suspend
+        until either the dereferenced contents of @code{*S} is a 
+        non-variable, or the current recursion level is leftmost in the 
+        resolvent, i.e., all preceding recursion levels have terminated.
+@example
+    Deref(Xi,Ref(s));
+    
+    if(IsHVA(Xi))
+      @{
+        /* Wait until first or bound */
+        register BOOL isfirst;
+
+        AwaitStat(w);
+
+        while(TRUE)
+          @{
+            if(w->direction == LEFT_BODY)
+              @{
+                IsFirstLeft(isfirst,w);
+              @}
+            else
+              @{
+                IsFirstRight(isfirst,w);
+              @}
+            Deref(Xi,Xi);
+            if(!IsVar(Xi) || isfirst)
+              @{
+                goto instructions;
+              @}
+            if(w->global->global_fail) goto done;
+            AwaitCountStat(w);
+          @}
+      @}
+    goto instructions;
+@end example
+
+@item await_strictly_nonvar_unify
+@findex await_strictly_nonvar_unify
+        This instruction forces the current recursion level to suspend
+        until the dereferenced contents of @code{*S} is a non-variable. 
+        If the recursion level becomes leftmost in the resolvent and 
+        the result of dereferencing @code{X}@sub{i} is an unbound variable,
+        then a run time error is signalled.
+@example
+    Deref(Xi,Ref(s));
+    
+    if(IsVar(Xi))
+      @{
+        /* Wait until bound or first,
+         * if first genereate runtime error
+         */
+        register BOOL isfirst;
+
+        AwaitStat(w);
+
+        while(TRUE)
+          @{
+            if(w->direction == LEFT_BODY)
+              @{
+                IsFirstLeft(isfirst,w);
+              @}
+            else
+              @{
+                IsFirstRight(isfirst,w);
+              @}
+            Deref(Xi,Xi);
+            if(!IsVar(Xi))
+              @{
+                goto instructions;
+              @}
+            else if(isfirst)
+              @{
+                if(IsSVA(Xi)) @{
+                  w->global->global_fail = TRUE;
+                  Error("await_strictly_nonvar: stack variable");
+                  goto done;
+                @}
+                w->global->global_fail = TRUE;
+                Error("await_strictly_nonvar: level first, 
+                       term is variable");
+                goto done;
+              @}
+            if(w->global->global_fail) goto done;
+            AwaitCountStat(w);
+          @}
+      @}
+    goto instructions;
+@end example
+
+@item await_variable_unify
+@findex await_variable_unify
+        This instruction forces the current recursion level to suspend
+        until it is leftmost in the resolvent. If the variable 
+        referred to by @code{*S} becomes bound during suspension,
+        a run time error is signalled.
+@example
+    Deref(Xi,Ref(s));
+    
+    if(IsVar(Xi))
+      @{
+        register BOOL isfirst;
+        /* Wait until first, fail if bound */
+        if(IsSVA(Xi)) @{
+          goto instructions;
+        @}
+
+        AwaitStat(w);
+        while(TRUE)
+          @{
+            if(w->direction == LEFT_BODY)
+              @{
+                IsFirstLeft(isfirst,w);
+              @}
+            else
+              @{
+                IsFirstRight(isfirst,w);
+              @}
+            Deref(Xi,Xi);
+            if(isfirst) 
+              if(IsVar(Xi)) @{
+                goto instructions;
+              @}
+              else
+                goto fail;
+            if(!IsVar(Xi)) goto fail;
+            if(w->global->global_fail) goto done;
+            AwaitCountStat(w);
+          @}
+      @}
+    else
+      goto fail;
+@end example
+
+@item par_builtin(@var{Fkn},@var{nr},[@var{waitlist}],[@var{xregs}])
+@findex par_builtin
+This represents a call to the inlineable builtin procedure @var{Fnk}
+with the first argument in X@var{n1}, the second in X@var{n2},...
+The execution of the procedure is suspended until all registers listed
+in @var{waitlist} contain non-variable terms.
+@example
+    while(@var{nr}--)
+      @{
+        register TAGGED Xi;
+        Deref(Xi,X(*@var{waitlist}++));
+        
+        if(IsHVA(Xi))
+          @{
+            /* Wait until first or bound */
+            register BOOL isfirst;
+            
+            AwaitStat(w);
+
+            while(TRUE)
+              @{
+                if(w->direction == LEFT_BODY)
+                  @{
+                    IsFirstLeft(isfirst,w);
+                  @}
+                else
+                  @{
+                    IsFirstRight(isfirst,w);
+                  @}
+                Deref(Xi,Xi);
+
+                if(isfirst || !IsVar(Xi)) break;
+
+                if(w->global->global_fail) goto done;
+              @}
+          @}
+      @}
+    
+    if ((GetInlineFnk(@var{Fnk}))(w,@var{xregs}) == FALSE) goto fail;
+
+    goto instructions; 
+@end example
+
+@item par_inline(@var{Fkn},@var{L},@var{nr},[@var{waitlist}],[@var{xregs}])
+@findex par_inline
+This represents a call to the inlineable builtin procedure @var{Fnk}
+with the first argument in X@var{n1}, the second in X@var{n2},...  The
+execution of the procedure is suspended until all registers listed in
+@var{waitlist} contain non-variable terms.  If the procedure fails, then
+the execution proceeds at @var{Faillabel}.
+@example
+    while(@var{nr}--)
+      @{
+        register TAGGED Xi;
+        Deref(Xi,X(*@var{waitlist}++));
+        
+        if(IsHVA(Xi))
+          @{
+            /* Wait until first or bound */
+            register BOOL isfirst;
+            
+            AwaitStat(w);
+
+            while(TRUE)
+              @{
+                if(w->direction == LEFT_BODY)
+                  @{
+                    IsFirstLeft(isfirst,w);
+                  @}
+                else
+                  @{
+                    IsFirstRight(isfirst,w);
+                  @}
+                Deref(Xi,Xi);
+
+                if(isfirst || !IsVar(Xi)) break;
+
+                if(w->global->global_fail) goto done;
+              @}
+          @}
+      @}
+    
+    if ((GetInlineFnk(@var{Fnk}))(w,@var{xregs}) == FALSE) 
+        pc = DispatchLabel(pc,@var{L});
+
+    goto instructions; 
+@end example
+@end table
+
+@subsection Shared Structure Instructions
+These instructions are used when unifying structures in the head that
+may be shared with other workers. Instead of binding a variable to an
+uninitialized structure, the variable is saved in a register and bound
+to the structure when the structure has been fully initialized. The
+following program illustrates the use of these instructions (calls to
+nrev/2 are parallelized). 
+@example
+    nrev([],[]).
+    nrev([X|Xs], Y) :- nrev(Xs,Z), append(Z,[X],Y).
+
+    append([],X,X).
+    append([X|Xs],Ys,[X|Zs]) :- append(Xs,Ys,Zs).
+@end example
+We assume that the code has been analyzed to determine types, etc.
+The following code for append is a specialized version of the 
+predicate. It is compiled into the following extended WAM code.
+@example
+nrev/2: /* code for nrev */
+
+append/3: 
+        await_nonvar 0             % wait until X0 ground
+                                   % or leftmost
+        switch_on_term fail La Ll fail
+
+La:     get_nil X0                 % first arg is nil
+        get_value X1 X2            % X = X
+        proceed
+
+Ll:     get_list X0                % first arg is list
+        unify_variable X3          % X3 <- X
+        unify_variable X0          % X0 <- Xs
+        lock_and_get_list X2 X4    % lock X2, list in X4
+        unify_x_value X3           % second arg of list: X
+        unify_x_variable X5        % X5 <- Zs
+        unlock X2 X4               % unlock X2, X2=[X|Zs]
+        put_value X5 X2            % X2 <- Zs
+        execute append/3           
+@end example
+@table @code
+@item lock_and_get_list(@var{i},@var{n})
+@findex lock_and_get_list
+        If @code{X}@sub{i} contains a variable, then write mode is entered
+        and a list is initiated on the heap. A pointer to the new 
+        list is stored in @code{X}@sub{n}. If @code{X}@sub{i} contains a list, 
+        the @code{S} register is set to point to the first argument
+        of the list, otherwise failure occurs.
+@example
+    Xi = X(@var{i});
+    Deref(Xi,X(@var{i}));
+
+    if(IsVar(Xi))
+      @{       
+        Make_LST_A(w->heap_top,s,X(n));
+        goto instructions;
+      @}
+    else
+      @{
+         if(IsLST(Xi)) 
+           @{
+             X(@var{i}) = Xi;
+             X(@var{n}) = Xi;
+             s = RemoveTag(Xi,LST);
+             goto instructions;
+           @} 
+         else
+           goto fail;
+      @}
+@end example
+
+@item lock_and_get_structure(@var{F},@var{i},@var{n})
+@findex lock_and_get_structure
+        If @code{X}@sub{i} contains a variable, then write mode is entered and
+        a structure with the functor @var{F} is initiated on the heap. A
+        pointer to the new structure is stored in @code{X}@sub{n}. If 
+        @code{X}@sub{i} contains a structure and the functor of
+        the structure is @var{F}, the @code{S} register is set to point to 
+        the first argument of the structure, otherwise failure occurs.
+@example
+    Xi = X(@var{i});
+
+    Deref(Xi,X(i));
+
+    if(IsVar(Xi))
+      @{
+        Make_STR_A(w->heap_top,s,X(n),f);
+        goto instructions;
+      @}
+    else
+      @{
+        if(IsSTR(Xi)) 
+          @{
+            if(GetFunctor(Xi) == f) 
+              @{
+                X(@var{i}) = Xi;
+                X(@var{n}) = Xi;
+                s = GetArg(Xi,0);
+                goto instructions;
+              @} 
+            else
+              goto fail;
+          @} 
+        else
+          goto fail;
+      @}
+@end example
+
+@item unlock(@var{i},@var{n})
+@findex unlock
+        This instruction is ignored in read mode. In write mode
+        the contents of @code{X}@sub{i} is unified with the contents
+        of @code{X}@sub{n}.
+@example
+    if (X(@var{i}) != X(@var{n})) 
+      @{
+        Unify(X(@var{i}),X(@var{n}));
+      @}
+    goto instructions;
+@end example
+@end table
+
+@section General Unification
+@cindex unification
+@cindex general unification
+@cindex unify
+The general unification algorithm can be expressed as a decision table. 
+Here, @code{HVA} denotes a variable on the heap and @code{SVA} denotes a
+variable on the local stack. @code{NUM}, @code{FLT}, and @code{ATM} denotes
+integer numbers, floating point numbers, and atoms respectively. @code{LST}
+and @code{STR} denotes lists and structures. Finally, @code{GEN} denotes
+generic objects.
+
+In the parallel version: unbound variables (UVA) do not appear at this
+point. Only the Deref macro see unbound variables. In case a variable
+chain ends in an unbound variable, a reference (HVA) to the variable is
+returned by Deref.
+
+If two tagged pointers are found equal, then unification succeeds, otherwise
+the table is consulted.
+@example
+        HVA    CVA   SVA    NUM    FLT    ATM    LST    STR    GEN
+        ===    ===   ===    ===    ===    ===    ===    ===    ===
+                     
+HVA       2      4     3      4      4      4      4      4      4  
+CVA       7     16     3     14     14     14     14     14     14    
+SVA       5     15     6      5      5      5      5      5      5  
+NUM       7     15     3      8      1      1      1      1     13
+FLT       7     15     3      1      9      1      1      1     13
+ATM       7     15     3      1      1      1      1      1     13 
+LST       7     15     3      1      1      1     10      1     13
+STR       7     15     3      1      1      1      1     11     13
+GEN       7     15     3     12     12     12     12     12     12  
+
+@end example                                         
+
+The number in the table describe the action taken:
+
+@enumerate
+@item 
+Unification fails.
+
+@item 
+Bind younger heap variable to older. In the parallel case we have to
+make sure that no other woker has bound one of the variables (it which
+case it no longer points to an UVA tagged cell with a timestamp). This
+may appear expensive, but remember that general unification is rare in 
+most programs.
+@example
+#ifdef UNBOUND
+  x_time = *RemoveTag(x,HVA);
+  y_time = *RemoveTag(y,HVA);
+
+  if(!(IsUVA(x_time) && IsUVA(y_time))) unify_deref(x,y,w);
+    
+  y_time = (TAGGED) GetHVATime(y_time);
+  x_time = (TAGGED) GetHVATime(x_time);
+#else  /* not UNBOUND */
+  y_time = (TAGGED) GetHVATime(y);
+  x_time = (TAGGED) GetHVATime(x);
+#endif /* UNBOUND */
+  if (x_time > y_time)
+    @{
+      Bind_HVA(x,y,{return FALSE;});
+    @} 
+  else if (x_time < y_time)
+    @{
+      Bind_HVA(y,x,{return FALSE;});
+    @}
+  else if(x > y)        /* this code is redundant if UVAs are not used */
+    @{
+      Bind_HVA(x,y,{return FALSE;});
+    @}
+  else
+    @{
+      Bind_HVA(y,x,{return FALSE;});
+    @}           
+  break;
+@end example
+
+@item 
+Bind stack variable to heap variable or constant.
+@example
+Bind_SVA(y,x);
+@end example
+
+@item 
+Bind heap variable to constant.
+@example
+Bind_HVA(x,y,{return FAIL;});
+@end example
+
+@item 
+Bind stack variable to heap variable or constant.
+@example
+Bind_SVA(x,y);
+@end example
+
+@item 
+Bind younger stack variable to older.
+@example
+if(x > y) @{
+    Bind_SVA(x,y);
+@} else @{
+    Bind_SVA(y,x);
+@}
+@end example
+
+@item 
+Bind heap variable to constant.
+@example
+Bind_HVA(y,x,{return FAIL;});
+@end example
+
+@item 
+Return false if integer numbers are not equal.
+@example
+if(GetNumber(x) != GetNumber(y))
+    return FALSE;
+@end example
+
+@item 
+Return false if floating point numbers are not equal.
+@example
+if(GetFloat(x) != GetFloat(y))
+    return FALSE;
+@end example
+
+@item 
+Apply the general unification algorithm to each pair of elements in the 
+two lists.
+@example
+return unify_structure(TagToPointer(x),TagToPointer(y), 2, w);
+@end example
+
+@item 
+If the two structures have the same functor then apply the general unification 
+algorithm to each pair of elements in the two structures.
+@example
+@{
+  register UNTAGGED xu, yu;
+
+  xu = (UNTAGGED) TagToPointer(x);
+  yu = (UNTAGGED) TagToPointer(y);
+    
+  if(Struct(xu)->functor == Struct(yu)->functor)
+      return unify_structure(GetArg(xu,0), GetArg(yu,0),
+                             StructArity(xu), w);
+@}
+@end example
+
+@item 
+Call the unification method of the generic object.
+@example
+return GetMethod(unify,x)(x,y);
+@end example
+
+@item 
+Call the unification method of the generic object.
+@example
+return GetMethod(unify,y)(y,x);
+@end example
+
+@item 
+Bind CVA to constant or structure.
+@example
+Bind_CVA(x,y,{return FALSE;});
+return TRUE
+@end example
+
+@item 
+Bind CVA to constant or structure.
+@example
+Bind_CVA(y,x,{return FALSE;});
+return TRUE
+@end example
+
+@item 
+Bind younger CVA to older.
+@example
+@{
+#ifdef UNBOUND
+  x_time = *RemoveTag(x,CVA);
+  y_time = *RemoveTag(y,CVA);
+
+  if(!(IsUVA(x_time) && IsUVA(y_time))) unify_deref(x,y,w);
+  
+  y_time = (TAGGED) GetCVATime(y_time);
+  x_time = (TAGGED) GetCVATime(x_time);
+#else  /* not UNBOUND */
+  y_time = (TAGGED) GetCVATime(y);
+  x_time = (TAGGED) GetCVATime(x);
+#endif /* UNBOUND */
+  if (x_time > y_time)
+    @{
+      Bind_CVA(x,y,{return FALSE;});
+    @} 
+  else if (x_time < y_time)
+    @{
+      Bind_CVA(y,x,{return FALSE;});
+    @}
+  else if(x > y) /* this code is redundant if UVAs are not used */
+    @{
+      Bind_CVA(x,y,{return FALSE;});
+    @}
+  else
+    @{
+      Bind_CVA(y,x,{return FALSE;});
+    @}         
+  break;
+@}
+@end example
+@end enumerate
+
+@chapter Emulator Macros
+@cindex macro
+This section contains a brief description of all the macros in the
+emulator. When changing or extending the machine we ask you to use
+these macros as far as possible. The reason is that we achieve a greater
+deal of independence from the actual representations in the program.
+
+@section Constants
+@cindex constants
+
+The following constants are used by various macros to mask on and off tags,
+set and remove arity, and compute other properties.
+
+These constants are used to set and read the tag of a TAGGED pointer.
+@example
+typedef enum @{
+    HVA = 0,      /* ...000 */
+    SVA,          /* ...001 */
+    NUM,          /* ...010 */
+    FLT,          /* ...011 */
+    ATM,          /* ...100 */
+    LST,          /* ...101 */
+    STR,          /* ...110 */
+    GEN,          /* ...111 */
+#ifdef PARALLEL  
+    UVA,          /* ..1000 */
+#endif 
+    MAX_TAG
+@} tagvalue;
+@end example
+The sequential version requires three bits to store the tag, 
+the parallel version requires four bits.
+@tindex tagvalue
+@tindex tag
+@cindex tag
+
+@example
+#ifdef PARALLEL
+  #define TAGBITS 4
+  #ifdef UNBOUND
+    #define VARSIZE 1
+  #else
+    #define VARSIZE 2
+  #endif /* UNBOUND */
+#else
+  #define TAGBITS 3
+  #define VARSIZE 1
+#endif /* PARALLEL */
+
+#define WORDSIZE    32
+#define GCBITS      2
+#define TOPBIT      (0x1L<<WORDSIZE-1)     /* 100...00 */
+#define TAGOFFSET   (WORDSIZE-TAGBITS)
+#define TAGMASK     ((u32) (((s32) TOPBIT) >> (TAGBITS-1)))
+#define POINTMASK   (~(TAGMASK | GCMASK))
+
+#define ARITYOFFSET 20
+#define ARITYMASK   ((u32) ((((s32)TOPBIT)>>(WORDSIZE-ARITYOFFSET-1))^   \
+                            (TAGMASK | BOXMASK)))
+#define BOXBITS 1
+#define BOXMASK     ((((s32) TAGMASK) >> BOXBITS)^TAGMASK)
+@end example
+
+@section Macros
+
+The following macros are used in various parts of the machine. The main 
+reason for using macros is that we get a program where it is easy to change
+representation as well as functionality. The other reason is that we get
+safer code, we only have to change the code once instead of changing the 
+code at every place the macro is used.
+@cindex emulator macro
+@cindex macro, emulator
+@cindex macro
+
+@table @tt
+@item ArityOf(@var{F}) {@rm (term.h)}
+@findex ArityOf
+        Returns the arity of the functor @var{F}.
+@example
+((int) (((@var{F}) & ARITYMASK) >> ARITYOFFSET))
+@end example
+
+@item Arityfy(@var{N},@var{A}) {@rm (term.h)}
+@findex Arityfy
+        Returns a functor with the name @var{N} (a TAGGED atom) and the
+        arity @var{A} (untagged integer).
+@example
+(((u32)(@var{N})) | (((u32)(@var{A})) << ARITYOFFSET))
+@end example
+
+@item Bind(@var{V,VAL,FAILCODE}) {@rm (bind.h)}
+@findex Bind
+        Bind the variable @var{V} to @var{VAL}, trail if necessary.
+        In the sequential version @var{FAILCODE} is ignored, in the
+        parallel version @var{FAILCODE} is executed if @var{V} cannot
+        be bound because another processor has bound @var{V}. This can
+        only happen with heap variables (HVA) since stack variables are
+        not shared.
+@example
+@{
+    register TAGGED EVALED_V = (@var{V});
+    register TAGGED EVALED_VAL = (@var{VAL});
+                
+    if (IsHVA(EVALED_V))
+      @{
+        Bind_HVA(EVALED_V,EVALED_VAL,@var{FAILCODE});
+      @}
+    else
+      @{
+        Bind_SVA(EVALED_V,EVALED_VAL);
+      @}
+@}
+@end example
+
+@item  Bind_HVA(@var{V,VAL,FAILCODE}) {@rm (bind.h)}
+@findex  Bind_HVA
+        Bind the heap variable @var{V} to @var{VAL}, trail if necessary. 
+        In the sequential version @var{FAILCODE} is ignored, in the
+        parallel version @var{FAILCODE} is executed if @var{V} cannot
+        be bound because another processor has bound @var{V}. 
+@example
+#ifdef PARALLEL
+@{
+  register TAGGED EVALED_V = (@var{V}), 
+                  BH_T;
+
+  Swap_Bind(OffsetBase(EVALED_V), EVALED_V, @var{VAL}, BH_T,
+            Trail_HVA(EVALED_V,BH_T),
+            FAILCODE);
+@}
+#else
+@{
+    Trail_HVA(@var{V}); 
+    *((TAGGED *) OffsetBase(@var{V})) = (@var{VAL});
+@}
+#endif
+@end example
+
+@item Bind_SVA(@var{V,VAL}) {@rm (bind.h)}
+@findex Bind_SVA
+        Bind the stack variable @var{V} to @var{VAL}, trail if necessary.
+@example
+@{
+    Trail_SVA(@var{V}); 
+    *(RemoveTag(@var{V},SVA)) = (@var{VAL});
+@}
+@end example
+
+@item CreateHVA(@var{S,W}) {@rm (storage.h)}
+@findex CreateHVA
+        Creates an unbound heap variable on the location given by 
+        @var{S}.
+@example
+@{ 
+#ifdef UNBOUND
+    register TAGGED dummy;
+
+    InitHVA(@var{S},dummy,@var{W});
+#else
+    InitHVA(@var{S},*@var{S},@var{W});
+#endif
+    (@var{S}) += VARSIZE;
+@}
+@end example
+
+@item Deref(@var{Xderefed,X}) {@rm (deref.h)}
+@findex Deref
+        Puts the dereferenced value of @var{X} in @var{Xderefed}.
+        In the presence of unbound tagged variables (UVA) @var{Xderefed} 
+        should be bound to a pointer to the unbound variable instead
+        of the UVA tagged object. The reason for this is that we need
+        to know the location of the variable in order to bind it.
+@example
+#ifdef UNBOUND
+@{
+  register TAGGED v, vp;
+
+  v = (@var{X});
+                                                        
+  while(TRUE)
+    @{
+      if(IsVar(v))
+        @{
+          RefVAR(vp,v);
+          if((v != vp) && (!IsUVA(vp)))
+            @{
+              v = vp;
+              continue;
+            @}
+        @}
+      break;
+    @}
+
+    @var{Xderefed} = v;
+@}
+#else
+@{
+    register TAGGED v, vp;
+
+    v = (@var{X});
+    if(IsVar(v))
+        do @{
+            RefVAR(vp,v);
+        @} while(v != vp && IsVar(v = vp));
+    @var{Xderefed} = v;
+@}
+#endif
+@end example
+
+@item DerefHVA(@var{Xderefed,X}) {@rm (deref.h)}
+@findex DerefHVA
+        Puts the dereferenced value of the heap term @var{X}
+        in @var{Xderefed}.
+        In the presence of unbound tagged variables (UVA) @var{Xderefed} 
+        should be bound to a pointer to the unbound variable instead
+        of the UVA tagged object. The reason for this is that we need
+        to know the location of the variable in order to bind it.
+@example
+#ifdef UNBOUND
+@{
+  register TAGGED v, vp;
+
+  v = (@var{X});                                                
+                                                        
+  while(TRUE)
+    @{
+      if(IsHVA(v))
+        @{
+          RefHVA(vp,v);
+          if(!IsUVA(vp))
+            @{
+              v = vp;
+              continue;
+            @}
+        @}
+      break;
+    @}
+
+    @var{Xderefed} = v;
+@}
+#else
+@{
+    register TAGGED v, vp;
+
+    v = (@var{X});
+    if(IsVar(v))
+        do @{
+            RefHVA(vp,v);
+        @} while(v != vp && IsHVA(v = vp));
+    @var{Xderefed} = v;
+@}
+#endif
+@end example
+
+@item Dispatch(@var{PC,Offset}) {@rm (engine.h)}
+@findex Dispatch
+        Increment @var{PC} by the value found at offset @var{Offset} from 
+        @var{PC}. If the label at @var{Offset} is NULL, we should 
+        fail.
+@example
+@{
+    register int p1 = *(@var{PC} + @var{Offset});
+    if(p1 == NULL)
+        goto fail;
+    else
+        @var{PC} = ((code *) (((int) @var{PC}) + p1)) + @var{O};
+@}
+@end example
+
+@item DispatchLabel(@var{PC,Offset}) {@rm (engine.h)}
+@findex DispatchLabel
+        Increments @var{PC} by the value found at the offset @var{Offset} 
+        from @var{PC}. No check of NULL is needed.
+        
+@example
+(((code *) (((int) @var{PC}) + ((int) *(@var{PC}+@var{Offset})))) + @var{Offset})
+@end example
+
+@item DispatchUp(@var{K}) {@rm (engine.h)}
+@findex DispatchUp
+        Pops an old @var{S} (structure read/write) pointer from then
+        deep unification stack and continues in write mode if there
+        are more structures to write (@var{K} > 0), in read mode
+        otherwise.
+@example
+@{
+    @var{S} = PopCont;
+    if((@var{K}) > 0)
+        goto write_start;
+    else
+        goto read_start; 
+@}
+@end example
+
+@item GetArg(@var{S,I}) {@rm (term.h)}
+@findex GetArg
+        Returns a pointer the @var{I}th argument to the structure
+        pointed to by the TAGGED pointer @var{S}.
+@example
+(&(((structure) RemoveTag(@var{S},STR))->arg[(@var{I})*VARSIZE]))
+@end example
+
+@item GetArity(@var{S}) {@rm (term.h)}
+@findex GetArity
+        Returns the arity of the structure pointed to by @var{S}.
+@example
+(ArityOf(GetFunctor(@var{S})))
+@end example
+
+@item GetCar(@var{L}) {@rm (term.h)}
+@findex GetCar
+        Returns a pointer to the first argument of the list cell pointed
+        to by the TAGGED pointer @var{L}.
+@example
+TagToPointer(@var{L})
+@end example
+
+@item GetCdr(@var{L}) {@rm (term.h)}
+@findex GetCdr
+        Returns a pointer to the second argument of the list cell pointed
+        to by the TAGGED pointer @var{L}.
+@example
+(TagToPointer(@var{L})+VARSIZE)
+@end example    
+
+@item GetFunctor(@var{S}) {@rm (term.h)}
+@findex GetFunctor
+        Returns the functor of the structure pointed to by @var{S}.
+@example
+        (((structure) RemoveTag(@var{S},STR))->functor)
+@end example
+
+@item GetInlineArity(@var{F}) {@rm (inline.h)}
+@findex GetInlineArity
+        Returns the arity of the inlineable predicate numbered @var{F}.
+@example
+inline_table[@var{F}].arity
+@end example
+
+@item GetInlineFnk(@var{F}) {@rm (inline.h)}
+@findex GetInlineFnk
+        Returns a pointer to the C function that defines the inlineable
+        predicate @var{F}.
+@example
+inline_table[@var{F}].fnk
+@end example
+
+@item GetMethod(@var{M,G}) {@rm (term.h)}
+@findex GetMethod
+        Returns a pointer to the C function that executes the method
+        @var{M} on the generic object @var{G}.
+@example
+(((generic) RemoveTag(@var{G},GEN))->method->@var{M})
+@end example
+
+@item GetNumber(@var{N}) {@rm (term.h)}
+@findex GetNumber
+        Returns the number stored in the TAGGED object @var{N}.
+@example
+((int) (((int) ((N) << GCBITS)) >> (TAGBITS+GCBITS)))
+@end example
+
+@item Get_Local_Stack_Top {@rm (engine.h)}
+@findex Get_Local_Stack_Top
+        Returns a pointer to the top of the local stack.
+@example
+Get_Stack_Top(FrameSize(w->next_instr))
+@end example
+
+@item Get_Stack_Top(@var{S}) {@rm (engine.h)}
+        Returns a pointer to the top of the local stack given the
+        size of the current environment.
+@example
+(
+  ((choicepoint *) w->frame) > w->choice ? 
+      EnvTop(w->frame,@var{S}) :      
+      CpTop(w->choice)
+)
+@end example
+
+@item Get_UseArgs(@var{PC}) {@rm (engine.h)}
+@findex Get_UseArgs
+        Returns a pointer of arguments to use when calling 
+        inlineable predicates.
+@example
+(TAGGED *) (@var{PC})
+@end example
+
+@item InitCont {@rm (engine.h)}
+@findex InitCont
+        Initializes the push down stack used when doing open coded
+        deep unification.
+@example
+@{ 
+    cont = w->rdstack; 
+@}
+@end example
+
+@item IsATM(@var{T}) {@rm (term.h)}
+@findex IsATM
+        Returns TRUE if the term @var{T} is an atom, FALSE otherwise.
+
+@item IsHVA(@var{T}) {@rm (term.h)}
+@findex IsHVA
+        Returns TRUE if the term @var{T} is a heap variable, FALSE otherwise.
+
+@item IsLST(@var{T}) {@rm (term.h)}
+@findex IsLST
+        Returns TRUE if the term @var{T} is a list, FALSE otherwise.
+
+@item IsNumber(@var{T}) {@rm (term.h)}
+@findex IsNumber
+        Returns TRUE if the term @var{T} is a number (float or integer),
+        FALSE otherwise.
+
+@item IsSTR(@var{T}) {@rm (term.h)}
+@findex IsSTR
+        Returns TRUE if the term @var{T} is a structure, FALSE otherwise.
+
+@item IsUnsafe(@var{V}) {@rm (unify.h)}
+@findex IsUnsafe
+        This is true iff the stack variable @var{X} is in the current
+        environment.
+@example
+(((environment *) RemoveTag(@var{V},SVA)) > w->frame)
+@end example
+
+
+@item IsVar(@var{T}) {@rm (term.h)}
+@findex IsVar
+        Return TRUE if the term @var{T} is a variable (stack or heap), 
+        FALSE otherwise.
+        
+@item LoadHVA(@var{S,V,W}) {@rm (storage.h)}
+@findex LoadHVA
+        Creates an unbound heap variable at @var{S} and store a pointer
+        in @var{V}.
+@example
+@{ 
+    InitHVA(@var{S,V,W});
+    (@var{S}) += VARSIZE;
+@}
+@end example
+        
+@item LoadSVA(@var{V}) {@rm (storage.h)}
+@findex LoadSVA
+        This initializes the stack variable @var{V}.
+@example
+@{ 
+    @var{V} = Tagify((TAGGED) &(@var{V}),SVA); 
+@}
+@end example
+
+@item Make_LST(@var{H,To}) {@rm (storage.h)}
+@findex Make_LST
+        Creates a list cell at @var{H} and stores a pointer to it in
+        @var{To}.
+@example
+@{ 
+    @var{To} = Tagify(@var{H},LST); 
+@}
+@end example
+
+@item Make_LST_S(@var{H,S,To}) {@rm (storage.h)}
+@findex Make_LST_S
+        Creates a list cell at @var{H} and stores a pointer to the
+        first argument in @var{S} and a tagged pointer in @var{To}.
+@example
+@{ 
+    @var{To} = Tagify(@var{H},LST);
+    @var{S} = @var{H};
+    @var{H} += 2*VARSIZE; 
+@}
+@end example
+
+@item Make_STR(@var{H,To,F}) {@rm (storage.h)}
+@findex Make_STR
+        Creates a structure at @var{H} with functor @var{F} and 
+        saves a TAGGED pointer to it in @var{To}.
+@example
+@{ 
+    @var{S} = Tagify(@var{H},STR); 
+    PushOnHeap(@var{H},@var{F}); 
+@}
+@end example
+
+@item Make_STR_S(@var{H,S,To,F}) {@rm (storage.h)}
+@findex Make_STR_S
+        Creates a structure at @var{H} with functor @var{F} and 
+        sets @var{S} to point to the first argument of the structure,
+        and @var{To} to a tagged pointer to the structure.
+@example
+@{ 
+    @var{To} = Tagify(@var{H},STR);
+    PushOnHeap(@var{H},@var{F});
+    @var{S} = @var{H};
+    @var{H} += ArityOf(@var{F})*VARSIZE;
+@}
+@end example
+        
+@item PointerToTerm(@var{T}) {@rm (term.h)}
+@findex PointerToTerm
+        Returns a tagged pointer where the value field is @var{T}.
+@example
+Tagify(T,NUM)
+@end example
+
+@item PopCont {@rm (engine.h)}
+@findex PopCont
+        Returns a pointer to the structure argument to continue 
+        the unification with. Used when doing deep unification with
+        the new schema.
+@example
+((TAGGED *) (*(--cont)))
+@end example
+
+@item PushCont(@var{C}) {@rm (engine.h)}
+@findex PushCont
+        Saves a pointer to a structure argument @var{C} to continue the 
+        unification with when we have unified the current argument
+        depth first.
+@example
+@{ 
+    *(cont++) = (TAGGED) (@var{C}); 
+@}
+@end example
+
+@item PushOnHeap(@var{H,T}) {@rm (storage.h)}
+@findex PushOnHeap
+        Push the term @var{T} on the heap at location @var{H}.
+@example
+@{
+    *(@var{H}) = (@var{T}); 
+    *(@var{H})++;
+@}
+@end example
+
+@item RefHVA(@var{To,X}) {@rm (unify.h)}
+@findex RefHVA
+        Sets @var{To} to the value @var{X} points to.
+@example
+@var{To} = *Var(OffsetBase(@var{X}))
+@end example
+
+@item RefStackUnsafe(@var{H,To,X}) {@rm (unify.h)}
+@findex RefStackUnsafe
+        Stores the contents of @var{X} into the contents of @var{To},
+        unless @var{X} dereferences into the current environment,
+        in which case it is bound to a new global variable created
+        at @var{H}.
+@example
+@{
+    register TAGGED tmp1;
+    Deref(tmp1,@var{X});
+    if(IsSVA(tmp1) && IsUnsafe(tmp1)) @{
+        LoadHVA(@var{H},@var{To});
+        SetVar(tmp1, @var{To});
+    @} else @{
+        @var{To} = tmp1;
+    @}
+@}
+@end example
+
+@item RefVar(@var{To,X}) {@rm (unify.h)}
+@findex RefVar
+        Sets @var{To} to the value @var{X} points to.
+@example
+@var{To} = *TagToPointer(@var{X})
+@end example
+
+@item Tagify(@var{P,T}) {@rm (term.h)}
+@findex Tagify
+        Creates a prolog term with value field @var{P} and tag @var{T}.
+@example
+((TAGGED) (BaseOffset((u32) (@var{P})) | (((u32) (@var{T})) << TAGOFFSET)))
+@end example
+
+@item Tagof(@var{T}) {@rm (term.h)}
+@findex Tagof
+        Returns the tag of @var{T}.
+@example
+((tagvalue)(((u32)(@var{T}))>>TAGOFFSET))
+@end example
+
+@item TagToPointer(@var{T}) {@rm (term.h)}
+@findex TagToPointer
+        Returns the value field of the prolog term @var{T}.
+@example
+((TAGGED *) OffsetBase(((u32) POINTMASK)&((u32) (@var{T}))))
+@end example
+
+@item TidyTrail {@rm (trail.h)}
+@findex TidyTrail
+        Remove unnecessary trail entries. This necessary since
+        the garbage collector implements early reset.
+
+@example
+@{
+  register TAGGED *stop = w->choice->trail_top;
+  register TAGGED *curr = w->trail_top;
+  register TAGGED *dest = curr;
+  register TAGGED *stacklim =  (TAGGED *)
+    EnvTop(w->choice->cont_env,FrameSize(w->choice->next_instr));
+
+  DeclareUncond(heaplim,w->choice->global_top,w->choice->timestamp);
+
+  /* sweep trail */
+  while(curr > stop)
+    @{
+      curr--;
+      switch(TagOf(*curr))
+        @{
+        case HVA:
+          TidyHVA(curr,heaplim);
+          break;
+        case SVA:
+          TidySVA(curr,stacklim);
+          break;
+        case NUM:
+          break;
+        case LST:
+          TidyValue(curr,heaplim);
+          break;
+        case STR:
+          TidyWorkers(curr);
+          break;
+        case GEN:
+        default:
+        @}
+    @}
+
+  stop = w->trail_top;
+  curr = w->choice->trail_top;
+  dest = w->choice->trail_top;
+
+  /* compact trail */
+  while(curr < stop)
+    @{
+      if(*curr == 0)
+        @{
+          curr++;
+        @}
+      else
+        @{
+          *dest = *curr;
+          curr++;
+          dest++;
+        @}
+    @}
+
+  w->trail_top = dest;
+@}  
+@end example
+
+@item Trail_HVA(@var{V},@var{T}) {@rm (trail.h)}
+@findex Trail_HVA
+        Trail the value of @var{V} if necessary.
+@example
+@{
+#ifdef UNBOUND
+@{ 
+    if(GetHVATime(@var{T}) < w->uncond) @{
+      PushOnTrail(w->trail_top, @var{T}); 
+      PushOnTrail(w->trail_top, @var{V});
+    @} 
+@}
+#else
+@{ 
+    if(GetHVATime(@var{V}) < w->uncond)
+      PushOnTrail(w->trail_top, @var{V}); 
+@}
+#endif
+@end example
+
+@item Trail_SVA(@var{V}) {@rm (trail.h)}
+@findex Trail_SVA
+        Trail the value of the stack variable if it is conditional.
+@example
+@{ 
+    if(GetSVATime(V) < (TAGGED *) w->choice) 
+      PushOnTrail(w->trail_top, V); 
+@}
+@end example
+
+@item UnBind_HVA(@var{V}) {@rm (trail.h)}
+@findex UnBind_HVA
+        Makes the heap variable @var{V} unconditional.
+@example
+#ifdef UNBOUND
+@{
+  *((TAGGED *) OffsetBase(*@var{V})) = *(@var{V}-1);
+  (@var{V})--;
+@}
+#else
+*((TAGGED *) OffsetBase(*V)) = (*V)
+#endif 
+@end example
+
+@item UnBind_SVA(@var{V}) {@rm (trail.h)}
+        Makes the stack variable @var{V} unconditional.
+@example
+*((TAGGED *) RemoveTag(*@var{V},SVA)) = (*@var{V})
+@end example
+
+
+@item UndoValue(@var{T}) {@rm (trail.h)}
+@findex UndoValue
+        Restores the term @var{*T} to its previous value saved
+        on the trail.
+@example
+@{
+    *TagToPointer(*@var{T}) = *(@var{T}-1);
+    (@var{T})--;
+@}
+@end example
+
+@item Unify(@var{X,Y}) {@rm (unify.h)}
+@findex Unify
+        The general unification algorithm is applied to @var{X} and 
+        @var{Y}. If it fails, backtracking is trigged.
+@example
+@{
+    register TAGGED tmp1,tmp2;
+
+    Deref(tmp1,@var{X}); Deref(tmp2,@var{Y});
+
+    if(!unify(tmp1,tmp2,w)) 
+      goto fail;
+@}
+@end example
+
+
+@item Unwind_Trail(@var{T}) {@rm (trail.h)}
+@findex Unwind_Trail
+    All bindings recorde on the trail are undone. Entries
+    tagged with NUM store a saved heap_top value. This is
+    used by the parallel workers to restore the heap_top when backtracking.
+    Entries tagged LST are value entries. The following value
+    contains the old value of the heap cell. Entries tagged
+    STR indicate that a parallel execution occured at this
+    point in the computation, the sequential worker tells the
+    parallel workers to backtrack until they find a NUM tagged
+    cell on their respective trails. 
+
+@example
+@{
+  register TAGGED *stop = (@var{T});
+
+  while(w->trail_top > stop)
+    @{
+      w->trail_top--;
+      switch(TagOf(*(w->trail_top)))
+        @{
+        case HVA:
+          UnBind_HVA(w->trail_top);
+          break;
+        case SVA:
+          UnBind_SVA(w->trail_top);
+          break;
+        case NUM: /* Only on workers, ignore here */
+          break;
+        case LST:
+          UndoValue(w->trail_top);
+          break;
+        case STR: /* Only in Parallel */
+          UnwindWorkers;
+          break;
+        case GEN:
+          GetMethod(undo,*(w->trail_top))(*(w->trail_top));
+          break;
+        default:
+          UnBind_SVA(w->trail_top);
+        @}
+    @}
+@}
+@end example
+
+@item Worker_Unwind_Trail()
+@findex Worker_Unwind_Trail
+    Same as Unwind_Trail exept this version is used by 
+    sleeping workers. SVA entries can be skipped since
+    all environments have been deallocated.
+@example
+@{
+  register TAGGED *stop = w->trail_start;
+
+  while(w->trail_top > stop)
+    @{
+      w->trail_top--;
+      switch(TagOf(*(w->trail_top)))
+        @{
+        case HVA:
+          UnBind_HVA(w->trail_top);
+          break;
+        case SVA:
+          break;
+        case NUM: /* Only on parallel workers */
+          stop = w->trail_top;
+          w->heap_top = TagToPointer(*(w->trail_top));
+          break;
+        case LST:
+          UndoValue(w->trail_top);
+          break;
+        case GEN:
+          GetMethod(undo,*(w->trail_top))(*(w->trail_top));
+          break;
+        default:
+          UnBind_SVA(w->trail_top);
+        @}
+    @}
+@}
+@end example
+
+@item WriteLocalValue(@var{S,X})
+@findex WriteLocalValue
+        Stores @var{X} on the heap at @var{S}, binding it to a new global 
+        variable if necessary.
+@example
+@{ 
+    register TAGGED tmp1,tmp2;
+    Deref(tmp1,@var{X});
+    if(IsSVA(tmp1)) @{
+        LoadHVA(@var{S},tmp2);
+        SetVar(tmp1,tmp2);
+    @} else @{
+        *(@var{S}) = tmp1; (@var{S}) += VARSIZE;
+    @}
+@}
+@end example
+@end table
+
+
+@chapter Builtin C Predicates
+@cindex builtin C predicates
+@cindex builtin
+@cindex inlineable predicate
+There are two kinds of builtin predicates: @dfn{normal} and inlineable. A 
+@dfn{normal} predicate is called like any other predicate and behaves
+like any prolog defined predicate. An @dfn{inlineable} predicate, on the
+other hand, is called by the WAM instruction @code{builtin}. The main 
+difference between normal and inlineable predicates are that an inlineable
+predicate preserve registers while a normal don't.
+
+The tables in this chapter are not complete, there are a number of
+predicates in the emulator not listed.
+
+@node Inline C Predicates
+@section Inlineable C Predicates
+Inlineable predicates are called by the WAM instruction @code{builtin}
+and @code{inline}. In the parallel version they are also called by
+@code{par_inline} and @code{par_builtin}.  Only the X-registers given to
+these predicates are touched, all other arguments are guaranteed to be
+preserved across calls to @code{builtin}, @code{inline} etc.
+
+Some of these predicates return a result in a X-register by overwriting
+the contents of the register. Such predicates are marked (function @var{I}) 
+there @var{I} indicate which register the result is returned in. A table
+of all predicates and their properties are found in inline.c.
+
+@table @code
+
+@item $compare(@var{?Op,?Term1,?Term2})
+@pindex $compare/3
+        @var{Term1} and @var{Term2} are compared, @var{Op} is unified 
+        with one of the following depending on the result of the comparison: 
+        @var{=}, @var{<}, @var{>}. @refill
+
+@item $functor(@var{?Term,?Name,?Arity})
+@pindex $functor/3
+        True when @var{Term} is the term with name @var{Name} and arity
+        @var{Arity}. 
+
+@item $arg(@var{+ArgNo,+Term,?Arg})
+@pindex $arg/3
+        True when @var{Arg} is the @var{ArgNo}:th argument of the compound
+        term @var{Term}.
+
+@item $eq_univ(@var{?Term1,?Term2})
+@pindex $eq_univ/2
+        Equivalent to @code{$compare(@var{Term1,Term2,}=)}.
+
+@item $ineq_univ(@var{?Term1,?Term2})
+@pindex $ineq_univ/2
+        Equivalent to @code{$compare(@var{Term1,Term2,C}), C != =} .
+
+@item $lt_univ(@var{?Term1,?Term2})
+@pindex $lt_univ/2
+        Equivalent to @code{$compare(@var{Term1,Term2,}<)}.
+
+@item $le_univ(@var{?Term1,?Term2})
+@pindex $le_univ/2
+        Equivalent to @code{$compare(@var{Term1,Term2,C}), C != >} .
+
+@item $gt_univ(@var{?Term1,?Term2})
+@pindex $gt_univ/2
+        Equivalent to @code{$compare(@var{Term1,Term2,}>)}.
+
+@item $ge_univ(@var{?Term1,?Term2})
+@pindex $ge_univ/2
+        Equivalent to @code{$compare(@var{Term1,Term2,}C), C != <} .
+
+$item $eq(@var{+Term1,+Term2})
+        True when @var{Term1} and @var{Term2} are mathematically 
+        evaluated with the same result.
+
+$item $ineq(@var{+Term1,+Term2})
+        True when @var{Term1} and @var{Term2} are mathematically 
+        evaluated with different results.
+
+$item $lt(@var{+Term1,+Term2})
+        True when the result of mathematically evaluating
+        @var{Term1} and @var{Term2} is that @var{Term1} is
+        less than @var{Term2}.
+
+$item $gt(@var{+Term1,+Term2})
+        True when the result of mathematically evaluating
+        @var{Term1} and @var{Term2} is that @var{Term1} is
+        greater than @var{Term2}.
+
+$item $le(@var{+Term1,+Term2})
+        True when the result of mathematically evaluating
+        @var{Term1} and @var{Term2} is that @var{Term1} is
+        less or equal to @var{Term2}.
+
+$item $ge(@var{+Term1,+Term2})
+        True when the result of mathematically evaluating
+        @var{Term1} and @var{Term2} is that @var{Term1} is
+        greater or equal to @var{Term2}.
+
+@item $atom(@var{?X})
+@pindex $atom/1
+        True when @var{X} is an atom.
+
+@item $atomic(@var{?X})
+@pindex $atomic/1
+        True when @var{X} is an atom, an integer, or a float.
+
+@item $integer(@var{?X})
+@pindex $integer/1
+        True when @var{X} is an integer.
+
+@item $float(@var{?X})
+@pindex $float/1
+        True when @var{X} is a float.
+
+@item $number(@var{?X})
+@pindex $number/1
+        True when @var{X} is an integer or a float.
+
+@item $nonvar(@var{?X})
+@pindex $nonvar/1
+        True when @var{X} is not a variable.
+
+@item $var(@var{?X})
+@pindex $var/1
+        True when @var{X} is a variable.
+
+@item $plus(@var{-Result,+Expr1,+Expr2}) {@rm (function 0)}
+@pindex $plus/3
+        @var{Result} is set to the result of adding @var{Expr1} and 
+        @var{Expr2}. @var{Expr1} and @var{Expr2} are evaluated first.
+
+@item $plus_1(@var{-Result,+Expr}) {@rm (function 0)}
+@pindex $plus_1/2
+        @var{Result} is set to the result of adding one to @var{Expr}.
+        @var{Expr} is evaluated first.
+
+@item $minus(@var{-Result,+Expr1,+Expr2}) {@rm (function 0)}
+@pindex $minus/3
+        @var{Result} is set to the result of subtracting @var{Expr2} from
+        @var{Expr1}. @var{Expr1} and @var{Expr2} are evaluated first.
+
+@item $minus_1(@var{-Result,+Expr}) {@rm (function 0)}
+@pindex $minus_1/2
+        @var{Result} is set to the result of subtracting one from @var{Expr}.
+        @var{Expr} is evaluated first.
+
+@item $times(@var{-Result,+Expr1,+Expr2}) {@rm (function 0)}
+@pindex $times/3
+        @var{Result} is set to the result of multiplying @var{Expr1} and 
+        @var{Expr2}. @var{Expr1} and @var{Expr2} are evaluated first.
+
+@item $div(@var{-Result,+Expr1,+Expr2}) {@rm (function 0)}
+@pindex $div/3
+        @var{Result} is set to the result of dividing @var{Expr1} with
+        @var{Expr2}. @var{Expr1} and @var{Expr2} are evaluated first.
+
+@item $intdiv(@var{-Result,+Expr1,+Expr2}) {@rm (function 0)}
+@pindex $intdiv/3
+        @var{Result} is set to the integer part obtained by dividing 
+        @var{Expr1} with @var{Expr2}. @var{Expr1} and @var{Expr2} are 
+        evaluated first.
+
+@item $mod(@var{-Result,+Expr1,+Expr2}) {@rm (function 0)}
+@pindex $mod/3
+        @var{Result} is set to the result of evaluating @var{Expr1} 
+        @code{mod} @var{Expr2}. 
+
+@item $tointeger(@var{-Result,+Expr}) {@rm (function 0)}
+@pindex $tointeger/2
+        @var{Result} is set to the integer part of @var{Expr}. @var{Expr}
+        is evaluated first.
+
+@item $tofloat(@var{-Result,+Expr}) {@rm (function 0)}
+@pindex $tofloat/2
+        @var{Result} is set to the floating point representation of
+        @var{Expr}. @var{Expr} is evaluated first.
+
+@item $eval_math(@var{-Result,+Expr}) {@rm (function 0)}
+@pindex $eval_math/2
+        @var{Result} is set to the result of evaluating @var{Expr}.
+
+@item $univ(@var{+/-Functor,-/+List})
+@pindex $univ/2
+        Converts @var{List} to a functor or @var{Functor} to a list
+        (@var{Functor} =.. @var{List}).
+
+@item $b_or(@var{-Result,+Expr1,+Expr2}) {@rm (function 0)}
+@pindex $b_or/3
+        @var{Result} is set to bitwise @var{or} of @var{Expr1} and @var{Expr2}.
+        @var{Expr1} and @var{Expr2} is evaluated first.
+
+@item $b_and(@var{-Result,+Expr1,+Expr2}) {@rm (function 0)}
+@pindex $b_and/3
+        @var{Result} is set to bitwise @var{and} of @var{Expr1} and 
+        @var{Expr2}. @var{Expr1} and @var{Expr2} is evaluated first.
+
+@item $b_xor(@var{-Result,+Expr1,+Expr2}) {@rm (function 0)}
+@pindex $b_xor/3
+        @var{Result} is set to bitwise @var{xor} of @var{Expr1} and 
+        @var{Expr2}. @var{Expr1} and @var{Expr2} is evaluated first.
+
+@item $un_minus(@var{-Result,+Expr}) {@rm (function 0)}
+@pindex $un_minus/2
+        @var{Result} is set to the negation of the evaluated expression
+        @var{Expr}.
+@end table
+
+@section I/O Predicates
+These predicates are called as any other user defined predicate, i.e. 
+with @code{call}. They are used to support I/O operations.
+ 
+@table @code
+
+@item display(@var{?Term})
+@pindex display/1
+        Displays @var{Term} on the current output stream. A variable is
+        displayed as an underscore followed by its address on the heap
+        or stack.
+
+@item $display(@var{+Stream,?Term})
+@pindex display/2
+        Displays @var{Term} on the stream @var{Stream}. A variable is
+        displayed as an underscore followed by its address on the heap
+        or stack.
+
+@item write(@var{?Term})
+@pindex write/1
+        Same as @code{display/1}.
+
+@item $write(@var{+Stream,?Term})
+@pindex $write/2
+        Same as @code{display/2}.
+
+@item ttyflush
+@pindex ttyflush/0
+        Flush the standard output stream.
+
+@item ttynl
+@pindex ttynl/0
+        Writes a newline to the standard output stream.
+
+@item ttyget0(@var{?Integer})
+@pindex ttyget0/1
+        @var{Integer} is unified with the next character from the standard
+        input stream.
+
+@item ttyget(@var{?Integer})
+@pindex ttyget/1
+        @var{Integer} is unified with the next printable character from
+        the standard input stream.
+
+@item ttyput(@var{+Integer})
+@pindex ttyput/1
+        @var{Integer} is put on the standard output stream.
+
+@item flush
+@pindex flush/0
+        The current stream is flushed.
+
+@item nl
+@pindex nl/0
+        A newline is sent to the current output stream.
+
+@item get0(@var{?Integer})
+@pindex get0/1
+        @var{Integer} is unified with the next character from the
+        current input stream.
+
+@item get(@var{?Integer})
+@pindex get/1
+        @var{Integer} is unified with the next printable character from the
+        current input stream.
+
+@item put(@var{+Integer})
+@pindex put/1
+        @var{Integer} is put on the current output stream.
+
+@item $flush_stream(@var{+FilePointer})
+@pindex $flush_stream/1
+        The stream with filepointer @var{FilePointer} is flushed.
+
+@item $nl(@var{+FilePointer})
+@pindex $nl/1
+        A newline is sent to the stream with filepointer @var{FilePointer}.
+
+@item $get0_stream(@var{+FilePointer,?Integer})
+@pindex $get0_stream/2
+        @var{Integer} is unified with the next character on the stream with
+        filepointer @var{FilePointer}.
+
+@item $get_stream(@var{+FilePointer,?Integer})
+@pindex $get_stream/2
+        @var{Integer} is unified with the next printable character on the 
+        stream with filepointer @var{FilePointer}.
+
+@item $current_input(@var{?FilePointer})
+@pindex $current_input/1
+        @var{FilePointer} is unified with the filepointer of the current
+        input stream.
+
+@item $current_output(@var{?FilePointer})
+@pindex $current_output/1
+        @var{FilePointer} is unified with the filepointer of the current
+        output stream.
+
+@item $set_input(@var{+FilePointer,+FileIndex})
+@pindex $set_input/2
+        Current input stream i set to the stream having @var{FilePointer}
+        as filepointer and @var{FileIndex} as file index.
+
+@item $set_output(@var{+FilePointer,+FileIndex})
+@pindex $set_output/2
+        Current output stream i set to the stream having @var{FilePointer}
+        as filepointer and @var{FileIndex} as file index.
+
+@item $streams(@var{?StreamList})
+@pindex $streams/1
+        @var{StreamList} is unified with a list containing the indexes
+        of all open files.
+
+@item $stream_name(@var{+FileIndex,?FileName})
+@pindex $stream_name/2
+        @var{FileName} is unified with the name of the stream having 
+        file index @var{FileIndex}.
+
+@item $stream_mode(@var{+FileIndex,?FileMode})
+@pindex $stream_mode/2
+        @var{FileMode} is unified with the mode of the stream having 
+        file index @var{FileIndex}.
+
+@item $stream_file(@var{+FileIndex,?FilePointer})
+@pindex $stream_file/2
+        @var{FilePointer} is unified with the filepointer of the stream having 
+        file index @var{FileIndex}.
+
+@item $stream_code(@var{+FileIndex,?FileDescriptor})
+@pindex $stream_code/2
+        @var{FileDescriptor} is unified with the filedescriptor of the 
+        stream having file index @var{FileIndex}.
+
+@item $file_code(@var{+FilePointer,?FileDescriptor})
+@pindex $file_code/2
+        @var{FileDescriptor} is unified with the filedescriptor of the 
+        stream having filepointer @var{FilePointer}.
+
+@item $code_file(@var{+FileDescriptor,?FilePointer})
+@pindex $code_file/2
+        @var{FilePointer} is unified with the filepointer of the 
+        stream having filedescriptor @var{FileDescriptor}.
+
+@item $fopen(@var{+Filename,+Mode,?FilePointer,?FileIndex})
+@pindex $fopen/4
+        Opens the file @var{Filename} with the mode @var{Mode} (one
+        of ``r'', ``w'', and ``a''). @var{FilePointer} is unified with
+        the filepointer of the new stream and @var{FileIndex} with
+        its index.
+
+@item $fdopen(@var{+FileDescriptor,+Mode,?FilePointer,?FileIndex})
+@pindex $fdopen/4
+        Opens a file with the filedescriptor @var{FileDescriptor} and
+        the mode @var{Mode}.  @var{FilePointer} is unified with
+        the filepointer of the new stream and @var{FileIndex} with
+        its index.
+
+@item $close(@var{+FileIndex})
+@pindex $close/1
+        Closes the stream with the fileindex @var{Fileindex}.
+
+@item $file_mod_time(@var{+File,?TimeHi,?TimeLow})
+@pindex $file_mod_time
+        Gets the modification time of @var{File} split into two 
+        parts where @var{TimeHi} is the topmost 16 bits and @var{TimeLow}
+        is the lower 16. 
+@end table
+
+@section Statistics Predicates
+These predicates are called with @code{call} and are used to collect
+statistics.
+
+@table @code
+
+@item statistics
+@pindex statistics/0
+        Displays the current statistics on the current output stream.
+
+@item $statistics_global(@var{?Integer})
+@pindex $statistics_global/1
+        Unifies @var{Integer} with the current size of the global heap.
+
+@item $statistics_local(@var{?Integer})
+@pindex $statistics_local/1
+        Unifies @var{Integer} with the current size of the local stack.
+
+@item $statistics_memory(@var{?Integer})
+@pindex $statistics_memory/1
+        Unifies @var{Integer} with the current total memory consumption.
+
+@item $statistics_runtime(@var{?List})
+@pindex $statistics_runtime/1
+        Unifies @var{List} with a list of two elements where the first is
+        the time since the start of the prolog and the second the time
+        since the last call to this predicate. The time is measured in
+        milliseconds.
+
+@item $statistics_trail(@var{?Integer})
+@pindex $statistics_trail/1
+        Unifies @var{Integer} with the current size of the trail.
+@end table
+
+@section Other Predicates
+These predicates are called with @code{call}. 
+
+@table @code
+@item fail
+@pindex fail/0
+        Always false.
+
+@item halt
+@pindex halt/0
+        Causes the prolog to terminate execution and exit back to the shell.
+
+@item is(@var{Result},@var{Expr})
+@pindex is/2
+        @var{Result} is unified with the result of evaluating @var{Expr}.
+
+@item $load(@var{+FileName})
+@pindex $load/1
+        Loads predicates from the file named @dfn{Filename} in wamcode
+        format.
+
+@item $qload(@var{+FileName})
+@pindex $qload/1
+        Loads predicates from the file named @dfn{Filename} in quickload
+        format.
+
+@item name(@var{?Name,?List})
+@pindex name/2
+        If @var{Name} is an atom or number then @var{List} is a list of 
+        the ASCII codes of the characters comprising the name of @var{Name}.
+        E.g.
+@example
+| ?- name(foo, X).
+
+X = [102,111,111]
+@end example
+        If @var{List} is a list of ASCII codes then @var{Name} is unified
+        with the atom those ASCII codes describe. E.g.
+@example
+| ?- name(X, [98,97,114])
+
+X = bar
+@end example
+
+@item setarg(@var{ArgNo, Term, NewArg})
+@pindex setarg/3
+        Replace destructively argument @var{ArgNo} in @var{Term} by
+        @var{NewArg}. The assignment is undone on backtracking.  @strong{This
+        operation is only safe if there is no further use of the ``old'' value
+        of the replaced argument}. The use of this predicate is discouraged,
+        as the idea of destructive replacement is alien to logic programming.
+
+@item true
+@pindex true/0
+        Always true.
+
+@item unique_name(@var{?Prefix,?Suffix,-Atom})
+@pindex unique_name/3
+        If @var{Prefix} is a variable then an @dfn{unique} atom is
+        created with the @dfn{default} prefix ``$new'' and @var{Prefix} is
+        bound to the default. If it is an atom then that atom is used as
+        prefix and the default is set to that atom. If @var{Suffix} is a 
+        @dfn{variable} then no suffix is used.
+@example
+| ?- unique_name(_,_,Atom).
+
+Atom = $new0
+
+| ?- unique_name(foo,_,Atom).
+
+Atom = foo1
+
+| ?- unique_name(_,bar,Atom).
+
+Atom = foo2bar
+
+| ?- unique_name(bar,baz,Atom).
+
+Atom = bar3baz
+@end example
+        
+@item wamdebug
+@pindex wamdebug/0
+        Turn on WAM level debugger.
+
+@item wamnodebug
+@pindex wamnodebug/0
+        Turn off WAM level debugger.
+
+@item version
+@pindex version/0
+        Copyright and version information is displayed.
+@end table
+
+@chapter Code Formats
+@cindex code format
+There are three different representations of the code. One human readable 
+text format which is parsed by a YACC - LEX parser, one internal format
+which is used by the engine, and one to get smaller object code and faster 
+loading called the quickload format. 
+
+@section WAM-code Format
+@cindex wam, format
+@cindex wam code
+@cindex instruction set
+
+This format is used when loading predicates with @code{load}/1.
+
+A predicate definition should begin with 
+@code{predicate(@var{PredName}/@dfn{Arity}} followed by the instructions and 
+ending with a right parenthesis.
+@example
+predicate('test'/0
+        <instruction>
+        ....
+)
+@end example
+All atoms must be quoted.
+
+A label must be a number or the constant 'fail'. A functor consist of
+a name and an arity, @code{<name>/<arity>}, i.e. @code{foo/2}.
+X and Y registers are numbers in the interval 0 to 255, for example 
+@code{put_y_value 2 1}.
+
+Tabs, spaces, and newlines are not significant.
+                
+An instruction is one of the following:
+@example
+switch_on_term <Var Lbl> <Atom Lbl> <Number Lbl> <List Lbl> <Struct Lbl>
+
+switch_on_constant <Size of table>
+                        ( <Const 1> <Label 1> 
+                          <Const 2> <Label 2>
+                          ...
+                        ) <Default Label>
+
+switch_on_structure <Size of table>
+                        ( <Functor 1> <Label 1> 
+                          <Functor 2> <Label 2>
+                          ...
+                        ) <Default Label>
+
+try   <Label>
+retry <Label>
+trust <Label>
+
+try_me_else   <Label>
+retry_me_else <Label>
+trust_me
+
+choice_x <X reg>
+choice_y <Y reg>
+cut
+cut_x <X reg>
+cut_y <Y reg>
+builtin <Functor> <Index 1> <Index 2> ... <Index 3>
+meta_call <X reg> <Environment size>
+meta_execute <X reg>
+
+allocate 
+deallocate 
+call <Functor> <Environment size>
+execute <Functor>
+proceed
+fail
+
+get_x_variable <X reg> <X reg>
+get_y_variable <Y reg> <X reg>
+get_y_first_value <Y reg> <X reg>
+get_x_value <X reg> <X reg>
+get_y_value <Y reg> <X reg>
+get_constant <constant> <X reg>
+get_nil <X reg>
+get_structure <Functor> <X reg>
+get_list <X reg>
+get_constant_x0 <constant>
+get_nil_x0 
+get_structure_x0 <Functor>
+get_list_x0 
+
+put_x_void <X reg> 
+put_y_void <Y reg> 
+put_x_variable <X reg> <X reg> 
+put_y_variable <Y reg> <X reg>
+put_x_value <X reg> <X reg>
+put_y_value <Y reg> <X reg>
+put_x_unsafe_value <X reg> <X reg>
+put_y_unsafe_value <Y reg> <X reg>
+put_constant <Constant> <X reg>
+put_nil <X reg>
+put_structure <Functor> <X reg>
+put_list <X reg>
+
+unify_void <Number (0-255)>
+unify_x_variable <X reg>
+unify_y_variable <Y reg>
+unify_y_first_value <Y reg>
+unify_x_value <X reg>
+unify_y_value <Y reg>
+unify_x_local_value <X reg>
+unify_y_local_value <Y reg>
+unify_constant <Constant>
+unify_nil
+unify_structure <Functor>
+unify_list
+
+halt
+@end example
+
+@section Bytecode Format
+@cindex bytecode format
+This format is used internally and is the basis for the quickload
+format. 
+
+Each instruction occupies at least one word (4 bytes). The last byte
+of the word is reserved for the opcode of the instruction. Arguments
+to the instruction are stored in the following way.
+
+@table @code
+@item Atoms
+An atom is stored in a separate word following the instruction word as an
+tagged pointer to an @dfn{atom}.
+
+@item Floats
+A float is stored in a separate word following the instruction word as
+tagged pointer to a @dfn{float}.
+
+@item Functors
+A functor is stored in a separate word following the instruction word as a 
+@code{functor} (@pxref{Terms and ...}).
+
+@item Indexes
+An index is stored in a separate word following the instruction word as
+a @code{signed int}.
+
+@item Integers
+An integer is stored in a separate word following the instruction word as
+tagged pointer to an @dfn{integer}.
+
+@item Labels
+A label is stored in a separate word as a @code{signed int}. 
+
+Labels are transformed into positive or negative offsets from the
+current address of the label. The label @code{fail} is represented
+as a NULL offset. They are stored as @code{int} in a word. 
+
+@noindent 
+If we replace the labels with the appropriate offsets in the following code
+@example
+predicate('append'/3
+    switch_on_term 2 1 fail 5 fail
+label 1
+    switch_on_constant 1 (
+       '[]' 3
+    ) fail
+label 2
+    try_me_else 4
+label 3
+    get_nil_x0
+    get_x_value 2 1
+    proceed
+label 4
+    trust_me
+label 5
+    get_list_x0
+    unify_x_variable 3
+    unify_x_variable 0
+    get_list 2
+    unify_x_value 3
+    unify_x_variable 2
+    execute 'append'/3
+)
+@end example
+
+@noindent
+we get:
+@example
+predicate(append/3
+  0 switch_on_term 44 24 fail 68 fail
+
+% label 1
+ 24 switch_on_constant 1 (
+        '[]' 52
+    ) fail
+
+% label 2
+ 44 try_me_else 64
+
+% label 3
+ 52 get_nil_x0 
+ 56 get_x_value 2 1
+ 60 proceed
+
+% label 4
+ 64 trust_me
+
+% label 5
+ 68 get_list_x0 
+ 72 unify_x_variable 3
+ 76 unify_x_variable 0
+ 80 get_list 2
+ 84 unify_x_value 3
+ 88 unify_x_variable 2
+ 92 execute 'append'/3
+)
+@end example
+
+@item Registers, X and Y
+Registers are stored in two of the three remaining bytes of the instruction
+word in reversed order.
+@example
+     00000000    00000000    00000000    00000000
+     --------    --------    --------    --------
+     empty       Reg arg 2   Reg arg 1   opcode
+@end example    
+
+@item Environment size
+The environment size is stored in the same way as registers, except that
+it takes two bytes instead of one and only uses the two most significant
+bytes.
+
+@item Size
+Sizes are stored in separate words as @code{signed int}s, for example
+the @code{<Size>} argument to @code{switch_on_constant}.
+
+@end table
+
+For example, @code{put_x_value 2 1} is represented in bytecode format as
+@example
+     00000000 00000001 00000010  00100111
+     -------- -------- --------  --------
+     empty    2nd indx 1st indx  opcode 39
+@end example
+While @code{put_constant foo 3} is represented as
+@example
+     00000000 00000000 00000011 00101011
+     ======== ======== -------- --------
+                             3  opcode 43
+     
+     00000000 00000000 00000000 00000000
+     ===================================
+     pointer to atom table entry with ATM tag.
+@end example
+The opcodes can be obtained by starting luther with the @code{-opcode}
+command line argument.
+
+@section Qload Format
+@cindex qload format
+
+The quickload format is based on the bytecode format with a few 
+adjustments for the lack of fixed atom table references and such.
+The loader is guided by the set of instructions shown below. A 
+bytecode file contains a mix of instructions to the loader and
+bytecode.
+
+Each quickload instruction is one byte long (not including its argument
+naturally).
+
+@table @code
+@item QLOAD_PRED_START(@var{Name},@var{Arity})
+        This instructions tells the loader to start loading a new
+        predicate. @var{Name} is stored as a NULL terminated string 
+        in the following bytes, and @var{Arity} in the byte after that.
+
+@item QLOAD_WORD
+        Tells the loader to fetch one word from the input stream and
+        store it in memory.
+        
+@item QLOAD_N_BYTECODE
+        Tells the loader to read bytes from the input stream until
+        @code{QLOAD_END_MARKER} is encountered.
+
+@item QLOAD_DEF(@var{Name},@var{Arity})
+        Tells the loader to make a definition entry. @var{Name} is
+        stored as a NULL terminated string in the following bytes, 
+        @var{Arity} in the byte after that.
+        
+@item QLOAD_ATOM(@var{Name})
+        Tells the loader to make an atom entry. @var{Name} is stored
+        as a NULL terminated string in the following bytes.
+
+@item QLOAD_FUNCTOR(@var{Name},@var{Arity})
+        Tells the loader to make a functor entry. @var{Name} is stored
+        as a NULL terminated string in the following bytes, @var{Arity} 
+        in the byte after that.
+
+@item QLOAD_FLOAT(@var{Num})
+        Tells the loader to make a float entry. @var{Num} is stored
+        as a NULL terminated string in the following bytes.
+
+@item QLOAD_START_TABLE
+        Tells the loader that a switch table will follow. This makes it 
+        possible to sort the table once it has been fully loaded.
+
+@item QLOAD_END_TABLE
+        Tells the loader that the switch table is finished.
+
+@item QLOAD_PRED_END
+        Tells the loader that the predicate is finished.
+
+@end table
+
+@chapter Extending the machine
+@cindex extending
+
+We will in this section try give a checklist of places to change 
+when you extend the machine in five different ways. You should be 
+aware that this isn't a complete list of where to change for all 
+kinds of changes but it is at least a starting point.
+
+@section Predefined atoms
+@cindex atom table
+You may want to add another atom to the set of predefined atoms.
+If you, for example, add a new mathematical function and want 
+@code{is/2} to to recognize it, you need a predefined atom.
+
+All atoms defined at startup are initially kept in an array of 
+strings, the @code{atom_table}. When the WAM is started it goes 
+through the array and inserts each atom into the global atom table, the
+@code{atom table}, and puts a TAGGED object, representing the atom, at 
+the same relative position in the @code{atom_table_tagged} array.
+Predefined atoms are thus given names that will be identical to 
+the names given to the same atoms by the prolog emulator at 
+runtime.
+
+To define a new atom you have to go through the following steps.
+
+@enumerate
+@item
+        @code{atom_table.c} Add you string to the @code{atom_table}
+        array.
+
+@item
+        @code{atom_table.h} Add a constant, denoting your string, at
+        the same relative position (as in the @code{atom_table})
+        in the @code{atoms} type.
+
+@item
+        @code{initial.c} There are two ways to access you name, either
+        you define a global variable containing the name, or you 
+        fetch it from the @code{atom_table_tagged} array each time.
+        If you chose the first solution, you have to extend the
+        @code{init_predefined_atoms} function to initialize your
+        variable.
+@end enumerate
+
+
+@section The Instruction Set
+@cindex instruction set
+When you extend or shrink the instruction set there are at least six
+places you have to change at. 
+
+@enumerate
+@item   
+        @code{instrdef.h} and @code{instrdef.c} Add the new instruction 
+        at the proper place, it is important that you keep the same order 
+        in the enumerated list as in the switches. Most compilers will 
+        not make a index table out of the switch statement otherwise. 
+        You have to add the instruction both in the @code{opcode} type 
+        and in the @code{instruction_table} in @code{instrdef.c}.
+
+@item   
+        @code{engine.c} Here you must add the C code for the instruction.
+        If it is to behave differently in read and write mode, the you 
+        add code in the read and the write switch, if not, you simply
+        provide the entry in the read-switch with a label and puts a
+        goto statement in the write switch, or the other way around.
+
+@item
+        @code{display_code.c} Extend the function @code{display_code_inc}
+        so that it will print the new instruction.
+
+@item   
+        @code{parser.y} Here you have to add at least two things. First 
+        an entry for you instruction in the @code{%token} section in the
+        beginning of the file, then you have to add a grammar rule which
+        will parse your instruction.
+
+@item
+        @code{parser.l} Add an entry for the new instruction at one place
+        in this file. The action should be to return the token specified
+        in @code{parser.y}.
+
+@item
+        @code{debug.c} If the new instruction behaves like call or execute
+        you may want to change the wam level debugger. This is usually
+        not necessary.
+
+@end enumerate
+
+@section Builtin C predicates
+@cindex builtin C predicates
+
+If you want to add another builtin C predicate you will have to change 
+at least at the following places.
+
+@enumerate
+@item
+        @code{builtin.c} Add the C code for the predicate here. A builtin
+        predicate is passed a pointer to a worker and should return a 
+        BOOL.
+
+@item
+        @code{builtin.h} Add a declaration of your C function here. 
+
+@item
+        @code{initial.c} Add a @code{define_c_predicate} entry for your
+        predicate. The first argument to @code{define_c_predicate} is
+        the name of the prolog predicate, the second the name of the 
+        C function doing the job, and the third is the arity of the
+        predicate.
+
+@item   
+        @code{atom_table.h} If the name of the new predicate is not already 
+        defined you have to add it to the @code{atoms} type. 
+
+@item
+        @code{atom_table.c} If you added the atom to @code{atoms} you also
+        have to add it's print name in @code{atom_table}. Be careful to 
+        put it in the same relative place as you did in @code{atoms}.
+@end enumerate  
+        
+If you want to define a backtrackable C predicate you also have to 
+modify the function @code{init_backtrackable_c} in @code{builtin.c}. See
+@code{luther_current_predicate} for an example of a backtrackable 
+predicate.
+
+@section Inlineable predicates
+@cindex inlineable predicate
+
+This is the by far simplest kind of predicate to add. All you have to do 
+is to change in the following two places.
+
+@enumerate
+@item
+        @code{inline.c} Add predicate name, arity, and C function name
+        to @code{inline_table}. Add the C code to define the C function.
+
+@item
+        @code{inline.h} Declare you C function and increment 
+        @code{INLINE_TABLE_SIZE} by the number of inlineable predicates
+        you have added.
+@end enumerate
+
+@section Tags
+@cindex tag
+
+This is maybe the most difficult thing to extend. It is not impossible
+but it is far from trivial. Before you add a new tag you should make
+sure that the desired behavior can't be achieved with a generic object.
+To start with you have to look at the following files.
+
+@enumerate
+@item
+        @code{term.h} First you have to add your new tag to the proper
+        tag value (enumerated type). Care should be taken to add the tag
+        in an order which conforms with it's behavior. 
+
+        When the tag value is extended you must make sure that all 
+        constants are up to date (TAGMASK, POINTERMASK etc.). Macros
+        to identify the new tag should also be added and possibly 
+        macros to handle the new object. The macros @code{IsVar}, 
+        @code{IsNonVar}, @code{IsComplex}, and @code{IsNumber} might
+        have to be changed.
+
+@item
+        @code{unify.h} Here you might have to modify the macros for
+        dereferencing and trailing.
+
+@item
+        @code{unify.c} The unification table (@code{unifytable}) has to 
+        be extended to cover the new tag, and possibly extend the
+        switch in @code{unify}. 
+
+@item
+        @code{inline.c} All you have to do here is to extend the 
+        table used when comparing objects (@code{compare_table}), and
+        possibly extend the switch in @code{compare_term}.
+
+@item   
+        @code{display.c} Here you have to add code to print your new
+        object in @code{display_term}.
+
+@item   
+        @code{assert.c} Depending on whether you want to be able to 
+        assert clauses containing objects objects this kind or not you
+        may have to extend @code{compile_head} and @code{compile_head_str}.
+
+@item
+        @code{gc.c} & @code{gc.h} It may or may not be a problem. If 
+        you add a new object which doesn't contain references to other
+        objects, and all words in the object has room for the GC-bits,
+        then you are home free. Otherwise it will be a bit more 
+        complicated. I recommend taking a look at ``Garbage Collection 
+        for Prolog Based on WAM'' by K. Appleby, M. Carlsson, S. Haridi 
+        and D. Sahlin, Communications of the AMC, June 1988, Volume 31,
+        Number 6.
+@end enumerate
+
+@unnumbered Predicate Index
+@printindex pg
+
+@unnumbered Macro and Instruction Index
+@printindex fn
+
+@unnumbered Data Type, Struct and Variable Index
+@printindex tp
+
+@unnumbered Concept Index
+@printindex cp
+
+@contents
+
+@bye

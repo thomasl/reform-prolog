@@ -1,0 +1,510 @@
+Predicate('$body_predicate_ixstr_3_944_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 35 3
+ X10 3
+ X36 ',' 2 0
+ X55 4
+ X54 1
+ X36 :- 2 4
+ X55 5
+ X54 1
+ X13 3
+ X44 7 6
+ X44 9 8
+ X16 1 5 6 8
+ X36 / 2 1
+ X58 7
+ X58 9
+ X36 info 4 2
+ X54 1
+ X55 10
+ X62 invisible
+ X62 none
+ X36 ix 6 10
+ X55 11
+ X55 12
+ X55 13
+ X55 14
+ X55 15
+ X64 cls 1
+ X60 0
+ X37 11
+ X62 1
+ X63
+ X37 12
+ X62 1
+ X63
+ X37 13
+ X62 1
+ X63
+ X37 14
+ X62 1
+ X63
+ X37 15
+ X62 1
+ X63
+ X27
+Label 3
+ X20 30 3
+ X10 3
+ X36 ',' 2 0
+ X62 no_clause
+ X54 1
+ X13 3
+ X36 / 2 1
+ X62 no_clause
+ X62 0
+ X36 info 4 2
+ X54 1
+ X55 4
+ X62 invisible
+ X62 none
+ X36 ix 6 4
+ X55 5
+ X55 6
+ X55 7
+ X55 8
+ X55 9
+ X64 cls 1
+ X62 dummy
+ X37 5
+ X62 1
+ X63
+ X37 6
+ X62 1
+ X63
+ X37 7
+ X62 1
+ X63
+ X37 8
+ X62 1
+ X63
+ X37 9
+ X62 1
+ X63
+ X27
+)
+Predicate('$display_body_2_970_0' 2
+ X1 3 1 6 6 2
+Label 1
+ X2 1 (
+        '$early_cut' 3
+) 6
+Label 2
+ X3 2 (
+        '$early_cut' 1 4
+        '$cut' 1 5
+) 6
+Label 3
+ X20 3 2
+ X29 2 0
+ X10 3
+ X34 '$early_cut' 2
+ X13 3
+ X50 ' ~p,' 0
+ X53 1
+ X58 2
+ X63
+ X26 format 2
+Label 4
+ X20 5 2
+ X29 2 0
+ X10 3
+ X36 '$early_cut' 1 2
+ X54 1
+ X13 3
+ X50 ' ~p,' 0
+ X53 1
+ X60 2
+ X63
+ X26 format 2
+Label 5
+ X20 5 2
+ X29 2 0
+ X10 3
+ X36 '$cut' 1 2
+ X54 1
+ X13 3
+ X50 ' ~p,' 0
+ X53 1
+ X60 2
+ X63
+ X26 format 2
+Label 6
+ X20 3 2
+ X29 3 0
+ X46 1 0
+ X50 '~n        ~p,' 1
+ X53 2
+ X60 3
+ X63
+ X26 format 3
+)
+Predicate('$display_body_2_971_0' 2
+ X1 3 1 6 6 2
+Label 1
+ X2 1 (
+        '$early_cut' 3
+) 6
+Label 2
+ X3 2 (
+        '$early_cut' 1 4
+        '$cut' 1 5
+) 6
+Label 3
+ X20 3 2
+ X29 2 0
+ X10 3
+ X34 '$early_cut' 2
+ X13 3
+ X50 ' ~p.~n' 0
+ X53 1
+ X58 2
+ X63
+ X26 format 2
+Label 4
+ X20 5 2
+ X29 2 0
+ X10 3
+ X36 '$early_cut' 1 2
+ X54 1
+ X13 3
+ X50 ' ~p.~n' 0
+ X53 1
+ X60 2
+ X63
+ X26 format 2
+Label 5
+ X20 5 2
+ X29 2 0
+ X10 3
+ X36 '$cut' 1 2
+ X54 1
+ X13 3
+ X50 ' ~p.~n' 0
+ X53 1
+ X60 2
+ X63
+ X26 format 2
+Label 6
+ X20 3 2
+ X29 3 0
+ X46 1 0
+ X50 '~n        ~p.~n' 1
+ X53 2
+ X60 3
+ X63
+ X26 format 3
+)
+Predicate('$enter_ix_item_5_939_0' 7
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X21
+ X30 0 1
+ X30 1 2
+ X30 6 4
+ X30 3 5
+ X30 4 6
+ X10 7
+ X50 unexpanded 8
+ X24 2 2 5
+ X16 5 0 8
+ X13 7
+ X46 3 0
+ X47 5 1
+ X25 index_struct_of_pred 2 7
+ X49 5 0
+ X50 [] 1
+ X49 6 2
+ X47 2 3
+ X25 information_item 4 5
+ X19 3
+ X52 / 2 0
+ X61 0
+ X61 1
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X23
+ X26 update_definition 4
+Label 3
+ X21
+ X30 4 1
+ X30 5 2
+ X30 1 4
+ X30 7 5
+ X30 3 6
+ X10 7
+ X50 expanded 8
+ X24 3 0 2 6
+ X16 5 0 8
+ X13 7
+ X50 [] 9
+ X30 0 9
+ X46 3 0
+ X45 8 1
+ X25 index_struct_of_pred 2 9
+ X49 8 0
+ X50 [] 1
+ X47 1 2
+ X47 6 3
+ X25 information_item 4 8
+ X19 3
+ X52 / 2 0
+ X61 4
+ X61 5
+ X49 6 1
+ X49 7 2
+ X47 2 3
+ X25 update_definition 4 4
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 enter_spawned_and_ixed_predicates 4
+Label 4
+ X20 3 7
+ X29 7 0
+ X50 'enter_ix_item/5: unknown mode ~q' 0
+ X53 1
+ X60 7
+ X63
+ X26 sys_error 2
+)
+Predicate('$find_callable_and_export_list_4_933_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 0
+ X30 2 1
+ X30 3 2
+ X30 4 3
+ X30 5 4
+ X11 0
+ X50 parallel 0
+ X47 1 1
+ X25 has_directive 2 6
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X23
+ X26 '$find_callable_and_export_list_4_933_1' 5
+Label 3
+ X20 8 5
+ X37 3
+ X55 5
+ X60 4
+ X36 predicate 2 5
+ X55 6
+ X60 0
+ X36 / 2 6
+ X60 2
+ X60 1
+ X27
+)
+Predicate('$find_callable_and_export_list_4_933_1' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 4 0
+ X30 3 1
+ X30 2 2
+ X30 1 3
+ X30 5 4
+ X11 0
+ X50 callable 0
+ X47 4 1
+ X25 has_directive 2 6
+ X19 8
+ X14 0
+ X49 1 0
+ X37 0
+ X55 1
+ X61 5
+ X36 predicate 2 1
+ X55 2
+ X61 4
+ X36 / 2 2
+ X61 2
+ X61 3
+ X23
+ X27
+Label 3
+ X32 4 3
+ X27
+)
+Predicate('$find_callable_and_export_list_4_933_2' 5
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 8 5
+ X10 5
+ X50 0 6
+ X16 11 0 6
+ X13 5
+ X37 3
+ X55 7
+ X60 4
+ X36 = 2 7
+ X55 8
+ X62 det
+ X36 / 2 8
+ X60 1
+ X60 0
+ X27
+Label 3
+ X20 2 5
+ X21
+ X30 3 0
+ X30 2 1
+ X30 1 3
+ X30 5 4
+ X11 0
+ X52 mode 1 0
+ X56 4
+ X46 2 1
+ X25 has_directive 2 6
+ X19 8
+ X14 0
+ X49 1 0
+ X37 0
+ X55 1
+ X61 5
+ X36 = 2 1
+ X55 2
+ X59 4
+ X36 / 2 2
+ X61 2
+ X61 3
+ X23
+ X27
+Label 4
+ X32 3 4
+ X27
+)
+Predicate('$ground_each_entry_and_ix_3_936_0' 8
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 14 0
+ X30 10 1
+ X30 11 2
+ X30 12 3
+ X30 21 4
+ X30 8 5
+ X30 15 6
+ X30 3 7
+ X11 20
+ X50 parallel 0
+ X47 14 1
+ X24 13 0 1 2 4 5 6 7 9 13 16 17 18 19
+ X25 has_directive 2 22
+ X14 20
+ X47 19 0
+ X49 21 1
+ X47 18 2
+ X25 '$ground_each_entry_and_ix_3_936_1' 3 20
+ X49 18 0
+ X49 19 1
+ X47 16 2
+ X47 17 3
+ X25 preprocess_rp_pred 4 18
+ X49 16 0
+ X49 17 1
+ X47 13 2
+ X47 7 3
+ X47 4 4
+ X47 5 5
+ X47 0 6
+ X47 1 7
+ X25 ground_ix_struct 8 16
+ X19 8
+ X52 / 2 0
+ X61 10
+ X61 11
+ X52 info 4 1
+ X61 12
+ X61 13
+ X61 14
+ X61 8
+ X49 15 2
+ X47 9 3
+ X25 update_definition 4 10
+ X49 7 0
+ X47 8 1
+ X49 9 2
+ X47 6 3
+ X25 enter_spawned_and_ixed_predicates 4 7
+ X49 4 0
+ X49 5 1
+ X49 6 2
+ X47 2 3
+ X25 insert_body_call 4 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 insert_body_call 4
+Label 3
+ X21
+ X30 4 0
+ X30 0 1
+ X30 1 2
+ X30 2 3
+ X30 5 5
+ X30 6 6
+ X30 7 7
+ X46 4 0
+ X45 3 1
+ X25 index_struct_of_pred 2 8
+ X19 8
+ X52 / 2 0
+ X61 0
+ X61 1
+ X52 info 4 1
+ X61 2
+ X61 3
+ X61 4
+ X61 5
+ X49 6 2
+ X49 7 3
+ X23
+ X26 update_definition 4
+)
+Predicate('$ground_each_entry_and_ix_3_936_1' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 4 3
+ X10 3
+ X37 1
+ X60 2
+ X65
+ X60 0
+ X63
+ X13 3
+ X27
+Label 3
+ X50 'parallel predicate does not have precisely two clauses' 0
+ X26 error 1
+)

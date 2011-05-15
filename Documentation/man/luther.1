@@ -1,0 +1,94 @@
+.TH LUTHER 1 "27 February 1995"
+.SH NAME
+luther \- The Reform Prolog emulator/interpreter
+.SH SYNOPSIS
+.B ~reform/Reform/Luther/lut
+.RB "[\|" \-s "\|]"
+.RB "[\|" \-fs "\|]"
+.RB "[\|" \-p "\|]"
+.RB "[\|" \-fp "\|]"
+.RB "[\|" \-verbose "\|]"
+.RB "[\|" \-debug "\|]"
+.RB "[\|" \-memory 
+.IR <nr> "\|]" 
+.RB "[\|" \-wmemory
+.IR <nr> "\|]"
+.RB "[\|" \-w
+.IR <nr> "\|]"
+.SH DESCRIPTION
+.LP
+\fBLuther\fR is a recursion-parallel and sequential implementation of 
+Prolog in the Edinburgh tradition.
+.SH OPTIONS
+.TP
+.B \-s
+Sequential Prolog with low-level debug information (wamdebug).
+.TP
+.B \-fs
+Fast Sequential Prolog optimized for fast execution.
+.TP
+.B \-p
+Parallel Prolog with low-level debug information (wamdebug).
+.TP
+.B \-fp
+Fast Parallel Prolog optimized for fast execution.
+.TP
+.B \-verbose
+Tell the system to list all predicates as they are loaded into the
+program database.
+.TP
+.B \-debug
+The Low-level debug facility is activated at start up.
+.TP
+.BI \-memory " bytes"
+The sequential worker is given the indicated amounts of bytes
+to divide between the heap, stack, trail, and code-area. The default
+value is 3072000 bytes.
+.TP
+.BI \-wmemory " bytes"
+Each worker is given the indicated amounts of bytes
+to divide between its heap, stack, and trail. The default value is
+1024000 bytes.
+.TP
+.BI \-w " nr"
+The parallel Prolog system is started with the indicated number
+of parallel workers. The default value is 1.
+.SH EXAMPLES
+.SP
+.nf
+
+ % lut -fp -memory 5120000 -wmemory 3072000 -w 10 
+ Booting...wait
+ Luther Reform Prolog (parallel) version 0.7, Mon Feb 27 MET DST 1995.
+ Copyright (C) 1991 - 1995 Uppsala University.
+ All rights reserved.
+ {Started with 10 active workers}
+ | ?- 
+
+.fi
+.SH FILES
+The emulator consults the file ~/.lutrc.pl when booting.
+.SH SEE ALSO
+.BR reform(1)
+.PP
+The Reform WWW home page: 
+.nf
+     http://www.csd.uu.se/~thomasl/reform.html
+.fi
+.PP
+Technical reports available through anonymous ftp from 
+.nf
+     ftp.csd.uu.se.
+.fi
+.SH BUGS
+.LP
+Send bug reports to \fBreform-bugs@csd.uu.se\fR. Bugs tend actually to be
+fixed if they can be isolated, so it is in your interest to report them
+in such a way that they can be easily reproduced.
+.SH AUTHOR
+.LP
+Johan Bevemyr wrote the original emulator. Patric Hedlin has helped
+to debug and add functionality.
+.SH COPYRIGHT
+.LP
+Copyright (C) 1991 - 1995, Uppsala University.

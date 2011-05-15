@@ -1,0 +1,535 @@
+/*    -*- C -*- 
+ *    File:	 new-copy-gc.h  (~jb/Reform/Luther/Emulator/new-copy-gc.h)
+ *    Author:	 Johan Bevemyr
+ *    Created:	 Mon Dec 18 17:18:55 1995
+ *    Purpose:   
+ */ 
+
+
+#ifndef NEW_COPY_GC_H
+#define NEW_COPY_GC_H
+
+#define IsNewCp(cp)            (cp->generation == NEW_GEN)
+#define IsParCallTrail(T)      (IsSTR(*(T)) || IsNUM(*(T)))
+#define UnProtected(FRAME)     ((FRAME) > ((environment *) w->gc_info.last_safe))
+
+#define ProtectedSVA(STACKVAR) ((STACKVAR) < ((TAGGED *) w->gc_info.last_safe))
+
+#define InOldGen(T)            (TagToPointer(T) > w->global->new_gen_limit)
+#define CopyHeapTop            w->old_heap_top
+
+#define InNewGen(T)            (!InOldGen(T))
+#define IsLive(T)              (IsMarked(T))
+
+#define SkipValueCell(T)       (T) -= 2
+#define SkipHVA(T)             (T) -= TrailHVASize
+#define SkipSVA(T)             (T) -= 1
+#define SkipEntry(T)           (T) -= 1
+
+
+/**********************************************************************/
+
+/************************************************************
+ * Reset macros
+ */
+
+#if (TrailHVASize == 2)
+#  define ResetHVA(T) ResetValue(T)
+#else                                       
+   /* assume TrailHVASize == 1 */
+#  define ResetHVA(T) ResetCell(T)
+#endif 
+
+#define ResetCell(T) ResetEntry(T)
+
+#define ResetEntry(T)							   \
+{									   \
+  *(T) = 0;								   \
+}
+
+#define ResetValue(T)							   \
+{									   \
+  *(T) = 0;								   \
+  *(T-1) = 0;								   \
+}
+
+/************************************************************
+ * Copy macros
+ */
+
+#define CopyHVA(T)							   \
+{									   \
+  *(T) = gc_copy_variable(w,*T);					   \
+}
+
+#define CopyValue(T)							   \
+{									   \
+  uword utf_tag = TagOf(*(T));						   \
+  TAGGED utf_copied_value;						   \
+									   \
+  utf_copied_value = gc_copy_variable(w,Tagify(TagToPointer(*(T)),HVA));   \
+									   \
+  *(T) = Tagify(TagToPointer(utf_copied_value),utf_tag);		   \
+									   \
+}
+
+
+/**********************************************************************
+ * Stack support.
+ * 
+ * The stack is used when marking live data. The unused segments (the
+ * ones we are going to copy the live data to) are used to keep the
+ * stack. This guarantees that the stack is large enough.
+ *
+ */
+
+#define InitStack(T,S,E,Stack)						   \
+{									   \
+  PushOnHeap(w->old_heap_top, w->old_heap_start);			   \
+  PushOnHeap(w->old_heap_top, w->old_heap_end);				   \
+  PushOnHeap(w->old_heap_top, 0); /* sentinel */			   \
+  (T) = (S) = w->old_heap_top;						   \
+  (E) =     w->old_heap_margin;						   \
+  (Stack) = w->used_segments;						   \
+}
+
+#define RemoveStack(T,S,E,Stack)					   \
+{									   \
+  TAGGED sentinel;							   \
+  w->old_heap_top = (T);						   \
+  w->old_heap_margin = (E);						   \
+  PopFromHeap(w->old_heap_top,sentinel);				   \
+  PopFromHeap(w->old_heap_top,(TAGGED) w->old_heap_end);		   \
+  PopFromHeap(w->old_heap_top,(TAGGED) w->old_heap_start);		   \
+}
+
+#define CheckStackOverflow(T,S,E,Stack)					   \
+{									   \
+  if((T) > (E)) /* allocate new stack */				   \
+    {									   \
+      segment *new;							   \
+									   \
+      w->old_heap_top = (T);       /* new segment pushes NULL on top */	   \
+      new = (segment *) new_segment(w);					   \
+									   \
+      PushOnHeap(w->old_heap_top,Stack);				   \
+      PushOnHeap(w->old_heap_top,T);					   \
+      PushOnHeap(w->old_heap_top,S);					   \
+      PushOnHeap(w->old_heap_top,E);					   \
+									   \
+      Stack = new;							   \
+      (T) = (S) = w->old_heap_top;					   \
+      (E) = w->old_heap_margin;						   \
+    }									   \
+}
+
+#define PopStack(T,S,E,Stack)						   \
+{									   \
+  segment *old;								   \
+  TAGGED *new_heap_top;							   \
+									   \
+  old = Stack;								   \
+									   \
+  PopFromHeap(w->old_heap_top,(TAGGED)E);				   \
+  PopFromHeap(w->old_heap_top,(TAGGED)S);				   \
+  PopFromHeap(w->old_heap_top,(TAGGED)T);				   \
+  PopFromHeap(w->old_heap_top,(TAGGED)Stack);				   \
+									   \
+  free_segment(old,w);							   \
+}
+
+#define SavePosition(S,R,C)						   \
+{									   \
+  if(R != 0)								   \
+    {									   \
+      PushSize(S,R);							   \
+      PushTAGGED(S,C);							   \
+      AddMarkBuffer(w,R,C);						   \
+    }									   \
+}
+
+#define RestorePosition(S,CURR,REM)					   \
+{									   \
+  CURR = PopTAGGED(S);							   \
+  REM = PopSize(S);							   \
+  RemoveMarkBufferTail(w,REM,CURR);					   \
+}
+
+
+
+
+#define PushTAGGED(S,T)    {*(S) = (TAGGED) (T);(S)++;}
+#define PushSize(S,T)      {*(S) = (TAGGED) (T);(S)++;}
+
+#define PopTAGGED(S)       ((TAGGED *) *(--(S)))
+#define PopSize(S)         ((natural) *(--(S)))
+
+#define StackEmpty(S,E)    ((S) == (E))
+#define LastStack(T)       (*((T)-VARSIZE) == 0)
+
+
+/*****************************************************************
+ * Some usefull macros for getting copied cells new locations
+ */
+
+#define CheckCopied(NEXT)						   \
+{									   \
+  if (InOldGen(NEXT))							   \
+    {									   \
+      goto backward;							   \
+    }									   \
+  else if (IsCopiedCell(NEXT))						   \
+    {									   \
+      GetCopied(NEXT); 						           \
+      goto backward;							   \
+    }									   \
+}
+
+#define GetCopied(NEXT)							   \
+{									   \
+  TAGGED bits;								   \
+  TAGGED *new_loc;                                                         \
+									   \
+  WaitUntilCopied(NEXT,new_loc); 					   \
+									   \
+  bits = GetBits(NEXT);							   \
+  NEXT = SetBits(new_loc,bits);				                   \
+}
+
+#define CopyTerm(COPY_FUNC)						   \
+{									   \
+  TAGGED oldnext;							   \
+  TAGGED *newnext;							   \
+  TAGGED *copy;								   \
+									   \
+  oldnext = *next;							   \
+  newnext = COPY_FUNC(*next, &copy, w);					   \
+									   \
+  if (newnext != (TAGGED *) GC_LOCKVALUE)				   \
+    {									   \
+      TAGGED gcbits;							   \
+									   \
+      gcbits = GetGCBits(oldnext);					   \
+									   \
+      if ((depth == COPYPERIOD) && !BufferFull(w))			   \
+	{								   \
+	  AddCopyWork(w,prev,Tagify(next,tag));				   \
+									   \
+	  tag = TagOf(oldnext);						   \
+	  *next = SetGCBits(Tagify(copy,tag),gcbits);			   \
+									   \
+	  prev = TagToPointer(NULL);					   \
+	  next = newnext;						   \
+									   \
+	  depth = 0;							   \
+	}								   \
+      else								   \
+	{								   \
+	  *next = SetGCBits(Tagify(prev,tag),gcbits); 			   \
+	  tag = TagOf(oldnext);						   \
+	  prev  = next;							   \
+	  next  = newnext;						   \
+	}								   \
+									   \
+      goto forward;							   \
+    }									   \
+  else									   \
+    {									   \
+      /* get new location */						   \
+									   \
+      GetCopied(*next);							   \
+      goto backward;							   \
+    }									   \
+}
+
+/**********************************************************************
+ * Forwarding macros
+ */
+
+#define GetNewLocation(T)  ((TAGGED *) RemoveMarkF(T))
+#define FromOld(T)         RemoveMark(T)
+#define FromOldArg(T)      RemoveMarkFM(T)
+
+#define IsCopied(T)        Forwarded(T)
+#define IsCopiedCell(T)    (IsCopied(*TagToPointer(T)))
+#define GetNewLoc(T)       ((TAGGED) GetNewLocation(T))
+#define InOldStruct(T)     (IsInternal(*T) || IsInternal(*((T)+VARSIZE)))
+#define IsInternal(T)      IsMarkedFM(T)
+
+#define Forwarded(X)       (IsMarkedF(X) && !IsMarked(X))
+
+#define UpdateTrailForward(T)						   \
+{									   \
+  uword utf_tag = TagOf(*(T));						   \
+									   \
+  *(T) = Tagify(GetNewLocation(*TagToPointer(*(T))),utf_tag);		   \
+}
+
+
+# define Forward(O,T)      						   \
+{									   \
+  w->stats->heap_gc_copied++;						   \
+  (O) = (TAGGED) AddMarkF(T);						   \
+}
+
+# define GC_LOCKVALUE    GC_FWD_MASK
+
+#ifdef PARALLEL 
+
+# define LockCell(Cell,CellVal,FailCode)				   \
+{									   \
+  KSR1(DECLARE_SWAP_VAL);						   \
+									   \
+  CellVal = swap_il(&(Cell),GC_LOCKVALUE);				   \
+  if (CellVal == GC_LOCKVALUE)						   \
+    {									   \
+      FailCode;								   \
+    }									   \
+  else if (IsCopied(CellVal))						   \
+    {									   \
+      Cell = CellVal;							   \
+      FailCode;								   \
+    }									   \
+}
+
+# define WaitUntilCopied(NEXT,NEW_LOC)					   \
+{									   \
+  volatile TAGGED *pos;							   \
+  TAGGED wuc_new_loc;							   \
+									   \
+  pos = TagToPointer(NEXT);						   \
+  while(!IsCopied(*pos));						   \
+  while((wuc_new_loc = *pos) == (TAGGED) GC_LOCKVALUE);			   \
+  NEW_LOC = GetNewLocation(wuc_new_loc);				   \
+}
+
+#else /* not PARALLEL */
+
+# define LockCell(Cell,CellVal,FailCode)				   \
+{									   \
+  CellVal = Cell;							   \
+}
+# define WaitUntilCopied(NEXT,NEW_LOC) 					   \
+    NEW_LOC = GetNewLocation(*TagToPointer(NEXT))
+
+#endif /* PARALLEL */
+
+
+/**********************************************************************
+ * Load distribution support.
+ * 
+ * We use bounded buffers of a size 2^n for cheap modulo calculation.
+ * 
+ */
+
+
+#if 1
+
+#define InitMarkBuffer(W)						   \
+{									   \
+  AcquireLock(W->gc_info.load.lock);					   \
+  W->gc_info.load.start = W->gc_info.load.stop = 0;			   \
+  ReleaseLock(W->gc_info.load.lock);					   \
+}
+
+#define BufferFull(W)                                                      \
+((((W)->gc_info.load.stop+1)&LOADBUFFERSIZE) == (W)->gc_info.load.start)
+
+#define AddMarkBuffer(W,SIZE,ARG)					   \
+{									   \
+  int amb_index;							   \
+									   \
+  AcquireLock((W)->gc_info.load.lock);					   \
+									   \
+  amb_index = ((W)->gc_info.load.stop+1)&LOADBUFFERSIZE;		   \
+									   \
+  /* Check if buffer is full */						   \
+  if (amb_index !=  (W)->gc_info.load.start)				   \
+    {									   \
+      /* Add new entry */						   \
+      (W)->gc_info.load.stop = amb_index;				   \
+      (W)->gc_info.load.buf[amb_index].size = SIZE;			   \
+      (W)->gc_info.load.buf[amb_index].arg = ARG;			   \
+    }									   \
+									   \
+  ReleaseLock((W)->gc_info.load.lock);					   \
+}
+
+#define RemoveMarkBufferHead(W,SIZE,ARG)				   \
+{									   \
+  int rmb_index;							   \
+									   \
+  AcquireLock((W)->gc_info.load.lock);					   \
+									   \
+  if ((W)->gc_info.load.stop != (W)->gc_info.load.start)		   \
+    {									   \
+      rmb_index = ((W)->gc_info.load.start+1)&LOADBUFFERSIZE;		   \
+      SIZE = (W)->gc_info.load.buf[rmb_index].size;			   \
+      ARG =  (W)->gc_info.load.buf[rmb_index].arg;			   \
+      (W)->gc_info.load.start = rmb_index;				   \
+    }									   \
+  else									   \
+    {									   \
+      SIZE = 0;								   \
+    }									   \
+									   \
+  ReleaseLock((W)->gc_info.load.lock);					   \
+}
+
+#define RemoveMarkBufferTail(W,SIZE,ARG)				   \
+{									   \
+  int rmb_index;							   \
+									   \
+  AcquireLock((W)->gc_info.load.lock);					   \
+									   \
+  if ((W)->gc_info.load.stop != (W)->gc_info.load.start)		   \
+    {									   \
+      rmb_index = (W)->gc_info.load.stop;				   \
+      if ((SIZE == (W)->gc_info.load.buf[rmb_index].size) &&		   \
+	  (ARG ==  (W)->gc_info.load.buf[rmb_index].arg))		   \
+	{								   \
+	  (W)->gc_info.load.stop = (rmb_index-1)&LOADBUFFERSIZE;	   \
+	}								   \
+    }									   \
+  else									   \
+    {									   \
+      SIZE = 0;								   \
+    }									   \
+									   \
+  ReleaseLock((W)->gc_info.load.lock);					   \
+}
+
+/**********************************************************************
+ * Sharing Marking work
+ */
+
+#if 1
+#define SearchMarkWork(W)						   \
+{									   \
+  /* First, find a worker with something to work with */		   \
+									   \
+  BOOL   found_work=FALSE;						   \
+  int    smw_size;							   \
+  TAGGED *smw_arg;							   \
+									   \
+  (W)->gc_info.load.done = TRUE;					   \
+									   \
+  do									   \
+    {									   \
+      int smw_i;							   \
+									   \
+      found_work=FALSE;							   \
+									   \
+      for(smw_i = (W)->global->active_workers ;				   \
+	  smw_i >= 0 ;							   \
+	  smw_i--)							   \
+	{								   \
+	  worker *smw_w;						   \
+									   \
+	  smw_w = &((W)[smw_i-((W)->pid)]);				   \
+									   \
+	  if (smw_w->gc_info.load.stop != smw_w->gc_info.load.start)	   \
+	    {								   \
+	      RemoveMarkBufferHead(smw_w,smw_size,smw_arg);		   \
+	      if (smw_size != 0)					   \
+		{							   \
+		  found_work = TRUE;					   \
+		  gc_mark_var(w,smw_size,smw_arg);			   \
+		}							   \
+	    }								   \
+	  else if (smw_w->gc_info.load.done == FALSE)			   \
+	    {								   \
+	      found_work = TRUE;					   \
+	    }								   \
+	}								   \
+    }									   \
+  while (found_work != FALSE);						   \
+}
+
+#else
+
+#define SearchMarkWork(W)
+
+#endif
+
+#else
+# define InitMarkBuffer(W)
+# define AddMarkBuffer(W,SIZE,ARG)
+# define RemoveMarkBufferHead(W,SIZE,ARG)
+# define RemoveMarkBufferTail(W,SIZE,ARG)
+# define SearchMarkWork(W)
+#endif
+
+#if 0
+
+# define COPYPERIOD 10 
+
+# define SearchCopyWork(W)						   \
+{									   \
+  /* First, find a worker with something to work with */		   \
+									   \
+  BOOL   found_work=FALSE;						   \
+  int    scw_size;							   \
+  TAGGED *scw_arg;							   \
+									   \
+  (W)->gc_info.load.done = TRUE;					   \
+									   \
+  do									   \
+    {									   \
+      int scw_i;							   \
+									   \
+      found_work=FALSE;							   \
+									   \
+      for(scw_i = (W)->global->active_workers ;				   \
+	  scw_i >= 0 ;							   \
+	  scw_i--)							   \
+	{								   \
+	  worker *scw_w;						   \
+									   \
+	  scw_w = &((W)[scw_i-((W)->pid)]);				   \
+									   \
+	  if (scw_w->gc_info.load.stop != scw_w->gc_info.load.start)	   \
+	    {								   \
+	      RemoveMarkBufferHead(scw_w,scw_size,scw_arg);		   \
+									   \
+	      if (scw_size != 0)					   \
+		{							   \
+		  TAGGED *scw_next, *scw_prev, scw_tag;			   \
+									   \
+		  scw_prev = (TAGGED *) scw_arg;			   \
+		  scw_next = TagToPointer scw_size;			   \
+		  scw_tag  = TagOf(scw_size);				   \
+									   \
+		  scan(scw_next,scw_prev,scw_tag,w);			   \
+									   \
+		  found_work = TRUE;					   \
+		}							   \
+	    }								   \
+	  else if (scw_w->gc_info.load.done == FALSE)			   \
+	    {								   \
+	      found_work = TRUE;					   \
+	    }								   \
+	}								   \
+    }									   \
+  while (found_work != FALSE);						   \
+}
+
+# define AddCopyWork(W,PREV,COPY)					   \
+{									   \
+  depth += 1;								   \
+  if (depth == COPYPERIOD)				                   \
+    {									   \
+      AddMarkBuffer(W,COPY,PREV);					   \
+      depth = 0;							   \
+    }									   \
+}
+
+#else
+
+# define SearchCopyWork(W)
+# define AddCopyWork(W,Y,Z)
+
+#endif
+
+
+#endif /* NEW_COPY_GC_H */

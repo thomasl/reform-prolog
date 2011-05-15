@@ -1,0 +1,33 @@
+Predicate('$equiv_insert_4_1339_0' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 7 6
+ X10 6
+ X16 5 1 0
+ X13 6
+ X37 5
+ X55 7
+ X60 3
+ X36 ',' 2 7
+ X60 1
+ X65
+ X60 4
+ X60 2
+ X27
+Label 3
+ X20 6 6
+ X29 6 0
+ X37 5
+ X55 7
+ X55 8
+ X36 ',' 2 7
+ X60 1
+ X60 2
+ X46 3 0
+ X46 6 1
+ X46 4 2
+ X46 8 3
+ X26 equiv_insert 4
+)

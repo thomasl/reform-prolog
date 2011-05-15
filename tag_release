@@ -1,0 +1,18 @@
+###
+##  tag_release - a shorthand for applying "release" tags to reform modules.
+#
+#
+# Usage:	tag_release "this-is-a-tag"
+#
+
+if ($# == 0) then
+  echo "usage: tag_release <tag>"
+  exit
+endif
+
+
+cvs rtag -a $1 luther
+cvs rtag -a $1 compiler
+cvs rtag -a $1 documentation
+
+echo "Tagged current code base \"$1\""

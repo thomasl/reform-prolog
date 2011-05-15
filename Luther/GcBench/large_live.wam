@@ -1,0 +1,165 @@
+% Source:     '/home/groucho/csd/jb/Reform/Luther/GcBench/large_live.pl'
+% Compiled:   test/0
+% Directives: []
+Predicate(test 0
+  Label 1
+     Put_Constant 10 0
+     Execute run_list 1
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/GcBench/large_live.pl'
+% Compiled:   run_list/1
+% Directives: []
+Predicate(run_list 1
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant run_list 2
+     Put_Constant 1 3
+     Execute mode_error 4
+  Label 2
+     Allocate
+     Put_Y_Variable 0 1
+     Call make_list 2 1
+     Require 1
+     Put_Y_Unsafe_Value 0 0
+     Put_X_Void 1
+     Deallocate
+     Execute run 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/GcBench/large_live.pl'
+% Compiled:   make_list/2
+% Directives: []
+Predicate(make_list 2
+     Switch_On_Term 3 5 1 5 5
+  Label 1
+     Switch_On_Constant 1 (
+        0 2
+     ) 5
+  Label 2
+     Try 4
+     Trust 5
+  Label 3
+     Put_Constant gnd 1
+     Put_Constant make_list 2
+     Put_Constant 2 3
+     Execute mode_error 4
+  Label 4
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 0 0
+     Cut
+% reg x(1): par=any, seq=any, loc=local
+     Get_Nil 1
+     Proceed
+  Label 5
+     Require_Using 2 2
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% heap: par=any, seq=any, loc=local
+     Unify_Constant 1
+     Unify_X_Variable 1
+     Put_Constant 0 2
+% builtin '$gt'/2
+     Builtin 14 0 2
+% builtin '$minus_1'/2
+     Builtin 28 3 0
+     Put_X_Value 3 0
+     Execute make_list 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/GcBench/large_live.pl'
+% Compiled:   run/2
+% Directives: [parallel]
+Predicate(run 2
+     Switch_On_Term 1 2 fail 4 fail
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Nil 0
+% reg x(1): par=any, seq=any, loc=local
+     Get_Nil 1
+     Proceed
+  Label 3
+     Require_Using 4 2
+     Allocate
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_Void 1
+     Unify_Y_Variable 0
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+     Unify_X_Variable 1
+     Unify_Y_Variable 1
+     Put_Constant 10000 0
+     Call make_tree 2 2
+     Put_Y_Value 0 0
+     Put_Y_Value 1 1
+     Deallocate
+     Execute run 2
+  Label 4
+     Build_Rec_Poslist 0 2 3 0
+     Build_Poslist 1 2 4 1
+     Start_Left_Body 5
+        4 { 0 1 2 4 } -1
+     Execute run 2
+  Label 5
+     Initialize_Left 1
+  Label 6
+     Spawn_Left 1 2 2
+     Allocate
+     Get_Y_Variable 0 2
+     Put_Constant 10000 0
+     Put_Y_Value 0 3
+     Put_Nth_Head 4 3 0 1
+     Call make_tree 2 1
+     Deallocate
+     Jump 6
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/GcBench/large_live.pl'
+% Compiled:   make_tree/2
+% Directives: []
+Predicate(make_tree 2
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant make_tree 2
+     Put_Constant 2 3
+     Execute mode_error 4
+  Label 3
+     Choice_X 2
+     Put_Constant 2 3
+% builtin '$lt'/2
+     Builtin 13 0 3
+     Cut_X 2
+% reg x(1): par=free, seq=free, loc=local
+     Get_Constant leaf 1
+     Proceed
+  Label 4
+     Require_Using 5 2
+     Allocate
+% reg x(1): par=free, seq=free, loc=local
+     Get_Structure tree 4 1
+% heap: par=free, seq=free, loc=local
+     Unify_Constant node
+     Unify_X_Variable 1
+     Unify_Y_Variable 1
+% heap: par=free, seq=free, loc=local
+     Unify_Constant node
+     Put_Constant 1 2
+     Init 1 0
+% builtin '$gt'/2
+     Builtin 14 0 2
+     Put_Constant 2 3
+% builtin '$div'/3
+     Builtin 30 4 0 3
+     Get_Y_Value 0 4
+     Put_Y_Value 0 0
+     Call make_tree 2 2
+     Put_Y_Unsafe_Value 0 0
+     Put_Y_Value 1 1
+     Deallocate
+     Execute make_tree 2
+)

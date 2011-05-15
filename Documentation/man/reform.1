@@ -1,0 +1,119 @@
+.TH Reform Compiler
+.SH reform\-compiler
+Compile Reform Prolog programs for sequential or recursion-parallel
+execution.
+.SH SYNOPSIS
+.nf
+   ~reform/bin/$MACHINE/compiler
+   Reform compiler, version 1.8 of Wed Mar  8 14:13:11 MET 1995
+   Report bugs to reform-bugs@csd.uu.se
+
+   yes
+.fi
+.B  | ?- rcompile(
+.I FileNames
+).
+.sp
+.B  | ?- rcompile(
+.I FileNames
+,
+.I OptionList
+).
+.sp
+See below for the possible values of
+.I $MACHINE
+(specific for this installation).
+.SH DESCRIPTION
+.B reform-compiler
+generates parallel and sequential code for the Reform Prolog system.
+When started, you enter the Prolog top loop. In that mode, you can
+invoke rcompile/1 or rcompile/2 as shown above. The compiled files
+are emitted to a default output file ("a.wam") if no output directive
+specifies otherwise.
+.SH COMMAND LINE OPTIONS
+The
+.I FileNames
+is a list of file names. Non-trivial paths means the name must be
+quoted. See examples below.
+The following options are supported in
+.I OptionList
+.sp
+.TP 16
+.B verbose	v
+The compiler tells you what it is doing.
+.TP
+.B analyse	a
+Turn on global analysis (this option is default).
+.TP
+.B numa
+Produce code for machine architecture with nonuniform memory
+access (this option is default).
+.TP
+.B named_files_only	nfo
+Do not process included files (for quicker compilation). Disables
+global analysis.
+.TP
+.B output(File)		o(File)
+Produce output to File instead of to the default output file.
+This option has no effect if combined with output_separate.
+.TP
+.B output_separate	os
+The output from file.pl is emitted to file.wam. Works for multiple
+files combined simultaneously.
+.TP
+.B output_indexing	oi
+Displays indexing information for all predicates, except recursion-parallel
+ones. (These do not have interesting indexing anyway.)
+.TP
+.B analysis_statistics	as
+Give statistics of results of global analysis.
+.TP
+.B ascii_format		af
+The code produced is emitted using a verbose ascii format (including comments).
+.TP
+.B byte_format		bf
+The code produced is emitted using a less verbose ascii format (this option is
+default). Note that we do not produce true byte code output yet.
+.PP
+.SH FILES
+.TP 16
+.B ~reform/bin/{hp,sparc}/compiler
+Executable program. If you set
+.B
+$MACHINE
+to 
+.I hp 
+or 
+.I sparc
+you can define the command as shown in the synopsis.
+.TP
+Reform/Benchmarks/{small,medium,large}/*.pl
+Some benchmark programs.
+.SH EXAMPLES
+.nf
+  | ?- rcompile([file1,'other_dir/f2','~user/prolog/f3.pl']).
+
+  | ?- rcompile([file],[verbose,named_files_only]).
+
+  | ?- rcompile(file1,[verbose,analysis_statistics,output_indexing]).
+.fi
+.SH SEE ALSO
+.BR luther(1)
+.PP
+The Reform WWW home page: 
+.nf 
+     http://www.csd.uu.se/~thomasl/reform.html
+.fi
+.PP
+Technical reports available through anonymous ftp from
+.nf
+     ftp.csd.uu.se.
+.fi
+.SH BUGS
+The compiler should be part of the Luther Reform Prolog (luther(1)) package,
+rather than a separate entity.
+.sp
+Should be tested more extensively.
+.SH AUTHORS
+Thomas Lindgren wrote the original compiler. Patric Hedlin and
+Thomas Lindgren fixed bugs and added functionality.

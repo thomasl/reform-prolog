@@ -1,0 +1,1915 @@
+/*
+ * copy-gc-ali.c
+ *
+ * Johan Bevemyr.....Fri Nov 25 1994
+ *
+ *
+ * Implementation:
+ *
+ *   Based on the copying algorithm described by Kairi-Ali at SICS.
+ *
+ *
+ * Copyright (C) 1991 - 1995
+ *
+ *   H}kan Millroth / Johan Bevemyr / Thomas Lindgren / Patric Hedlin
+ *
+ */ 
+
+#include "luther.h"
+#include "engine.h"
+#include "think.h"
+#include "unify.h"
+#include "segment.h"
+
+
+#if defined(COPY_GC) && defined(COPY_ALI)
+
+typedef struct {
+  int trailcells_deleted;
+  u32 wake_count;
+  TAGGED *last_copied_trail_entry;
+} copy_state_t;
+
+
+#define GetNewLocation(T)  ((TAGGED *) (T))
+#define FromOld(T)         RemoveMark(T)
+#define FromOldArg(T)      RemoveMarkFM(T)
+
+#ifdef PARALLLE
+# define Forward(O,T)      (O) = (TAGGED) (T);
+#else
+# define Forward(O,T)      (O) = (TAGGED) (T)
+#endif /* PARALLEL */
+
+/* #define EARLY_RESET 1  */
+
+/**********************************************************************
+ * Stack support.
+ * 
+ * The stack is used when marking live data. The unused segments (the
+ * ones we are going to copy the live data to) are used to keep the
+ * stack. This guarantees that the stack is large enough.
+ *
+ */
+
+#define InitStack(T,S,E,Stack)						   \
+{									   \
+  (T) = (S) = w->heap_top;						   \
+  (E) = w->heap_margin;							   \
+  (Stack) = w->used_segments;						   \
+}
+
+#define CheckStackOverflow(T,S,E,Stack)					   \
+{									   \
+  if((T) > (E)) /* allocate new stack */				   \
+    {									   \
+      segment *new;							   \
+      TAGGED *old_heap_top;						   \
+									   \
+      old_heap_top = w->heap_top;					   \
+      w->heap_top = (T);       /* new segment push NULL on top */	   \
+      new = (segment *) new_segment(w);					   \
+									   \
+      PushOnHeap(w->heap_top,old_heap_top);				   \
+      PushOnHeap(w->heap_top,Stack);					   \
+      PushOnHeap(w->heap_top,T);					   \
+      PushOnHeap(w->heap_top,S);					   \
+      PushOnHeap(w->heap_top,E);					   \
+									   \
+      Stack = new;							   \
+      (T) = (S) = w->heap_top;						   \
+      (E) = w->heap_margin;						   \
+    }									   \
+}
+
+#define PopStack(T,S,E,Stack)						   \
+{									   \
+  segment *old;								   \
+  TAGGED *new_heap_top;							   \
+									   \
+  old = Stack;								   \
+									   \
+  PopFromHeap(w->heap_top,(TAGGED)E);					   \
+  PopFromHeap(w->heap_top,(TAGGED)S);					   \
+  PopFromHeap(w->heap_top,(TAGGED)T);					   \
+  PopFromHeap(w->heap_top,(TAGGED)Stack);				   \
+  PopFromHeap(w->heap_top,(TAGGED)new_heap_top);		           \
+									   \
+  w->heap_top = new_heap_top;						   \
+									   \
+  free_segment(old,w);							   \
+}
+
+#define SavePosition(S,R,C)						   \
+{									   \
+  if(R != 0)								   \
+    {									   \
+      PushSize(S,R);							   \
+      PushTAGGED(S,C);							   \
+    }									   \
+}
+
+#define PushTAGGED(S,T)    {*(S) = (TAGGED) (T);S++;}
+#define PushSize(S,T)      {*(S) = (TAGGED) (T);S++;}
+
+#define PopTAGGED(S)       ((TAGGED *) *(--S))
+#define PopSize(S)         ((u32) *(--S))
+
+#define StackEmpty(S,E)    (S == E)
+#define LastStack(T)       (*(T-1) == 0)
+
+/**********************************************************************
+ * Support for early reset (a trail related optimization).
+ */
+
+/* reset cell but keep GC-mark-bits (the cell is still in a live struct)
+ */
+
+#define ResetEntry(T)							   \
+{									   \
+  *(T) = 0;								   \
+  (T) -= 1;								   \
+  copy_state->trailcells_deleted += 1;					   \
+}
+
+#define ResetCell(V)							   \
+{									   \
+  register TAGGED rc_var;						   \
+  register uword fmark;							   \
+									   \
+  rc_var = *(V);							   \
+  fmark = GetMask(*TagToPointer(rc_var), GC_FWD_MASK);			   \
+  *TagToPointer(rc_var) = SetMask((rc_var), fmark);			   \
+									   \
+  *(V) = 0;								   \
+  V -= 1;								   \
+  copy_state->trailcells_deleted += 1;					   \
+}
+
+#define ResetValueCell(V)						   \
+{									   \
+  register TAGGED rvc_var, rvc_val;					   \
+  register uword fmark;							   \
+									   \
+  rvc_var = *(V);							   \
+  rvc_val = *(V-1);							   \
+									   \
+  fmark = GetMask(*TagToPointer(rvc_var), GC_FWD_MASK);			   \
+  *TagToPointer(rvc_var) = SetMask((rvc_val), fmark);			   \
+									   \
+  *(V) = *((V)-1) = 0;							   \
+  V -= 2;								   \
+  copy_state->trailcells_deleted += 2;					   \
+}
+
+#ifdef UNBOUND
+
+#  define ResetHVA(T) ResetValueCell(T)
+#  define TrailHVASize 2
+
+#else /* not UNBOUND */
+
+#  define ResetHVA(T) ResetCell(T)
+#  define TrailHVASize 1
+
+#endif /* UNBOUND */
+
+#if not(defined(EARLY_RESET))
+
+#define SkipValueCell(T)  (T) -= 2
+#define SkipHVA(T)       (T) -= TrailHVASize
+#define SkipEntry(T)     (T) -= 1
+
+#endif /* EARLY_RESET */
+
+/**********************************************************************
+ * Local prototypes
+ */
+
+static void mark PROTO((worker *, copy_state_t *));
+static void mark_registers PROTO((worker *));
+static void mark_environments PROTO((environment *,worker *,int));
+static void mark_choicepoints PROTO((worker *, copy_state_t *));
+static void mark_variable PROTO((TAGGED *,worker *));
+static TAGGED *mark_trail PROTO((worker *,TAGGED *,TAGGED *, copy_state_t *));
+
+#if not(defined(EARLY_RESET))
+static TAGGED *mark_trail_late  PROTO((worker *,TAGGED *,TAGGED *, copy_state_t *));
+#endif
+
+static void copy PROTO((worker *, copy_state_t *));
+static void copy_registers PROTO((worker *));
+static void copy_environments PROTO((environment *, worker *, int));
+static void copy_choicepoints PROTO((worker *, copy_state_t *));
+static TAGGED copy_variable PROTO((TAGGED, worker *));
+static TAGGED *copy_trail PROTO((worker *,TAGGED *, TAGGED *, copy_state_t *));
+static void update_choicepoints PROTO((worker *, copy_state_t *));
+
+
+/**********************************************************************
+ *
+ */
+
+void garbage_collect(w)
+    worker *w;
+{
+  int gc_start_time = usertime();
+  u32 initial_size;
+  u32 final_size;
+  segment *used_segs;
+  copy_state_t copy_state;
+  
+
+  /************************************************************
+   * Pre statistics.
+   */
+
+  if (w->global->flags.gc_verbose == TRUE)
+    {
+      fprintf(stderr, "{verbose: Garbage Collection...}\n");
+    }
+
+  initial_size = used_segment_size_all(w);
+
+  used_segs = w->used_segments;
+  w->used_segments = NULL;
+  (void) new_segment(w);
+
+  /************************************************************
+   * COLLECT GARBAGE
+   */
+
+  copy_state.wake_count = w->wake_count;
+  {
+    int gc_mark_time = usertime();
+
+    GC_Start_Parallel(W_GC_MARK);
+
+    mark(w,&copy_state);
+
+    GC_Stop_Parallel;
+
+#if not(defined(EARLY_RESET))
+    GC_Start_Parallel(W_GC_MARK_LATE);
+
+    mark_trail_late(w,w->trail_top-1,w->trail_start,&copy_state);
+
+    GC_Stop_Parallel;
+#endif /* not EARLY_RESET */
+
+
+    w->stats->heap_gc_mark_time += usertime() - gc_mark_time;
+  }
+
+  copy_state.wake_count = w->wake_count;
+
+  {
+    int gc_copy_time = usertime();
+
+    copy(w,&copy_state);
+
+    GC_Run_Parallel(W_GC_COPY);
+
+    w->stats->heap_gc_copy_time += usertime() - gc_copy_time;
+  }
+
+  update_choicepoints(w,&copy_state);
+  GC_Run_Parallel(W_GC_UPDATECP);
+  
+#if not(defined(UNBOUND) || defined(TIMESTAMP))
+  w->uncond = w->heap_top;
+#endif
+  
+  /*****************************************************************
+   * Report statistics
+   */
+
+  final_size = used_segment_size_all(w);
+
+  if (w->global->flags.gc_verbose == TRUE)
+    {
+      fprintf(stderr, "{verbose: Garbage Collection...reclaimed %lu bytes (%lu bytes survived)}\n", 
+	      (integer) initial_size - (integer) final_size,
+	      (integer) final_size);
+    }
+
+  /****************************************************************
+   * free old segments
+   */
+
+  while (used_segs != NULL)
+    {
+      segment *seg;
+
+      seg = used_segs;
+      used_segs = seg->next;
+      return_segment(seg, w);
+    }
+
+  /* Restore the non-backtrackable compared area */
+  used_segs = w->global->compare_seg;
+  w->global->compare_seg = NULL;
+
+  while (used_segs != NULL)
+    {
+      segment *seg;
+
+      seg = used_segs;
+      used_segs = seg->next;
+      return_segment(seg, w);
+    }
+
+  allocate_static_segment(w);
+ 
+  /* check weather we need to allocate more blocks or not */
+
+  if (w->global->free_seg < w->global->used_seg+1)
+    {
+      FatalError("Prolog out of memory");
+    }
+  
+  if (w->heap_top > w->heap_margin)
+    {
+      (void) new_segment(w);
+    }
+
+  w->stats->heap_gc_nr++;
+  w->stats->heap_gc_bytes += initial_size - final_size;
+  w->stats->heap_gc_time += usertime() - gc_start_time;
+}
+
+/************************************************************************
+ * Marking                                                              *
+ * We all cells residing in live structures (lists, cva-lists and       *
+ * structures). This is done so that the copying algorithm may detect   *
+ * that a cell recide inside a live structure and copy the entire       *
+ * surrounding structure.                                               *
+ ***********************************************************************/
+
+static void mark(w,copy_state)
+    worker *w;
+     copy_state_t *copy_state;
+{
+    mark_registers(w);
+    mark_environments(w->frame,w,w->gc_info.envsize);
+    mark_choicepoints(w,copy_state);
+
+}
+
+static void mark_registers(w)
+    worker *w;
+{
+  register int arity = w->gc_info.arity;
+  register TAGGED *areg = w->regs;
+  
+  while (arity--)
+    {
+      if (IsHeapTerm(X(arity)) || IsHeapBox(X(arity)))
+	{
+	  *w->trail_top = X(arity);
+	  mark_variable(w->trail_top,w);
+	}
+    }
+}
+
+static void mark_environments(frame,w,size)
+    register environment *frame;
+    worker *w;
+    int size;
+{
+  BOOL visited_flag = FALSE;
+
+  while ((frame != NULL) && (visited_flag == FALSE))
+    {
+      while (size--)
+	{
+	  if (!IsMarked(Yf(size)))
+	    {
+	      switch(TagOf(Yf(size))) {
+	      case HVA:
+#ifdef CONSTR 
+	      case CVA:
+#endif /* CONSTR */
+		mark_variable(&(Yf(size)),w);
+		break;
+	      case SVA:
+		break;
+	      case NUM:
+		break;
+	      case BOX:
+		mark_variable(&(Yf(size)),w);
+		break;
+	      case ATM:
+		break;
+	      case LST:
+	      case STR:
+	      case GEN:
+		mark_variable(&(Yf(size)),w);
+		break;
+#ifdef UNBOUND
+	      case UVA:
+		break;
+#endif /* UNBOUND */
+	      default:
+		Error("mark_environment -- TagOf out of range");
+	      }
+	      Mark(Yf(size));
+	    }
+	  else
+	    visited_flag = TRUE;
+	}
+      size = FrameSize(frame->next_instr);
+      frame = frame->cont_env;
+    }
+}
+
+
+/**********************************************************************
+ * In Parallel:
+ * 
+ * We would like to perform 'early-reset' in the same way as it is performed
+ * sequentially. However, this would result in barrier synchronization at each
+ * choicepoint. The reason is that in order to reset an unmarked variable 
+ * we must ensure that all data created after the current choicepoint 
+ * have been marked. That is, all workers have marked the data they can
+ * reach from roots allocated after the current choicepoint.
+ *
+ * Another method: when a worker finds an unmarked variable which is a 
+ * candidate for 'early-reset' it waits until all other workers have 
+ * marking their live data above this point. For this to be more efficient
+ * than barrier synchronization candidates for 'early-reset' would have to 
+ * be rare. If this is the case then the optimization could be removed
+ * all together.
+ *
+ * The advantage of performing 'early-reset' when compiling the compiler
+ * (a program that allocates 195 MB and results in a large number of GCs)
+ * is very small ...
+ *
+ *   Increase in marking time:
+ *   Increase in live data:
+ *   Decrease in reset cells:
+ *
+ */
+
+#ifdef EARLY_RESET
+
+static TAGGED *mark_trail(w,t,stop,copy_state)
+     worker *w;
+     TAGGED *t,*stop;
+     copy_state_t *copy_state;
+{
+  while (t >= stop)
+    {
+      if (IsNewSegmentMarker(*t))
+	{
+	  ResetEntry(t);
+	}
+      else if ((IsValueTrail(t) || IsHVAorCVA(*t)) &&
+	       !IsMarked(*TagToPointer(*t)))
+	{
+	  if (IsValueTrail(t))	/* Value trail entry */
+	    {  
+	      ResetValueCell(t);
+	    }
+	  else if (IsHVA(*t))
+	    {
+	      ResetHVA(t);
+	    }
+#ifdef CONSTR
+	  else if (IsCVA(*t))
+	    {
+	      if (copy_state->wake_count > 1)
+		{
+		  mark_variable(t,w);
+		  t -= TrailHVASize;
+		  copy_state->wake_count--;
+		}
+	      else
+		{
+		  ResetHVA(t);
+		}
+	    }
+#endif /* CONSTR */
+	}
+      else if (IsValueTrail(t))	/* Value trail entry */
+	{  
+	  mark_variable(t-1,w);
+	  t -= 2;
+	}
+      else if (IsHVA(*t))
+	{
+	  t -= TrailHVASize;
+	}
+#ifdef CONSTR
+      else if (IsCVA(*t))
+	{
+	  wake_count--;
+	  t -= TrailHVASize;
+	}
+#endif /* CONSTR */
+      else
+	{
+	  t--;
+	}
+    }
+  return t;
+}
+
+#else
+
+static TAGGED *mark_trail(w,t,stop,copy_state)
+     worker *w;
+     TAGGED *t,*stop;
+     copy_state_t *copy_state;
+{
+  while (t >= stop)
+    {
+      if (IsNewSegmentMarker(*t))
+	{
+	  SkipEntry(t);
+	}
+      else if ((IsValueTrail(t) || IsHVAorCVA(*t)) &&
+	       !IsMarked(*TagToPointer(*t)))
+	{
+	  if (IsValueTrail(t))	/* Value trail entry */
+	    {  
+	      SkipValueCell(t);
+	    }
+	  else if (IsHVA(*t))
+	    {
+	      SkipHVA(t);
+	    }
+#ifdef CONSTR
+	  else if (IsCVA(*t))
+	    {
+	      if (copy_state->wake_count > 1)
+		copy_state->wake_count--;
+
+	      SkipHVA(t);
+	    }
+#endif /* CONSTR */
+	}
+      else if (IsValueTrail(t))	/* Value trail entry */
+	{  
+	  mark_variable(t-1,w);
+	  t -= 2;
+	}
+      else if (IsHVA(*t))
+	{
+	  t -= TrailHVASize;
+	}
+#ifdef CONSTR
+      else if (IsCVA(*t))
+	{
+	  wake_count--;
+	  t -= TrailHVASize;
+	}
+#endif /* CONSTR */
+      else
+	{
+	  t--;
+	}
+    }
+  return t;
+}
+
+static TAGGED *mark_trail_late(w,t,stop,copy_state)
+     worker *w;
+     TAGGED *t,*stop;
+     copy_state_t *copy_state;
+{
+  while (t >= stop)
+    {
+      if (IsNewSegmentMarker(*t))
+	{
+	  ResetEntry(t);
+	}
+      else if ((IsValueTrail(t) || IsHVAorCVA(*t)) &&
+	       !IsMarked(*TagToPointer(*t)))
+	{
+	  if (IsValueTrail(t))	/* Value trail entry */
+	    {  
+	      ResetValueCell(t);
+	    }
+	  else if (IsHVA(*t))
+	    {
+	      ResetHVA(t);
+	    }
+#ifdef CONSTR
+	  else if (IsCVA(*t))
+	    {
+	      if (copy_state->wake_count > 1)
+		copy_state->wake_count--;
+
+	      ResetHVA(t);
+	    }
+#endif /* CONSTR */
+	}
+      else if (IsValueTrail(t))	/* Value trail entry */
+	{  
+	  SkipValueCell(t);
+	}
+      else if (IsHVA(*t))
+	{
+	  SkipHVA(t);
+	}
+#ifdef CONSTR
+      else if (IsCVA(*t))
+	{
+	  wake_count--;
+	  SkipHVA(t);
+	}
+#endif /* CONSTR */
+      else
+	{
+	  t--;
+	}
+    }
+  return t;
+}
+
+#endif
+
+static void mark_choicepoints(w,copy_state)
+     register worker *w;
+     copy_state_t *copy_state;
+{
+  register int i;
+  register TAGGED *areg, *t = w->trail_top-1;
+  register choicepoint *choice = w->choice;
+  
+  copy_state->trailcells_deleted = 0;
+  
+  while (choice != NULL)
+    {
+      t = mark_trail(w,t,choice->trail_top,copy_state);
+      mark_environments(choice->cont_env,w,FrameSize(choice->next_instr));
+      i = choice->arity;
+      areg = choice->areg;
+      while (i--)
+	{
+	  if (IsHeapTerm(X(i)) || IsHeapBox(X(i)))
+	    {
+	      mark_variable(&(X(i)),w);
+	    }
+	}
+      choice = choice->last_choice;
+    }
+  copy_state->last_copied_trail_entry = t;
+}
+
+
+/**********************************************************************
+ * This part implements the copying algorithm described by 
+ * Khayri A. M. Ali's paper "A Paralle Copying Garbage Collection
+ * Scheme for Shared-memory Multiprocessors. The algorithm has been
+ * extended to cope with the term representation that Prolog use.
+ *
+ * Instead of using pointer reversal for traversing the 
+ * structure to mark we use an open coded recursive procedure 
+ * in which the stack is temporarily stored in the empty area 
+ * (the area we are going to copy the live data to).
+ *
+ * All internal structure cells, except the first in each structrue,
+ * should be marked with F after this pass.
+ *
+ * Algorithm:
+ * Cells are marked with M as they are passed through. This is done
+ * in order to detect circular references. 
+ *
+ * The variable remaining_args is used for detecting whether the
+ * current cell is internal to a structure. When backing up this
+ * is needed for deciding whether to mark the next cell or to
+ * continue to back up.
+ * 
+ * When a structure (cva, list, or struct) is entered the remaining_
+ * args variable is set to the number of arguments in the structure.
+ * The first element is marked. Note that it is not marked with F.
+ * Subsequent arguments to the structure are marked with F when 
+ * backing up. If an argument is already marked with F, it is skipped.
+ * 
+ * One way of parallelising this scheme is to let a worker start
+ * marking unmarked structure arguments. They are then marked with
+ * F and consequently skipped by other workers.
+ */
+
+static void mark_variable(start,w)
+     TAGGED *start;
+     worker *w;
+{
+  TAGGED *stack_top;      /* Variables for book keeping of the */
+  TAGGED *stack_start;    /* traversal stack.                  */
+  TAGGED *stack_end;
+  segment *stack;
+  TAGGED *current;        /* Current cell to mark              */
+  u32 remaining_args;     /* Remaining arguments in current structure */
+
+  /* Init stack
+   */
+
+  InitStack(stack_top,stack_start,stack_end,stack);
+
+  remaining_args = 0;
+  current = start;
+
+ forward:
+
+  CheckStackOverflow(stack_top,stack_start,stack_end,stack); 
+
+  if (IsMarked(*current)) goto backward;
+
+  SafeMark(*current, goto backward);
+
+  switch(TagOf(*current))
+    {
+    case HVA:
+      /* We have to mark to catch circular references 
+       */
+      SavePosition(stack_top,remaining_args,current);
+
+      remaining_args = 0;
+      current = TagToPointer(*current);
+
+      goto forward;
+
+#ifdef CONSTR
+    case CVA:
+      {
+	TAGGED *next;
+
+	next = TagToPointer(*current);
+
+	if (IsMarkedF(*(next+VARSIZE))) goto backward;
+
+	SavePosition(stack_top,remaining_args,current);
+
+	remaining_args = 1;
+	current = next;
+
+	goto forward;
+      }
+#endif /* CONSTR */
+
+    case SVA:
+      FatalError("mark_variable -- Stack variable in heap!");
+      break;
+    case NUM:
+      goto backward;
+    case BOX:
+      Mark(*TagToPointer(*current));
+      goto backward;
+    case ATM:
+      goto backward;
+
+    case LST:
+      {
+	TAGGED *next;
+
+	next = TagToPointer(*current);
+
+	if (IsMarkedF(*(next+VARSIZE))) goto backward;
+
+	SavePosition(stack_top,remaining_args,current);
+
+	remaining_args = 1;
+	current = next;
+      
+	goto forward;
+      }
+    
+    case STR:
+      { 
+	TAGGED *next;
+	int arity,i;
+
+	next = TagToPointer(*current);
+
+	if (IsMarkedF(*(next+VARSIZE))) goto backward;
+
+	arity = StructArity(next);
+
+	if (arity == 0) {
+	  Error("mark_variable: Structure arity is zero");
+	  return;
+	}
+
+	SavePosition(stack_top,remaining_args,current);
+
+	remaining_args = arity;
+	current = next;
+
+	goto forward;
+      }
+    
+    case GEN:
+      GetMethod(gc,*current)(*current);
+      goto backward;
+
+#ifdef UNBOUND
+    case UVA:
+      goto backward;
+#endif /* UNBOUND */
+    default:
+      Error("mark_variable -- TagOf out of range");
+    }
+
+
+  /* Unwind until stack is empty or an entry is popped where
+   * remaining_args != 0;
+   */
+
+ backward:
+
+  if (remaining_args == 0)
+    {
+      if (StackEmpty(stack_top,stack_start)) 
+	{
+	  if(LastStack(stack_top)) /* done */
+	    {
+	      return;
+	    }
+	  else
+	    {
+	      PopStack(stack_top,stack_start,stack_end,stack); 
+	    }
+	}
+
+      current = PopTAGGED(stack_top);
+      remaining_args = PopSize(stack_top);
+
+      goto backward;
+    }
+  else
+    {
+      remaining_args -= 1;
+      current += VARSIZE;
+
+      if (IsMarkedF(*current))
+	{
+	  goto backward;
+	}
+      else
+	{
+	  SafeMarkF(*current, goto backward);
+	  goto forward;
+	}
+    }
+}
+
+/***********************************************************************
+ * Finding data to copy (from registers, choicepoints and environments *
+ ***********************************************************************/
+
+static void copy(w,copy_state)
+     worker *w;
+     copy_state_t *copy_state;
+{
+    copy_registers(w);
+    copy_environments(w->frame,w,w->gc_info.envsize);
+    copy_choicepoints(w,copy_state);
+}
+
+static void copy_registers(w)
+     worker *w;
+{
+  register int arity = w->gc_info.arity;
+  register TAGGED *areg = w->regs;
+  
+  while (arity--)
+    {
+      if (IsHeapTerm(X(arity)) || IsHeapBox(X(arity)))
+	{
+	  X(arity) = copy_variable(X(arity),w);
+	}
+    }
+}
+
+static void copy_environments(frame,w,size)
+     register environment *frame;
+     worker *w;
+     int size;
+{
+  BOOL visited_flag = FALSE;
+
+  while ((frame != NULL) && (visited_flag == FALSE))
+    {
+      while (size--)
+	{
+	  if (IsMarked(Yf(size)))
+	    {
+	      switch(TagOf(Yf(size)))
+		{
+		case HVA:
+#ifdef CONSTR 
+		case CVA:
+#endif /* CONSTR */
+		  Yf(size) = copy_variable(Yf(size),w);
+		  break;
+		case SVA:
+		  break;
+		case NUM:
+		  break;
+		case BOX:
+		  if (IsHeapBox(Yf(size)))
+		     {
+		       Yf(size) = copy_variable(Yf(size),w);
+		     }
+		  break;
+		case ATM:
+		  break;
+		case LST:
+		case STR:
+		case GEN:
+		     Yf(size) = copy_variable(Yf(size),w);
+		     break;
+#ifdef UNBOUND 
+		case UVA:
+		  break;
+#endif /* UNBOUND */
+		default:
+		  Error("copy_environment -- TagOf out of range");
+		}
+	      UnMark(Yf(size));
+	    }
+	  else
+	    visited_flag = TRUE;
+	}
+      size = FrameSize(frame->next_instr);
+      frame = frame->cont_env;
+    }
+}
+
+
+static TAGGED *copy_trail(w,t,stop,copy_state)
+     worker *w;
+     TAGGED *t, *stop;
+     copy_state_t *copy_state;
+{
+  while (t >= stop)
+    {
+      if ((*t == 0) || IsSVA(*t) || IsNUM(*t) || IsSTR(*t))
+	{
+	  t -= 1;
+	}
+      else if (IsATM(*t))
+	{
+	  Error("ATM found while copying trail");
+	  t -= 1;
+	}
+      else
+	{
+#ifndef NDEBUG
+	  if (IsHVA(*t) && IsMarked(*TagToPointer(*t)))
+	    {
+	      Error("uncoppied HVA in trail");
+	      *t = 0;
+	      *(t-1) = 0;
+	      copy_state->trailcells_deleted += 2;
+	      t -= 2;
+	    }
+	  else
+#endif
+	    {
+	      /* If we get this far, then we know that the 
+	       * trail entry has been copied, otherwise it would 
+	       * have been zeroed
+	       */
+	      register TAGGED *old = TagToPointer(*t);
+	      register u32 tag = TagOf(*t);
+
+	      *t = Tagify(GetNewLocation(*old), tag);
+	      if (IsValueTrail(t))
+		{
+		  t -= 1;
+		  *t = copy_variable(*t,w);
+		  t -= 1;
+		}
+	      else
+		{
+		  t -= TrailHVASize;
+		}
+	    }
+	}
+    }
+  return t;
+}
+
+static void copy_choicepoints(w, copy_state)
+     register worker *w;
+     copy_state_t *copy_state;
+{
+  register int i;
+  register TAGGED *areg, *t = w->trail_top-1;
+  register choicepoint *choice = w->choice;
+  register TAGGED *old;
+  
+  while (choice != NULL)
+    {
+      t = copy_trail(w,t,choice->trail_top,copy_state);
+      copy_environments(choice->cont_env,w,
+			FrameSize(choice->next_instr));
+      i = choice->arity;
+      areg = choice->areg;
+      while (i--)
+	{
+	  if (IsHeapTerm(X(i)) || IsHeapBox(X(i)))
+	    {
+	      X(i) = copy_variable(X(i),w);
+	    }
+	}
+      choice = choice->last_choice;
+    }
+  copy_state->last_copied_trail_entry = t;
+}
+
+
+/**********************************************************************
+
+ **********************************************************************/
+
+#define IsCopied(T)        (!IsMarked(T))
+#define IsCopiedCell(T)    (!IsMarked(*TagToPointer(T)))
+#define GetNewLoc(T)       ((TAGGED) TagToPointer(*TagToPointer(T)))
+#define InOldStruct(T)     (IsMarkedF(*T) || IsMarkedF(*(T+VARSIZE)))
+
+static TAGGED copy_variable PROTO((TAGGED, worker*));
+static TAGGED scan PROTO((TAGGED *, TAGGED, worker *));
+static TAGGED *check_size PROTO((s32, worker *));
+static TAGGED *copy_term PROTO((TAGGED, worker *));
+static TAGGED *copy_hva PROTO((TAGGED, worker *));
+static TAGGED *copy_cva PROTO((TAGGED, worker *));
+static TAGGED *copy_box PROTO((TAGGED, worker *));
+static TAGGED *copy_list PROTO((TAGGED, worker *));
+static TAGGED *copy_struct PROTO((TAGGED, worker *));
+
+/**********************************************************************
+ *
+ * copy_variable() returns a tagged pointer to the copied object. 
+ *
+ */
+
+inline static TAGGED *check_size(size, w)
+     s32 size;
+     worker *w;
+{
+  /* Check that we do not overwrite the end of the segment, we
+   * use a small buffer of 10 word to be extra safe
+   */
+
+  if (w->heap_top+size > (w->heap_end-10))
+    {
+      (void) new_segment(w);
+    }
+
+  if (w->heap_top+size > (w->heap_end-10))
+    {
+      FatalError("Structure do not fit into segment");
+    }
+
+  return w->heap_top;
+}
+    
+
+inline static TAGGED *copy_hva(term,w)
+     TAGGED term;
+     worker *w;
+{
+  TAGGED *new;
+  TAGGED *old;
+  int size;
+
+  old = TagToPointer(term);
+
+
+  /* Check if the cell reside in a live structure, in 
+   * that case the entire structure has to be copied.
+   */
+
+  if (InOldStruct(old)) 
+    {
+      int dist, i;
+
+      /* calculate the distance to the head of the structure */
+
+      /* find head of struct */
+      for (dist = 0; IsMarkedF(*old); old -= VARSIZE, dist += VARSIZE);
+
+      /* find size of structure size = VARSIZE already set */
+      for (size=VARSIZE; IsMarkedF(old[size]); size += VARSIZE);
+
+      new = check_size(size,w);
+      
+      new[0] = FromOld(old[0]);
+      Forward(old[0],&(new[0]));
+
+      if (VARSIZE==2)
+	new[1] = old[1];
+
+      /* copy structure */
+      for (i = VARSIZE; i < size; i += VARSIZE)
+	{
+	  new[i] = FromOldArg(old[i]);
+	  Forward(old[i],&(new[i]));
+
+	  if (VARSIZE==2)
+	    new[i+1] = old[i+1];
+	}
+
+      /* Mark the original cell so that it can be found 
+       * when all arguments have been copied
+       */
+
+      if (dist != 0)
+	{
+	  MarkF(new[0]);
+	  MarkF(new[dist]);
+	}
+    }
+  else
+    {
+      /* The variable does not reside in a live
+       * structure. 
+       */
+      if (IsOrdered(term))
+	{
+	  size = 2*VARSIZE;
+	  new = check_size(size,w);
+
+#if 1
+	  new[0] = *(old-VARSIZE);
+	  
+	  new[VARSIZE] = FromOld(*old);
+
+	  Forward(old[0],(new+VARSIZE));
+
+	  if (VARSIZE==2)
+	    new[VARSIZE+1] = *(old+1);
+
+	  /* Mark(new[VARSIZE]); */
+	  Mark(new[0]);
+	  MarkF(new[0]);
+	  MarkF(new[VARSIZE]);
+
+	  new += size;
+	  w->heap_top = new;
+
+ 	  return (new-VARSIZE);
+#else
+	  new[0] = FromOld(old[0]);
+	  Forward(old[0],new);
+
+	  if (VARSIZE==2)
+	    new[1] = old[1];
+
+	  new[VARSIZE] = old[VARSIZE];
+#endif
+	}
+      else
+	{
+	  size = VARSIZE;
+
+	  new = check_size(size,w);
+
+	  new[0] = FromOld(old[0]);
+	  Forward(old[0],new);
+
+	  if (VARSIZE==2)
+	    new[1] = old[1];
+	}
+    } 
+
+  Mark(new[0]);
+  new += size;
+  w->heap_top = new;
+
+  return (new-VARSIZE);
+}
+
+
+inline static TAGGED *copy_cva(term,w)
+     TAGGED term;
+     worker *w;
+{
+  TAGGED *new;
+  TAGGED *old;
+
+  new = check_size(VARSIZE*2,w);
+  old = TagToPointer(term);
+	
+  new[0] = FromOld(old[0]);
+  Forward(old[0],&(new[0])); 
+
+  new[VARSIZE] = FromOldArg(old[VARSIZE]);
+  Forward(old[VARSIZE],&(new[VARSIZE]));
+	
+  if (VARSIZE==2)
+    {
+      new[1] = old[1];
+      new[3] = old[3];
+    }
+
+  Mark(new[0]);
+  new += 2*VARSIZE;
+  w->heap_top = new;
+
+  return (new-VARSIZE);
+}
+
+
+inline static TAGGED *copy_box(term,w)
+     TAGGED term;
+     worker *w;
+{
+  TAGGED *new, *ret;
+  TAGGED *old;
+  register s32 i, size;
+
+  old = TagToPointer(term);
+
+  size = GetBoxSize(old[0]);
+
+  ret = new = check_size(VARSIZE*size,w);
+	
+  new[0] = FromOld(old[0]);
+
+  for (i = 1; i < size*VARSIZE; i++) /* copy term */
+    {
+      new[i] = old[i];
+    }
+
+  Forward(old[0],&(new[0])); /* update oldspace */
+
+  new += size*VARSIZE;
+  w->heap_top = new;
+
+  return ret;
+}
+
+inline static TAGGED *copy_internal_list(old,w)
+     TAGGED old[];
+     worker *w;
+{
+  TAGGED *new;
+  int dist, i, size;
+
+  /* find head of struct */
+  for (dist = 0; IsMarkedF(*old); old -= VARSIZE, dist += VARSIZE);
+
+  /* find size of structure */
+  for (size = VARSIZE; IsMarkedF(old[size]); size += VARSIZE);
+  
+  new = check_size(size,w);
+
+  new[0] = FromOld(old[0]);
+  Forward(old[0],&(new[0]));
+
+  if (VARSIZE==2)
+    new[1] = old[1];
+
+  /* copy structure */
+  for (i = VARSIZE; i < size; i += VARSIZE)
+    {
+      new[i] = FromOldArg(old[i]);
+      Forward(old[i],&(new[i]));
+
+      if (VARSIZE==2)
+	new[i+1] = old[i+1];
+    }
+  
+  if (dist != 0)
+    {
+      MarkF(new[0]);
+      MarkF(new[dist]);
+    }
+
+  Mark(new[0]);
+  new += size;
+
+  w->heap_top = new;
+
+  return (new-VARSIZE);
+}
+
+inline static TAGGED *copy_list(term,w)
+     TAGGED term;
+     worker *w;
+{
+  TAGGED *new;
+  TAGGED *old;
+
+  old = TagToPointer(term);
+
+  if(IsMarkedF(old[0]))
+    {
+      return copy_internal_list(old,w);
+    }
+  else
+    {
+      new = check_size(VARSIZE*2,w);
+	
+      new[0] = FromOld(old[0]);
+      Forward(old[0],&(new[0])); 
+
+      new[VARSIZE] = FromOldArg(old[VARSIZE]);
+      Forward(old[VARSIZE],&(new[VARSIZE]));
+	
+      if(VARSIZE==2)
+	{
+	  new[1] = old[1];
+	  new[3] = old[3];
+	}
+
+      Mark(new[0]);
+      new += 2*VARSIZE;
+      w->heap_top = new;
+
+      return (new-VARSIZE);
+    }
+}
+
+inline static TAGGED *copy_struct(term,w)
+     TAGGED term;
+     worker *w;
+{
+  TAGGED *new;
+  TAGGED *old;
+  int i, size;
+
+  size = ArityOf(GetFunctor(term));
+
+  size = (size+1)*VARSIZE;
+
+  new = check_size(size, w);
+  old = TagToPointer(term);
+
+  new[0] = FromOld(old[0]);    /* copy term       */
+  Forward(old[0],&(new[0])); /* update oldspace */
+
+  if (VARSIZE == 2)
+    new[1] = old[1];
+
+  for (i = VARSIZE; i < size; i += VARSIZE)
+    {
+      new[i] = FromOldArg(old[i]); /* copy term       */
+      Forward(old[i],&(new[i])); /* update oldspace */
+
+      if (VARSIZE==2)
+	new[i+1] = old[i+1];
+    }
+
+  Mark(new[0]);			/* mark first cell */
+  w->heap_top = new;
+  w->heap_top += size;
+
+  return (w->heap_top-VARSIZE);
+}
+
+inline static TAGGED *copy_term(term,w)
+     TAGGED term;
+     worker *w;
+{
+  switch(TagOf(term))
+    {
+    case HVA:
+      return copy_hva(term,w);
+
+#ifdef CONSTR
+    case CVA:
+      return copy_cva(term,w);
+#endif  /* CONSTR */
+
+    case SVA:
+      Error("stack variable in heap");
+      break;
+
+    case NUM:
+      Error("copy_term: trying to copy a non-heap term");
+      break;
+
+    case BOX:
+      return copy_box(term,w);
+
+    case ATM:
+      Error("copy_term: trying to copy a non-heap term");
+      break;
+
+    case LST:
+      return copy_list(term,w);
+
+    case STR:
+      return copy_struct(term,w);
+
+#ifdef UNBOUND
+    case UVA:
+      Error("copy_term: trying to copy a non-heap term");
+      break;
+#endif /* UNBOUND */
+    case GEN:
+      Error("copy_term: trying to copy a non-heap term");
+      break;
+    }
+}
+
+/* We assume that all internal live variables have been marked
+ */
+
+static TAGGED copy_variable(start,w)
+     TAGGED start;
+     worker *w;
+{
+  TAGGED result;
+  TAGGED *next, tag, *old;
+
+  tag = TagOf(start);
+  old = TagToPointer(start);
+
+  if (IsCopied(*old))
+    {
+      return Tagify(GetNewLocation(*old), tag);
+    }
+  else if (IsHeapTerm(start))
+    {
+      /* First we copy the root */
+
+      next = copy_term(start,w);
+
+      result = scan(next, tag, w);
+    
+      return result;
+    }
+  else if (IsHeapBox(start))
+    {
+      next = copy_box(start,w);
+
+      return Tagify(next,BOX);
+    }
+  else
+    {
+      Error("copy-gc-ali: nothing had to be copied");
+      return start;
+    }
+}
+
+
+#define CheckCopied(NEXT)						   \
+{									   \
+  if (IsCopiedCell(NEXT))						   \
+    {									   \
+      TAGGED bits;							   \
+      									   \
+      bits = GetBits(NEXT); 						   \
+									   \
+      NEXT = SetBits(GetNewLoc(NEXT),bits);				   \
+      									   \
+      goto backward;							   \
+    }									   \
+}
+
+static TAGGED scan(next, tag, w)
+     TAGGED *next, tag;
+     worker *w;
+{
+  TAGGED *prev;
+#ifndef NDEBUG
+  int debugcounter = 0;
+#endif /* NDEBUG */
+
+  prev = NULL;              /* dummy start value */
+
+ forward:
+
+#ifndef NDEBUG
+  debugcounter++;
+#endif /* NDEBUG */
+
+  switch(TagOf(*next))
+    {
+    case HVA:
+      CheckCopied(*next);
+      {
+	TAGGED oldnext;
+	TAGGED gcbits;
+
+	oldnext = *next;
+	  
+	gcbits = GetGCBits(oldnext);
+	*next = SetGCBits(Tagify(prev,tag),gcbits);
+
+	tag = TagOf(oldnext);
+	prev = next;
+
+	next = copy_hva(oldnext, w);
+
+	goto forward;
+      }
+      break;
+		
+#ifdef CONSTR
+    case CVA:
+      CheckCopied(*next);
+      {
+	TAGGED oldnext;
+	TAGGED gcbits;
+
+	oldnext = *next;
+	  
+	gcbits = GetGCBits(oldnext);
+	*next = SetGCBits(Tagify(prev,tag),gcbits);
+
+	tag = TagOf(oldnext);
+	prev = next;
+
+	next = copy_cva(oldnext,w);
+
+	goto forward;
+      }
+#endif /* CONSTR */
+    case SVA:
+      FatalError("Stack reference from heap");
+    case NUM:
+      goto backward;
+
+    case BOX:
+      CheckCopied(*next);
+      if (!IsHeapBox(*next))
+	{
+	  goto backward;
+	}
+      else
+	{
+	  TAGGED *box;
+	  TAGGED gcbits;
+	  
+	  gcbits = GetGCBits(*next);
+
+	  box = copy_box(*next,w);
+	  *next = SetGCBits(Tagify(box, BOX),gcbits);
+	  goto backward;
+	}
+
+    case ATM:
+      goto backward;
+
+    case LST:
+      CheckCopied(*next);
+      {
+	TAGGED oldnext;
+	TAGGED gcbits;
+
+	oldnext = *next;
+	  
+	gcbits = GetGCBits(oldnext);
+	*next = SetGCBits(Tagify(prev,tag),gcbits);
+
+	tag = TagOf(oldnext);
+	prev = next;
+
+	next = copy_list(oldnext,w);
+
+	goto forward;
+      }
+	      
+    case STR:
+      CheckCopied(*next);
+      {
+	TAGGED oldnext;
+	TAGGED gcbits;
+
+	oldnext = *next;
+	  
+	gcbits = GetGCBits(oldnext);
+	*next = SetGCBits(Tagify(prev,tag),gcbits);
+
+	tag = TagOf(oldnext);
+	prev = next;
+
+	next = copy_struct(oldnext,w);
+
+	goto forward;
+      }
+#ifdef UNBOUND
+    case UVA:
+      goto backward;
+#endif /* UNBOUND */
+    case GEN:
+#ifndef NDEBUG
+    default:
+      FatalError("unknown tag in gc-scan");
+#endif 
+      break;
+    }
+
+ backward:
+  if (!IsMarked(*next)) /* not last */
+    {
+      next = next - VARSIZE;
+
+      goto forward;
+    }
+  else                 /* last in structure */
+    {
+      UnMark(*next);
+
+      if (IsMarkedF(*next)) /* was entered from the inside */
+	{
+	  UnMarkF(*next);
+
+	  do {
+	    next += VARSIZE;
+	  } while (!(IsMarkedF(*next)));
+	  
+	  UnMarkF(*next);
+	}
+
+      if (prev == NULL)		/* done */
+	{
+	  return Tagify(next,tag);
+	}
+      else 
+	{
+	  TAGGED oldprev;
+	  TAGGED gcbits;
+	  
+	  oldprev = *prev;
+	  gcbits = GetGCBits(oldprev);
+
+	  *prev = SetGCBits(Tagify(next,tag),gcbits);
+	  next = prev;
+
+	  prev = TagToPointer(oldprev);
+	  tag = TagOf(oldprev);
+
+	  goto backward;
+	}
+    }
+}
+
+/**********************************************************************/
+ 
+static void update_choicepoints(w,copy_state)
+     worker *w;
+     copy_state_t *copy_state;
+{
+  register choicepoint *choice = w->choice;
+  TAGGED *t = w->trail_top-1;
+  TAGGED *new = w->heap_top;
+  
+  while (choice != NULL)
+    {
+      while (t >= choice->trail_top)
+	{
+	  if (*t == 0)
+	    copy_state->trailcells_deleted--;
+	  t--;
+	}
+      choice->trail_top -= copy_state->trailcells_deleted;
+      choice->global_top = new;
+      choice = choice->last_choice;
+    }
+
+#ifndef NDEBUG
+  if(copy_state->trailcells_deleted != 0)
+    Error("trailcells_deleted != 0");
+#endif
+
+  /* compact trail */
+
+  {
+    register TAGGED *dest, *current;
+
+    dest = w->trail_start;
+
+    for (current = w->trail_start ;
+	 current != w->trail_top ;
+	 current++)
+      if (*current != 0)
+	{
+	  *dest = *current;
+	  dest++;
+	}
+    w->trail_top = dest;
+  }
+}
+
+/**********************************************************************
+ **********************************************************************
+ **                                                                  **
+ ** Support for parallel mark-sweep GC                               **
+ ** These extensions are all ours :-)                                **
+ **                                                                  **
+ **********************************************************************
+ **********************************************************************/
+
+#ifdef PARALLEL
+
+static void worker_finish PROTO((worker *));
+static void worker_mark_rest_trail PROTO((worker *, copy_state_t *));
+static void worker_copy_rest_trail PROTO((worker *, copy_state_t *));
+static void worker_update_choicepoints PROTO((worker *, copy_state_t *));
+
+BOOL worker_garbage_collect(w,from_event_loop)
+     worker *w;
+     BOOL from_event_loop;
+{
+  char *heap_gc_start;
+  int gc_start_time;
+  double gc_start_walltime;
+  segment *used_segs;
+  copy_state_t copy_state;
+
+  /**********************************************************************
+   * 
+   * pre statistics 
+   *
+   */
+
+  gc_start_time = usertime();
+  gc_start_walltime = walltime();
+  heap_gc_start = (char *) w->heap_top;
+
+  /**********************************************************************
+   *  GC
+   */
+
+  copy_state.wake_count = w->wake_count;
+
+  if (from_event_loop) goto if_done;
+
+ wait_for_work:
+  w->gc_info.done[w->pid-1] = TRUE;
+
+ wait_first_time:
+  synchronize(w);
+
+ if_done:
+
+  /* Decode command from sequential worker */
+
+  switch(w->global->parallel_start.type)
+    {
+    case W_GC_MARK:
+      /* Some more initialization */
+      used_segs = w->used_segments;
+      w->used_segments = NULL;
+      (void) new_segment(w);
+
+      /* GC_Sequentialize_Low_To_High; */
+      mark(w,&copy_state);
+      worker_mark_rest_trail(w, &copy_state);
+      goto wait_for_work;
+
+    case W_GC_MARK_LATE:
+
+#if not(defined(EARLY_RESET))
+      mark_trail_late(w,w->trail_top-1,w->trail_start,&copy_state);
+#endif
+      goto wait_for_work;
+
+    case W_GC_COPY:
+      GC_Sequentialize_Low_To_High;
+      copy(w,&copy_state);
+      worker_copy_rest_trail(w,&copy_state);
+      goto wait_for_work;
+
+    case W_GC_UPDATECP:
+      GC_Sequentialize_Low_To_High;
+      worker_update_choicepoints(w,&copy_state);
+
+      /* Almost done, free old blocks */
+      
+      while (used_segs != NULL)
+	{
+	  segment *seg;
+
+	  seg = used_segs;
+	  used_segs = seg->next;
+	  return_segment(seg, w);
+	}
+      
+      /* No memory check is necessary here, the sequential worker takes
+       * care of that.
+       */
+      
+      if (w->heap_top > w->heap_margin)
+	{
+	  (void) new_segment(w);
+	}
+
+      goto wait_for_work;
+      
+    case W_GC_FINISH:
+      worker_finish(w);
+      goto done;
+
+    default:
+      FatalError("No such command");
+    }
+
+  /**********************************************************************
+   * 
+   * done
+   *
+   */
+
+ done:
+
+  return TRUE;
+}
+
+static void worker_finish(w)
+     worker *w;
+{
+#if defined(UNBOUND) || defined(TIMESTAMP)
+#else
+  w->uncond = w->choice->global_top;
+#endif /* UNBOUND */
+}
+
+/**********************************************************************/
+
+static void worker_mark_rest_trail(w,copy_state)
+     worker *w;
+     copy_state_t *copy_state;
+{
+  TAGGED *t;
+
+  t = copy_state->last_copied_trail_entry;
+
+  (void) mark_trail(w,t,w->trail_start,copy_state);
+
+  return;
+}
+
+static void worker_copy_rest_trail(w,copy_state)
+     worker *w;
+     copy_state_t *copy_state;
+{
+  TAGGED *t;
+
+  t = copy_state->last_copied_trail_entry;
+
+  (void) copy_trail(w,t,w->trail_start,copy_state);
+
+  return;
+}
+
+/**********************************************************************/
+ 
+static void worker_update_choicepoints(w,copy_state)
+     worker *w;
+     copy_state_t *copy_state;
+{
+  register choicepoint *choice = w->choice;
+  TAGGED *t = w->trail_top-1;
+  TAGGED *new = w->heap_top;
+  
+  while (choice != NULL)
+    {
+      while (t >= choice->trail_top)
+	{
+	  if (*t == 0)
+	    copy_state->trailcells_deleted--;
+	  t--;
+	}
+      choice->trail_top -= copy_state->trailcells_deleted;
+      choice->global_top = new;
+      choice = choice->last_choice;
+    }
+
+  while (t >= w->trail_start)
+    {
+      /* We do not have to count the number of deleted trailcells
+       * at this point since no choice point is updated.
+       */
+      if (IsNUM(*t))
+	{
+	  *t = Tagify(new,NUM);
+	}
+      else if (IsValueTrail(t))
+	{
+	  t--;
+	}
+      t--;
+    }
+
+  /* compact trail */
+
+  {
+    register TAGGED *dest, *current;
+
+    dest = w->trail_start;
+
+    for (current = w->trail_start ;
+	 current != w->trail_top ;
+	 current++)
+      if (*current != 0)
+	{
+	  *dest = *current;
+	  dest++;
+	}
+    w->trail_top = dest;
+  }
+}
+
+#endif /* PARALLEL */
+#endif /* COPY_GC  && COPY_ALI */

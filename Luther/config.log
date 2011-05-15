@@ -1,0 +1,15 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+Undefined			first referenced
+ symbol  			    in file
+random                              /var/tmp/cca0060Y1.o
+ld: fatal: Symbol referencing errors. No output written to conftest
+Undefined			first referenced
+ symbol  			    in file
+sigvec                              /var/tmp/cca0061J1.o
+ld: fatal: Symbol referencing errors. No output written to conftest
+Undefined			first referenced
+ symbol  			    in file
+getrusage                           /var/tmp/cca0061r1.o
+ld: fatal: Symbol referencing errors. No output written to conftest

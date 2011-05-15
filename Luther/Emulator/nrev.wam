@@ -1,0 +1,245 @@
+% Source:     '/mount/sd2a/home/csd/jb/ReformBench/nrev.pl'
+% Compiled:   run/0
+% Directives: []
+Predicate(run 0
+  Label 1
+     Put_Constant 10 0
+     Execute run_list 1
+)
+% Source:     '/mount/sd2a/home/csd/jb/ReformBench/nrev.pl'
+% Compiled:   nrev/2
+% Directives: [parallel]
+Predicate(nrev 2
+     Switch_On_Term 1 2 fail 4 fail
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Nil 0
+% reg x(1): par=any, seq=any, loc=local
+     Get_Nil 1
+     Proceed
+  Label 3
+     Require_Using 2 2
+     Allocate
+     Get_Y_Variable 2 1
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_Y_Variable 1
+     Unify_X_Variable 0
+     Choice_Y 0
+     Put_Y_Value 0 1
+     Call nrev 2 3
+     Require 2
+     Put_Y_Unsafe_Value 0 0
+     Put_List 1
+     Unify_Y_Value 1
+     Unify_Nil
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute append 3
+  Label 4
+     Allocate
+     Build_Rec_Poslist 0 2 3 0
+     Build_Variables 1 2 4 1
+     Get_Y_Variable 0 4
+     Get_Y_Variable 1 3
+     Get_Y_Variable 2 2
+     Call nrev 2 3
+     Put_Y_Value 0 0
+     Put_Y_Value 1 1
+     Put_Y_Value 2 2
+     Start_Right_Body 2 5 3
+{ 0 1 2}         3
+
+     Deallocate
+     Proceed
+  Label 5
+     Initialize_Right 1 2
+  Label 6
+     Spawn_Right 1 3
+     Allocate
+     Get_Y_Variable 0 3
+     Put_Y_Value 0 4
+     Put_Nth_Head 0 4 1 0
+     Put_List 1
+     Unify_Nth_Head 1 4 0
+     Unify_Nil
+     Put_Nth_Head 0 4 0 2
+     Call append 3 1
+     Jump 6
+)
+% Source:     '/mount/sd2a/home/csd/jb/ReformBench/nrev.pl'
+% Compiled:   append/3
+% Directives: []
+Predicate(append 3
+     Await_Nonvar 0
+     Switch_On_Term 1 2 1 3 1
+  Label 1
+     Put_Constant list_g_n 1
+     Put_Constant append 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+% reg x(0): par=nil, seq=nil, loc=fragile
+     Get_Nil 0
+% reg x(2): par=free, seq=free, loc=wbf
+% reg x(1): par=list_g_n, seq=list_g_n, loc=local
+     Get_X_Value 1 2
+     Proceed
+  Label 3
+     Require_Using 4 3
+% reg x(0): par=list_g_n, seq=list_g_n, loc=fragile
+     Get_List 0
+     Unify_X_Variable 3
+     Unify_X_Variable 0
+% reg x(2): par=free, seq=free, loc=wbf
+     Lock_And_Get_List 2 4
+     Unify_X_Variable 5
+     Unify_X_Variable 6
+     Unlock 2 4
+% reg x(5): par=free, seq=free, loc=wbf
+% reg x(3): par=any, seq=gnd, loc=fragile
+     Get_X_Value 3 5
+     Put_X_Value 6 2
+     Execute append 3
+)
+% Source:     '/mount/sd2a/home/csd/jb/ReformBench/nrev.pl'
+% Compiled:   run_list/1
+% Directives: []
+Predicate(run_list 1
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant run_list 2
+     Put_Constant 1 3
+     Execute mode_error 4
+  Label 2
+     Allocate
+     Put_Y_Variable 0 1
+     Call run_list 2 1
+     Put_Y_Unsafe_Value 0 0
+     Deallocate
+     Execute run 1
+)
+% Source:     '/mount/sd2a/home/csd/jb/ReformBench/nrev.pl'
+% Compiled:   run/1
+% Directives: []
+Predicate(run 1
+     Switch_On_Term 1 2 1 2 1
+  Label 1
+     Put_Constant list_g_n 1
+     Put_Constant run 2
+     Put_Constant 1 3
+     Execute mode_error 4
+  Label 2
+     Allocate
+     Get_Y_Variable 8 0
+     Put_Y_Value 8 0
+     Put_Y_Variable 7 1
+     Init 7 0 1 2 3 4 5 6
+     Call length 2 9
+     Require 4
+     Put_Constant instr 0
+     Put_List 2
+     Unify_Y_Variable 6
+     Unify_Nil
+     Put_List 1
+     Unify_Y_Variable 5
+     Unify_X_Value 2
+     Call statistics 2 9
+     Require 2
+     Put_Constant walltime 0
+     Put_List 1
+     Unify_Y_Variable 2
+     Unify_Void 1
+     Call statistics 2 9
+     Require 1
+     Put_Y_Unsafe_Value 8 0
+     Put_X_Void 1
+     Call nrev 2 8
+     Require 2
+     Put_Constant walltime 0
+     Put_List 1
+     Unify_Y_Variable 1
+     Unify_Void 1
+     Call statistics 2 8
+     Require 4
+     Put_Constant instr 0
+     Put_List 2
+     Unify_Y_Variable 4
+     Unify_Nil
+     Put_List 1
+     Unify_Y_Variable 3
+     Unify_X_Value 2
+     Call statistics 2 8
+     Require 4
+     Put_Y_Value 1 2
+     Put_Y_Value 2 3
+% builtin '$minus'/3
+     Builtin 24 4 2 3
+     Put_Y_Value 3 5
+     Put_Y_Value 4 6
+% builtin '$plus'/3
+     Builtin 22 7 5 6
+     Put_Y_Value 5 8
+     Put_Y_Value 6 9
+% builtin '$plus'/3
+     Builtin 22 10 8 9
+% builtin '$minus'/3
+     Builtin 24 11 7 10
+     Get_Y_Variable 0 11
+     Put_Constant 'Reversed list of ~q elements (time ~q s)~n' 0
+     Put_List 12
+     Unify_X_Local_Value 4
+     Unify_Nil
+     Put_List 1
+     Unify_Y_Local_Value 7
+     Unify_X_Value 12
+     Call format 2 1
+     Require 2
+     Put_Constant 'map: ~w instructions executed~n' 0
+     Put_List 1
+     Unify_Y_Local_Value 0
+     Unify_Nil
+     Deallocate
+     Execute format 2
+)
+% Source:     '/mount/sd2a/home/csd/jb/ReformBench/nrev.pl'
+% Compiled:   run_list/2
+% Directives: []
+Predicate(run_list 2
+     Switch_On_Term 3 5 1 5 5
+  Label 1
+     Switch_On_Constant 1 (
+        0 2
+     ) 5
+  Label 2
+     Try 4
+     Trust 5
+  Label 3
+     Put_Constant gnd 1
+     Put_Constant run_list 2
+     Put_Constant 2 3
+     Execute mode_error 4
+  Label 4
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 0 0
+     Cut
+% reg x(1): par=any, seq=any, loc=local
+     Get_Nil 1
+     Proceed
+  Label 5
+     Require_Using 2 2
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+% reg x(0): par=any, seq=any, loc=local
+% heap: par=any, seq=any, loc=local
+     Unify_X_Local_Value 0
+     Unify_X_Variable 1
+% builtin '$minus_1'/2
+     Builtin 25 2 0
+     Put_X_Value 2 0
+     Execute run_list 2
+)

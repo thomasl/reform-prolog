@@ -1,0 +1,72 @@
+Predicate('$empty_var_list_3_766_0' 3
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X6 5
+Label 2
+ X21
+ X30 0 0
+ X30 2 2
+ X10 3
+ X47 0 4
+ X50 100 5
+ X24 1 1
+ X16 16 4 5
+ X13 3
+ X46 1 0
+ X47 1 1
+ X25 hundred_vars 2 3
+ X49 0 3
+ X50 100 4
+ X16 27 5 3 4
+ X46 5 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 empty_var_list 3
+Label 3
+ X21
+ X30 0 0
+ X30 2 2
+ X10 3
+ X47 0 4
+ X50 50 5
+ X24 1 1
+ X16 16 4 5
+ X13 3
+ X46 1 0
+ X47 1 1
+ X25 fifty_vars 2 3
+ X49 0 3
+ X50 50 4
+ X16 27 5 3 4
+ X46 5 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 empty_var_list 3
+Label 4
+ X21
+ X30 0 0
+ X30 2 2
+ X10 3
+ X47 0 4
+ X50 20 5
+ X24 1 1
+ X16 16 4 5
+ X13 3
+ X46 1 0
+ X47 1 1
+ X25 twenty_vars 2 3
+ X49 0 3
+ X50 20 4
+ X16 27 5 3 4
+ X46 5 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 empty_var_list 3
+Label 5
+ X26 small_empty_var_list 3
+)

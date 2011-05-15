@@ -1,0 +1,25 @@
+This is the source code repository for Reform Prolog, a
+recursion-parallel Prolog implementation. This release is not
+maintained and we have not tried to build or run it in a long time --
+it is provided mainly for historical interest. 
+
+Development stopped in 1996.
+
+Authors:
+Johan Bevemyr
+Patric Hedlin
+Thomas Lindgren
+
+Project manager: Håkan Millroth
+
+Licence: GPL.
+
+Overview:
+
+Documentation/		LaTeX and postscript docs
+Compiler/		Sources of compiler
+Luther/			Sources of emulator
+
+We used SICStus Prolog during development, but Luther itself might
+be powerful enough to recompile itself.
+

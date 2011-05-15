@@ -1,0 +1,770 @@
+# '.simics-log-12': this file logs SimICS commands from last execution
+# Note: we log all commands, even incorrect ones and comments.
+# This file can be used as a script using the -x flag, in which
+# case there will be multiple headers.
+#
+# comman-line arguments: -fixtime -notty -n -fake-frame -backend -unix 
+
+read-reg 0
+read-reg 1
+read-reg 2
+read-reg 3
+read-reg 4
+read-reg 5
+read-reg 6
+read-reg 7
+read-reg 8
+read-reg 9
+read-reg 10
+read-reg 11
+read-reg 12
+read-reg 13
+read-reg 14
+read-reg 15
+read-reg 16
+read-reg 17
+read-reg 18
+read-reg 19
+read-reg 20
+read-reg 21
+read-reg 22
+read-reg 23
+read-reg 24
+read-reg 25
+read-reg 26
+read-reg 27
+read-reg 28
+read-reg 29
+read-reg 30
+read-reg 31
+read-fp-reg 0
+read-fp-reg 1
+read-fp-reg 2
+read-fp-reg 3
+read-fp-reg 4
+read-fp-reg 5
+read-fp-reg 6
+read-fp-reg 7
+read-fp-reg 8
+read-fp-reg 9
+read-fp-reg 10
+read-fp-reg 11
+read-fp-reg 12
+read-fp-reg 13
+read-fp-reg 14
+read-fp-reg 15
+read-fp-reg 16
+read-fp-reg 17
+read-fp-reg 18
+read-fp-reg 19
+read-fp-reg 20
+read-fp-reg 21
+read-fp-reg 22
+read-fp-reg 23
+read-fp-reg 24
+read-fp-reg 25
+read-fp-reg 26
+read-fp-reg 27
+read-fp-reg 28
+read-fp-reg 29
+read-fp-reg 30
+read-fp-reg 31
+read-control-reg 4
+read-control-reg 0
+read-control-reg 1
+read-control-reg 3
+read-control-reg 7
+read-control-reg 8
+read-control-reg 5
+load-unix "luther.fpar"
+read-reg 0
+read-reg 1
+read-reg 2
+read-reg 3
+read-reg 4
+read-reg 5
+read-reg 6
+read-reg 7
+read-reg 8
+read-reg 9
+read-reg 10
+read-reg 11
+read-reg 12
+read-reg 13
+read-reg 14
+read-reg 15
+read-reg 16
+read-reg 17
+read-reg 18
+read-reg 19
+read-reg 20
+read-reg 21
+read-reg 22
+read-reg 23
+read-reg 24
+read-reg 25
+read-reg 26
+read-reg 27
+read-reg 28
+read-reg 29
+read-reg 30
+read-reg 31
+read-fp-reg 0
+read-fp-reg 1
+read-fp-reg 2
+read-fp-reg 3
+read-fp-reg 4
+read-fp-reg 5
+read-fp-reg 6
+read-fp-reg 7
+read-fp-reg 8
+read-fp-reg 9
+read-fp-reg 10
+read-fp-reg 11
+read-fp-reg 12
+read-fp-reg 13
+read-fp-reg 14
+read-fp-reg 15
+read-fp-reg 16
+read-fp-reg 17
+read-fp-reg 18
+read-fp-reg 19
+read-fp-reg 20
+read-fp-reg 21
+read-fp-reg 22
+read-fp-reg 23
+read-fp-reg 24
+read-fp-reg 25
+read-fp-reg 26
+read-fp-reg 27
+read-fp-reg 28
+read-fp-reg 29
+read-fp-reg 30
+read-fp-reg 31
+read-control-reg 4
+read-control-reg 0
+read-control-reg 1
+read-control-reg 3
+read-control-reg 7
+read-control-reg 8
+read-control-reg 5
+sysbreak _exit
+read-reg 0
+read-reg 1
+read-reg 2
+read-reg 3
+read-reg 4
+read-reg 5
+read-reg 6
+read-reg 7
+read-reg 8
+read-reg 9
+read-reg 10
+read-reg 11
+read-reg 12
+read-reg 13
+read-reg 14
+read-reg 15
+read-reg 16
+read-reg 17
+read-reg 18
+read-reg 19
+read-reg 20
+read-reg 21
+read-reg 22
+read-reg 23
+read-reg 24
+read-reg 25
+read-reg 26
+read-reg 27
+read-reg 28
+read-reg 29
+read-reg 30
+read-reg 31
+read-fp-reg 0
+read-fp-reg 1
+read-fp-reg 2
+read-fp-reg 3
+read-fp-reg 4
+read-fp-reg 5
+read-fp-reg 6
+read-fp-reg 7
+read-fp-reg 8
+read-fp-reg 9
+read-fp-reg 10
+read-fp-reg 11
+read-fp-reg 12
+read-fp-reg 13
+read-fp-reg 14
+read-fp-reg 15
+read-fp-reg 16
+read-fp-reg 17
+read-fp-reg 18
+read-fp-reg 19
+read-fp-reg 20
+read-fp-reg 21
+read-fp-reg 22
+read-fp-reg 23
+read-fp-reg 24
+read-fp-reg 25
+read-fp-reg 26
+read-fp-reg 27
+read-fp-reg 28
+read-fp-reg 29
+read-fp-reg 30
+read-fp-reg 31
+read-control-reg 4
+read-control-reg 0
+read-control-reg 1
+read-control-reg 3
+read-control-reg 7
+read-control-reg 8
+read-control-reg 5
+sysbreak kill
+read-reg 0
+read-reg 1
+read-reg 2
+read-reg 3
+read-reg 4
+read-reg 5
+read-reg 6
+read-reg 7
+read-reg 8
+read-reg 9
+read-reg 10
+read-reg 11
+read-reg 12
+read-reg 13
+read-reg 14
+read-reg 15
+read-reg 16
+read-reg 17
+read-reg 18
+read-reg 19
+read-reg 20
+read-reg 21
+read-reg 22
+read-reg 23
+read-reg 24
+read-reg 25
+read-reg 26
+read-reg 27
+read-reg 28
+read-reg 29
+read-reg 30
+read-reg 31
+read-fp-reg 0
+read-fp-reg 1
+read-fp-reg 2
+read-fp-reg 3
+read-fp-reg 4
+read-fp-reg 5
+read-fp-reg 6
+read-fp-reg 7
+read-fp-reg 8
+read-fp-reg 9
+read-fp-reg 10
+read-fp-reg 11
+read-fp-reg 12
+read-fp-reg 13
+read-fp-reg 14
+read-fp-reg 15
+read-fp-reg 16
+read-fp-reg 17
+read-fp-reg 18
+read-fp-reg 19
+read-fp-reg 20
+read-fp-reg 21
+read-fp-reg 22
+read-fp-reg 23
+read-fp-reg 24
+read-fp-reg 25
+read-fp-reg 26
+read-fp-reg 27
+read-fp-reg 28
+read-fp-reg 29
+read-fp-reg 30
+read-fp-reg 31
+read-control-reg 4
+read-control-reg 0
+read-control-reg 1
+read-control-reg 3
+read-control-reg 7
+read-control-reg 8
+read-control-reg 5
+$simprocessors=3
+read-reg 0
+read-reg 1
+read-reg 2
+read-reg 3
+read-reg 4
+read-reg 5
+read-reg 6
+read-reg 7
+read-reg 8
+read-reg 9
+read-reg 10
+read-reg 11
+read-reg 12
+read-reg 13
+read-reg 14
+read-reg 15
+read-reg 16
+read-reg 17
+read-reg 18
+read-reg 19
+read-reg 20
+read-reg 21
+read-reg 22
+read-reg 23
+read-reg 24
+read-reg 25
+read-reg 26
+read-reg 27
+read-reg 28
+read-reg 29
+read-reg 30
+read-reg 31
+read-fp-reg 0
+read-fp-reg 1
+read-fp-reg 2
+read-fp-reg 3
+read-fp-reg 4
+read-fp-reg 5
+read-fp-reg 6
+read-fp-reg 7
+read-fp-reg 8
+read-fp-reg 9
+read-fp-reg 10
+read-fp-reg 11
+read-fp-reg 12
+read-fp-reg 13
+read-fp-reg 14
+read-fp-reg 15
+read-fp-reg 16
+read-fp-reg 17
+read-fp-reg 18
+read-fp-reg 19
+read-fp-reg 20
+read-fp-reg 21
+read-fp-reg 22
+read-fp-reg 23
+read-fp-reg 24
+read-fp-reg 25
+read-fp-reg 26
+read-fp-reg 27
+read-fp-reg 28
+read-fp-reg 29
+read-fp-reg 30
+read-fp-reg 31
+read-control-reg 4
+read-control-reg 0
+read-control-reg 1
+read-control-reg 3
+read-control-reg 7
+read-control-reg 8
+read-control-reg 5
+init
+read-reg 0
+read-reg 1
+read-reg 2
+read-reg 3
+read-reg 4
+read-reg 5
+read-reg 6
+read-reg 7
+read-reg 8
+read-reg 9
+read-reg 10
+read-reg 11
+read-reg 12
+read-reg 13
+read-reg 14
+read-reg 15
+read-reg 16
+read-reg 17
+read-reg 18
+read-reg 19
+read-reg 20
+read-reg 21
+read-reg 22
+read-reg 23
+read-reg 24
+read-reg 25
+read-reg 26
+read-reg 27
+read-reg 28
+read-reg 29
+read-reg 30
+read-reg 31
+read-fp-reg 0
+read-fp-reg 1
+read-fp-reg 2
+read-fp-reg 3
+read-fp-reg 4
+read-fp-reg 5
+read-fp-reg 6
+read-fp-reg 7
+read-fp-reg 8
+read-fp-reg 9
+read-fp-reg 10
+read-fp-reg 11
+read-fp-reg 12
+read-fp-reg 13
+read-fp-reg 14
+read-fp-reg 15
+read-fp-reg 16
+read-fp-reg 17
+read-fp-reg 18
+read-fp-reg 19
+read-fp-reg 20
+read-fp-reg 21
+read-fp-reg 22
+read-fp-reg 23
+read-fp-reg 24
+read-fp-reg 25
+read-fp-reg 26
+read-fp-reg 27
+read-fp-reg 28
+read-fp-reg 29
+read-fp-reg 30
+read-fp-reg 31
+read-control-reg 4
+read-control-reg 0
+read-control-reg 1
+read-control-reg 3
+read-control-reg 7
+read-control-reg 8
+read-control-reg 5
+load-unix -tty  "luther.fpar" "-b ../Library/boot.wam -w 2 -memory 40000000"
+read-reg 0
+read-reg 1
+read-reg 2
+read-reg 3
+read-reg 4
+read-reg 5
+read-reg 6
+read-reg 7
+read-reg 8
+read-reg 9
+read-reg 10
+read-reg 11
+read-reg 12
+read-reg 13
+read-reg 14
+read-reg 15
+read-reg 16
+read-reg 17
+read-reg 18
+read-reg 19
+read-reg 20
+read-reg 21
+read-reg 22
+read-reg 23
+read-reg 24
+read-reg 25
+read-reg 26
+read-reg 27
+read-reg 28
+read-reg 29
+read-reg 30
+read-reg 31
+read-fp-reg 0
+read-fp-reg 1
+read-fp-reg 2
+read-fp-reg 3
+read-fp-reg 4
+read-fp-reg 5
+read-fp-reg 6
+read-fp-reg 7
+read-fp-reg 8
+read-fp-reg 9
+read-fp-reg 10
+read-fp-reg 11
+read-fp-reg 12
+read-fp-reg 13
+read-fp-reg 14
+read-fp-reg 15
+read-fp-reg 16
+read-fp-reg 17
+read-fp-reg 18
+read-fp-reg 19
+read-fp-reg 20
+read-fp-reg 21
+read-fp-reg 22
+read-fp-reg 23
+read-fp-reg 24
+read-fp-reg 25
+read-fp-reg 26
+read-fp-reg 27
+read-fp-reg 28
+read-fp-reg 29
+read-fp-reg 30
+read-fp-reg 31
+read-control-reg 4
+read-control-reg 0
+read-control-reg 1
+read-control-reg 3
+read-control-reg 7
+read-control-reg 8
+read-control-reg 5
+unix-tty-input "load('../comp').\ncompile('../../Compiler/reform').\nhalt.\n" 4002
+read-reg 0
+read-reg 1
+read-reg 2
+read-reg 3
+read-reg 4
+read-reg 5
+read-reg 6
+read-reg 7
+read-reg 8
+read-reg 9
+read-reg 10
+read-reg 11
+read-reg 12
+read-reg 13
+read-reg 14
+read-reg 15
+read-reg 16
+read-reg 17
+read-reg 18
+read-reg 19
+read-reg 20
+read-reg 21
+read-reg 22
+read-reg 23
+read-reg 24
+read-reg 25
+read-reg 26
+read-reg 27
+read-reg 28
+read-reg 29
+read-reg 30
+read-reg 31
+read-fp-reg 0
+read-fp-reg 1
+read-fp-reg 2
+read-fp-reg 3
+read-fp-reg 4
+read-fp-reg 5
+read-fp-reg 6
+read-fp-reg 7
+read-fp-reg 8
+read-fp-reg 9
+read-fp-reg 10
+read-fp-reg 11
+read-fp-reg 12
+read-fp-reg 13
+read-fp-reg 14
+read-fp-reg 15
+read-fp-reg 16
+read-fp-reg 17
+read-fp-reg 18
+read-fp-reg 19
+read-fp-reg 20
+read-fp-reg 21
+read-fp-reg 22
+read-fp-reg 23
+read-fp-reg 24
+read-fp-reg 25
+read-fp-reg 26
+read-fp-reg 27
+read-fp-reg 28
+read-fp-reg 29
+read-fp-reg 30
+read-fp-reg 31
+read-control-reg 4
+read-control-reg 0
+read-control-reg 1
+read-control-reg 3
+read-control-reg 7
+read-control-reg 8
+read-control-reg 5
+c
+read-reg 0
+read-reg 1
+read-reg 2
+read-reg 3
+read-reg 4
+read-reg 5
+read-reg 6
+read-reg 7
+read-reg 8
+read-reg 9
+read-reg 10
+read-reg 11
+read-reg 12
+read-reg 13
+read-reg 14
+read-reg 15
+read-reg 16
+read-reg 17
+read-reg 18
+read-reg 19
+read-reg 20
+read-reg 21
+read-reg 22
+read-reg 23
+read-reg 24
+read-reg 25
+read-reg 26
+read-reg 27
+read-reg 28
+read-reg 29
+read-reg 30
+read-reg 31
+read-fp-reg 0
+read-fp-reg 1
+read-fp-reg 2
+read-fp-reg 3
+read-fp-reg 4
+read-fp-reg 5
+read-fp-reg 6
+read-fp-reg 7
+read-fp-reg 8
+read-fp-reg 9
+read-fp-reg 10
+read-fp-reg 11
+read-fp-reg 12
+read-fp-reg 13
+read-fp-reg 14
+read-fp-reg 15
+read-fp-reg 16
+read-fp-reg 17
+read-fp-reg 18
+read-fp-reg 19
+read-fp-reg 20
+read-fp-reg 21
+read-fp-reg 22
+read-fp-reg 23
+read-fp-reg 24
+read-fp-reg 25
+read-fp-reg 26
+read-fp-reg 27
+read-fp-reg 28
+read-fp-reg 29
+read-fp-reg 30
+read-fp-reg 31
+read-control-reg 4
+read-control-reg 0
+read-control-reg 1
+read-control-reg 3
+read-control-reg 7
+read-control-reg 8
+read-control-reg 5
+read-control-reg 7
+read-reg 30
+read-reg 14
+*0xdfffeba0
+*0xdfffe52c
+*0x107a8
+*0xdfffe52c
+*0x107a8
+*0xdfffeb88
+*0xdfffeb8c
+*0xdffff0c0
+*0x10178
+*0x1017c
+info-line 0x10178 0x10178
+info-line 0x10178 0x10178
+info-line 0x10178 0x10178
+info-line 0x10178 0x10178
+info-line 0x10178 0x10178
+info-line 0x10178 0x10178
+info-line 0x10178 0x10178
+info-line 0x10178 0x10178
+info-line 0x10178 0x10178
+info-line 0x10178 0x10178
+*0xdfffeb88
+*0xdfffeb8c
+info-line 0x10784 0x107a8
+info-line 0x10778 0x10778
+info-line 0x10778 0x10778
+info-line 0x10778 0x10784
+info-line 0x10784 0x10784
+info-line 0x10784 0x10784
+info-line 0x10784 0x107a8
+info-line 0x107a8 0x107a8
+info-line 0x107a8 0x107b0
+info-line 0x107b0 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107b8
+info-line 0x107b8 0x107bc
+info-line 0x107bc 0x107bc
+info-line 0x107bc 0x107bc
+info-line 0x107bc 0x107bc
+info-line 0x107bc 0x107c0
+info-line 0x107c0 0x107c0
+info-line 0x107c0 0x107c8
+info-line 0x107c8 0x107c8
+info-line 0x107c8 0x107f8
+info-line 0x107f8 0x107f8
+info-line 0x107f8 0x10800
+info-line 0x10800 0x1080c
+info-line 0x1080c 0x1080c
+info-line 0x1080c 0x10810
+info-line 0x10810 0x1081c
+info-line 0x1081c 0x10824
+info-line 0x10824 0x1082c
+info-line 0x1082c 0x1082c
+info-line 0x1082c 0x1082c
+info-line 0x1082c 0x10834
+info-line 0x10834 0x10834
+info-line 0x10834 0x1083c
+info-line 0x1083c 0x10844
+info-line 0x10844 0x1084c
+info-line 0x1084c 0x1084c
+info-line 0x1084c 0x10868
+info-line 0x10868 0x10868
+info-line 0x10868 0x10868
+info-line 0x10868 0x10874
+info-line 0x10874 0x1087c
+info-line 0x1087c 0x1087c
+quit

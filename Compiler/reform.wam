@@ -1,0 +1,1076 @@
+Directive('$$LOAD_DIRECTIVE$$' 0
+Label 1
+ X20 3 0
+ X52 / 2 0
+ X62 portray
+ X62 1
+ X26 multifile 1
+)
+Predicate('$analyse_clause_database_7_3602_1' 10
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 7 0
+ X30 1 2
+ X30 4 3
+ X30 2 4
+ X30 3 5
+ X30 5 8
+ X30 0 9
+ X11 6
+ X50 analyse 0
+ X47 7 1
+ X25 hasnt_opt 2 8
+ X14 6
+ X50 verbose 0
+ X49 7 1
+ X50 'no analysis requested' 2
+ X25 notify_if_opt 3 6
+ X49 2 0
+ X49 3 1
+ X49 4 2
+ X49 5 3
+ X25 unanalysed_memo 4 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+Label 3
+ X21
+ X30 5 0
+ X30 0 1
+ X30 3 2
+ X30 4 3
+ X30 1 4
+ X30 6 5
+ X30 7 7
+ X30 8 8
+ X30 9 9
+ X47 1 0
+ X46 6 1
+ X45 2 2
+ X25 construct_cg_of_ixstructs 3 10
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X23
+ X26 '$analyse_clause_database_7_3602_0' 10
+)
+Predicate('$analyse_clause_database_7_3602_0' 10
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 3 10
+ X21
+ X29 10 0
+ X30 2 1
+ X29 11 2
+ X30 1 6
+ X11 0
+ X46 7 0
+ X46 4 1
+ X46 8 2
+ X46 9 4
+ X47 2 5
+ X46 11 6
+ X46 10 7
+ X42 8
+ X25 analyse_program 9 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 3
+ X21
+ X50 verbose 0
+ X46 5 1
+ X50 'analysing program: Failed' 2
+ X25 notify_if_opt 3 0
+ X28
+ X23
+ X27
+)
+Predicate('$analyse_clause_database_7_3602_2' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 2
+ X21
+ X29 2 0
+ X30 1 1
+ X11 0
+ X50 output_indexing 0
+ X46 2 1
+ X25 has_opt 2 2
+ X14 0
+ X49 1 0
+ X23
+ X26 display_clause_table 1
+Label 3
+ X27
+)
+Predicate('$annotate_clause_database_5_3607_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 5
+ X21
+ X29 5 0
+ X11 0
+ X46 1 0
+ X46 2 1
+ X46 3 2
+ X46 4 3
+ X46 5 4
+ X25 annotate_predicates 5 1
+ X14 0
+ X23
+ X27
+Label 3
+ X21
+ X50 verbose 0
+ X46 2 1
+ X50 'annotating predicates: Failed' 2
+ X25 notify_if_opt 3 0
+ X28
+ X23
+ X27
+)
+Predicate('$compile_clause_database_3_3610_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 3
+ X21
+ X29 3 0
+ X11 0
+ X46 2 0
+ X46 3 2
+ X25 compile_predicates 3 1
+ X14 0
+ X23
+ X27
+Label 3
+ X21
+ X50 verbose 0
+ X50 'compiling predicates: Failed' 2
+ X25 notify_if_opt 3 0
+ X28
+ X23
+ X27
+)
+Predicate('$comp_predicates_3_3613_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 3
+ X21
+ X29 3 0
+ X11 0
+ X46 1 0
+ X46 2 1
+ X46 3 2
+ X25 comp_predicate 3 1
+ X14 0
+ X23
+ X27
+Label 3
+ X20 5 3
+ X36 ',' 2 1
+ X55 3
+ X54 1
+ X50 'Failed to compile predicate ~q' 0
+ X53 1
+ X58 3
+ X63
+ X26 warning 2
+)
+Predicate('$comp_predicate_5_3616_1' 11
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 0
+ X30 3 1
+ X30 4 2
+ X30 5 3
+ X30 6 4
+ X30 7 5
+ X30 8 6
+ X30 9 7
+ X30 10 8
+ X30 2 10
+ X11 0
+ X47 7 0
+ X49 1 1
+ X45 11 2
+ X25 lookup 3 12
+ X19 12
+ X14 0
+ X49 2 3
+ X33 1 3
+ X52 / 2 4
+ X61 3
+ X61 4
+ X52 info 5 5
+ X61 5
+ X61 6
+ X61 7
+ X61 8
+ X61 9
+ X52 ',' 2 0
+ X58 4
+ X58 5
+ X49 10 1
+ X49 11 2
+ X23
+ X26 comp_predicate 3
+Label 3
+ X21
+ X30 9 0
+ X30 0 1
+ X30 1 2
+ X30 2 3
+ X30 3 4
+ X30 4 5
+ X30 5 6
+ X30 6 7
+ X30 7 8
+ X30 11 9
+ X30 10 10
+ X47 4 0
+ X45 8 1
+ X25 open_output_file 2 12
+ X49 11 0
+ X47 4 1
+ X47 8 2
+ X47 7 3
+ X25 '$comp_predicate_5_3616_0' 4 11
+ X47 4 0
+ X47 8 1
+ X49 9 2
+ X49 10 3
+ X25 insert 4 9
+ X19 12
+ X52 / 2 3
+ X61 0
+ X61 1
+ X52 info 5 4
+ X61 2
+ X61 3
+ X61 4
+ X61 5
+ X61 6
+ X52 ',' 2 0
+ X58 3
+ X58 4
+ X49 7 1
+ X49 8 2
+ X23
+ X26 comp_predicate 3
+)
+Predicate('$comp_predicate_5_3616_0' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 4
+ X21
+ X29 4 0
+ X30 3 2
+ X30 2 3
+ X11 0
+ X46 1 0
+ X46 4 1
+ X45 1 2
+ X25 lookup 3 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 compile_directives 3
+Label 3
+ X27
+)
+Predicate('$comp_predicate_3_3617_1' 9
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 9
+ X50 invisible 10
+ X16 5 0 10
+ X13 9
+ X27
+Label 3
+ X21
+ X30 4 0
+ X30 1 1
+ X30 2 2
+ X30 9 3
+ X30 5 4
+ X30 13 5
+ X30 14 6
+ X30 0 7
+ X30 6 8
+ X47 4 0
+ X47 1 1
+ X47 2 2
+ X47 0 3
+ X24 6 3 7 8 10 11 12
+ X25 '$comp_predicate_3_3617_0' 4 15
+ X49 13 0
+ X49 14 1
+ X47 10 2
+ X47 11 3
+ X47 12 4
+ X25 find_indexing_info 5 13
+ X49 9 0
+ X47 1 1
+ X47 2 2
+ X49 10 3
+ X49 11 4
+ X49 12 5
+ X47 8 6
+ X50 [] 7
+ X25 compile_ix_struct 8 9
+ X49 8 0
+ X47 7 1
+ X25 peephole_opt2 2 8
+ X19 5
+ X52 predicate 2 2
+ X61 1
+ X61 2
+ X53 3
+ X58 2
+ X61 7
+ X30 3 3
+ X47 7 0
+ X50 1 1
+ X25 enumerate_labels 2 7
+ X49 0 0
+ X47 1 1
+ X47 2 2
+ X47 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X23
+ X26 emit_compiled_predicate 7
+)
+Predicate('$comp_predicate_3_3617_0' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 4
+ X21
+ X29 4 0
+ X11 0
+ X50 nonverbose 0
+ X46 4 1
+ X25 has_directive 2 1
+ X14 0
+ X23
+ X27
+Label 3
+ X20 7 4
+ X29 4 1
+ X29 5 2
+ X50 verbose 0
+ X46 3 1
+ X50 'compiling predicate : ~q' 2
+ X52 / 2 6
+ X60 4
+ X60 5
+ X53 3
+ X58 6
+ X63
+ X26 notify_if_opt 4
+)
+Predicate('$comp_predicates_5_3615_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 5
+ X21
+ X29 5 0
+ X11 0
+ X46 1 0
+ X46 2 1
+ X46 3 2
+ X46 4 3
+ X46 5 4
+ X25 comp_predicate 5 1
+ X14 0
+ X23
+ X27
+Label 3
+ X20 5 5
+ X36 ',' 2 1
+ X55 5
+ X54 1
+ X32 0 4
+ X50 'Failed to compile predicate ~q' 0
+ X53 1
+ X58 5
+ X63
+ X26 warning 2
+)
+Predicate('$compile_directives_3_3637_0' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 3 0
+ X30 1 2
+ X30 2 3
+ X11 0
+ X46 1 0
+ X47 2 1
+ X47 3 2
+ X25 compile_directive 3 4
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X23
+ X26 compile_directives 3
+Label 3
+ X20 3 4
+ X29 4 1
+ X50 'directive ~q failed to compile' 0
+ X53 1
+ X60 4
+ X63
+ X26 error 2
+)
+Predicate('$compile_directive_3_3638_0' 3
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X21
+ X11 0
+ X25 is_void_directive 1 1
+ X14 0
+ X23
+ X27
+Label 3
+ X21
+ X30 1 1
+ X11 0
+ X25 is_load_directive 1 2
+ X50 named_files_only 0
+ X49 1 1
+ X25 hasnt_opt 2 1
+ X14 0
+ X23
+ X27
+Label 4
+ X20 22 3
+ X21
+ X30 0 1
+ X30 2 2
+ X53 3
+ X62 1
+ X63
+ X53 4
+ X62 1
+ X63
+ X53 5
+ X62 1
+ X63
+ X53 6
+ X62 1
+ X63
+ X53 7
+ X62 1
+ X63
+ X52 cls 1 8
+ X56 8
+ X52 ix 6 9
+ X58 3
+ X58 4
+ X58 5
+ X58 6
+ X58 7
+ X58 8
+ X30 5 9
+ X52 :- 2 10
+ X62 '$$LOAD_DIRECTIVE$$'
+ X60 0
+ X30 7 10
+ X50 0 1
+ X45 6 2
+ X24 3 1 3 4
+ X25 enumeratevars 3 9
+ X49 6 3
+ X16 26 4 3
+ X47 7 0
+ X46 4 1
+ X47 8 2
+ X25 minimal_annot_clause 3 6
+ X47 5 0
+ X50 '$$LOAD_DIRECTIVE$$' 1
+ X50 0 2
+ X50 det 3
+ X50 det 4
+ X50 local 5
+ X47 4 6
+ X50 [] 7
+ X25 compile_ix_struct 8 5
+ X49 4 0
+ X47 3 1
+ X25 peephole_opt2 2 4
+ X19 5
+ X52 directive 2 2
+ X62 '$$LOAD_DIRECTIVE$$'
+ X62 0
+ X53 3
+ X58 2
+ X61 3
+ X30 1 3
+ X47 3 0
+ X50 1 1
+ X25 enumerate_labels 2 3
+ X49 0 0
+ X47 1 1
+ X49 2 2
+ X23
+ X26 emit_compiled_code 3
+)
+Predicate('$compile_predicates_3_3611_2' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 0
+ X30 2 1
+ X30 3 2
+ X11 4
+ X50 output_separate 0
+ X47 1 1
+ X24 1 0
+ X25 has_opt 2 5
+ X14 4
+ X47 0 0
+ X25 empty_dict 1 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 '$compile_predicates_3_3611_3' 4
+Label 3
+ X21
+ X30 1 0
+ X30 2 1
+ X30 3 2
+ X47 1 0
+ X45 4 1
+ X24 1 0
+ X25 '$compile_predicates_3_3611_1' 2 5
+ X49 4 0
+ X50 write 1
+ X47 0 2
+ X25 open 3 4
+ X49 3 0
+ X47 1 1
+ X47 0 2
+ X25 compile_all_directives 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 '$compile_predicates_3_3611_0' 3
+)
+Predicate('$compile_predicates_3_3611_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 0
+ X11 0
+ X46 2 0
+ X47 1 2
+ X25 comp_predicates 3 2
+ X14 0
+ X49 1 0
+ X23
+ X26 close 1
+Label 3
+ X21
+ X25 close 1 0
+ X28
+ X23
+ X27
+)
+Predicate('$compile_predicates_3_3611_1' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 3 2
+ X21
+ X29 2 0
+ X11 0
+ X52 output 1 0
+ X60 1
+ X46 2 1
+ X25 has_opt 2 1
+ X14 0
+ X23
+ X27
+Label 3
+ X46 1 0
+ X26 default_compiled_output_file 1
+)
+Predicate('$compile_predicates_3_3611_3' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 4
+ X21
+ X29 5 0
+ X11 0
+ X46 2 0
+ X46 3 2
+ X46 5 3
+ X45 1 4
+ X25 comp_predicates 5 2
+ X14 0
+ X49 1 0
+ X23
+ X26 close_all_streams 1
+Label 3
+ X20 1 4
+ X21
+ X42 0
+ X25 close_all_streams 1 0
+ X28
+ X23
+ X27
+)
+Predicate('$conflicting_option_2_3655_0' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 2
+ X21
+ X29 2 0
+ X11 0
+ X46 1 0
+ X46 2 1
+ X25 member 2 1
+ X14 0
+ X23
+ X27
+Label 3
+ X28
+ X27
+)
+Predicate('$emit_compiled_predicate_7_3632_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 3
+ X21
+ X29 3 0
+ X30 1 1
+ X30 2 2
+ X11 0
+ X50 numa 0
+ X46 3 1
+ X25 has_opt 2 3
+ X14 0
+ X49 1 0
+ X49 2 1
+ X23
+ X26 locality_pho 2
+Label 3
+ X32 1 2
+ X27
+)
+Predicate('$emit_compiled_predicate_7_3632_1' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 6
+ X21
+ X29 6 0
+ X30 2 1
+ X30 3 2
+ X30 1 3
+ X30 5 4
+ X30 0 5
+ X11 4
+ X50 ascii_format 0
+ X46 6 1
+ X25 has_opt 2 6
+ X19 2
+ X14 4
+ X47 0 0
+ X50 '% Source:     ~q~n' 1
+ X53 2
+ X61 5
+ X63
+ X25 format 3 4
+ X19 4
+ X47 0 0
+ X50 '% Compiled:   ~q/~d~n' 1
+ X53 3
+ X61 3
+ X63
+ X53 2
+ X61 2
+ X58 3
+ X25 format 3 2
+ X19 2
+ X49 0 0
+ X50 '% Directives: ~p~n' 1
+ X53 2
+ X61 1
+ X63
+ X23
+ X26 format 3
+Label 3
+ X27
+)
+Predicate('$enumerate_label_3_3627_0' 3
+ X1 1 2 2 2 2
+Label 1
+ X10 3
+ X16 17 0
+ X13 3
+ X32 1 0
+ X16 26 4 1
+ X32 4 2
+ X27
+Label 2
+ X32 1 2
+ X27
+)
+Predicate('$find_indexing_info_5_3620_1' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 2
+ X30 2 3
+ X30 3 4
+ X11 0
+ X25 '$find_indexing_info_5_3620_2' 1 4
+ X14 0
+ X49 1 0
+ X34 any 0
+ X49 2 1
+ X34 any 1
+ X49 3 2
+ X34 local 2
+ X23
+ X27
+Label 3
+ X20 1 5
+ X21
+ X30 0 1
+ X30 1 2
+ X30 2 4
+ X50 1 5
+ X44 7 6
+ X16 2 5 0 6
+ X46 7 0
+ X46 3 1
+ X25 symbolic_type_of 2 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 '$find_indexing_info_5_3620_0' 3
+)
+Predicate('$find_indexing_info_5_3620_0' 3
+ X1 1 3 3 3 2
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X3 1 (
+        shr 3 1
+) 3
+Label 3
+ X10 3
+ X50 unanalysed 4
+ X16 5 0 4
+ X13 3
+ X34 any 1
+ X34 local 2
+ X27
+Label 4
+ X20 4 3
+ X21
+ X30 1 2
+ X10 3
+ X36 shr 3 0
+ X54 2
+ X55 4
+ X13 3
+ X50 1 5
+ X45 0 6
+ X16 2 5 4 6
+ X47 0 0
+ X25 symbolic_type_of 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 symbolic_locality_of_type 2
+)
+Predicate('$find_indexing_info_5_3620_2' 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X50 det 1
+ X16 5 0 1
+ X27
+Label 3
+ X50 nondet 1
+ X16 5 0 1
+ X27
+)
+Predicate('$find_indexing_info_5_3621_0' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 4
+ X50 unanalysed 5
+ X16 5 0 5
+ X13 4
+ X34 any 1
+ X34 any 2
+ X34 local 3
+ X27
+Label 3
+ X20 3 4
+ X29 4 0
+ X50 'find_indexing_info/5: unanalysed seq cp but par cp ~q' 0
+ X53 1
+ X60 4
+ X63
+ X26 sys_error 2
+)
+Predicate('$has_opt_2_3673_0' 3
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X10 3
+ X32 0 1
+ X13 3
+ X27
+Label 3
+ X20 2 3
+ X10 3
+ X36 - 1 1
+ X60 0
+ X13 3
+ X28
+ X27
+Label 4
+ X46 2 1
+ X26 has_opt 2
+)
+Predicate('$hasnt_opt_2_3675_0' 3
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X10 3
+ X32 0 1
+ X13 3
+ X28
+ X27
+Label 3
+ X20 2 3
+ X10 3
+ X36 - 1 1
+ X60 0
+ X13 3
+ X27
+Label 4
+ X46 2 1
+ X26 hasnt_opt 2
+)
+Predicate('$load_files_6_3601_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 3
+ X21
+ X29 3 0
+ X30 1 1
+ X30 2 2
+ X11 0
+ X50 inline 0
+ X46 3 1
+ X25 has_opt 2 3
+ X14 0
+ X49 1 0
+ X49 2 1
+ X23
+ X26 inline_clause_database 2
+Label 3
+ X32 1 2
+ X27
+)
+Predicate('$load_files_6_3601_2' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 0
+ X30 2 1
+ X30 3 2
+ X30 4 3
+ X30 5 4
+ X30 6 5
+ X11 0
+ X50 named_files_only 0
+ X47 1 1
+ X25 has_opt 2 7
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X49 6 5
+ X23
+ X26 '$load_files_6_3601_4' 6
+Label 3
+ X20 4 6
+ X29 6 0
+ X29 7 1
+ X29 8 2
+ X29 9 3
+ X46 4 0
+ X46 6 1
+ X46 7 2
+ X46 8 3
+ X46 9 4
+ X26 '$load_files_6_3601_1' 6
+)
+Predicate('$load_files_6_3601_1' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 6
+ X21
+ X29 6 0
+ X11 0
+ X46 2 0
+ X46 5 1
+ X46 3 2
+ X46 4 3
+ X46 6 4
+ X25 fload_desugar_program 5 1
+ X14 0
+ X23
+ X27
+Label 3
+ X21
+ X50 verbose 0
+ X50 'preloading failed' 2
+ X25 notify_if_opt 3 0
+ X28
+ X23
+ X27
+)
+Predicate('$load_files_6_3601_4' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 6
+ X21
+ X29 6 0
+ X11 0
+ X50 analyse 0
+ X46 6 1
+ X25 has_opt 2 1
+ X14 0
+ X50 'analyse option does not work with option named_files_only' 0
+ X23
+ X26 error 1
+Label 3
+ X20 4 6
+ X29 6 0
+ X29 7 1
+ X29 8 2
+ X29 9 3
+ X46 4 0
+ X46 6 1
+ X46 7 2
+ X46 8 3
+ X46 9 4
+ X26 '$load_files_6_3601_3' 6
+)
+Predicate('$load_files_6_3601_3' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 6
+ X21
+ X29 6 0
+ X11 0
+ X46 2 0
+ X46 5 1
+ X46 3 2
+ X46 4 3
+ X46 6 4
+ X25 fload_desugar_program_one 5 1
+ X14 0
+ X23
+ X27
+Label 3
+ X21
+ X50 verbose 0
+ X50 'preloading file(s): Failed' 2
+ X25 notify_if_opt 3 0
+ X28
+ X23
+ X27
+)

@@ -1,0 +1,25 @@
+s sysbreak _exit
+s sysbreak kill
+#s stat-profile 1
+
+#$simprocessors=11
+$simprocessors=2
+#$simcpuswitch=2
+
+init
+
+# ucst 10000 500000
+
+#s load-unix -tty  "luther.fpar" "-b ../Library/boot.wam -memory 40000000"
+#s unix-tty-input "load('../comp').\ncompile('../../Compiler/reform').\nhalt.\n" 4002
+s load-unix -tty  "luther.fpar" "-b ../Library/boot.wam "
+s unix-tty-input "load('../match').\ntest_seq.\n40.\nhalt.\n" 4002
+
+symbol luther.fpar
+
+## detta kan minskas till 1-10 senare
+#init
+#
+## Set unix scheduling parameters
+#ucst 10000 500000
+

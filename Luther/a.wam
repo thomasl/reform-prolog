@@ -1,0 +1,578 @@
+Predicate(test_seq 0
+Label 1
+ X21
+ X45 1 0
+ X24 1 0
+ X25 read 1 2
+ X19 2
+ X49 1 5
+ X16 23 5
+ X47 1 0
+ X42 1
+ X47 0 2
+ X50 17 3
+ X42 4
+ X25 test_seq 5 1
+ X19 2
+ X50 'time ~q for result ~n' 0
+ X53 1
+ X61 0
+ X63
+ X23
+ X26 format 2
+)
+Predicate(match_sequences 3
+ X1 1 2 fail 4 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X27
+Label 3
+ X20 7 3
+ X21
+ X30 1 1
+ X30 2 2
+ X37 0
+ X55 1
+ X56 0
+ X47 1 0
+ X50 none 2
+ X52 entry 4 3
+ X62 0
+ X62 0
+ X62 0
+ X62 0
+ X45 3 4
+ X25 match_two_seq 5 4
+ X47 2 0
+ X49 3 1
+ X25 put_in_tree 2 3
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 match_sequences 3
+Label 4
+ X84 0 3 4 0
+ X98 5
+        5 { 0 1 2 3 4 } -1
+ X26 match_sequences 3
+Label 5
+ X100 1
+Label 6
+ X102 1 5 3
+ X21
+ X30 0 5
+ X92 1 0
+ X49 0 6
+ X90 4 6 0 1
+ X50 none 2
+ X52 entry 4 3
+ X62 0
+ X62 0
+ X62 0
+ X62 0
+ X45 1 4
+ X25 match_two_seq 5 2
+ X92 2 0
+ X49 1 1
+ X25 put_in_tree 2 1
+ X23
+ X112 6
+)
+Predicate(match 7
+ X1 2 3 fail 1 fail
+Label 1
+ X4 4
+ X6 5
+Label 2
+ X50 gnd 1
+ X50 match 2
+ X50 7 3
+ X26 mode_error 4
+Label 3
+ X35 0
+ X35 3
+ X32 5 6
+ X27
+Label 4
+ X20 4 7
+ X21
+ X30 1 1
+ X30 3 4
+ X30 5 6
+ X37 0
+ X55 0
+ X56 0
+ X34 none 2
+ X37 3
+ X56 4
+ X56 2
+ X12
+ X47 1 1
+ X47 3 2
+ X47 3 3
+ X46 5 4
+ X47 4 5
+ X25 match_entry 6 6
+ X47 0 0
+ X49 1 1
+ X50 none 2
+ X47 2 3
+ X49 3 4
+ X47 4 5
+ X49 5 6
+ X23
+ X26 match 7
+Label 5
+ X20 6 7
+ X21
+ X30 1 1
+ X30 6 6
+ X37 0
+ X55 0
+ X56 0
+ X37 2
+ X56 4
+ X56 2
+ X37 3
+ X56 5
+ X56 3
+ X47 1 1
+ X46 4 2
+ X47 4 3
+ X46 5 4
+ X47 5 5
+ X25 match_entry 6 7
+ X47 0 0
+ X49 1 1
+ X47 2 2
+ X47 3 3
+ X47 4 4
+ X47 5 5
+ X49 6 6
+ X23
+ X26 match 7
+)
+Predicate(alpha_beta_penalty 3
+Label 1
+ X50 4 3
+ X16 27 4 0 3
+ X16 28 5 1
+ X46 5 0
+ X46 4 1
+ X26 max 3
+)
+Predicate(match_entry 6
+ X1 1 2 2 2 2
+Label 1
+ X50 gnd 1
+ X50 match_entry 2
+ X50 6 3
+ X26 mode_error 4
+Label 2
+ X20 20 6
+ X21
+ X30 9 0
+ X30 10 1
+ X36 entry 4 2
+ X56 0
+ X56 5
+ X54 2
+ X36 entry 4 3
+ X56 2
+ X56 11
+ X56 12
+ X54 1
+ X36 entry 4 4
+ X56 1
+ X55 0
+ X54 1
+ X55 1
+ X36 entry 4 5
+ X56 4
+ X56 3
+ X56 8
+ X56 7
+ X47 7 2
+ X24 1 6
+ X25 alpha_beta_penalty 3 13
+ X47 11 0
+ X47 12 1
+ X47 8 2
+ X25 alpha_beta_penalty 3 11
+ X49 9 0
+ X49 10 1
+ X47 6 2
+ X25 match_weights 3 9
+ X19 6
+ X47 5 3
+ X49 6 4
+ X16 25 5 3 4
+ X53 6
+ X59 8
+ X63
+ X53 7
+ X59 7
+ X58 6
+ X53 0
+ X62 0
+ X58 7
+ X46 5 1
+ X47 3 2
+ X25 maxl 3 5
+ X19 6
+ X53 3
+ X59 2
+ X63
+ X53 4
+ X59 1
+ X58 3
+ X53 0
+ X59 0
+ X58 4
+ X47 3 1
+ X47 4 2
+ X23
+ X26 maxl 3
+)
+Predicate(match_two_seq 5
+ X1 1 2 1 3 1
+Label 1
+ X50 list_g_n 1
+ X50 match_two_seq 2
+ X50 5 3
+ X26 mode_error 4
+Label 2
+ X35 0
+ X32 3 4
+ X27
+Label 3
+ X20 12 5
+ X21
+ X30 1 1
+ X30 4 4
+ X37 0
+ X55 1
+ X56 0
+ X47 1 0
+ X45 2 3
+ X52 entry 4 4
+ X62 0
+ X62 0
+ X62 0
+ X62 0
+ X52 entry 4 5
+ X62 0
+ X62 0
+ X62 0
+ X62 0
+ X45 3 6
+ X25 match 7 5
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 match_two_seq 5
+)
+Predicate(maxl 3
+ X1 1 2 1 3 1
+Label 1
+ X50 list_a_n 1
+ X50 maxl 2
+ X50 3 3
+ X26 mode_error 4
+Label 2
+ X35 0
+ X32 1 2
+ X27
+Label 3
+ X20 2 3
+ X21
+ X30 2 2
+ X37 0
+ X55 3
+ X56 0
+ X46 1 0
+ X46 3 1
+ X45 1 2
+ X25 max 3 3
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 maxl 3
+)
+Predicate(max 3
+ X1 2 1 1 1 1
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X50 gnd 1
+ X50 max 2
+ X50 3 3
+ X26 mode_error 4
+Label 3
+ X10 3
+ X16 13 0 1
+ X13 3
+ X32 1 2
+ X27
+Label 4
+ X32 0 2
+ X27
+)
+Predicate(match_weights 3
+ X1 2 1 1 1 1
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X50 gnd 1
+ X50 match_weights 2
+ X50 3 3
+ X26 mode_error 4
+Label 3
+ X32 0 1
+ X34 1 2
+ X12
+ X27
+Label 4
+ X34 0 2
+ X27
+)
+Predicate(put_in_tree 2
+ X104 0
+ X1 2 fail fail fail 1
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X20 4 2
+ X10 2
+% par builtin '$var'/1
+ X107 17
+        1 { 0 } 0
+        3 { 0 1 2 } 0
+ X13 2
+ X104 0
+ X109 t 3 0 3
+ X54 1
+ X103
+ X78 1
+ X54 1
+ X111 0 3
+ X27
+Label 3
+ X20 4 2
+ X36 t 3 0
+ X54 1
+ X55 2
+ X54 1
+ X10 3
+ X16 5 2 1
+ X13 3
+ X27
+Label 4
+ X20 4 2
+ X36 t 3 0
+ X55 0
+ X55 2
+ X54 1
+ X10 3
+ X16 7 1 2
+ X13 3
+ X26 put_in_tree 2
+Label 5
+ X20 4 2
+ X36 t 3 0
+ X54 2
+ X55 0
+ X26 put_in_tree 2
+)
+Predicate(random_sequence 4
+ X1 3 5 1 5 5
+Label 1
+ X2 1 (
+        0 2
+) 5
+Label 2
+ X4 4
+ X6 5
+Label 3
+ X50 gnd 1
+ X50 random_sequence 2
+ X50 4 3
+ X26 mode_error 4
+Label 4
+ X34 0 0
+ X35 1
+ X12
+ X32 3 2
+ X27
+Label 5
+ X20 2 4
+ X21
+ X30 0 0
+ X30 3 3
+ X37 1
+ X55 1
+ X56 1
+ X50 10 0
+ X45 2 3
+ X25 random 4 4
+ X49 0 4
+ X16 28 5 4
+ X46 5 0
+ X47 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 random_sequence 4
+)
+Predicate(random 4
+ X1 1 2 2 2 2
+Label 1
+ X50 gnd 1
+ X50 random 2
+ X50 4 3
+ X26 mode_error 4
+Label 2
+ X16 32 4 2 0
+ X16 26 5 4
+ X32 5 1
+ X50 125 6
+ X16 29 7 6 2
+ X16 26 8 7
+ X50 4096 9
+ X16 32 10 8 9
+ X32 10 3
+ X27
+)
+Predicate(random_sequences 5
+ X1 3 5 1 5 5
+Label 1
+ X2 1 (
+        0 2
+) 5
+Label 2
+ X4 4
+ X6 5
+Label 3
+ X50 gnd 1
+ X50 random_sequences 2
+ X50 5 3
+ X26 mode_error 4
+Label 4
+ X34 0 0
+ X35 2
+ X12
+ X32 4 3
+ X27
+Label 5
+ X20 2 5
+ X21
+ X30 0 0
+ X30 1 1
+ X30 4 4
+ X37 2
+ X55 1
+ X56 2
+ X47 1 0
+ X46 3 2
+ X45 3 3
+ X25 random_sequence 4 5
+ X49 0 5
+ X16 28 6 5
+ X46 6 0
+ X49 1 1
+ X47 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 random_sequences 5
+)
+Predicate(test_seq 5
+ X1 1 2 2 2 2
+Label 1
+ X50 gnd 1
+ X50 test_seq 2
+ X50 5 3
+ X26 mode_error 4
+Label 2
+ X21
+ X30 10 0
+ X30 9 1
+ X30 6 2
+ X30 12 4
+ X50 32 0
+ X45 8 1
+ X46 3 2
+ X45 11 3
+ X24 7 0 1 2 3 4 5 7
+ X25 random_sequence 4 13
+ X49 10 0
+ X50 32 1
+ X47 7 2
+ X49 11 3
+ X49 12 4
+ X25 random_sequences 5 10
+ X19 4
+ X50 instr 0
+ X53 2
+ X61 3
+ X63
+ X53 1
+ X61 2
+ X58 2
+ X25 statistics 2 10
+ X19 2
+ X50 walltime 0
+ X53 1
+ X61 5
+ X54 1
+ X25 statistics 2 10
+ X49 7 0
+ X49 8 1
+ X49 9 2
+ X25 match_sequences 3 7
+ X19 2
+ X50 walltime 0
+ X53 1
+ X61 4
+ X54 1
+ X25 statistics 2 7
+ X19 4
+ X50 instr 0
+ X53 2
+ X61 1
+ X63
+ X53 1
+ X61 0
+ X58 2
+ X25 statistics 2 7
+ X19 2
+ X47 0 2
+ X47 1 3
+ X16 25 4 2 3
+ X47 2 5
+ X47 3 6
+ X16 25 7 5 6
+ X16 27 8 4 7
+ X47 4 9
+ X47 5 10
+ X16 27 11 9 10
+ X33 6 11
+ X50 'map: ~w instructions executed~n' 0
+ X53 1
+ X60 8
+ X63
+ X23
+ X26 format 2
+)

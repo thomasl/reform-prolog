@@ -1,0 +1,66 @@
+Predicate('$find_inlineables_3_68_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 1
+ X30 2 2
+ X30 5 3
+ X30 6 4
+ X11 0
+ X45 3 1
+ X45 7 2
+ X24 1 4
+ X25 single_clause 3 8
+ X49 7 0
+ X47 4 1
+ X25 safe_inline 2 7
+ X19 6
+ X14 0
+ X52 / 2 0
+ X61 1
+ X61 2
+ X52 :- 2 1
+ X61 3
+ X61 4
+ X49 5 2
+ X49 6 3
+ X23
+ X26 insert 4
+Label 3
+ X32 3 4
+ X27
+)
+Predicate('$inline_expand_goal_3_76_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 3 5
+ X21
+ X30 1 0
+ X30 2 1
+ X30 3 4
+ X11 4
+ X52 / 2 0
+ X60 2
+ X60 3
+ X47 1 1
+ X45 5 2
+ X24 1 0
+ X25 lookup 3 6
+ X14 4
+ X49 5 0
+ X47 0 1
+ X25 copy_term 2 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 inline_expand_copy 4
+Label 3
+ X32 1 4
+ X27
+)

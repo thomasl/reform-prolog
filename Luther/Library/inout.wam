@@ -1,0 +1,102 @@
+Directive('$$LOAD_DIRECTIVE$$' 0
+Label 1
+ X20 15 0
+ X52 / 2 1
+ X62 end_of_file
+ X62 0
+ X52 / 2 2
+ X62 current_input
+ X62 1
+ X52 / 2 3
+ X62 current_output
+ X62 1
+ X52 ',' 2 4
+ X58 2
+ X58 3
+ X52 ',' 2 0
+ X58 1
+ X58 4
+ X26 public 1
+)
+Predicate(end_of_file 0
+Label 1
+ X26 halt 0
+)
+Predicate(current_input 1
+Label 1
+ X26 get_input 1
+)
+Predicate('$with_default_input_2_142_0' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 1
+ X11 0
+ X17 0 2
+ X14 0
+ X49 1 0
+ X23
+ X26 set_input 1
+Label 3
+ X21
+ X46 1 0
+ X25 set_input 1 0
+ X28
+ X23
+ X27
+)
+Predicate('$with_default_output_2_143_0' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 1
+ X11 0
+ X17 0 2
+ X14 0
+ X49 1 0
+ X23
+ X26 set_output 1
+Label 3
+ X21
+ X46 1 0
+ X25 set_output 1 0
+ X28
+ X23
+ X27
+)
+Predicate(current_output 1
+Label 1
+ X26 get_output 1
+)
+Predicate(with_default_input 2
+Label 1
+ X21
+ X30 2 0
+ X30 0 1
+ X45 1 0
+ X25 get_input 1 3
+ X49 2 0
+ X25 set_input 1 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 '$with_default_input_2_142_0' 2
+)
+Predicate(with_default_output 2
+Label 1
+ X21
+ X30 2 0
+ X30 0 1
+ X45 1 0
+ X25 get_output 1 3
+ X49 2 0
+ X25 set_output 1 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 '$with_default_output_2_143_0' 2
+)

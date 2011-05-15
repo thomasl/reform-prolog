@@ -1,0 +1,21 @@
+###
+##  export_release - a shorthand for exporting reform modules.
+#
+#
+# Usage:	export_release "this-is-a-tag"
+#
+
+if ($# == 0) then
+  echo "usage: export_release <tag>"
+  exit
+endif
+
+cd /tmp
+
+cvs export -r $1 luther
+cvs export -r $1 compiler
+cvs export -r $1 documentation
+
+tar cf $1.tar Reform/
+
+echo "Created /tmp/$1.tar (export release)"

@@ -1,0 +1,15 @@
+background	(70,70,70)
+
+use shading
+
+camera
+	zoom 50
+#	resolution 0.025
+	resolution 0.05
+#	resolution 0.5
+
+sphere
+	bump
+
+light
+	center [200,100,-100]

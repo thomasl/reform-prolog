@@ -1,0 +1,18 @@
+###
+##  make_release - a shorthand for tagging and exporting a reform release.
+#
+#
+# Usage:	make_release "this-is-a-tag"
+#
+
+if ($# == 0) then
+  echo "usage: make_release <tag>"
+  exit
+endif
+
+tag_release $1
+
+export_release $1
+
+echo "--------------------"
+echo "Ready."

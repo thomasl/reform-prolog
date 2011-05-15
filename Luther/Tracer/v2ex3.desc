@@ -1,0 +1,94 @@
+#  File:     v2ex1.desc (/stud/csd/kurs/pm2/version2/v2ex1.desc)
+#  Author:   Johan Bevemyr
+#  Created:  Fri Aug 11 11:39:07 1995
+#  Purpose:  Version 2 validation file 1. Shaded reflcted bitmapped 
+#            "Mouse" seen from upper left in front of plane and with
+#            bitmapped triangle on the right.
+
+background	(70,70,70)
+
+use shadow
+use reflection 
+max reflection depth 5
+
+camera
+	eyepoint  [-30,50,100]
+	lookpoint [-10,10,114]
+	zoom	  7
+	up	  [0,1,0]
+	width     6
+	height    6
+	resolution 0.025
+
+sphere	radius	12
+	center	[0,-5,116]
+#	bitmap  '/stud/csd/kurs/pm2/ray-tracer/johan.ppm'
+
+sphere
+	radius 	8
+	center 	[-10,7,118]
+	color 	(152,5,23)
+	reflection 0.8
+
+sphere	radius	8
+	center	[10,7,118]
+	color 	(152,5,23)
+	reflection 0.8
+
+sphere
+	radius	4
+	center	[0,14,107]
+	color 	(100,60,60)
+	reflection 0.8
+
+sphere
+	radius	4
+	center	[0,14,124]
+	color	(200,00,00)
+
+
+sphere	radius	1.5
+	center	[4,-2,105]
+	color	(40,40,40)
+
+sphere	radius	1.5
+	center	[-4,-2,105]
+	color	(40,40,40)
+
+sphere	radius	2.5
+	center	[0,-5,104]
+	color	(90,40,40)
+
+sphere	radius	0.5
+	center	[-6,-9,105]
+	color	(0,0,0)
+
+sphere	radius	0.5
+	center	[6,-9,105]
+	color	(0,0,0)
+
+sphere	radius	0.5
+	center	[0,-11,105]
+	color	(0,0,0)
+
+light	
+	center 	[10,0,50]
+
+light
+	center 	[-20,70,50]
+
+plane
+	normal	[-1,0,2]
+	distance 150
+	color	(212,160,23) 
+
+triangle
+	center	[-20,0,100]
+	x-axis   [10,0,-10]
+	y-axis	[10,-5,10]
+#	bitmap  '/stud/csd/kurs/pm2/ray-tracer/johan.ppm'
+
+
+
+
+

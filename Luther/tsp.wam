@@ -1,0 +1,635 @@
+Predicate(test 0
+Label 1
+ X21
+ X45 3 0
+ X24 3 0 1 2
+ X25 read 1 4
+ X19 1
+ X49 3 6
+ X16 23 6
+ X47 3 0
+ X47 0 1
+ X47 1 2
+ X47 2 3
+ X50 17 4
+ X42 5
+ X25 test_tsp 6 3
+ X19 6
+ X50 'tsp: path: ~w~ncost: ~w~ntime: ~w~n' 0
+ X53 2
+ X61 2
+ X63
+ X53 3
+ X61 1
+ X58 2
+ X53 1
+ X61 0
+ X58 3
+ X23
+ X26 format 2
+)
+Predicate(all_but_this_vertex 3
+ X1 4 1 2 1 1
+Label 1
+ X4 5
+ X6 6
+Label 2
+ X2 1 (
+        0 3
+) 1
+Label 3
+ X4 4
+ X5 5
+ X6 6
+Label 4
+ X34 0 0
+ X12
+ X35 2
+ X27
+Label 5
+ X20 1 3
+ X29 3 0
+ X10 4
+ X16 11 3 1
+ X13 4
+ X16 28 5 3
+ X46 5 0
+ X46 3 1
+ X26 all_but_this_vertex 3
+Label 6
+ X20 2 3
+ X37 2
+ X60 0
+ X55 2
+ X16 28 3 0
+ X46 3 0
+ X26 all_but_this_vertex 3
+)
+Predicate(minimal_cost 5
+Label 1
+ X20 2 5
+ X50 100000 5
+ X42 6
+ X42 7
+ X26 minimal_cost 8
+)
+Predicate(cost 3
+Label 1
+ X50 0 3
+ X26 cost 4
+)
+Predicate(append_once 3
+Label 1
+ X21
+ X11 0
+ X25 append 3 1
+ X14 0
+ X23
+ X27
+)
+Predicate(append 3
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X32 1 2
+ X27
+Label 3
+ X20 4 3
+ X37 0
+ X55 3
+ X55 0
+ X37 2
+ X58 3
+ X55 2
+ X26 append 3
+)
+Predicate(cost 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 4
+ X37 0
+ X54 1
+ X63
+ X12
+ X32 3 2
+ X27
+Label 3
+ X20 8 4
+ X37 0
+ X55 4
+ X65
+ X55 5
+ X55 6
+ X44 8 7
+ X16 2 4 1 7
+ X44 10 9
+ X16 2 5 8 9
+ X16 25 11 3 10
+ X53 0
+ X58 5
+ X58 6
+ X46 11 3
+ X26 cost 4
+)
+Predicate(delete_vertex 3
+ X1 1 3 fail 2 fail
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X4 4
+ X6 5
+Label 3
+ X35 0
+ X35 2
+ X27
+Label 4
+ X20 2 3
+ X37 0
+ X60 1
+ X55 0
+ X12
+ X26 delete_vertex 3
+Label 5
+ X20 4 3
+ X37 0
+ X55 3
+ X55 0
+ X37 2
+ X58 3
+ X55 2
+ X26 delete_vertex 3
+)
+Predicate(minimal_cost 8
+ X1 1 1 fail 2 fail
+Label 1
+ X35 0
+ X12
+ X32 6 3
+ X32 7 4
+ X27
+Label 2
+ X20 3 8
+ X21
+ X30 1 1
+ X30 2 2
+ X30 3 3
+ X30 4 4
+ X30 11 5
+ X30 12 6
+ X30 13 7
+ X37 0
+ X56 9
+ X56 0
+ X47 9 8
+ X47 1 9
+ X44 1 10
+ X24 5 5 6 7 8 10
+ X16 2 8 9 10
+ X47 2 0
+ X47 10 2
+ X47 8 3
+ X25 row_min 4 14
+ X49 8 0
+ X47 9 1
+ X49 10 2
+ X49 11 3
+ X49 12 4
+ X49 13 5
+ X47 5 6
+ X47 6 7
+ X47 7 8
+ X25 update_minimum2 9 8
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X23
+ X26 minimal_cost 8
+)
+Predicate(row_min 4
+Label 1
+ X20 1 4
+ X42 4
+ X50 100000 5
+ X26 row_min 6
+)
+Predicate(random_matrix 4
+Label 1
+ X20 3 4
+ X21
+ X29 6 0
+ X30 0 1
+ X29 7 2
+ X29 8 3
+ X50 2 9
+ X16 30 10 6 9
+ X16 25 11 6 10
+ X50 1 12
+ X16 31 13 11 12
+ X46 6 0
+ X46 6 1
+ X46 13 2
+ X45 1 3
+ X46 7 4
+ X46 8 5
+ X25 random_rows 6 2
+ X19 2
+ X49 0 0
+ X53 1
+ X62 matrix
+ X61 1
+ X16 3 0 1
+ X23
+ X27
+)
+Predicate(random_elts 5
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 0 0
+ X12
+ X35 2
+ X32 4 3
+ X27
+Label 4
+ X20 2 5
+ X21
+ X30 0 0
+ X30 1 1
+ X30 4 4
+ X37 2
+ X55 1
+ X56 2
+ X47 0 5
+ X50 0 6
+ X24 1 3
+ X16 14 5 6
+ X47 1 0
+ X46 3 2
+ X47 3 3
+ X25 random 4 5
+ X49 0 5
+ X16 28 6 5
+ X46 6 0
+ X49 1 1
+ X47 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 random_elts 5
+)
+Predicate(random 4
+Label 1
+ X16 32 4 2 0
+ X16 26 5 4
+ X32 5 1
+ X50 125 6
+ X16 29 7 6 2
+ X16 26 8 7
+ X50 4096 9
+ X16 32 10 8 9
+ X32 10 3
+ X27
+)
+Predicate(random_rows 6
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 0 0
+ X12
+ X35 3
+ X32 5 4
+ X27
+Label 4
+ X20 2 6
+ X21
+ X30 0 0
+ X30 1 1
+ X30 2 2
+ X30 5 5
+ X37 3
+ X55 2
+ X56 3
+ X47 0 6
+ X50 0 7
+ X24 1 4
+ X16 14 6 7
+ X47 1 0
+ X47 2 1
+ X46 4 3
+ X47 4 4
+ X25 random_row 5 6
+ X49 0 6
+ X16 28 7 6
+ X46 7 0
+ X49 1 1
+ X49 2 2
+ X47 3 3
+ X49 4 4
+ X49 5 5
+ X23
+ X26 random_rows 6
+)
+Predicate(random_row 5
+Label 1
+ X21
+ X30 0 2
+ X45 1 2
+ X25 random_elts 5 2
+ X19 2
+ X49 0 0
+ X53 1
+ X62 row
+ X61 1
+ X16 3 0 1
+ X23
+ X27
+)
+Predicate(row_min 6
+ X1 1 1 fail 2 fail
+Label 1
+ X35 0
+ X12
+ X32 4 2
+ X32 5 3
+ X27
+Label 2
+ X20 3 6
+ X21
+ X30 1 1
+ X30 2 2
+ X30 3 3
+ X37 0
+ X55 1
+ X56 0
+ X47 1 6
+ X44 0 7
+ X16 2 1 6 7
+ X46 5 2
+ X46 4 3
+ X45 5 4
+ X45 4 5
+ X25 update_minimum3 6 6
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X23
+ X26 row_min 6
+)
+Predicate(test_tsp 6
+Label 1
+ X21
+ X30 3 0
+ X30 5 1
+ X30 6 2
+ X30 2 3
+ X47 3 0
+ X45 4 1
+ X46 4 2
+ X46 5 3
+ X24 2 0 1
+ X25 random_matrix 4 7
+ X19 2
+ X50 runtime 0
+ X53 1
+ X61 1
+ X54 1
+ X25 statistics 2 7
+ X49 3 0
+ X47 3 1
+ X49 4 2
+ X49 5 3
+ X49 6 4
+ X25 tsp 5 3
+ X19 2
+ X50 runtime 0
+ X53 1
+ X61 0
+ X54 1
+ X25 statistics 2 3
+ X19 2
+ X47 0 2
+ X47 1 3
+ X16 27 4 2 3
+ X33 2 4
+ X50 'map: ~w instructions executed~n' 0
+ X53 1
+ X54 1
+ X63
+ X23
+ X26 format 2
+)
+Predicate(tsp 5
+Label 1
+ X20 3 5
+ X29 7 3
+ X29 8 4
+ X42 3
+ X50 100000 4
+ X46 7 5
+ X46 8 6
+ X26 tsp 7
+)
+Predicate(travel 4
+ X1 1 1 fail 2 fail
+Label 1
+ X35 0
+ X12
+ X32 3 2
+ X27
+Label 2
+ X20 4 4
+ X21
+ X30 1 1
+ X30 8 2
+ X30 3 3
+ X37 0
+ X56 9
+ X56 10
+ X53 0
+ X59 9
+ X59 10
+ X47 1 1
+ X47 8 2
+ X45 5 3
+ X45 6 4
+ X24 4 0 2 4 7
+ X25 minimal_cost 5 11
+ X19 2
+ X53 0
+ X59 9
+ X59 10
+ X47 5 1
+ X47 0 2
+ X25 delete_vertex 3 9
+ X19 2
+ X47 4 0
+ X53 1
+ X61 6
+ X61 7
+ X49 8 2
+ X25 append_once 3 8
+ X19 4
+ X49 4 0
+ X53 3
+ X59 6
+ X59 7
+ X53 1
+ X61 5
+ X58 3
+ X47 2 2
+ X25 append_once 3 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 travel 4
+)
+Predicate(tsp 7
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 0 0
+ X12
+ X32 5 3
+ X32 6 4
+ X27
+Label 4
+ X21
+ X30 9 0
+ X30 1 1
+ X30 2 2
+ X30 11 3
+ X30 10 4
+ X30 5 5
+ X30 6 6
+ X47 9 7
+ X50 0 8
+ X24 5 0 3 4 7 8
+ X16 14 7 8
+ X47 9 9
+ X16 28 10 9
+ X30 0 10
+ X47 1 0
+ X47 9 1
+ X45 12 2
+ X25 all_but_this_vertex 3 13
+ X19 2
+ X49 12 0
+ X47 2 1
+ X53 2
+ X61 9
+ X63
+ X47 8 3
+ X25 travel 4 12
+ X19 2
+ X53 0
+ X59 9
+ X61 8
+ X47 2 1
+ X47 7 2
+ X25 cost 3 12
+ X49 7 0
+ X47 8 1
+ X47 9 2
+ X49 10 3
+ X49 11 4
+ X47 4 5
+ X47 3 6
+ X25 update_minimum1 7 7
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X23
+ X26 tsp 7
+)
+Predicate(update_minimum1 7
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 7
+ X16 15 3 0
+ X13 7
+ X32 3 5
+ X32 4 6
+ X27
+Label 3
+ X20 2 7
+ X32 0 5
+ X37 6
+ X60 2
+ X60 1
+ X27
+)
+Predicate(update_minimum2 9
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 9
+ X16 15 3 0
+ X13 9
+ X32 3 6
+ X32 4 7
+ X32 5 8
+ X27
+Label 3
+ X32 0 6
+ X32 1 7
+ X32 2 8
+ X27
+)
+Predicate(update_minimum3 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 6
+ X16 15 2 0
+ X13 6
+ X32 2 4
+ X32 5 3
+ X27
+Label 3
+ X32 0 4
+ X32 1 5
+ X27
+)

@@ -1,0 +1,667 @@
+Predicate('$assign_names_3_2873_2' 6
+ X1 2 3 fail fail 1
+Label 1
+ X3 4 (
+        first 1 2
+        last_copy 2 4
+        last 1 5
+        copy 2 6
+) fail
+Label 2
+ X20 3 6
+ X29 6 3
+ X10 7
+ X36 first 1 0
+ X55 0
+ X13 7
+ X46 4 3
+ X46 6 4
+ X26 assign_reg_name 6
+Label 3
+ X10 6
+ X34 none 0
+ X13 6
+ X32 3 5
+ X32 2 4
+ X27
+Label 4
+ X20 8 6
+ X29 7 1
+ X29 8 2
+ X29 9 3
+ X29 10 4
+ X29 11 5
+ X10 12
+ X36 last_copy 2 0
+ X55 0
+ X55 1
+ X13 12
+ X46 7 2
+ X46 8 3
+ X46 9 4
+ X46 10 5
+ X46 11 6
+ X26 '$assign_names_3_2873_4' 7
+Label 5
+ X20 2 6
+ X10 6
+ X36 last 1 0
+ X55 0
+ X13 6
+ X46 2 1
+ X46 3 2
+ X46 4 3
+ X46 5 4
+ X26 '$assign_names_3_2873_3' 5
+Label 6
+ X20 8 6
+ X29 7 1
+ X29 8 2
+ X29 9 3
+ X29 10 4
+ X29 11 5
+ X10 12
+ X36 copy 2 0
+ X55 0
+ X55 1
+ X13 12
+ X46 7 2
+ X46 8 3
+ X46 9 4
+ X46 10 5
+ X46 11 6
+ X26 '$assign_names_3_2873_0' 7
+)
+Predicate('$assign_names_3_2873_0' 7
+ X1 3 3 1 3 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 3 7
+ X29 7 0
+ X10 8
+ X16 23 7
+ X13 8
+ X37 5
+ X60 1
+ X60 3
+ X46 1 0
+ X46 7 1
+ X46 4 3
+ X46 6 4
+ X26 '$assign_names_3_2873_1' 5
+Label 3
+ X50 'register has copy occurence but not first' 0
+ X26 sys_error 1
+)
+Predicate('$assign_names_3_2873_1' 5
+ X1 1 2 2 2 2
+Label 1
+ X20 1 5
+ X29 5 0
+ X10 6
+ X16 17 5
+ X13 6
+ X46 2 0
+ X46 5 2
+ X26 possibly_collapse_copy 5
+Label 2
+ X32 3 4
+ X27
+)
+Predicate('$assign_names_3_2873_3' 5
+ X1 3 3 1 3 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 5
+ X29 5 0
+ X10 6
+ X16 23 5
+ X13 6
+ X32 2 4
+ X46 1 0
+ X46 5 1
+ X46 3 2
+ X26 delete_all_occurences 3
+Label 3
+ X50 'register has last occurence but not first' 0
+ X26 sys_error 1
+)
+Predicate('$assign_names_3_2873_4' 7
+ X1 3 3 1 3 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 3 0
+ X30 1 1
+ X30 4 2
+ X30 5 4
+ X30 0 5
+ X30 6 6
+ X10 7
+ X47 3 8
+ X24 1 2
+ X16 23 8
+ X13 7
+ X46 3 0
+ X47 3 1
+ X47 2 2
+ X25 delete_all_occurences 3 7
+ X19 2
+ X49 0 5
+ X37 5
+ X61 1
+ X61 2
+ X47 1 0
+ X49 3 1
+ X49 4 2
+ X49 5 3
+ X49 6 4
+ X23
+ X26 '$assign_names_3_2873_5' 5
+Label 3
+ X50 'register has last_copy occurence but not first' 0
+ X26 sys_error 1
+)
+Predicate('$assign_names_3_2873_5' 5
+ X1 1 2 2 2 2
+Label 1
+ X20 1 5
+ X29 5 0
+ X10 6
+ X16 17 5
+ X13 6
+ X46 2 0
+ X46 5 2
+ X26 possibly_collapse_copy 5
+Label 2
+ X32 3 4
+ X27
+)
+Predicate('$assign_reg_name_6_2875_0' 5
+ X1 2 fail fail fail 1
+Label 1
+ X3 2 (
+        last_copy 2 2
+        last 1 3
+) fail
+Label 2
+ X20 3 5
+ X10 5
+ X36 last_copy 2 0
+ X54 1
+ X55 0
+ X13 5
+ X26 '$assign_reg_name_6_2875_2' 5
+Label 3
+ X20 2 5
+ X10 5
+ X36 last 1 0
+ X54 1
+ X13 5
+ X32 3 1
+ X16 26 6 3
+ X32 6 4
+ X27
+)
+Predicate('$assign_reg_name_6_2875_2' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 5
+ X21
+ X29 5 0
+ X30 1 1
+ X30 2 3
+ X30 3 4
+ X11 0
+ X46 2 0
+ X46 5 1
+ X25 does_occ 2 4
+ X14 0
+ X49 2 0
+ X33 1 0
+ X47 2 1
+ X16 26 2 1
+ X33 3 2
+ X23
+ X27
+Label 3
+ X32 0 1
+ X46 1 0
+ X46 3 1
+ X46 4 2
+ X26 '$assign_reg_name_6_2875_1' 3
+)
+Predicate('$assign_reg_name_6_2875_1' 3
+ X1 3 3 1 3 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 3
+ X16 23 0
+ X13 3
+ X32 1 2
+ X27
+Label 3
+ X32 1 0
+ X16 26 3 1
+ X32 3 2
+ X27
+)
+Predicate('$builtin_x_args_4_2853_0' 7
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X21
+ X30 4 5
+ X30 2 6
+ X10 7
+ X50 function 8
+ X24 3 0 1 3
+ X16 5 0 8
+ X13 7
+ X46 3 0
+ X46 4 1
+ X47 3 2
+ X47 0 3
+ X25 select_nth_1 4 5
+ X49 3 0
+ X49 4 1
+ X47 1 2
+ X25 use_x_args 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 def_if_temp 3
+Label 3
+ X10 7
+ X50 predicate 8
+ X16 5 0 8
+ X13 7
+ X46 4 0
+ X46 5 1
+ X46 6 2
+ X26 use_x_args 3
+Label 4
+ X20 8 7
+ X21
+ X29 7 0
+ X30 1 5
+ X30 0 6
+ X50 'builtin_x_args: regalloc primop ~q as ~q' 0
+ X52 / 2 8
+ X60 1
+ X60 2
+ X53 9
+ X60 7
+ X63
+ X53 1
+ X58 8
+ X58 9
+ X25 sys_error 2 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+)
+Predicate('$delete_occs_3_2866_1' 4
+ X1 1 fail 2 fail fail
+Label 1
+ X20 2 4
+ X10 4
+ X16 17 0
+ X13 4
+ X37 2
+ X60 0
+ X60 3
+ X27
+Label 2
+ X20 1 4
+ X29 4 0
+ X10 5
+ X16 23 4
+ X13 5
+ X46 1 0
+ X46 4 1
+ X26 '$delete_occs_3_2866_0' 4
+)
+Predicate('$delete_occs_3_2866_0' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 4
+ X16 11 1 0
+ X13 4
+ X32 3 2
+ X27
+Label 3
+ X20 2 4
+ X37 2
+ X60 1
+ X60 3
+ X27
+)
+Predicate('$delete_all_occurences_3_2881_0' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 4
+ X16 5 1 0
+ X13 4
+ X32 3 2
+ X27
+Label 3
+ X20 2 4
+ X37 2
+ X60 1
+ X60 3
+ X27
+)
+Predicate('$first_last_5_2862_1' 6
+ X1 2 fail fail fail 1
+Label 1
+ X3 3 (
+        u 1 2
+        d 1 3
+        c 2 4
+) fail
+Label 2
+ X20 6 6
+ X21
+ X30 0 3
+ X10 6
+ X36 u 1 0
+ X56 1
+ X13 6
+ X37 4
+ X56 3
+ X55 3
+ X46 1 0
+ X53 1
+ X59 1
+ X60 2
+ X45 2 2
+ X46 5 4
+ X25 first_last 5 4
+ X19 2
+ X49 0 3
+ X37 3
+ X59 1
+ X61 2
+ X47 1 0
+ X47 2 1
+ X47 3 2
+ X23
+ X26 '$first_last_5_2862_4' 3
+Label 3
+ X20 2 6
+ X21
+ X30 5 1
+ X30 6 2
+ X30 2 3
+ X30 7 5
+ X10 6
+ X36 d 1 0
+ X56 0
+ X13 6
+ X47 0 0
+ X47 6 1
+ X46 4 2
+ X45 4 3
+ X24 2 1 3
+ X25 '$first_last_5_2862_3' 4 8
+ X19 8
+ X49 4 5
+ X37 5
+ X55 6
+ X65
+ X61 3
+ X55 3
+ X36 first 1 6
+ X59 0
+ X49 5 0
+ X53 1
+ X59 0
+ X61 6
+ X47 1 2
+ X49 7 4
+ X25 first_last 5 4
+ X47 0 0
+ X47 1 1
+ X47 3 2
+ X25 '$first_last_5_2862_2' 3 3
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 delete_if_hard 3
+Label 4
+ X20 9 6
+ X21
+ X30 0 3
+ X30 7 5
+ X10 6
+ X36 c 2 0
+ X56 1
+ X56 3
+ X13 6
+ X37 4
+ X56 6
+ X55 3
+ X46 1 0
+ X53 7
+ X59 3
+ X60 2
+ X53 1
+ X59 1
+ X58 7
+ X45 4 2
+ X45 5 4
+ X24 1 2
+ X25 first_last 5 8
+ X47 1 0
+ X47 3 1
+ X47 4 2
+ X49 5 3
+ X47 6 4
+ X49 7 5
+ X25 '$first_last_5_2862_0' 6 5
+ X47 3 0
+ X49 4 1
+ X47 2 2
+ X25 delete_if_hard 3 3
+ X19 2
+ X49 0 0
+ X37 0
+ X59 1
+ X61 2
+ X23
+ X27
+)
+Predicate('$first_last_5_2862_0' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 0
+ X30 3 1
+ X30 5 3
+ X30 1 4
+ X30 4 5
+ X11 0
+ X46 2 0
+ X47 2 1
+ X25 does_not_occ 2 6
+ X19 3
+ X14 0
+ X49 1 0
+ X36 last_copy 2 0
+ X61 2
+ X61 3
+ X49 5 1
+ X33 4 1
+ X23
+ X27
+Label 3
+ X20 3 6
+ X36 copy 2 4
+ X60 0
+ X60 1
+ X32 3 5
+ X27
+)
+Predicate('$first_last_5_2862_2' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 0
+ X30 1 2
+ X11 0
+ X46 1 0
+ X47 2 1
+ X25 does_not_occ 2 3
+ X19 2
+ X14 0
+ X49 1 0
+ X36 last 1 0
+ X61 2
+ X23
+ X27
+Label 3
+ X34 none 2
+ X27
+)
+Predicate('$first_last_5_2862_3' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 0
+ X30 1 2
+ X30 3 3
+ X11 0
+ X46 1 0
+ X47 2 1
+ X25 does_occ 2 4
+ X19 4
+ X14 0
+ X49 1 0
+ X37 0
+ X55 1
+ X61 3
+ X36 last 1 1
+ X61 2
+ X23
+ X27
+Label 3
+ X32 2 3
+ X27
+)
+Predicate('$first_last_5_2862_4' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 2 0
+ X30 1 2
+ X11 0
+ X46 1 0
+ X47 2 1
+ X25 does_not_occ 2 3
+ X19 2
+ X14 0
+ X49 1 0
+ X36 last 1 0
+ X61 2
+ X23
+ X27
+Label 3
+ X34 none 2
+ X27
+)
+Predicate('$lifetime_ends_with_5_2877_0' 6
+ X1 1 9 9 9 2
+Label 1
+ X4 6
+ X5 7
+ X5 8
+ X6 9
+Label 2
+ X3 3 (
+        last_copy 2 3
+        last 1 4
+        copy 2 5
+) 9
+Label 3
+ X4 6
+ X6 9
+Label 4
+ X4 7
+ X6 9
+Label 5
+ X4 8
+ X6 9
+Label 6
+ X20 3 6
+ X10 6
+ X36 last_copy 2 0
+ X55 7
+ X54 1
+ X16 5 7 2
+ X13 6
+ X32 0 3
+ X32 4 5
+ X27
+Label 7
+ X20 2 6
+ X10 6
+ X36 last 1 0
+ X55 7
+ X16 5 7 2
+ X13 6
+ X32 0 3
+ X32 4 5
+ X27
+Label 8
+ X20 5 6
+ X10 6
+ X36 copy 2 0
+ X55 7
+ X55 8
+ X16 5 7 2
+ X13 6
+ X37 4
+ X58 8
+ X55 9
+ X46 1 0
+ X46 2 1
+ X46 3 2
+ X46 9 3
+ X46 5 4
+ X26 lifetime_ends_with 5
+Label 9
+ X46 1 0
+ X46 2 1
+ X46 3 2
+ X46 4 3
+ X46 5 4
+ X26 lifetime_ends_with 5
+)

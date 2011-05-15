@@ -1,0 +1,127 @@
+Predicate(run 0
+Label 1
+ X50 10 0
+ X26 run_list 1
+)
+Predicate(nrev 2
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X35 1
+ X27
+Label 3
+ X20 2 2
+ X21
+ X30 2 1
+ X37 0
+ X56 1
+ X55 0
+ X45 0 1
+ X25 nrev 2 3
+ X19 2
+ X49 0 0
+ X53 1
+ X59 1
+ X63
+ X49 2 2
+ X23
+ X26 append 3
+)
+Predicate(append 3
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X32 1 2
+ X27
+Label 3
+ X20 4 3
+ X37 0
+ X55 3
+ X55 0
+ X37 2
+ X58 3
+ X55 2
+ X26 append 3
+)
+Predicate(run_list 1
+Label 1
+ X21
+ X45 0 1
+ X25 run_list 2 1
+ X49 0 0
+ X23
+ X26 run 1
+)
+Predicate(run 1
+Label 1
+ X21
+ X30 3 0
+ X47 3 0
+ X45 2 1
+ X24 2 0 1
+ X25 length 2 4
+ X19 2
+ X50 runtime 0
+ X53 1
+ X61 1
+ X54 1
+ X25 statistics 2 4
+ X19 1
+ X49 3 0
+ X42 1
+ X25 nrev 2 3
+ X19 2
+ X50 runtime 0
+ X53 1
+ X61 0
+ X54 1
+ X25 statistics 2 3
+ X19 4
+ X47 0 2
+ X47 1 3
+ X16 27 4 2 3
+ X50 'Reversed list of ~q elements (time ~q s)~n' 0
+ X53 5
+ X60 4
+ X63
+ X53 1
+ X61 2
+ X58 5
+ X25 format 2 0
+ X19 2
+ X50 'map: ~w instructions executed~n' 0
+ X53 1
+ X54 1
+ X63
+ X23
+ X26 format 2
+)
+Predicate(run_list 2
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 0 0
+ X12
+ X35 1
+ X27
+Label 4
+ X20 2 2
+ X37 1
+ X60 0
+ X55 1
+ X16 28 2 0
+ X46 2 0
+ X26 run_list 2
+)

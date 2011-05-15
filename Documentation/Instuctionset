@@ -1,0 +1,97 @@
+
+All labels are numbers.
+Atoms/names may be quoted with 'atomname'.
+
+Labels look like:
+
+label <label>
+
+A predicate definition look like
+
+predicate(<name>/<arity> 
+	<instruction>
+	<instruction>
+	...
+	<instruction>
+)
+
+switch_on_term <variable> <atom> <number> <list> <name>/<arity>
+
+switch_on_constant <number of constants> 
+			( <constant> <label> 
+			  <constant> <label>
+			  ...
+			) <default label>
+
+switch_on_structure <number of structures> 
+			( <name>/<arity> <label> 
+			  <name>/<arity> <label>
+			  ...
+			) <default label>
+
+try <label>
+retry <label>
+trust <label>
+
+try_me_else <label>
+retry_me_else <label>
+trust_me
+
+choice_x <index>
+choice_y <index>
+cut
+cut_x <index>
+cut_y <index>
+builtin <name>/<arity> <index> <index> ... <index>
+meta_call <index> /* no - op */
+
+allocate <index>
+allocate2 <index>
+deallocate 
+call <name>/<arity> <index>
+execute <name>/<arity>
+proceed
+fail
+
+get_x_variable <index> <index>
+get_y_variable <index> <index>
+get_y_first_value <index> <index>
+get_x_value <index> <index>
+get_y_value <index> <index>
+get_constant <constant> <index>
+get_nil <index>
+get_structure <name>/<arity> <index>
+get_list <index>
+get_constant_x0 <constant>
+get_nil_x0 
+get_structure_x0 <name>/<arity>
+get_list_x0 
+
+put_x_void <index> 
+put_y_void <index> 
+put_x_variable <index> <index> 
+put_y_variable <index> <index>
+put_x_value <index> <index>
+put_y_value <index> <index>
+put_x_unsafe_value <index> <index>
+put_y_unsafe_value <index> <index>
+put_constant <constant> <index>
+put_nil <index>
+put_structure <name>/<arity> <index>
+put_list <index>
+
+unify_void
+unify_x_variable <index>
+unify_y_variable <index>
+unify_y_first_value <index>
+unify_x_value <index>
+unify_y_value <index>
+unify_x_local_value <index>
+unify_y_local_value <index>
+unify_constant <constant>
+unify_nil
+unify_structure <name>/<arity>
+unify_list
+
+halt
+

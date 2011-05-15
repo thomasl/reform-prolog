@@ -1,0 +1,692 @@
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   test_seq/0
+% Directives: []
+Predicate(test_seq 0
+  Label 1
+     Allocate
+     Put_Y_Variable 1 0
+     Init 1 0
+     Call read 1 2
+     Require 2
+     Put_Y_Unsafe_Value 1 5
+% builtin '$integer'/1
+     Builtin 23 5
+     Put_Y_Value 1 0
+     Put_X_Void 1
+     Put_Y_Value 0 2
+     Put_Constant 17 3
+     Put_X_Void 4
+     Call test_seq 5 1
+     Require 2
+     Put_Constant 'time ~q for result ~n' 0
+     Put_List 1
+     Unify_Y_Local_Value 0
+     Unify_Nil
+     Deallocate
+     Execute format 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   match_sequences/3
+% Directives: [parallel]
+Predicate(match_sequences 3
+     Switch_On_Term 1 2 fail 4 fail
+  Label 1
+     Try 2
+     Trust 3
+  Label 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_Nil 0
+     Proceed
+  Label 3
+     Require_Using 7 3
+     Allocate
+     Get_Y_Variable 1 1
+     Get_Y_Variable 2 2
+% reg x(0): par=any, seq=any, loc=local
+     Get_List 0
+     Unify_X_Variable 1
+     Unify_Y_Variable 0
+     Put_Y_Value 1 0
+     Put_Constant none 2
+     Put_Structure entry 4 3
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 0
+     Put_Y_Variable 3 4
+     Call match_two_seq 5 4
+     Put_Y_Value 2 0
+     Put_Y_Unsafe_Value 3 1
+     Call put_in_tree 2 3
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute match_sequences 3
+  Label 4
+     Build_Rec_Poslist 0 3 4 0
+     Start_Left_Body 5
+        5 { 0 1 2 3 4 } -1
+     Execute match_sequences 3
+  Label 5
+     Initialize_Left 1
+  Label 6
+     Spawn_Left 1 5 3
+     Allocate
+     Get_Y_Variable 0 5
+     Put_Global_Arg 1 0
+     Put_Y_Unsafe_Value 0 6
+     Put_Nth_Head 4 6 0 1
+     Put_Constant none 2
+     Put_Structure entry 4 3
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 0
+     Put_Y_Variable 1 4
+     Call match_two_seq 5 2
+     Put_Global_Arg 2 0
+     Put_Y_Unsafe_Value 1 1
+     Call put_in_tree 2 1
+     Deallocate
+     Jump 6
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   match/7
+% Directives: []
+Predicate(match 7
+     Switch_On_Term 2 3 fail 1 fail
+  Label 1
+     Try 4
+     Trust 5
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant match 2
+     Put_Constant 7 3
+     Execute mode_error 4
+  Label 3
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_Nil 0
+% reg x(3): par=free, seq=free, loc=local
+     Get_Nil 3
+% reg x(6): par=free, seq=free, loc=local
+% reg x(5): par=nv, seq=nv, loc=local
+     Get_X_Value 5 6
+     Proceed
+  Label 4
+     Require_Using 4 7
+     Allocate
+     Get_Y_Variable 1 1
+     Get_Y_Variable 3 4
+     Get_Y_Variable 5 6
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_List 0
+     Unify_X_Variable 0
+     Unify_Y_Variable 0
+% reg x(2): par=any, seq=any, loc=local
+     Get_Constant none 2
+% reg x(3): par=free, seq=free, loc=local
+     Get_List 3
+     Unify_Y_Variable 4
+     Unify_Y_Variable 2
+     Cut
+     Put_Y_Value 1 1
+     Put_Y_Value 3 2
+     Put_Y_Value 3 3
+     Put_X_Value 5 4
+     Put_Y_Value 4 5
+     Call match_entry 6 6
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Constant none 2
+     Put_Y_Value 2 3
+     Put_Y_Unsafe_Value 3 4
+     Put_Y_Value 4 5
+     Put_Y_Unsafe_Value 5 6
+     Deallocate
+     Execute match 7
+  Label 5
+     Require_Using 6 7
+     Allocate
+     Get_Y_Variable 1 1
+     Get_Y_Variable 6 6
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_List 0
+     Unify_X_Variable 0
+     Unify_Y_Variable 0
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+     Unify_Y_Variable 4
+     Unify_Y_Variable 2
+% reg x(3): par=free, seq=free, loc=local
+     Get_List 3
+     Unify_Y_Variable 5
+     Unify_Y_Variable 3
+     Put_Y_Value 1 1
+     Put_X_Value 4 2
+     Put_Y_Value 4 3
+     Put_X_Value 5 4
+     Put_Y_Value 5 5
+     Call match_entry 6 7
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Value 2 2
+     Put_Y_Value 3 3
+     Put_Y_Value 4 4
+     Put_Y_Value 5 5
+     Put_Y_Unsafe_Value 6 6
+     Deallocate
+     Execute match 7
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   alpha_beta_penalty/3
+% Directives: []
+Predicate(alpha_beta_penalty 3
+  Label 1
+     Put_Constant 4 3
+% builtin '$minus'/3
+     Builtin 27 4 0 3
+% builtin '$minus_1'/2
+     Builtin 28 5 1
+     Put_X_Value 5 0
+     Put_X_Value 4 1
+     Execute max 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   match_entry/6
+% Directives: []
+Predicate(match_entry 6
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant match_entry 2
+     Put_Constant 6 3
+     Execute mode_error 4
+  Label 2
+     Require_Using 20 6
+     Allocate
+     Get_Y_Variable 9 0
+     Get_Y_Variable 10 1
+% reg x(2): par=nv, seq=nv, loc=local
+     Get_Structure entry 4 2
+     Unify_Y_Variable 0
+     Unify_Y_Variable 5
+     Unify_Void 2
+% reg x(3): par=any, seq=any, loc=local
+     Get_Structure entry 4 3
+     Unify_Y_Variable 2
+     Unify_Y_Variable 11
+     Unify_Y_Variable 12
+     Unify_Void 1
+% reg x(4): par=nv, seq=nv, loc=local
+     Get_Structure entry 4 4
+     Unify_Y_Variable 1
+     Unify_X_Variable 0
+     Unify_Void 1
+     Unify_X_Variable 1
+% reg x(5): par=free, seq=free, loc=local
+     Get_Structure entry 4 5
+     Unify_Y_Variable 4
+     Unify_Y_Variable 3
+     Unify_Y_Variable 8
+     Unify_Y_Variable 7
+     Put_Y_Value 7 2
+     Init 1 6
+     Call alpha_beta_penalty 3 13
+     Put_Y_Value 11 0
+     Put_Y_Value 12 1
+     Put_Y_Value 8 2
+     Call alpha_beta_penalty 3 11
+     Put_Y_Unsafe_Value 9 0
+     Put_Y_Unsafe_Value 10 1
+     Put_Y_Value 6 2
+     Call match_weights 3 9
+     Require 6
+     Put_Y_Value 5 3
+     Put_Y_Unsafe_Value 6 4
+% builtin '$plus'/3
+     Builtin 25 5 3 4
+     Put_List 6
+     Unify_Y_Value 8
+     Unify_Nil
+     Put_List 7
+     Unify_Y_Value 7
+     Unify_X_Value 6
+     Put_List 0
+     Unify_Constant 0
+     Unify_X_Value 7
+     Put_X_Value 5 1
+     Put_Y_Value 3 2
+     Call maxl 3 5
+     Require 6
+     Put_List 3
+     Unify_Y_Value 2
+     Unify_Nil
+     Put_List 4
+     Unify_Y_Value 1
+     Unify_X_Value 3
+     Put_List 0
+     Unify_Y_Value 0
+     Unify_X_Value 4
+     Put_Y_Value 3 1
+     Put_Y_Value 4 2
+     Deallocate
+     Execute maxl 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   match_two_seq/5
+% Directives: []
+Predicate(match_two_seq 5
+     Switch_On_Term 1 2 1 3 1
+  Label 1
+     Put_Constant list_g_n 1
+     Put_Constant match_two_seq 2
+     Put_Constant 5 3
+     Execute mode_error 4
+  Label 2
+% reg x(0): par=list_g_n, seq=nil, loc=local
+     Get_Nil 0
+% reg x(4): par=free, seq=free, loc=local
+% reg x(3): par=nv, seq=nv, loc=local
+     Get_X_Value 3 4
+     Proceed
+  Label 3
+     Require_Using 12 5
+     Allocate
+     Get_Y_Variable 1 1
+     Get_Y_Variable 4 4
+% reg x(0): par=list_g_n, seq=list_g_n, loc=local
+     Get_List 0
+     Unify_X_Variable 1
+     Unify_Y_Variable 0
+     Put_Y_Value 1 0
+     Put_Y_Variable 2 3
+     Put_Structure entry 4 4
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 0
+     Put_Structure entry 4 5
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 0
+     Unify_Constant 0
+     Put_Y_Variable 3 6
+     Call match 7 5
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Deallocate
+     Execute match_two_seq 5
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   maxl/3
+% Directives: []
+Predicate(maxl 3
+     Switch_On_Term 1 2 1 3 1
+  Label 1
+     Put_Constant list_a_n 1
+     Put_Constant maxl 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 2
+% reg x(0): par=list_a_n, seq=nil, loc=local
+     Get_Nil 0
+% reg x(2): par=any, seq=any, loc=local
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_X_Value 1 2
+     Proceed
+  Label 3
+     Require_Using 2 3
+     Allocate
+     Get_Y_Variable 2 2
+% reg x(0): par=list_a_n, seq=list_a_n, loc=local
+     Get_List 0
+     Unify_X_Variable 3
+     Unify_Y_Variable 0
+     Put_X_Value 1 0
+     Put_X_Value 3 1
+     Put_Y_Variable 1 2
+     Call max 3 3
+     Put_Y_Value 0 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Deallocate
+     Execute maxl 3
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   max/3
+% Directives: []
+Predicate(max 3
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant max 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 3
+     Choice_X 3
+% builtin '$lt'/2
+     Builtin 13 0 1
+     Cut_X 3
+% reg x(2): par=any, seq=any, loc=local
+% reg x(1): par=gnd, seq=gnd, loc=local
+     Get_X_Value 1 2
+     Proceed
+  Label 4
+% reg x(2): par=any, seq=any, loc=local
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_X_Value 0 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   match_weights/3
+% Directives: []
+Predicate(match_weights 3
+     Switch_On_Term 2 1 1 1 1
+  Label 1
+     Try 3
+     Trust 4
+  Label 2
+     Put_Constant gnd 1
+     Put_Constant match_weights 2
+     Put_Constant 3 3
+     Execute mode_error 4
+  Label 3
+% reg x(1): par=gnd, seq=gnd, loc=local
+% reg x(0): par=gnd, seq=gnd, loc=local
+     Get_X_Value 0 1
+% reg x(2): par=free, seq=free, loc=local
+     Get_Constant 1 2
+     Cut
+     Proceed
+  Label 4
+% reg x(2): par=free, seq=free, loc=local
+     Get_Constant 0 2
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   put_in_tree/2
+% Directives: []
+Predicate(put_in_tree 2
+     Await_Nonvar 0
+     Switch_On_Term 2 fail fail fail 1
+  Label 1
+     Try 3
+     Retry 4
+     Trust 5
+  Label 2
+     Require_Using 4 2
+     Choice_X 2
+% par builtin '$var'/1
+     Par_Builtin 17
+        1 { 0 } 0
+        3 { 0 1 2 } 0
+     Cut_X 2
+     Await_Nonvar 0
+% reg x(0): par=free, seq=free, loc=fragile
+     Lock_And_Get_Structure t 3 0 3
+     Unify_Void 1
+     Await_Leftmost
+% reg x(1): par=nv, seq=nv, loc=local
+% heap: par=free, seq=free, loc=fragile
+     Global_Unify_X_Local_Value 1
+     Unify_Void 1
+     Unlock 0 3
+     Proceed
+  Label 3
+     Require_Using 4 2
+% reg x(0): par=nv, seq=nv, loc=fragile
+     Get_Structure t 3 0
+     Unify_Void 1
+     Unify_X_Variable 2
+     Unify_Void 1
+     Choice_X 3
+% builtin '$eq_univ'/2
+     Builtin 5 2 1
+     Cut_X 3
+     Proceed
+  Label 4
+     Require_Using 4 2
+% reg x(0): par=nv, seq=nv, loc=fragile
+     Get_Structure t 3 0
+     Unify_X_Variable 0
+     Unify_X_Variable 2
+     Unify_Void 1
+     Choice_X 3
+% builtin '$lt_univ'/2
+     Builtin 7 1 2
+     Cut_X 3
+     Execute put_in_tree 2
+  Label 5
+     Require_Using 4 2
+% reg x(0): par=nv, seq=nv, loc=fragile
+     Get_Structure t 3 0
+     Unify_Void 2
+     Unify_X_Variable 0
+     Execute put_in_tree 2
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   random_sequence/4
+% Directives: []
+Predicate(random_sequence 4
+     Switch_On_Term 3 5 1 5 5
+  Label 1
+     Switch_On_Constant 1 (
+        0 2
+     ) 5
+  Label 2
+     Try 4
+     Trust 5
+  Label 3
+     Put_Constant gnd 1
+     Put_Constant random_sequence 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 4
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 0 0
+% reg x(1): par=any, seq=any, loc=local
+     Get_Nil 1
+     Cut
+% reg x(2): par=any, seq=any, loc=local
+% reg x(3): par=any, seq=any, loc=local
+     Get_X_Value 3 2
+     Proceed
+  Label 5
+     Require_Using 2 4
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 3 3
+% reg x(1): par=any, seq=any, loc=local
+     Get_List 1
+     Unify_X_Variable 1
+     Unify_Y_Variable 1
+     Put_Constant 10 0
+     Put_Y_Variable 2 3
+     Call random 4 4
+     Put_Y_Unsafe_Value 0 4
+% builtin '$minus_1'/2
+     Builtin 28 5 4
+     Put_X_Value 5 0
+     Put_Y_Value 1 1
+     Put_Y_Unsafe_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Deallocate
+     Execute random_sequence 4
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   random/4
+% Directives: []
+Predicate(random 4
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant random 2
+     Put_Constant 4 3
+     Execute mode_error 4
+  Label 2
+% builtin '$mod'/3
+     Builtin 32 4 2 0
+% builtin '$plus_1'/2
+     Builtin 26 5 4
+% reg x(1): par=any, seq=any, loc=local
+% reg x(5): par=any, seq=any, loc=local
+     Get_X_Value 5 1
+     Put_Constant 125 6
+% builtin '$times'/3
+     Builtin 29 7 6 2
+% builtin '$plus_1'/2
+     Builtin 26 8 7
+     Put_Constant 4096 9
+% builtin '$mod'/3
+     Builtin 32 10 8 9
+% reg x(3): par=any, seq=any, loc=local
+% reg x(10): par=any, seq=any, loc=local
+     Get_X_Value 10 3
+     Proceed
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   random_sequences/5
+% Directives: []
+Predicate(random_sequences 5
+     Switch_On_Term 3 5 1 5 5
+  Label 1
+     Switch_On_Constant 1 (
+        0 2
+     ) 5
+  Label 2
+     Try 4
+     Trust 5
+  Label 3
+     Put_Constant gnd 1
+     Put_Constant random_sequences 2
+     Put_Constant 5 3
+     Execute mode_error 4
+  Label 4
+% reg x(0): par=any, seq=any, loc=local
+     Get_Constant 0 0
+% reg x(2): par=any, seq=any, loc=local
+     Get_Nil 2
+     Cut
+% reg x(3): par=any, seq=any, loc=local
+% reg x(4): par=any, seq=any, loc=local
+     Get_X_Value 4 3
+     Proceed
+  Label 5
+     Require_Using 2 5
+     Allocate
+     Get_Y_Variable 0 0
+     Get_Y_Variable 1 1
+     Get_Y_Variable 4 4
+% reg x(2): par=any, seq=any, loc=local
+     Get_List 2
+     Unify_X_Variable 1
+     Unify_Y_Variable 2
+     Put_Y_Value 1 0
+     Put_X_Value 3 2
+     Put_Y_Variable 3 3
+     Call random_sequence 4 5
+     Put_Y_Unsafe_Value 0 5
+% builtin '$minus_1'/2
+     Builtin 28 6 5
+     Put_X_Value 6 0
+     Put_Y_Unsafe_Value 1 1
+     Put_Y_Value 2 2
+     Put_Y_Unsafe_Value 3 3
+     Put_Y_Unsafe_Value 4 4
+     Deallocate
+     Execute random_sequences 5
+)
+% Source:     '/home/groucho/csd/jb/Reform/Luther/match.pl'
+% Compiled:   test_seq/5
+% Directives: []
+Predicate(test_seq 5
+     Switch_On_Term 1 2 2 2 2
+  Label 1
+     Put_Constant gnd 1
+     Put_Constant test_seq 2
+     Put_Constant 5 3
+     Execute mode_error 4
+  Label 2
+     Allocate
+     Get_Y_Variable 10 0
+     Get_Y_Variable 9 1
+     Get_Y_Variable 6 2
+     Get_Y_Variable 12 4
+     Put_Constant 32 0
+     Put_Y_Variable 8 1
+     Put_X_Value 3 2
+     Put_Y_Variable 11 3
+     Init 7 0 1 2 3 4 5 7
+     Call random_sequence 4 13
+     Put_Y_Unsafe_Value 10 0
+     Put_Constant 32 1
+     Put_Y_Value 7 2
+     Put_Y_Unsafe_Value 11 3
+     Put_Y_Unsafe_Value 12 4
+     Call random_sequences 5 10
+     Require 4
+     Put_Constant instr 0
+     Put_List 2
+     Unify_Y_Local_Value 3
+     Unify_Nil
+     Put_List 1
+     Unify_Y_Local_Value 2
+     Unify_X_Value 2
+     Call statistics 2 10
+     Require 2
+     Put_Constant walltime 0
+     Put_List 1
+     Unify_Y_Local_Value 5
+     Unify_Void 1
+     Call statistics 2 10
+     Put_Y_Unsafe_Value 7 0
+     Put_Y_Unsafe_Value 8 1
+     Put_Y_Unsafe_Value 9 2
+     Call match_sequences 3 7
+     Require 2
+     Put_Constant walltime 0
+     Put_List 1
+     Unify_Y_Local_Value 4
+     Unify_Void 1
+     Call statistics 2 7
+     Require 4
+     Put_Constant instr 0
+     Put_List 2
+     Unify_Y_Local_Value 1
+     Unify_Nil
+     Put_List 1
+     Unify_Y_Local_Value 0
+     Unify_X_Value 2
+     Call statistics 2 7
+     Require 2
+     Put_Y_Value 0 2
+     Put_Y_Value 1 3
+% builtin '$plus'/3
+     Builtin 25 4 2 3
+     Put_Y_Value 2 5
+     Put_Y_Value 3 6
+% builtin '$plus'/3
+     Builtin 25 7 5 6
+% builtin '$minus'/3
+     Builtin 27 8 4 7
+     Put_Y_Value 4 9
+     Put_Y_Value 5 10
+% builtin '$minus'/3
+     Builtin 27 11 9 10
+% reg y(6): par=any, seq=any, loc=local
+% reg x(11): par=any, seq=any, loc=local
+     Get_Y_Value 6 11
+     Put_Constant 'map: ~w instructions executed~n' 0
+     Put_List 1
+     Unify_X_Local_Value 8
+     Unify_Nil
+     Deallocate
+     Execute format 2
+)

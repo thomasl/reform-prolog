@@ -1,0 +1,356 @@
+Predicate(start 0
+Label 1
+ X20 3 0
+ X21
+ X52 / 2 0
+ X62 module
+ X62 1
+ X24 1 0
+ X25 public 1 1
+ X19 3
+ X52 / 2 0
+ X62 public
+ X62 1
+ X25 public 1 1
+ X19 3
+ X52 / 2 0
+ X62 dynamic
+ X62 1
+ X25 public 1 1
+ X19 3
+ X52 / 2 0
+ X62 multifile
+ X62 1
+ X25 public 1 1
+ X19 3
+ X52 / 2 0
+ X62 '$$LOAD_DIRECTIVE$$'
+ X62 0
+ X25 public 1 1
+ X25 load_runtime_library 0 1
+ X25 initialize_exceptions 0 1
+ X25 initialize_operators 0 1
+ X25 version 0 1
+ X25 workers 0 1
+ X47 0 0
+ X25 default_resource_file 1 1
+ X49 0 0
+ X25 consult_resource_file 1 0
+ X50 shell 0
+ X25 'USERCALL' 1 0
+ X23
+ X26 halt 0
+)
+Predicate(load_runtime_library 0
+Label 1
+ X21
+ X50 '$LUTHERHOME/Library/inout.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/modules.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/inline.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/builtin.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/tokenizer.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/expand_term.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/read.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/read_term.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/write.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/format.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/listing.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/current_op.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/error.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/load.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/absolute_file_name.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/if.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/not.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/setof.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/sorts.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/exception.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/freeze.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/unix.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/consult.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/interpret4.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/tree.wam' 0
+ X25 boot_load 1 0
+ X50 '$LUTHERHOME/Library/shell.wam' 0
+ X23
+ X26 boot_load 1
+)
+Predicate(default_resource_file 1
+Label 1
+ X34 '~/.lutrc.pl' 0
+ X27
+)
+Predicate(consult_resource_file 1
+Label 1
+ X26 '$consult_resource_file_1_3_0' 1
+)
+Predicate('$consult_resource_file_1_3_0' 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 3 1
+ X21
+ X30 1 0
+ X11 0
+ X52 access 2 0
+ X61 1
+ X62 r_ok
+ X25 unix 1 2
+ X14 0
+ X47 1 0
+ X23
+ X26 consult 1
+Label 3
+ X27
+)
+Predicate('$boot_load_1_5_0' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 3 1
+ X30 0 2
+ X30 1 3
+ X11 2
+ X25 boot_load_aux 1 4
+ X14 2
+ X49 3 0
+ X25 '$unix_cd' 1 2
+ X49 1 0
+ X25 '$set_module' 1 1
+ X19 1
+ X42 0
+ X49 0 1
+ X23
+ X26 '$loading_mode' 2
+Label 3
+ X21
+ X30 0 2
+ X30 1 3
+ X46 1 0
+ X25 '$unix_cd' 1 2
+ X49 1 0
+ X25 '$set_module' 1 1
+ X19 1
+ X42 0
+ X49 0 1
+ X25 '$loading_mode' 2 0
+ X28
+ X23
+ X27
+)
+Predicate('$workers_0_4_0' 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 3 1
+ X29 2 0
+ X10 3
+ X50 0 4
+ X16 14 2 4
+ X13 3
+ X50 'Started with ~d active workers' 0
+ X53 1
+ X60 2
+ X63
+ X26 report 2
+Label 3
+ X27
+)
+Predicate('$load_stream_aux_3_9_0' 0
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X11 0
+ X25 '$$LOAD_DIRECTIVE$$' 0 1
+ X14 0
+ X23
+ X27
+Label 3
+ X21
+ X50 '{Warning: load directive failed}' 0
+ X25 '$display' 1 0
+ X23
+ X26 nl 0
+)
+Predicate(boot_load 1
+Label 1
+ X21
+ X30 5 0
+ X47 5 1
+ X24 5 0 1 2 3 4
+ X16 18 1
+ X47 3 0
+ X25 '$get_module' 1 6
+ X47 2 0
+ X50 boot 1
+ X25 '$loading_mode' 2 6
+ X49 5 0
+ X47 0 1
+ X47 4 2
+ X25 expand_file_name 3 5
+ X49 4 0
+ X47 1 1
+ X25 '$unix_cd' 2 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 '$boot_load_1_5_0' 4
+)
+Predicate(boot_load_aux 1
+Label 1
+ X21
+ X50 read 1
+ X45 0 2
+ X25 open 3 1
+ X47 0 0
+ X25 load_stream 1 1
+ X49 0 0
+ X23
+ X26 close 1
+)
+Predicate(dynamic 1
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X3 2 (
+        / 2 3
+        ',' 2 4
+) fail
+Label 3
+ X20 3 1
+ X36 / 2 0
+ X55 0
+ X55 1
+ X26 '$dynamic' 2
+Label 4
+ X20 3 1
+ X21
+ X36 ',' 2 0
+ X55 0
+ X56 0
+ X25 dynamic 1 1
+ X47 0 0
+ X23
+ X26 dynamic 1
+)
+Predicate(load_stream 1
+Label 1
+ X21
+ X30 1 0
+ X45 0 0
+ X47 1 1
+ X45 2 2
+ X25 '$load' 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 load_stream_aux 3
+)
+Predicate(load_stream_aux 3
+ X1 1 2 fail fail fail
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 2 (
+        end_of_file 3
+        directive 4
+) fail
+Label 3
+ X34 end_of_file 0
+ X27
+Label 4
+ X21
+ X30 1 1
+ X30 2 2
+ X34 directive 0
+ X24 1 0
+ X25 '$load_stream_aux_3_9_0' 0 3
+ X47 0 0
+ X47 1 1
+ X47 2 2
+ X25 '$load' 3 3
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 load_stream_aux 3
+)
+Predicate(module 1
+Label 1
+ X26 '$set_module' 1
+)
+Predicate(public 1
+ X1 1 fail fail fail 2
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X3 2 (
+        / 2 3
+        ',' 2 4
+) fail
+Label 3
+ X20 3 1
+ X36 / 2 0
+ X55 0
+ X55 1
+ X26 '$public' 2
+Label 4
+ X20 3 1
+ X21
+ X36 ',' 2 0
+ X55 0
+ X56 0
+ X25 public 1 1
+ X47 0 0
+ X23
+ X26 public 1
+)
+Predicate(multifile 1
+Label 1
+ X26 dynamic 1
+)
+Predicate(workers 0
+Label 1
+ X21
+ X45 0 0
+ X25 active_workers 1 1
+ X49 0 0
+ X23
+ X26 '$workers_0_4_0' 1
+)

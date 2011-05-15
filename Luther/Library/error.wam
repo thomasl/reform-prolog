@@ -1,0 +1,395 @@
+Directive('$$LOAD_DIRECTIVE$$' 0
+Label 1
+ X20 3 0
+ X52 / 2 0
+ X62 mode_error
+ X62 4
+ X26 public 1
+)
+Predicate(mode_error 4
+Label 1
+ X20 9 4
+ X29 4 0
+ X50 'illegal mode in ~q/~d, expected ~w, found ~q' 0
+ X53 5
+ X60 4
+ X63
+ X53 6
+ X60 1
+ X58 5
+ X53 7
+ X60 3
+ X58 6
+ X53 1
+ X60 2
+ X58 7
+ X26 error 2
+)
+Predicate(error 1
+Label 1
+ X20 1 1
+ X21
+ X29 2 0
+ X50 'Error: ' 0
+ X46 2 1
+ X25 usr_message 2 0
+ X28
+ X23
+ X27
+)
+Predicate(error 2
+Label 1
+ X20 2 2
+ X21
+ X29 3 0
+ X29 4 1
+ X50 'Error: ' 0
+ X46 3 1
+ X46 4 2
+ X25 usr_message 3 0
+ X28
+ X23
+ X27
+)
+Predicate(illegal_arg 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 3 2
+ X29 2 1
+ X10 3
+ X50 1 4
+ X16 13 0 4
+ X13 3
+ X50 'illegal usage of illegal_arg(_, ~q)' 0
+ X53 1
+ X60 2
+ X63
+ X26 sys_error 2
+Label 3
+ X21
+ X30 1 1
+ X50 0 2
+ X24 1 0
+ X16 14 0 2
+ X47 0 1
+ X25 pretty_arg 2 2
+ X19 4
+ X50 'illegal ~w argument in ~q' 0
+ X53 2
+ X61 1
+ X63
+ X53 1
+ X61 0
+ X58 2
+ X23
+ X26 error 2
+)
+Predicate(warning 1
+Label 1
+ X20 1 1
+ X29 2 0
+ X50 'Warning: ' 0
+ X46 2 1
+ X26 usr_message 2
+)
+Predicate(report 1
+Label 1
+ X20 1 1
+ X29 2 0
+ X50 '' 0
+ X46 2 1
+ X26 usr_message 2
+)
+Predicate(nyi 0
+Label 1
+ X50 'Procedure not yet implemented' 0
+ X26 sys_error 1
+)
+Predicate(nyi 1
+Label 1
+ X20 3 1
+ X29 2 0
+ X50 'Procedure ~q not yet implemented' 0
+ X53 1
+ X60 2
+ X63
+ X26 sys_error 2
+)
+Predicate(pretty_arg 2
+ X1 1 21 2 21 21
+Label 1
+ X4 12
+ X5 13
+ X5 14
+ X5 15
+ X5 16
+ X5 17
+ X5 18
+ X5 19
+ X5 20
+ X6 21
+Label 2
+ X2 9 (
+        1 3
+        2 4
+        3 5
+        4 6
+        5 7
+        6 8
+        7 9
+        8 10
+        9 11
+) 21
+Label 3
+ X4 12
+ X6 21
+Label 4
+ X4 13
+ X6 21
+Label 5
+ X4 14
+ X6 21
+Label 6
+ X4 15
+ X6 21
+Label 7
+ X4 16
+ X6 21
+Label 8
+ X4 17
+ X6 21
+Label 9
+ X4 18
+ X6 21
+Label 10
+ X4 19
+ X6 21
+Label 11
+ X4 20
+ X6 21
+Label 12
+ X34 1 0
+ X34 first 1
+ X12
+ X27
+Label 13
+ X34 2 0
+ X34 second 1
+ X12
+ X27
+Label 14
+ X34 3 0
+ X34 third 1
+ X12
+ X27
+Label 15
+ X34 4 0
+ X34 fourth 1
+ X12
+ X27
+Label 16
+ X34 5 0
+ X34 fifth 1
+ X12
+ X27
+Label 17
+ X34 6 0
+ X34 sixth 1
+ X12
+ X27
+Label 18
+ X34 7 0
+ X34 seventh 1
+ X12
+ X27
+Label 19
+ X34 8 0
+ X34 eighth 1
+ X12
+ X27
+Label 20
+ X34 9 0
+ X34 nineth 1
+ X12
+ X27
+Label 21
+ X20 3 2
+ X36 : 2 1
+ X60 0
+ X62 th
+ X27
+)
+Predicate(report 2
+Label 1
+ X20 2 2
+ X29 3 0
+ X29 4 1
+ X50 '' 0
+ X46 3 1
+ X46 4 2
+ X26 usr_message 3
+)
+Predicate(sys_error 1
+Label 1
+ X20 1 1
+ X21
+ X29 2 0
+ X50 'ERROR: ' 0
+ X46 2 1
+ X25 sys_message 2 0
+ X28
+ X23
+ X27
+)
+Predicate(sys_error 2
+Label 1
+ X20 2 2
+ X21
+ X29 3 0
+ X29 4 1
+ X50 'ERROR: ' 0
+ X46 3 1
+ X46 4 2
+ X25 sys_message 3 0
+ X28
+ X23
+ X27
+)
+Predicate(sys_warning 1
+Label 1
+ X20 1 1
+ X29 2 0
+ X50 'WARNING: ' 0
+ X46 2 1
+ X26 sys_message 2
+)
+Predicate(sys_report 1
+Label 1
+ X20 1 1
+ X29 2 0
+ X50 '' 0
+ X46 2 1
+ X26 sys_message 2
+)
+Predicate(sys_message 2
+Label 1
+ X20 3 2
+ X21
+ X29 3 0
+ X30 0 1
+ X50 user_error 0
+ X50 '<<~w' 1
+ X53 2
+ X60 3
+ X63
+ X25 format 3 1
+ X50 user_error 0
+ X49 0 1
+ X50 [] 2
+ X25 format 3 0
+ X50 user_error 0
+ X50 '>>~n' 1
+ X50 [] 2
+ X23
+ X26 format 3
+)
+Predicate(sys_message 3
+Label 1
+ X20 3 3
+ X21
+ X29 3 0
+ X30 0 1
+ X30 1 2
+ X50 user_error 0
+ X50 '<<~w' 1
+ X53 2
+ X60 3
+ X63
+ X25 format 3 2
+ X50 user_error 0
+ X49 0 1
+ X49 1 2
+ X25 format 3 0
+ X50 user_error 0
+ X50 '>>~n' 1
+ X50 [] 2
+ X23
+ X26 format 3
+)
+Predicate(sys_report 2
+Label 1
+ X20 2 2
+ X29 3 0
+ X29 4 1
+ X50 '' 0
+ X46 3 1
+ X46 4 2
+ X26 sys_message 3
+)
+Predicate(sys_warning 2
+Label 1
+ X20 2 2
+ X29 3 0
+ X29 4 1
+ X50 'WARNING: ' 0
+ X46 3 1
+ X46 4 2
+ X26 sys_message 3
+)
+Predicate(usr_message 2
+Label 1
+ X20 3 2
+ X21
+ X29 3 0
+ X30 0 1
+ X50 user_error 0
+ X50 '{~w' 1
+ X53 2
+ X60 3
+ X63
+ X25 format 3 1
+ X50 user_error 0
+ X49 0 1
+ X50 [] 2
+ X25 format 3 0
+ X50 user_error 0
+ X50 '}~n' 1
+ X50 [] 2
+ X23
+ X26 format 3
+)
+Predicate(usr_message 3
+Label 1
+ X20 3 3
+ X21
+ X29 3 0
+ X30 0 1
+ X30 1 2
+ X50 user_error 0
+ X50 '{~w' 1
+ X53 2
+ X60 3
+ X63
+ X25 format 3 2
+ X50 user_error 0
+ X49 0 1
+ X49 1 2
+ X25 format 3 0
+ X50 user_error 0
+ X50 '}~n' 1
+ X50 [] 2
+ X23
+ X26 format 3
+)
+Predicate(warning 2
+Label 1
+ X20 2 2
+ X29 3 0
+ X29 4 1
+ X50 'Warning: ' 0
+ X46 3 1
+ X46 4 2
+ X26 usr_message 3
+)

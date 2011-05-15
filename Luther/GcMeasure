@@ -1,0 +1,411 @@
+\begin{tabular}{lrrrrrrrrrrrr}
+Program &1&2&3&4&5&6&7&8&9&10&11&12\\
+Compiler&
+Tree	&
+Ray tracer&
+TSP	&
+\end{tabular}
+----------------------------------------------------------------------
+All measurements are in seconds wall time.
+
+Petfrix mätningar 26 garbage collections collecting 97,510,416 bytes.
+
+Compiler	1	2	4	8	12
+		8.4	7.7	7.2	6.6	6.9
+
+Total times 230 (1)
+	    226 (2)
+	    219 (4)
+	    219 (8)
+	    216 (12)
+
+
+Marking		1	2	4	8	12
+		3.7	3.38	3.53    2.91	
+
+Copying		1 	2	4	8	12
+		3.85	3.40	2.88	2.60	3.06
+
+
+Marking		1	2	4	8	12
+		2125224 1237839	1135183	855461	799726
+			916664	331134	157691	134362
+				435605	156211	88245 
+				273523	195361	116348
+					195482	99084 
+					220897	105615
+					166904	140534
+					228816	111875
+						117461
+						128068
+						205040
+						128359
+
+					
+Copying		1	2	4	8	12
+		1963373 1154399 1057537	793303	767041
+			833205	189162	170968	207150
+				454963	145911	79167 
+				285942	199002	88767 
+					176498	130295
+					164315	88178 
+					135096	95636 
+					202511	79831 
+						104115
+						102794
+						122509
+						122121
+
+----------------------------------------------------------------------
+
+Petfrix 	13 collections  42,201,496 bytes
+Ray Tracer	1	2	4	8	12
+		0.285	0.289	0.290	0.303	0.310
+
+Runtimes:
+	26.2 (12)
+	26.4 (8)
+	26.6 (4)	
+	26.5 (2)
+	26.7 (1)
+
+Marking
+		19175
+		5661
+		4331
+		4434
+		3789
+		9799
+		5023
+		8314
+		4163
+		4382
+		4344  
+		4323
+Copying
+		41350
+		2914
+		3612
+		2289
+		2784
+		1926
+		8228
+		2496
+		2068
+		1244
+		2764
+		4464  
+
+
+----------------------------------------------------------------------
+
+Tree
+
+Large live 4 collections
+Total times 	1	2	4	8	12
+
+		5.2	3.06	1.92	1.17	1.01
+
+Total times (1)
+
+Marking
+(+	109267
+	85101
+	99378
+	102776
+	110109
+	122578
+	118109
+	123442
+	123117
+	119448
+	129844
+	121526)
+
+Copying
+(+	121578
+	104200
+	59095
+	113815
+	119455
+	112095
+	126025
+	123380
+	71410
+	136895
+	131860
+	144820)
+
+----------------------------------------------------------------------
+
+TSP
+
+Tsp 6 collections (45 segs) collecting 31,372,168 bytes
+GC times	1	2	4	8	12
+		0.089	0.086	0.079   0.093	0.135
+
+Total times	
+
+Marking
+	1641
+	1722
+	82
+	164
+	82
+	82
+	1804
+	1887
+	82
+	246
+	164
+	0    
+	
+Copying
+	0
+	0
+	0
+	0
+	0
+	0
+	0
+	0
+	0
+	0
+	0
+	0
+
+
+----------------------------------------------------------------------
+
+Petfrix 	13 collections  42,201,496 bytes
+Ray Tracer	1	2	4	8	12
+		0.291	0.218	0.212	0.197	0.210
+
+
+
+Total times 28.47 (1)
+	    14.62 (2)
+	    7.62  (4)
+	    3.97  (8)
+	    2.84  (12)
+	
+Parallel load distribution:
+
+Marking
+		6064
+		6946
+		5172
+		7323
+		6669
+		8029
+		6981
+		8586
+		7263
+		7692
+		7924
+		7688
+
+Copying
+		5751
+		6708
+		6847
+		7158
+		7148
+		7768
+		6795
+		7805
+		7336
+		7160
+		7830
+		7734
+
+
+----------------------------------------------------------------------
+
+Lock accessed 1039366 times.
+
+Large live 4 collections
+Total times 	1	2	4	8	12
+		5.2	2.60	1.36	1.01	0.98
+
+Marking		1	2	4	8	12
+					     (+ 95078
+						167414
+						107451
+						154927
+						111866
+						113623
+						128216
+						172380
+						113401
+						108590
+						171517
+						175173)
+						
+
+Copying		1	2	4	8	12
+						(+ 81128
+						113553
+						120905
+						148698
+						136935
+						143421
+						155275
+						155636
+						131793
+						147219
+						153602
+						148462)
+
+
+Total times:
+	14.10 (1)
+	7.77  (2)
+	4.36  (4)
+	2.48  (8)
+	2.10  (12)
+	
+----------------------------------------------------------------------
+
+Tsp 6 collections (45 segs) collecting 31,372,168 bytes
+GC times	1	2	4	8	12
+		0.089	0.061	0.056	0.080	0.077
+
+Total times
+	137  (1)
+	72.2 (2)
+	34.3 (4)
+	19.3 (8)
+	13.1 (12)
+
+
+
+Tsp sequential GC  collecting 29,903,568 bytes
+GC times	1	2	4	8	12
+		0.095	0.099	0.142	0.185	0.250
+
+Sequential GC Total times
+	15.8 (12)
+	21.8 (8)
+	40.2 (4)
+	74.2 (2)
+	137  (1)
+	
+
+Marking		1	2	4	8	12
+						2583
+						1360
+						1473
+						2992
+						1107
+						1123
+						1180
+						1529
+						1138
+						1690
+						1332
+						1668
+
+
+Copying		1	2	4	8	12
+						7062
+						1183
+						1025
+						1068
+						1069
+						1008
+						1072
+						1000
+						1021
+						1006
+						1130
+						1184
+
+
+
+----------------------------------------------------------------------
+     0.490 sec. (1.042 sec. wall) for 4 garbage collections which collected 5864080 bytes
+		(0.007 pre; 0.468 mark [59302]; 0.551 copy [58905];
+		 0.001 wait(1);0.009 wait(2);0.001 wait(3);0.000 wait(4);
+		 0.001 post)
+		     37068 accesses to stack lock
+
+     1.540 sec. user time in worker nr 1
+     0.560 sec. (1.035 sec. wall) garbage collections 
+		(0.001 pre; 0.467 mark [112856]; 0.551 copy [109982];
+		 0.001 wait(1);0.008 wait(2);0.001 wait(3);0.001 wait(4);
+		 0.001 post)
+		     68315 accesses to stack lock
+     1.610 sec. user time in worker nr 2
+     0.670 sec. (1.036 sec. wall) garbage collections 
+		(0.001 pre; 0.467 mark [132664]; 0.551 copy [139758];
+		 0.001 wait(1);0.013 wait(2);0.001 wait(3);0.001 wait(4);
+		 0.001 post)
+		     81172 accesses to stack lock
+     1.490 sec. user time in worker nr 3
+     0.580 sec. (1.035 sec. wall) garbage collections 
+		(0.001 pre; 0.466 mark [115351]; 0.552 copy [125546];
+		 0.001 wait(1);0.013 wait(2);0.000 wait(3);0.001 wait(4);
+		 0.001 post)
+		     69029 accesses to stack lock
+     1.390 sec. user time in worker nr 4
+     0.570 sec. (1.036 sec. wall) garbage collections 
+		(0.001 pre; 0.466 mark [143936]; 0.551 copy [102811];
+		 0.002 wait(1);0.008 wait(2);0.001 wait(3);0.001 wait(4);
+		 0.001 post)
+		     77819 accesses to stack lock
+     1.410 sec. user time in worker nr 5
+     0.620 sec. (1.037 sec. wall) garbage collections 
+		(0.001 pre; 0.466 mark [117159]; 0.552 copy [139874];
+		 0.002 wait(1);0.010 wait(2);0.000 wait(3);0.001 wait(4);
+		 0.001 post)
+		     76299 accesses to stack lock
+     1.380 sec. user time in worker nr 6
+     0.640 sec. (1.037 sec. wall) garbage collections 
+		(0.001 pre; 0.468 mark [123448]; 0.551 copy [135748];
+		 0.003 wait(1);0.007 wait(2);0.001 wait(3);0.001 wait(4);
+		 0.001 post)
+		     78915 accesses to stack lock
+     1.320 sec. user time in worker nr 7
+     0.650 sec. (1.038 sec. wall) garbage collections 
+		(0.000 pre; 0.467 mark [150287]; 0.551 copy [161158];
+		 0.003 wait(1);0.009 wait(2);0.001 wait(3);0.001 wait(4);
+		 0.001 post)
+		     94388 accesses to stack lock
+     1.450 sec. user time in worker nr 8
+     0.640 sec. (1.038 sec. wall) garbage collections 
+		(0.001 pre; 0.468 mark [150324]; 0.551 copy [142714];
+		 0.003 wait(1);0.011 wait(2);0.001 wait(3);0.001 wait(4);
+		 0.001 post)
+		     89574 accesses to stack lock
+     1.410 sec. user time in worker nr 9
+     0.640 sec. (1.038 sec. wall) garbage collections 
+		(0.001 pre; 0.468 mark [155909]; 0.551 copy [137497];
+		 0.004 wait(1);0.006 wait(2);0.001 wait(3);0.001 wait(4);
+		 0.001 post)
+		     91309 accesses to stack lock
+     1.430 sec. user time in worker nr 10
+     0.660 sec. (1.039 sec. wall) garbage collections 
+		(0.001 pre; 0.467 mark [147818]; 0.551 copy [141793];
+		 0.004 wait(1);0.007 wait(2);0.001 wait(3);0.001 wait(4);
+		 0.001 post)
+		     88945 accesses to stack lock
+     1.420 sec. user time in worker nr 11
+     0.650 sec. (1.039 sec. wall) garbage collections 
+		(0.000 pre; 0.468 mark [143721]; 0.552 copy [149856];
+		 0.005 wait(1);0.006 wait(2);0.000 wait(3);0.001 wait(4);
+		 0.001 post)
+		     89170 accesses to stack lock
+     1.530 sec. user time in worker nr 12
+     0.730 sec. (1.040 sec. wall) garbage collections 
+		(0.000 pre; 0.468 mark [158133]; 0.551 copy [164627];
+		 0.006 wait(1);0.004 wait(2);0.001 wait(3);0.001 wait(4);
+		 0.001 post)
+		     97363 accesses to stack lock
+
+         0 page faults not requiring physical I/O
+         0 page faults requiring physical I/O
+
+
+yes
+| ?- died

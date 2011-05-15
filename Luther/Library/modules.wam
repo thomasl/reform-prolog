@@ -1,0 +1,133 @@
+Directive('$$LOAD_DIRECTIVE$$' 0
+Label 1
+ X20 33 0
+ X52 / 2 1
+ X62 'SYSCALL'
+ X62 1
+ X52 / 2 2
+ X62 'USERCALL'
+ X62 1
+ X52 / 2 3
+ X62 :
+ X62 2
+ X52 / 2 4
+ X62 use_module
+ X62 1
+ X52 / 2 5
+ X62 current_module
+ X62 1
+ X52 / 2 6
+ X62 ensure_loaded
+ X62 1
+ X52 ',' 2 7
+ X58 5
+ X58 6
+ X52 ',' 2 8
+ X58 4
+ X58 7
+ X52 ',' 2 9
+ X58 3
+ X58 8
+ X52 ',' 2 10
+ X58 2
+ X58 9
+ X52 ',' 2 0
+ X58 1
+ X58 10
+ X26 public 1
+)
+Predicate('SYSCALL' 1
+Label 1
+ X50 prolog 1
+ X26 call_module 2
+)
+Predicate(: 2
+Label 1
+ X20 1 2
+ X29 2 0
+ X46 1 0
+ X46 2 1
+ X26 call_module 2
+)
+Predicate('$call_module_2_153_0' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 1
+ X11 0
+ X17 0 2
+ X14 0
+ X49 1 0
+ X23
+ X26 '$set_module' 1
+Label 3
+ X21
+ X46 1 0
+ X25 '$set_module' 1 0
+ X28
+ X23
+ X27
+)
+Predicate('USERCALL' 1
+Label 1
+ X50 user 1
+ X26 call_module 2
+)
+Predicate(use_module 1
+Label 1
+ X26 ensure_loaded 1
+)
+Predicate(current_module 1
+Label 1
+ X26 '$get_module' 1
+)
+Predicate(call_module 2
+Label 1
+ X21
+ X30 0 0
+ X45 1 0
+ X25 '$module' 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 '$call_module_2_153_0' 2
+)
+Predicate(ensure_loaded 1
+Label 1
+ X21
+ X30 1 0
+ X45 0 0
+ X47 0 1
+ X25 '$loading_mode' 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 ensure_loaded_aux 2
+)
+Predicate(ensure_loaded_aux 2
+ X1 1 2 fail fail fail
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X2 3 (
+        load 3
+        qload 4
+        consult 5
+) fail
+Label 3
+ X34 load 0
+ X46 1 0
+ X26 load 1
+Label 4
+ X34 qload 0
+ X46 1 0
+ X26 qload 1
+Label 5
+ X34 consult 0
+ X46 1 0
+ X26 consult 1
+)

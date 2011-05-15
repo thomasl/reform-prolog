@@ -1,0 +1,251 @@
+/*
+ * luther.h
+ *
+ * Patric Hedlin.....Fri Jun 17 1994
+ *
+ *
+ * Description:
+ *
+ *   Collective include and Configuration of Luther Reform Prolog.
+ *
+ *
+ * Copyright (C) 1991 - 1995
+ *
+ *   H}kan Millroth / Johan Bevemyr / Thomas Lindgren / Patric Hedlin
+ *
+ */ 
+
+#ifndef LUTHER_H
+#define LUTHER_H
+
+/* #define HAVE_SOCKETS  */
+#define HAVE_SEMAPHORE 
+/* #define USE_SOLARIS_THREADS */
+
+#if defined(PARALLEL)
+#  define LUTHER_SUPPORT	"parallel"
+#else
+#  define LUTHER_SUPPORT	"sequential"
+#endif
+
+#define LUTHER_VERSION		"0.7"
+#define LUTHER_COMPILE_DATE	"Mon Feb 27 MET DST 1995"
+
+
+/* When compiling on a unix system, define unix.
+ */
+#if ! defined(unix)
+#  define unix
+#endif
+
+
+#include <stdio.h>
+#include <assert.h>
+#include <signal.h>
+
+#if defined(HAVE_CONFIG_H)
+#  include "config.h"
+#endif
+
+
+#if defined(sequent)
+#  define HAVE_MMAP
+#  undef STDC_HEADERS
+#  undef HAVE_STRING_H
+#  undef HAVE_UNISTD_H
+#  undef HAVE_STDLIB_H
+#else
+#  define IEEE_FLOATING_POINT
+#endif 
+
+#if defined(HAVE_MALLOC_BASE_H)
+#  include "malloc_base.h"
+#endif
+
+#if defined(STDC_HEADERS) || defined(HAVE_UNISTD_H)
+#  include <unistd.h>
+#endif
+
+#if defined(STDC_HEADERS) || defined(HAVE_STDLIB_H)
+#  include <stdlib.h>
+#endif
+
+#if defined(STDC_HEADERS) || defined(HAVE_STRING_H)
+#  include <string.h> 
+#endif
+
+#if defined(HAVE_ALLOCA_H)
+#  include <alloca.h>
+#endif
+
+#if defined(unix)
+#  include <sys/param.h>
+#endif
+
+/*   The code for bounded quantifiers has not been modified to work in a
+ * parallel context.
+ */
+#if defined(BOUNDED_Q)
+#  define JUMP_CODE
+#endif
+
+/* Threaded code is only possible with GCC 
+ */
+#if ! defined(__GNUC__)
+#  if defined(THREADED_CODE)
+#     undef THREADED_CODE
+#     undef PREFETCH
+#  endif
+#endif
+
+#if defined(ksr1)
+#  define KSR1(code) code
+#else
+#  define KSR1(code)
+#endif
+
+#if defined (COPY_GC)
+#  define UNBOUND 
+/* #  define TIMESTAMP  */
+#  define COPY_ALI
+#  define SEGMENTED_MEMORY
+#endif
+
+/**********************************************************************
+ *
+ *   Flags used by the parallel Luther Reform Prolog:
+ *
+ * NOTE: Define USE_MMAP or USE_SHMGET when compiling the parallel version.
+ */
+#if defined(PARALLEL)
+
+#  define SEMAPHORE
+#  define SHARED_MEMORY
+#  define USE_MMAP
+#  define SWAP_BIND
+
+#  if defined(ksr1)
+#    define USE_KSR_THREADS
+#    define USE_PMON
+#    define LOCK_BIND
+#  endif
+
+#  if ! defined(TRAIL_ALL)
+#    if ! defined(UNBOUND)
+#      define TIMESTAMP
+#    endif
+#  endif
+
+#  define ACTIVE_CONSUMER
+#  define REFORM
+
+#endif /* PARALLEL */
+
+#  if defined(TIMESTAMP)
+#    define SHORT_SVA
+#  endif 
+
+#include "threads.h"
+
+/**********************************************************************
+ *
+ *   
+ *
+ */
+#if ! defined(MAXPATHLEN)
+#  define MAXPATHLEN  255
+#endif
+
+#if defined(THINK_C)
+#  define ALIGN_MALLOC
+#endif
+
+#if defined(REFORM)
+#  define JUMP_CODE
+#endif
+
+#if defined(THREADED)
+#  define THREADED_CODE
+#endif
+
+
+/*
+#define LOWTAGS
+ */
+
+
+/*******************************************************************************
+ * 
+ * Experimental:
+ *
+ */
+
+#if defined(COPY_GC)
+
+/* # define SINGLE_LOAD_STACK 1  */
+
+# define GENERATIONAL 1  
+
+/* # define ALIGNED_BOXES 1  */
+
+#endif
+
+/* 
+#define TIMESTAMP 1
+#define SHORT_SVA 1
+*/
+
+/***************************************
+#define MEASURE_HEAP_RECLAIM
+#define TRAILSTAT
+#define STATISTICS
+#define DYN_SIZE
+***************************************/
+
+#if defined(USE_PMON)
+#  include <ksr/pmon.h>
+#endif
+
+#include "c.h"
+
+#include "stdinc.h"
+
+#include "constants.h"
+#include "instrdef.h"
+#include "term.h"
+#include "gc.h"
+#include "lock.h"
+#include "statistics.h"
+
+#include "atom_table.h"
+#include "functor_table.h"
+#include "error.h"
+#include "initial.h"
+#include "storage.h"
+#include "segment.h"
+
+#include "event.h"
+#include "database.h"
+#include "semaphore.h"
+#include "inout.h"
+#include "time.h"
+#include "signal.h"
+
+#include "parallel.h"
+
+
+#if defined(PARALLEL)
+#  if defined(sun4)
+#    include "system.sun4.h"
+#  endif
+
+#  if defined(ksr1)
+#    include "system.ksr1.h"
+#  endif
+
+#  if defined(sequent)
+#    include "system.sequent.h"
+#  endif
+#endif
+
+#endif /* LUTHER_H */

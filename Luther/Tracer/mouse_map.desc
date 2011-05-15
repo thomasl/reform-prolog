@@ -1,0 +1,26 @@
+world([
+       sphere(12,v(0,-5,116),surface(0,rgb(155,60,60))),
+       triangle_map(v(-20,0,100),v(10,0,-10),v(10,-5,10),'largejohan.ppm'),
+       sphere(8,v(-10,7,118),surface(0.8,rgb(10,160,10))),
+       sphere(8,v(10,7,118),surface(0.8,rgb(10,160,10))),
+       sphere(4,v(0,14,107),surface(0.8,rgb(100,60,60))),
+       sphere(4,v(0,14,124),surface(0,rgb(200,00,00))),
+       sphere(1.5,v(4,-2,105),surface(0,rgb(40,40,40))),
+       sphere(1.5,v(-4,-2,105),surface(0,rgb(40,40,40))),
+       sphere(2.5,v(0,-5,104),surface(0,rgb(90,40,40))),
+       sphere(0.5,v(-6,-9,105),surface(0,rgb(0,0,0))),
+       sphere(0.5,v(6,-9,105),surface(0,rgb(0,0,0))),
+       sphere(0.5,v(0,-11,105),surface(0,rgb(0,0,0))),
+       sphere(30,v(0,0,0),surface(0,rgb(255,255,255))),
+       plane(v(-1,0,2),150,surface(0,rgb(60,60,250)))
+      ],
+      [light(v(10,0,50)),
+       light(v(-20,70,50))
+      ]).
+
+% camera(CameraPoint,LookAtPoint,Zoom,UpVector,Width,Height,Resolution)
+
+% camera(v(-30,50,-20),v(-26,43,0),v(0,1,0),5,4,0.01).
+camera(v(-30,50,100),v(-10,10,114),7,v(0,1,0),6,6,0.1).
+
+

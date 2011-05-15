@@ -1,0 +1,35 @@
+#!/bin/csh -f
+#
+###
+##  ftp_release - make release available via ftp
+#
+#
+# Usage:	ftp_release "this-is-a-tag"
+#
+
+set tmpdir = /tmp
+set ftpdir = /site/ftp/reform
+
+switch (${#argv})
+  case 2:
+    set ftpname = $2
+    breaksw
+  case 1:
+    set ftpname = $1
+    breaksw
+  default:
+    echo "usage: ftp_release <tag> [ftp-name]"
+endsw
+
+
+if (-f $tmpdir/$1.tar) then
+  echo hej3
+  cp $tmpdir/$1.tar $ftpdir/$ftpname.tar
+  compress $ftpdir/$ftpname.tar
+  cp $tmpdir/$1.tar $ftpdir/$ftpname.tar
+  gzip $ftpdir/$ftpname.tar
+  cp $tmpdir/$1.tar $ftpdir/$ftpname.tar
+else
+  export_release $1
+  ftp_release $1 $2
+endif

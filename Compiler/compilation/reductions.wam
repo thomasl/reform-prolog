@@ -1,0 +1,858 @@
+Predicate('$arith_reduction_6_878_1' 8
+Label 1
+ X21
+ X30 3 0
+ X30 2 1
+ X30 4 2
+ X30 5 3
+ X30 6 4
+ X30 7 6
+ X30 8 7
+ X11 0
+ X46 5 0
+ X47 2 1
+ X45 1 2
+ X25 none_neg_pair 3 9
+ X14 0
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X49 6 5
+ X49 7 6
+ X49 8 7
+ X23
+ X26 '$arith_reduction_6_878_0' 8
+)
+Predicate('$arith_reduction_6_878_0' 8
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 4 0
+ X30 3 1
+ X30 1 2
+ X30 2 6
+ X30 7 7
+ X11 0
+ X46 3 0
+ X47 4 1
+ X45 5 2
+ X45 6 3
+ X25 induction 4 8
+ X19 8
+ X14 0
+ X49 1 0
+ X34 dead 0
+ X49 2 1
+ X37 1
+ X55 2
+ X61 7
+ X36 '$ind' 5 2
+ X54 1
+ X61 3
+ X61 4
+ X61 5
+ X61 6
+ X23
+ X27
+Label 3
+ X21
+ X30 4 0
+ X30 3 1
+ X30 1 2
+ X30 5 3
+ X30 2 6
+ X30 6 7
+ X11 0
+ X47 5 0
+ X47 4 1
+ X46 4 2
+ X46 5 3
+ X25 reduction 4 7
+ X19 7
+ X14 0
+ X49 1 0
+ X34 dead 0
+ X49 2 1
+ X37 1
+ X55 2
+ X61 6
+ X36 '$red' 4 2
+ X54 1
+ X61 3
+ X61 4
+ X61 5
+ X23
+ X27
+)
+Predicate('$check_base_case_6_856_0' 1
+ X1 1 fail 2 fail fail
+Label 1
+ X10 1
+ X16 17 0
+ X13 1
+ X27
+Label 2
+ X16 23 0
+ X27
+)
+Predicate('$check_base_case_6_857_0' 1
+ X1 1 fail 2 fail fail
+Label 1
+ X10 1
+ X16 17 0
+ X13 1
+ X27
+Label 2
+ X16 23 0
+ X27
+)
+Predicate('$classify_vars_redn_8_873_0' 8
+ X1 1 2 2 2 2
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X4 4
+ X6 5
+Label 3
+ X20 1 8
+ X29 8 0
+ X10 9
+ X16 17 8
+ X16 17 1
+ X13 9
+ X46 1 0
+ X46 8 1
+ X26 '$classify_vars_redn_8_873_1' 8
+Label 4
+ X21
+ X30 0 1
+ X30 3 3
+ X30 5 4
+ X30 4 6
+ X30 6 7
+ X11 2
+ X45 1 1
+ X46 5 3
+ X25 list 4 7
+ X49 0 0
+ X16 17 0
+ X47 0 1
+ X49 1 2
+ X16 5 1 2
+ X14 2
+ X49 4 3
+ X33 3 3
+ X49 6 4
+ X33 5 4
+ X23
+ X27
+Label 5
+ X32 6 3
+ X32 5 2
+ X32 7 4
+ X27
+)
+Predicate('$classify_vars_redn_8_873_1' 8
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 8
+ X10 8
+ X16 5 1 0
+ X13 8
+ X37 3
+ X60 1
+ X60 6
+ X32 5 2
+ X32 7 4
+ X27
+Label 3
+ X20 5 8
+ X32 6 3
+ X32 5 2
+ X37 4
+ X55 8
+ X60 7
+ X36 ',' 2 8
+ X60 1
+ X60 0
+ X27
+)
+Predicate('$compute_inductions_of_term_5_835_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 5
+ X21
+ X29 5 0
+ X30 0 2
+ X30 4 3
+ X30 5 4
+ X11 2
+ X46 1 0
+ X46 5 1
+ X45 3 2
+ X24 1 1
+ X25 induction_var 3 6
+ X14 2
+ X49 3 0
+ X47 1 1
+ X49 4 2
+ X49 5 3
+ X25 induction_expression 4 2
+ X49 1 0
+ X33 0 0
+ X23
+ X27
+Label 3
+ X32 0 2
+ X32 3 4
+ X27
+)
+Predicate('$detect_recursion_type_4_840_1' 17
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 17
+ X21
+ X29 17 0
+ X30 5 1
+ X30 2 3
+ X30 3 11
+ X30 4 12
+ X30 6 13
+ X30 7 14
+ X30 1 15
+ X30 8 16
+ X11 0
+ X46 7 0
+ X46 4 1
+ X46 17 2
+ X25 list_recursion 3 9
+ X19 9
+ X14 0
+ X49 1 0
+ X36 :- 2 0
+ X61 2
+ X64 rec 5
+ X61 3
+ X61 4
+ X61 5
+ X61 6
+ X61 7
+ X49 8 1
+ X34 listrec 1
+ X23
+ X27
+Label 3
+ X20 1 17
+ X29 17 0
+ X46 2 0
+ X46 17 2
+ X26 '$detect_recursion_type_4_840_0' 17
+)
+Predicate('$detect_recursion_type_4_840_0' 17
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 17
+ X21
+ X29 17 0
+ X30 7 1
+ X30 11 2
+ X30 3 3
+ X30 10 4
+ X30 13 7
+ X30 14 8
+ X30 0 9
+ X30 15 10
+ X30 5 11
+ X30 16 12
+ X30 8 13
+ X30 9 14
+ X30 2 15
+ X30 1 16
+ X46 5 0
+ X46 17 1
+ X50 2 2
+ X45 12 3
+ X24 2 4 6
+ X25 find_inv_vars 4 17
+ X49 10 0
+ X49 11 1
+ X49 12 2
+ X49 13 3
+ X49 14 4
+ X49 15 5
+ X47 5 6
+ X49 16 7
+ X47 6 8
+ X47 4 9
+ X25 integer_recursion 10 10
+ X19 11
+ X14 0
+ X49 1 0
+ X34 intrec 0
+ X49 2 1
+ X36 :- 2 1
+ X61 3
+ X64 rec 5
+ X55 2
+ X61 6
+ X61 7
+ X61 8
+ X61 9
+ X37 2
+ X61 4
+ X61 5
+ X23
+ X27
+Label 3
+ X20 7 17
+ X44 18 17
+ X44 20 19
+ X16 1 6 17 19
+ X50 'Unable to recognize recursion in predicate ~q' 0
+ X52 / 2 21
+ X58 18
+ X58 20
+ X53 1
+ X58 21
+ X63
+ X26 error 2
+)
+Predicate('$downward_test_expr_6_851_0' 6
+ X1 1 fail 2 fail fail
+Label 1
+ X21
+ X30 5 0
+ X30 4 1
+ X30 3 3
+ X30 1 4
+ X11 0
+ X47 5 6
+ X24 1 2
+ X16 17 6
+ X47 5 0
+ X46 2 1
+ X47 2 2
+ X25 inv_variable_and_position 3 6
+ X19 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X49 3 1
+ X36 > 2 1
+ X61 4
+ X61 5
+ X23
+ X27
+Label 2
+ X20 3 6
+ X10 6
+ X16 23 0
+ X13 6
+ X32 0 5
+ X36 > 2 3
+ X60 1
+ X60 0
+ X27
+)
+Predicate('$downward_test_expr_6_852_0' 6
+ X1 1 fail 2 fail fail
+Label 1
+ X21
+ X30 5 0
+ X30 4 1
+ X30 3 3
+ X30 1 4
+ X11 0
+ X47 5 6
+ X24 1 2
+ X16 17 6
+ X47 5 0
+ X46 2 1
+ X47 2 2
+ X25 inv_variable_and_position 3 6
+ X19 6
+ X14 0
+ X49 2 0
+ X33 1 0
+ X49 3 1
+ X36 > 2 1
+ X61 4
+ X64 - 2
+ X61 5
+ X62 1
+ X23
+ X27
+Label 2
+ X20 6 6
+ X10 6
+ X16 23 0
+ X13 6
+ X32 0 5
+ X36 > 2 3
+ X60 1
+ X64 - 2
+ X60 0
+ X62 1
+ X27
+)
+Predicate('$downward_test_expr_6_853_0' 6
+ X1 1 fail 2 fail fail
+Label 1
+ X21
+ X30 5 0
+ X30 4 1
+ X30 3 3
+ X30 1 4
+ X11 0
+ X47 5 6
+ X24 1 2
+ X16 17 6
+ X47 5 0
+ X46 2 1
+ X47 2 2
+ X25 inv_variable_and_position 3 6
+ X19 15
+ X14 0
+ X49 2 0
+ X33 1 0
+ X49 3 1
+ X36 ',' 2 1
+ X55 2
+ X64 > 2
+ X61 4
+ X64 - 2
+ X61 5
+ X62 1
+ X36 is 2 2
+ X62 0
+ X64 mod 2
+ X59 4
+ X59 5
+ X23
+ X27
+Label 2
+ X20 15 6
+ X10 6
+ X16 23 0
+ X13 6
+ X32 0 5
+ X36 ',' 2 3
+ X55 7
+ X64 > 2
+ X60 1
+ X64 - 2
+ X60 0
+ X62 1
+ X36 is 2 7
+ X62 0
+ X64 mod 2
+ X58 1
+ X58 0
+ X27
+)
+Predicate('$find_rp_body_4_813_0' 4
+ X1 2 1 fail fail fail
+Label 1
+ X2 2 (
+        left 2
+        right 3
+) fail
+Label 2
+ X10 4
+ X34 left 0
+ X13 4
+ X32 1 3
+ X27
+Label 3
+ X10 4
+ X34 right 0
+ X13 4
+ X32 2 3
+ X27
+)
+Predicate('$find_inv_vars_4_845_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 5 5
+ X10 5
+ X16 5 1 0
+ X13 5
+ X37 3
+ X55 6
+ X60 4
+ X36 ',' 2 6
+ X60 1
+ X60 2
+ X27
+Label 3
+ X32 4 3
+ X27
+)
+Predicate('$find_integer_recursion_5_847_0' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 6 6
+ X10 6
+ X36 '$ind' 5 1
+ X55 7
+ X55 8
+ X55 9
+ X60 0
+ X54 1
+ X16 5 4 8
+ X16 5 3 9
+ X13 6
+ X32 1 5
+ X34 intrec 7
+ X27
+Label 3
+ X20 1 6
+ X29 6 0
+ X46 2 0
+ X46 3 1
+ X46 4 2
+ X46 5 3
+ X46 6 4
+ X26 find_integer_recursion 5
+)
+Predicate('$find_red_6_877_0' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 6
+ X21
+ X29 6 0
+ X30 1 5
+ X11 0
+ X46 1 0
+ X46 2 1
+ X46 3 2
+ X46 4 3
+ X46 6 4
+ X45 2 5
+ X25 arith_reduction 6 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 3
+ X32 0 5
+ X27
+)
+Predicate('$induction_vars_3_826_0' 3
+ X1 2 fail fail fail 1
+Label 1
+ X3 3 (
+        '$ind' 5 2
+        '$intrec' 2 3
+        '$red' 4 4
+) fail
+Label 2
+ X20 8 3
+ X29 7 1
+ X29 8 2
+ X10 9
+ X36 '$ind' 5 0
+ X55 0
+ X55 1
+ X55 2
+ X55 3
+ X55 4
+ X13 9
+ X46 7 5
+ X46 8 6
+ X26 '$induction_vars_3_826_1' 7
+Label 3
+ X20 29 3
+ X10 3
+ X36 '$intrec' 2 0
+ X55 4
+ X54 1
+ X36 '$ind' 5 4
+ X54 1
+ X55 5
+ X55 6
+ X55 7
+ X55 8
+ X13 3
+ X44 10 9
+ X53 11
+ X58 8
+ X63
+ X53 12
+ X58 6
+ X58 11
+ X53 13
+ X58 7
+ X58 12
+ X16 3 9 13
+ X37 1
+ X55 14
+ X65
+ X55 15
+ X60 2
+ X36 ',' 2 15
+ X58 6
+ X64 * 2
+ X58 6
+ X58 8
+ X36 ',' 2 14
+ X58 5
+ X58 10
+ X27
+Label 4
+ X20 5 3
+ X10 3
+ X36 '$red' 4 0
+ X54 4
+ X13 3
+ X32 2 1
+ X27
+)
+Predicate('$induction_var_3_837_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 5
+ X16 5 1 0
+ X13 5
+ X32 4 2
+ X27
+Label 3
+ X20 1 5
+ X29 5 0
+ X46 3 0
+ X46 5 1
+ X46 4 2
+ X26 induction_var 3
+)
+Predicate('$induction_vars_3_826_1' 7
+ X1 1 2 2 2 2
+Label 1
+ X20 20 7
+ X10 7
+ X16 17 0
+ X13 7
+ X44 9 8
+ X53 10
+ X60 4
+ X63
+ X53 11
+ X60 2
+ X58 10
+ X53 12
+ X60 3
+ X58 11
+ X16 3 8 12
+ X37 5
+ X55 13
+ X65
+ X55 14
+ X60 6
+ X36 ',' 2 14
+ X58 2
+ X64 * 2
+ X62 level
+ X58 4
+ X36 ',' 2 13
+ X60 1
+ X58 9
+ X27
+Label 2
+ X32 6 5
+ X27
+)
+Predicate('$integer_recursion_10_846_0' 7
+ X1 2 1 fail fail fail
+Label 1
+ X2 2 (
+        + 2
+        - 3
+) fail
+Label 2
+ X10 7
+ X34 + 0
+ X13 7
+ X46 2 0
+ X46 3 2
+ X46 6 3
+ X26 upward_test_expr 6
+Label 3
+ X10 7
+ X34 - 0
+ X13 7
+ X46 2 0
+ X46 3 2
+ X46 6 3
+ X26 downward_test_expr 6
+)
+Predicate('$integer_recursion_10_846_1' 3
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 13 3
+ X10 3
+ X36 ',' 2 1
+ X55 4
+ X64 ',' 2
+ X60 0
+ X55 5
+ X36 '$choice' 1 4
+ X55 6
+ X13 3
+ X36 ',' 2 2
+ X55 7
+ X58 5
+ X36 '$choice' 1 7
+ X58 6
+ X27
+Label 3
+ X20 7 3
+ X10 3
+ X36 ',' 2 1
+ X55 4
+ X60 0
+ X36 '$choice' 1 4
+ X55 5
+ X13 3
+ X36 '$choice' 1 2
+ X58 5
+ X27
+Label 4
+ X20 3 3
+ X36 ',' 2 1
+ X60 0
+ X55 3
+ X32 3 2
+ X27
+)
+Predicate('$inv_and_pos_3_855_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 5
+ X16 5 1 0
+ X13 5
+ X32 2 4
+ X27
+Label 3
+ X20 1 5
+ X29 5 0
+ X46 3 0
+ X46 5 1
+ X46 4 2
+ X26 inv_and_pos 3
+)
+Predicate('$introduce_new_induction_var_9_912_0' 4
+ X1 1 2 2 2 2
+Label 1
+ X10 4
+ X16 17 0
+ X13 4
+ X32 0 1
+ X32 3 2
+ X27
+Label 2
+ X20 5 4
+ X36 ',' 2 2
+ X55 4
+ X60 3
+ X36 '$get_level' 1 4
+ X60 1
+ X27
+)
+Predicate('$introduce_new_induction_var_9_912_1' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 7 6
+ X10 6
+ X36 '$ind_high' 3 1
+ X60 3
+ X60 5
+ X60 0
+ X13 6
+ X36 + 2 4
+ X60 2
+ X62 1
+ X27
+Label 3
+ X20 4 6
+ X10 6
+ X36 '$ind_low' 3 1
+ X60 3
+ X60 5
+ X60 0
+ X13 6
+ X32 2 4
+ X27
+)
+Predicate('$list_4_875_0' 3
+ X1 1 2 2 2 2
+Label 1
+ X20 2 3
+ X10 3
+ X16 17 0
+ X13 3
+ X37 1
+ X60 0
+ X60 2
+ X27
+Label 2
+ X32 1 2
+ X27
+)
+Predicate('$mark_scans_4_828_0' 4
+ X1 2 3 3 3 1
+Label 1
+ X3 1 (
+        '$red' 4 2
+) 3
+Label 2
+ X20 7 4
+ X29 6 2
+ X29 7 3
+ X10 8
+ X36 '$red' 4 0
+ X54 1
+ X55 9
+ X55 2
+ X55 3
+ X13 8
+ X46 1 0
+ X46 9 1
+ X46 6 4
+ X46 7 5
+ X26 '$mark_scans_4_828_1' 6
+Label 3
+ X20 2 4
+ X37 2
+ X60 0
+ X60 3
+ X27
+)

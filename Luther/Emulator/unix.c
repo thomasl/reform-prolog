@@ -1,0 +1,514 @@
+/*
+ * unix.c
+ *
+ * Johan Bevemyr.....Tue Oct  6 1992
+ *
+ *
+ * Implementation:
+ *
+ *   UNIX interface and (prolog level) support.
+ *
+ *
+ * Copyright (C) 1991 - 1995
+ *
+ *   H}kan Millroth / Johan Bevemyr / Thomas Lindgren / Patric Hedlin
+ *
+ */ 
+
+#include "luther.h"
+#include "engine.h"
+#include "unify.h"
+
+#if defined(unix)
+
+#include <sys/types.h>
+#include <sys/file.h>
+
+#if defined(HAVE_STAT)
+#  include <sys/stat.h>
+#endif
+
+#if defined(SHARED_MEMORY)
+
+/**********************************************************************
+ * name: get_mmap_filename
+ * 
+ * desc: Find name of temporary file to map into memory.
+ *
+ */
+
+void get_mmap_filename(name,size)
+     char *name;
+     long size;
+{
+  strcpy(name,"/dev/zero");
+  return;
+}
+
+#endif /* SHARED_MEMORY */
+
+
+/*******************************************************************************
+ *
+ * `unix(+TERM)' & `plsys(+TERM)'
+ *
+ *
+ * Description:
+ *
+ *   Allows certain interactions with the operating system. Under UNIX the
+ * possible forms of TERM are as follows:
+ *
+ *  `argv(?ARGS)'
+ *	ARGS is unified with a list of ATOMS of the program arguments supplied
+ *	when the current SICStus process was started. For example, if Prolog
+ *	were invoked with
+ *
+ *		> prolog hello world 2001
+ *
+ *	then ARGS will be unified with `[hello,world,'2001']'.
+ *
+ *  `shell'
+ *	Start a new interactive UNIX shell named in the Unix environment
+ *	variable `$SHELL'. The control is returned to Prolog upon
+ *	termination of the shell.
+ *
+ *  `shell(+COMMAND)'
+ *	Pass COMMAND to a new UNIX shell named in the Unix environment
+ *	variable `$SHELL' for execution.
+ *
+ *  `shell(+COMMAND,-STATUS)'
+ *	Pass COMMAND to a new UNIX shell named in the Unix environment
+ *	variable `$SHELL' for execution. Unify STATUS with the returned
+ *	status of COMMAND.
+ *
+ *  `system(+COMMAND)'
+ *	Pass COMMAND to a new UNIX `sh' process for execution.
+ *
+ *  `system(+COMMAND,-STATUS)'
+ *	Pass COMMAND to a new UNIX `sh' process for execution. Unify STATUS
+ *	with the returned status of COMMAND.
+ *
+ *  `popen(+COMMAND,+MODE,?STREAM)'
+ *	Interface to the C-function `popen(3)'. Pass COMMAND to a new UNIX `sh'
+ *	process for execution. MODE may be either `read' or `write'. In the
+ *	former case the output from the process is piped to STREAM. In the
+ *	latter case the input to the process is piped from STREAM. STREAM may
+ *	be read/written using the ordinary STREAMIO predicates. It shall be
+ *	closed using `close/1'.
+ *
+ *  `exit(+STATUS)'
+ *	Terminate the Prolog process with the status STATUS.
+ *
+ *  `mktemp(+TEMPLATE,-FILENAME)'
+ *	Interface to the C-function `mktemp(3)'. A unique file name is created
+ *	and unified with FILENAME. TEMPLATE should contain a file name with six
+ *	trailing `X's. The file name is that template with the six `X's replaced
+ *	with a letter and the process id.
+ *
+ *  `chmod(+PATH,-OLD,+NEW)'
+ *	OLD is the current access mode of PATH; NEW is the new access mode.
+ *
+ *  `umask(-OLD,+NEW)'
+ *	OLD is the current file mode creation mask; NEW is the new file mode
+ *	creation mask.
+ *
+ */
+
+
+/*******************************************************************************
+ *
+ * '$unix_access'(+Path,+Mode)
+ *
+ *   Tests if Mode is the accessability of Path as in the UNIX system call
+ * function access(2v).
+ *
+ *	r_ok	test for read permission
+ *
+ *	w_ok	test for write permission
+ *
+ *	x_ok	test for execute or search permission
+ *
+ *   The following value may also be supplied for mode:
+ *
+ *	f_ok	test whether the directories leading to the file can be
+ *		searched and the file exists.
+ *
+ */
+BOOL luther_unix_access(Arg)
+     Argdecl;
+{
+  TAGGED path, mode;
+
+  DerefNLL(path, Xw(0));
+  DerefNLL(mode, Xw(1));
+
+  if (not(IsATM(path) && IsATM(mode)))
+    {
+      return luther_error(E_INSTANTIATION_ERROR, (TAGGED)NULL, w);
+    }
+  else
+    {
+      char a_path[MAXPATHLEN+1]; /* The absolute path name. */
+
+      if (not(expand_file_name(GetString(path, w), a_path)))
+	{
+	  return FALSE;
+	}
+      else
+	{
+	  if (mode == atom_table_tagged[ATOM_R_OK])
+	    {
+	      return access(a_path, R_OK) == 0 ? TRUE : FALSE;
+	    }
+	  else if (mode == atom_table_tagged[ATOM_W_OK])
+	    {
+	      return access(a_path, W_OK) == 0 ? TRUE : FALSE;
+	    }
+	  else if (mode == atom_table_tagged[ATOM_X_OK])
+	    {
+	      return access(a_path, X_OK) == 0 ? TRUE : FALSE;
+	    }
+	  else if (mode == atom_table_tagged[ATOM_F_OK])
+	    {
+	      return access(a_path, F_OK) == 0 ? TRUE : FALSE;
+	    }
+	  else
+	    return FALSE;
+	}
+    }
+}
+
+
+#if defined(HAVE_STAT)
+
+/*******************************************************************************
+ *
+ * '$unix_stat_type'(+Path,?Type)
+ *
+ *   Test or get the Type (file or directory) of Path if it exists and sufficent
+ * search rights are fulfilled.
+ *
+ */
+BOOL luther_unix_stat_type(Arg)
+     Argdecl;
+{
+  TAGGED path;
+  TAGGED type;
+
+  DerefNLL(path, Xw(0));
+
+  if (not(IsATM(path)))
+    {
+      return FALSE;
+    }
+  else
+    {
+      char a_path[MAXPATHLEN+1]; /* The absolute path name. */
+
+      struct stat s_buf;
+
+      if (not(expand_file_name(GetString(path, w), a_path)))
+	{
+	  return FALSE;
+	}
+      else
+	{
+	  if (stat(a_path, &s_buf) != 0)
+	    {
+	      return FALSE;
+	    }
+	  else
+	    {
+	      DerefNLL(type, Xw(1));
+
+	      switch (s_buf.st_mode & S_IFMT) {
+
+	      case S_IFDIR:
+		{
+		  return unify(atom_table_tagged[ATOM_S_IFDIR], type, w);
+		}
+
+	      case S_IFREG:
+		{
+		  return unify(atom_table_tagged[ATOM_S_IFREG], type, w);
+		}
+
+	      default:
+		{
+		  return unify(atom_table_tagged[ATOM_S_IFDEF], type, w);
+		}
+	      }
+	    }
+	}
+    }
+}
+
+/*******************************************************************************
+ *
+ * '$unix_stat_time'(+Path,?Accessed,?Modified,?Changed)
+ *
+ *   Unify Accessed with time of last access to file Path, unify Modified with
+ * time of the last modification of the file Path and, finally, unify Changed
+ * with the time of the last status change of the file (or director).
+ *
+ */
+BOOL luther_unix_stat_time(Arg)
+     Argdecl;
+{
+  TAGGED path;
+  TAGGED atime;
+  TAGGED mtime;
+  TAGGED ctime;
+
+  DerefNLL(path, Xw(0));
+
+  if (not(IsATM(path)))
+    {
+      return FALSE;
+    }
+  else
+    {
+      char a_path[MAXPATHLEN+1]; /* The absolute path name. */
+
+      struct stat s_buf;
+
+      if (not(expand_file_name(GetString(path, w), a_path)))
+	{
+	  return FALSE;
+	}
+      else
+	{
+	  if (stat(a_path, &s_buf) != 0)
+	    {
+	      return FALSE;
+	    }
+	  else
+	    {
+	      DerefNLL(atime, Xw(1));
+	      DerefNLL(mtime, Xw(2));
+	      DerefNLL(ctime, Xw(3));
+
+	      return (unify(atime, MakeNumber(w, s_buf.st_atime), w) &&
+		      unify(mtime, MakeNumber(w, s_buf.st_mtime), w) &&
+		      unify(ctime, MakeNumber(w, s_buf.st_ctime), w));
+	    }
+	}
+    }
+}
+
+#else /* not defined(HAVE_STAT) */
+
+BOOL luther_unix_stat_type(Arg)
+     Argdecl;
+{
+  return FALSE;
+}
+
+BOOL luther_unix_stat_time(Arg)
+     Argdecl;
+{
+  return FALSE;
+}
+
+#endif /* not defined(HAVE_STAT) */
+
+
+/*******************************************************************************
+ *
+ * '$unix_cd'(+Path) - Change the current working directory to Path.
+ *
+ */
+BOOL luther_unix_cd(Arg)
+     Argdecl;
+{
+  TAGGED path;
+
+  DerefNLL(path, Xw(0));
+
+  if (not(IsATM(path)))
+    {
+      return FALSE;
+    }
+  else
+    {
+      char a_path[MAXPATHLEN+1];
+
+      if (not(expand_file_name(GetString(path, w), a_path)))
+	{
+	  return FALSE;
+	}
+      else
+	{
+	  if (chdir(a_path) == 0)
+	    {
+	      return TRUE;
+	    }
+	  else
+	    {
+	      BuiltinError("'$unix_cd'/1", " - unable to change directory - ", a_path);
+	    }
+	}
+    }
+}
+
+
+/*******************************************************************************
+ *
+ * '$unix_cd'(+NewPath,?OldPath)
+ *
+ *   Change the current working directory to NewPath and unify the current
+ * directory with OldPath.
+ *        
+ */
+BOOL luther_unix_cd_2(Arg)
+     Argdecl;
+{
+  TAGGED new_dir, old_dir;
+
+  DerefNLL(new_dir, Xw(0));
+  DerefNLL(old_dir, Xw(1));
+
+  if (not(IsATM(new_dir)))
+    {
+      return FALSE;
+    }
+  else
+    {
+      char new_path[MAXPATHLEN+1];
+      char old_path[MAXPATHLEN+1];
+      char *pathp;
+
+#if defined(HAVE_GETCWD)
+      pathp = (char *) getcwd(old_path, MAXPATHLEN+1);
+#else
+      pathp = (char *) getwd(old_path);
+#endif
+      if (pathp == NULL)
+	{
+	  Error("current directory is invalid");
+	  pathp = "$HOME";
+	}
+
+      if (not(expand_file_name(GetString(new_dir, w), new_path)))
+	{
+	  return FALSE;
+	}
+      else
+	{
+	  if (chdir(new_path) == 0)
+	    {
+	      return unify(store_atom(pathp, w), old_dir, w);
+	    }
+	  else
+	    {
+	      BuiltinError("'$unix_cd'/2", " - unable to change directory - ", new_path);
+	    }
+	}
+    }
+}
+
+/*
+ *  `popen(+COMMAND,+MODE,?STREAM)'
+ *	Interface to the C-function `popen(3)'. Pass COMMAND to a new UNIX `sh'
+ *	process for execution. MODE may be either `read' or `write'. In the
+ *	former case the output from the process is piped to STREAM. In the
+ *	latter case the input to the process is piped from STREAM. STREAM may
+ *	be read/written using the ordinary STREAMIO predicates. It shall be
+ *	closed using `close/1'.
+ */
+
+BOOL luther_unix_popen(Arg)
+    Argdecl;
+{
+  register TAGGED Command, Mode, Stream;
+
+  char *file_mode;
+  
+  DerefNLL(Command, Xw(0));
+  DerefNLL(Mode, Xw(1));
+  DerefNLL(Stream, Xw(2));
+
+  if (not(IsATM(Command)))
+    BuiltinError("$unix_popen/3", " - illegal first argument", "");
+
+  if (not(IsATM(Mode)))
+    BuiltinError("$unix_popen/3", " - illegal second argument", "");
+
+  if (Mode == atom_table_tagged[ATOM_READ])
+    file_mode = "r";
+  else if (Mode == atom_table_tagged[ATOM_WRITE])
+    file_mode = "w";
+  else
+    {
+      BuiltinError("$unix_popen/3", " - illegal file mode - ",
+		   GetString(Mode,w));
+    }
+
+  {
+    register TAGGED strref;
+    register FILE *fp;
+    register int i;
+
+    if ((fp = popen(GetString(Command,w), file_mode)) == NULL)
+      {
+	return luther_error(E_POPEN_FILE,Command,w);
+      }
+
+    for (i = 0; streams[i].file != NULL && i < MAXSTREAMS; i++);
+	      
+    if (i == MAXSTREAMS)
+      {
+	return luther_error(E_NR_FILES, Command, w);
+      }
+	      
+    streams[i].file = fp;
+    streams[i].name = Command;
+    streams[i].mode = Mode;
+    streams[i].tty_io = LUTHER_IO_POPEN;
+	      
+    Make_STR(w->heap_top, strref, functor_d_stream);
+    PushOnHeap(w->heap_top, Make_Integer(i));
+
+    return unify(Stream,strref,w);
+  }
+}
+
+#else /* ! defined(unix) */
+
+BOOL luther_unix_access(Arg)
+     Argdecl;
+{
+  return FALSE;
+}
+
+BOOL luther_unix_cd(Arg)
+     Argdecl;
+{
+  return FALSE;
+}
+
+BOOL luther_unix_cd_2(Arg)
+     Argdecl;
+{
+  return FALSE;
+}
+
+BOOL luther_unix_popen(Arg)
+    Argdecl;
+{
+  return FALSE;
+}
+
+#endif /* unix */
+
+
+void initialize_unix(w)
+     worker *w;
+{
+  def_c_pred(ATOM_D_UNIX_ACCESS, luther_unix_access, 2, PROLOG, w);
+  def_c_pred(ATOM_D_UNIX_STAT_TYPE, luther_unix_stat_type, 2, PROLOG, w);
+  def_c_pred(ATOM_D_UNIX_STAT_TIME, luther_unix_stat_time, 4, PROLOG, w);
+  def_c_pred(ATOM_D_UNIX_CD, luther_unix_cd, 1, PROLOG, w);
+  def_c_pred(ATOM_D_UNIX_CD, luther_unix_cd_2, 2, PROLOG, w);
+  def_c_pred(ATOM_D_UNIX_POPEN, luther_unix_popen, 3, PROLOG, w);
+}

@@ -1,0 +1,33 @@
+Compiler compiling itself
+
+sequential (250210 msec)
+	135 GC in 14.535 wall
+	1: 3965574 m 3730996 c
+	
+
+1 worker (265030 msec)
+	135 GC in 11.616 wall
+	1: 2233271 m 1921131 c
+	2: 1736766 m 1813688 c
+
+2 workers (259370 msec)
+	135 GC in 10.922 wall
+	1: 1862591 m 1702790 c
+	2: 1112589 m 1035273 c
+	3:  995268 m  996796 c
+
+Compiler compiling 
+
+sequential
+
+1 worker (5.95)
+	14 GC in 0.162 wall
+	1: 12104 m 14746 c
+	2: 10521 m  7760 c 
+
+2 workers (5.50 sec)
+	14 GC in 0.07 wall
+	1: 13580 m 15606 c
+	2: 2324  m 1736  c
+	3: 6721  m 5164  c
+

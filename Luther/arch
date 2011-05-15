@@ -1,0 +1,16 @@
+#!/bin/csh -f
+##
+## arch - naive arch script based on "uname -m"
+##
+
+set ARCH = `uname -m`
+
+if (${ARCH} =~ sun4*) then
+  echo sun4
+else if (${ARCH} =~ ksr1*) then
+  echo ksr1
+else if (${ARCH} =~ sequent*) then
+  echo sequent
+else
+  echo unknown
+endif

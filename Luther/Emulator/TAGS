@@ -1,0 +1,1864 @@
+
+luther.h,989
+#define LUTHER_H19,281
+#define HAVE_SEMAPHORE 22,326
+#define USE_SOLARIS_THREADS 23,350
+#  define LUTHER_SUPPORT	26,402
+#  define LUTHER_SUPPORT	28,444
+#define LUTHER_VERSION	31,490
+#define LUTHER_COMPILE_DATE	32,520
+#  define unix38,649
+#  define HAVE_MMAP52,812
+#  define IEEE_FLOATING_POINT58,929
+#  define JUMP_CODE89,1511
+#  define KSR1(KSR1102,1722
+#  define KSR1(KSR1104,1754
+#  define UNBOUND 108,1805
+#  define COPY_ALI110,1851
+#  define SEGMENTED_MEMORY111,1870
+#  define SEMAPHORE122,2140
+#  define SHARED_MEMORY123,2160
+#  define USE_MMAP124,2184
+#  define SWAP_BIND125,2203
+#    define USE_KSR_THREADS128,2244
+#    define USE_PMON129,2272
+#    define LOCK_BIND130,2293
+#      define TIMESTAMP135,2379
+#  define ACTIVE_CONSUMER139,2424
+#  define REFORM140,2450
+#    define SHORT_SVA145,2516
+#  define MAXPATHLEN 156,2685
+#  define ALIGN_MALLOC160,2740
+#  define JUMP_CODE164,2791
+#  define THREADED_CODE168,2841
+# define GENERATIONAL 186,3066
+
+constants.h,1456
+#define CONSTANTS_H15,232
+#  define MAXACTIVE 47,2360
+#define MAX_AREGS 50,2391
+#define MAX_SPIN_SEM_NR 52,2464
+#define MAX_INDEX 54,2491
+#define MAX_WRITE_K 56,2512
+#define MAX_MESSAGE_SIZE 58,2537
+#define MAX_BOOT_FILES 60,2568
+#define MAXSTREAMS 62,2595
+#define MAXATOMLEN 64,2619
+#define ATOMHASHLEN	66,2643
+#define FUNCTORHASHLEN	67,2705
+#define PREDHASHLEN	68,2770
+#define MAXLABELNUMBER	70,2833
+#define MAXSPYPOINTS	72,2862
+#define MAXBREAKPOINTS	73,2887
+#define KBYTES	76,2916
+#define PERCENT	77,2937
+#  define LUTHER_TOTAL_MEMORY_DEF 80,2982
+#  define LUTHER_TOTAL_MEMORY_DEF 82,3042
+#  define LUTHER_WORKER_MEMORY_DEF 86,3126
+#define LUTHER_HEAP_MARGIN_DEF 89,3188
+#define LUTHER_STACK_MARGIN_DEF 90,3239
+#define LUTHER_TEMP_SIZE_DEF 92,3291
+#define LUTHER_SEGMENT_SIZE_DEF	93,3337
+#define LUTHER_BACKPATCHHEAP_SIZE_DEF 94,3383
+#define LUTHER_ATOM_SPACE_RATIO	96,3437
+#define LUTHER_CODE_SPACE_RATIO	97,3483
+#define LUTHER_HEAP_SPACE_RATIO	98,3529
+#define LUTHER_TRAIL_STACK_RATIO	99,3575
+#define LUTHER_LOCAL_STACK_RATIO	100,3621
+#define WORKER_HEAP_SPACE_RATIO	102,3668
+#define WORKER_TRAIL_STACK_RATIO	103,3714
+#define WORKER_LOCAL_STACK_RATIO	104,3760
+#define CODELIMITSIZE 106,3807
+#define CODESPACEUNIT 107,3859
+#define INDEXMASK 109,3913
+#define INDEXOFFSET 110,3945
+#define GLOBALMEMORYFILE	112,3968
+#define LOADBUFFERSIZE 115,4021
+#  define NEW_GEN_SIZE 118,4073
+#  define NEW_GEN_SIZE 120,4127
+
+main.h,136
+#define MAIN_H14,187
+#  define NUMBER_OF_WORKERS	28,396
+#  define NUMBER_OF_WORKERS	30,432
+#define LineArgument(LineArgument34,471
+
+initial.h,25
+#define INITIAL_H15,228
+
+error.h,317
+#define ERROR_H15,224
+#define Error(Error27,355
+#define MinorError(MinorError29,413
+#define MajorError(MajorError31,479
+#define FatalError(FatalError33,558
+#define SystemError(SystemError35,646
+#define BuiltinError(BuiltinError38,720
+enum errortypes errortypes44,855
+#   define CHILD_PID_TYPE 73,1408
+
+inout.h,568
+#define INOUT_H15,224
+} IO_TYPE;IO_TYPE29,390
+typedef struct stream_node stream_node31,402
+} stream_t;stream_t36,493
+} buff_io_stream;buff_io_stream44,590
+#define IOBUFFSIZE 46,609
+#define IsStream(IsStream48,651
+#define IsUserIn(IsUserIn50,723
+#define IsUserOut(IsUserOut51,799
+#define IsUserErr(IsUserErr52,876
+#define GetInStream(GetInStream55,936
+#define GetOutStream(GetOutStream78,1515
+#define GetStreamIndex(GetStreamIndex100,2070
+#define GetStreamInIndex(GetStreamInIndex126,2672
+#define GetStreamOutIndex(GetStreamOutIndex144,3085
+
+char_table.h,456
+#define CHAR_TABLE_H14,196
+#define IsWhiteChar(IsWhiteChar20,236
+#define IsLowerChar(IsLowerChar21,287
+#define IsUpperChar(IsUpperChar22,341
+#define IsDigitChar(IsDigitChar23,395
+#define IsSymbolChar(IsSymbolChar24,445
+#define IsSoloChar(IsSoloChar25,496
+#define IsPunctChar(IsPunctChar26,543
+#define IsQuoteChar(IsQuoteChar27,593
+#define IsUnderChar(IsUnderChar28,643
+#define GetCharCode(GetCharCode30,698
+} CharType;CharType37,909
+
+engine.h,3263
+#define ENGINE_H14,189
+#define LEVEL_LOCK 33,334
+#define GrabLevel(GrabLevel37,394
+#define DropLevel(DropLevel45,566
+#define GrabLevel(GrabLevel55,767
+#define DropLevel(DropLevel67,1058
+#define NO_ENV_ID	75,1214
+#define SetY(SetY88,1398
+#define G(G90,1429
+#define X(X92,1478
+#define Y(Y93,1508
+#define Xw(Xw94,1546
+#define Yw(Yw95,1579
+#define Yf(Yf96,1627
+#define Xc(Xc97,1672
+#define Leap_Label_Offset(Leap_Label_Offset99,1718
+#define DispatchLabel(DispatchLabel109,1914
+#define Dispatch(Dispatch111,1992
+typedef void *c_address;c_address119,2121
+#define Execute_Read_Instr	126,2210
+#define Execute_Write_Instr	135,2404
+#define Pre_FetchInit 144,2623
+#define Pre_Fetch 145,2676
+#define Pre_FetchTop(Pre_FetchTop146,2731
+#define Pre_Execute_Read_Instr(Pre_Execute_Read_Instr148,2808
+#define Pre_Execute_Write_Instr(Pre_Execute_Write_Instr156,2973
+#define Execute_Read_Instr	167,3157
+#define Execute_Write_Instr	174,3287
+#define Pre_FetchInit 181,3417
+#define Pre_Fetch 182,3448
+#define Pre_FetchTop(Pre_FetchTop183,3482
+#define Pre_Execute_Read_Instr(Pre_Execute_Read_Instr185,3520
+#define Pre_Execute_Write_Instr(Pre_Execute_Write_Instr186,3575
+#define WriteModeDispatch(WriteModeDispatch191,3655
+#define FrameSize(FrameSize194,3716
+#define StoreFrameSize(StoreFrameSize195,3769
+#define Code(Code206,4008
+#define UnCode(UnCode207,4034
+#define Get_Code(Get_Code208,4063
+#define Get_Index(Get_Index209,4093
+#define Inc_Index(Inc_Index210,4131
+#define Get_Instr(Get_Instr211,4170
+#define Get_Op(Get_Op212,4206
+#define Get_Index_I(Get_Index_I214,4252
+#define Get_Index_I_M(Get_Index_I_M215,4298
+#define InstToOp(InstToOp217,4345
+#define Get_Instruction(Get_Instruction228,4648
+#define Execute_Read_Instr 232,4714
+#define Execute_Write_Instr 233,4764
+#define WriteModeDispatch(WriteModeDispatch235,4821
+#define FrameSize(FrameSize237,4851
+#define StoreFrameSize(StoreFrameSize238,4911
+#define Code(Code249,5189
+#define UnCode(UnCode250,5215
+#define Get_Code(Get_Code251,5244
+#define Get_Index(Get_Index252,5274
+#define Inc_Index(Inc_Index253,5312
+#define Get_Instr(Get_Instr254,5351
+#define Get_Op(Get_Op255,5409
+#define Get_Index_I(Get_Index_I257,5455
+#define Get_Index_I_M(Get_Index_I_M258,5522
+#define InstToOp(InstToOp259,5600
+#define Get_Instruction(Get_Instruction260,5639
+#define Pre_FetchInit 267,5739
+#define Pre_Fetch 268,5770
+#define Pre_FetchTop(Pre_FetchTop269,5804
+#define Pre_Execute_Read_Instr(Pre_Execute_Read_Instr271,5842
+#define Pre_Execute_Write_Instr(Pre_Execute_Write_Instr272,5897
+#define Get_Label(Get_Label277,5977
+#define Inc_Label(Inc_Label278,6020
+#define Get_Label_No_Inc(Get_Label_No_Inc279,6057
+#define Get_Tagged(Get_Tagged280,6100
+#define Get_Functor(Get_Functor281,6141
+#define Get_Definition(Get_Definition282,6183
+#define Get_PC_No_Inc(Get_PC_No_Inc283,6233
+#define Get_UseArgs(Get_UseArgs284,6278
+#define CodeT(CodeT285,6326
+#define Get_Local_Stack_Top 287,6375
+#define EnvTop(EnvTop289,6447
+#define CpTop(CpTop293,6676
+#define Get_Stack_Top(Get_Stack_Top297,6910
+#define PreGC_PackLiveList(PreGC_PackLiveList304,7188
+#define PostGC_UnpackLiveList(PostGC_UnpackLiveList316,7435
+
+unify.h,636
+#define UNIFY_H14,187
+#  define RefHVAorCVA(RefHVAorCVA26,364
+#  define RefHVAorCVA(RefHVAorCVA28,411
+#define RefVAR(RefVAR34,539
+#define RefHVA(RefHVA35,583
+#define IsBoundHVA(IsBoundHVA37,631
+#define Unify(Unify43,767
+#define Local_Unify(Local_Unify51,930
+#define UnifyPop(UnifyPop59,1103
+#define Unify1(Unify168,1290
+#define IsUnsafe(IsUnsafe79,1499
+#define RefStackUnsafe(RefStackUnsafe81,1569
+#define WriteLocalValueY(WriteLocalValueY99,1873
+#define WriteLocalValueX(WriteLocalValueX117,2204
+#define GlobalizeRegisterY(GlobalizeRegisterY137,2562
+#define GlobalizeRegisterX(GlobalizeRegisterX153,2862
+
+worker.h,1072
+#define WORKER_H15,226
+} debug_t;debug_t37,683
+} generation_t;generation_t46,829
+typedef struct choicepoint choicepoint48,846
+} choicepoint;choicepoint65,1774
+typedef struct environment environment72,1885
+} environment;environment76,2090
+#define sizeofChoicepoint(sizeofChoicepoint79,2107
+#define sizeofEnvironment(sizeofEnvironment82,2218
+} statistics;statistics145,3707
+} worker_command;worker_command189,4324
+typedef struct prologflag prologflag197,4431
+} prologflag;prologflag200,4499
+typedef char heap;heap207,4664
+} globalvar;globalvar259,6062
+} load_entry_t;load_entry_t268,6248
+} load_dist_t;load_dist_t276,6384
+} gc_info_t;gc_info_t292,6642
+} TraceMode;TraceMode302,6825
+typedef struct worker worker304,6839
+} worker;worker383,8635
+#define H 390,8790
+#define LoadCache(LoadCache392,8824
+#define SaveCache(SaveCache393,8856
+#define SeqWorker(SeqWorker395,8889
+#define Arg 401,9022
+#define Argdecl 402,9045
+#define Argproto 403,9085
+#define InArg 405,9116
+#define InArgdecl 406,9145
+#define InArgproto 407,9205
+
+deref.h,464
+#define DEREF_H14,211
+#define Deref(Deref19,251
+#define DerefHVA(DerefHVA41,1085
+#define Deref(Deref67,1496
+#define DerefHVA(DerefHVA90,2013
+#define Deref(Deref113,2388
+#define DerefHVA(DerefHVA125,2640
+#define DerefNLL(DerefNLL140,2959
+#define DerefLockSwitch(DerefLockSwitch144,3029
+#define DerefLockSwitchHVA(DerefLockSwitchHVA168,3432
+#define DerefLockSwitch(DerefLockSwitch194,4430
+#define DerefLockSwitchHVA(DerefLockSwitchHVA219,4835
+
+bind.h,874
+#define BIND_H14,185
+#define Bind(Bind18,222
+#define Bind_Heap(Bind_Heap37,610
+#define Local_Bind(Local_Bind52,918
+#define Local_Bind_Heap(Local_Bind_Heap71,1299
+#define Bind(Bind88,1626
+#define Bind_Heap(Bind_Heap103,1922
+#define Local_Bind(Local_Bind111,2085
+#define Local_Bind_Heap(Local_Bind_Heap126,2376
+#define Bind_HVA(Bind_HVA146,2720
+#define Bind_CVA(Bind_CVA170,3248
+#define Bind_HVA(Bind_HVA196,3751
+#define Bind_CVA(Bind_CVA220,4255
+#define Bind_HVA(Bind_HVA248,4779
+#define Bind_CVA(Bind_CVA249,4839
+#define Local_Bind_HVA(Local_Bind_HVA255,4946
+#define Local_Bind_CVA(Local_Bind_CVA262,5104
+#define Local_Bind_HVA(Local_Bind_HVA271,5273
+#define Local_Bind_CVA(Local_Bind_CVA277,5386
+#define Bind_SVA(Bind_SVA286,5512
+#define AlwaysBind(AlwaysBind292,5609
+#define SetHVA(SetHVA293,5649
+#define SetVar(SetVar294,5709
+
+lock.h,62
+#define LOCK_H14,185
+#define Drop_P_Lock(Drop_P_Lock17,202
+
+expand_file_name.h,34
+#define EXPAND_FILE_NAME_H14,209
+
+load.h,22
+#define LOAD_H14,185
+
+qload.h,57
+#define QLOAD_H14,187
+} qload_codes;qload_codes30,431
+
+time.h,22
+#define TIME_H14,185
+
+statistics.h,1174
+#define STATISTICS_H14,197
+#  define BuiltinCallStatistics 18,244
+#  define CallStatistics 19,305
+#  define FailStatistics 20,358
+#    define HVAInitStat(HVAInitStat23,437
+#    define SVAInitStat(SVAInitStat24,505
+#    define SwapFailStat(SwapFailStat28,608
+#  define BuiltinCallStatistics 33,704
+#  define CallStatistics 34,737
+#  define FailStatistics 35,763
+#  define HVAInitStat(HVAInitStat36,789
+#  define SVAInitStat(SVAInitStat37,814
+#  define LCKGrabStat(LCKGrabStat38,839
+#  define LCKAttStat(LCKAttStat39,864
+#  define SwapFailStat(SwapFailStat40,888
+#  define TrailStat 46,964
+#  define DerefStat 47,1022
+#  define RestoreStat(RestoreStat48,1080
+#  define SwapBindStat 49,1142
+#  define TidyStat(TidyStat50,1199
+#  define InstrStat(InstrStat52,1259
+#  define TrailStat60,1402
+#  define DerefStat61,1422
+#  define RestoreStat(RestoreStat62,1442
+#  define InstrStat(InstrStat63,1467
+#  define SwapBindStat64,1490
+#  define TidyStat(TidyStat65,1513
+#  define AwaitStat(AwaitStat71,1585
+#  define AwaitCountStat(AwaitCountStat72,1641
+#  define AwaitStat(AwaitStat74,1730
+#  define AwaitCountStat(AwaitCountStat75,1753
+
+builtin.h,25
+#define BUILTIN_H15,228
+
+inline.h,372
+#define INLINE_H14,189
+#define INLINE_TABLE_SIZE 17,208
+#define GetInlineArity(GetInlineArity20,239
+#define GetInlineFnk(GetInlineFnk21,288
+#define GetInlineName(GetInlineName22,335
+#define GetInlineType(GetInlineType23,384
+#define GetInlineRetarg(GetInlineRetarg24,432
+typedef enum { I_FUNC, I_PRED } i_type;i_type27,484
+} inline_entry;inline_entry35,634
+
+math.h,653
+#define MATH_H14,185
+#define MathEvalTerm(MathEvalTerm19,225
+#define MathEvalTerm(MathEvalTerm65,1464
+#define EvalArithmeticComp(EvalArithmeticComp98,2293
+#define EvalBinaryArithmetic(EvalBinaryArithmetic153,4070
+#define EvalUnaryPostArithmetic(EvalUnaryPostArithmetic224,6249
+#define EvalUnaryArithmeticFloat(EvalUnaryArithmeticFloat253,6912
+#define EvalUnaryLogic(EvalUnaryLogic282,7623
+#define EvalBinaryLogic(EvalBinaryLogic307,8161
+#define EvalTernary(EvalTernary354,9505
+#define EvalBinary(EvalBinary384,10077
+#define EvalUnary(EvalUnary412,10590
+#define EvalUnaryArithmeticNumBigFlt(EvalUnaryArithmeticNumBigFlt438,11043
+
+assert.h,816
+#define ASSERT_H20,298
+#define ADispatchUp(ADispatchUp36,977
+#define ADispatchUp(ADispatchUp56,1369
+#define AInitCont	73,1606
+#define PushCont(PushCont74,1644
+#define PopCont	75,1694
+#define IsForward(IsForward77,1737
+#define GetForward(GetForward78,1770
+#define SetForward(SetForward83,1829
+#define SetForward(SetForward93,2031
+#define UndoForward(UndoForward103,2177
+#define NextFreeReg(NextFreeReg105,2217
+#define EmitTagged(EmitTagged107,2250
+#define EmitOp(EmitOp114,2364
+#define EmitOp1(EmitOp1115,2407
+#define EmitOp2(EmitOp2116,2485
+#define ZapIndex(ZapIndex119,2627
+#define EmitNumber(EmitNumber121,2693
+#define EmitAtom(EmitAtom122,2729
+#define EmitFunctor(EmitFunctor123,2763
+#define EmitUnsafeFLT(EmitUnsafeFLT126,2802
+#define EmitUnsafeBIG(EmitUnsafeBIG142,3115
+
+array.h,223
+#define ARRAY_H24,334
+#define sizeofArray(sizeofArray27,352
+#define IsArray(IsArray29,430
+#define GetArrayHeader(GetArrayHeader31,512
+#define GetArraySize(GetArraySize32,581
+#define GetArrayArg(GetArrayArg33,649
+
+bignum.h,109
+#define BIGNUM_H24,593
+#define BIG_STR_SIZE 32,654
+#define bntof(bntof35,682
+#define ftobn(ftobn36,713
+
+bnlib.h,545
+#define BNLIB_H21,427
+#define LIMB_MAX	31,529
+#define LIMB_MASK	32,568
+#define BITS_PER_LIMB 34,593
+#define BYTES_PER_LIMB 35,634
+#define BN_SIZE(BN_SIZE37,677
+#define BN_DATA(BN_DATA38,711
+#define sizeofBigNumber(sizeofBigNumber45,937
+#define BN_COPY(BN_COPY48,1045
+#define BN_CLEAR(BN_CLEAR57,1203
+typedef mp_size bn_size;bn_size66,1346
+typedef mp_limb bn_limb;bn_limb67,1371
+typedef mp_ptr bn_ptr;bn_ptr69,1397
+typedef mp_srcptr bn_ref;bn_ref70,1420
+} BigNumber;BigNumber87,1837
+enum NumericBase NumericBase90,1852
+
+term.h,9003
+#define TERM_H15,224
+typedef uword TAGGED;TAGGED22,350
+typedef uword UNTAGGED;UNTAGGED23,372
+} tagvalue;tagvalue41,635
+} boxvalue;boxvalue47,689
+#  define BITS_PER_BYTE	51,732
+#  define BITS_PER_WORD	55,796
+#  define BYTES_PER_WORD	59,901
+#  define FUNCSIZE	63,987
+#  define VARSIZE	64,1008
+#  define SVASIZE	65,1028
+#  define ARSIZE	66,1048
+#  define FUNCSIZE	68,1113
+#  define VARSIZE	69,1135
+#  define SVASIZE	70,1155
+#  define ARSIZE	71,1175
+#  define TAGBITS	75,1242
+#  define TAGBITS	77,1268
+#define WORDSIZE	81,1322
+#define MARKBITS	82,1353
+#define TOPBIT 84,1373
+#  define MARKOFFSET	89,1442
+#  define TAGOFFSET	90,1486
+#  define TAGMASK	91,1509
+#  define P_TagOf(P_TagOf93,1553
+#  define TagToPointer(TagToPointer94,1601
+#  define Tagify(Tagify95,1686
+#  define RemoveTag(RemoveTag96,1758
+#  define MARKOFFSET	100,1873
+#  define TAGOFFSET	101,1897
+#  define TAGMASK	102,1939
+#  define P_TagOf(P_TagOf104,1999
+#  define TagToPointer(TagToPointer105,2050
+#  define Tagify(Tagify106,2133
+#  define RemoveTag(RemoveTag107,2220
+#define TagOf(TagOf112,2271
+#define BoxTagOf(BoxTagOf113,2313
+#define SetTag(SetTag115,2374
+#define PointerToTerm(PointerToTerm117,2430
+#define TermToPointer(TermToPointer118,2470
+#define SetMask(SetMask123,2522
+#define GetMask(GetMask125,2576
+#define ClrMask(ClrMask127,2630
+#define LIVEMARKMASK	132,2758
+#define LINKMARKMASK	133,2836
+#define FULLMARKMASK	134,2914
+#define SetLiveMark(SetLiveMark136,2993
+#define SetLinkMark(SetLinkMark137,3047
+#define SetFullMark(SetFullMark138,3101
+#define GetLiveMark(GetLiveMark140,3156
+#define GetLinkMark(GetLinkMark141,3210
+#define GetFullMark(GetFullMark142,3264
+#define ClrLiveMark(ClrLiveMark144,3319
+#define ClrLinkMark(ClrLinkMark145,3373
+#define ClrFullMark(ClrFullMark146,3427
+#define HasLiveMark(HasLiveMark148,3482
+#define HasLinkMark(HasLinkMark149,3544
+#define HasFullMark(HasFullMark150,3606
+#define HasOnlyLinkMark(HasOnlyLinkMark151,3668
+#define POINTERMASK	153,3737
+#  define OffsetBase(OffsetBase157,3812
+#  define BaseOffset(BaseOffset158,3876
+#  define OffsetBase(OffsetBase160,3936
+#  define BaseOffset(BaseOffset161,3964
+#define MakeHVA(MakeHVA165,4001
+#define MakeCVA(MakeCVA166,4050
+#define MakeSVA(MakeSVA167,4099
+#define IsHVA(IsHVA170,4150
+#define IsCVA(IsCVA171,4185
+#define IsSVA(IsSVA172,4220
+#define IsLCK(IsLCK173,4255
+#define IsNUM(IsNUM174,4290
+#define IsBOX(IsBOX175,4325
+#define IsATM(IsATM176,4360
+#define IsLST(IsLST177,4395
+#define IsSTR(IsSTR178,4430
+#define IsGEN(IsGEN179,4465
+#define IsUVA(IsUVA180,4500
+#define IsFLT(IsFLT182,4536
+#define IsBIG(IsBIG183,4594
+#define IsNonVar(IsNonVar185,4678
+#define IsHVAorCVA(IsHVAorCVA186,4720
+#define HVA_CASE(HVA_CASE188,4763
+#define SVA_CASE(SVA_CASE189,4800
+#define NUM_CASE(NUM_CASE190,4837
+#define BOX_CASE(BOX_CASE191,4874
+#define ATM_CASE(ATM_CASE192,4911
+#define LST_CASE(LST_CASE193,4948
+#define STR_CASE(STR_CASE194,4985
+#define GEN_CASE(GEN_CASE195,5022
+#  define IsCondCVA(IsCondCVA199,5081
+#  define CVA_CASE(CVA_CASE200,5134
+#  define CVA_CASE(CVA_CASE202,5177
+#define Switch_Tag(Switch_Tag206,5210
+#define IsVar(IsVar224,5917
+#define IsUnbound(IsUnbound225,5951
+#define IsNumber(IsNumber227,5997
+#define IsCompound(IsCompound228,6052
+#  define IsHeapTerm(IsHeapTerm241,6480
+#  define IsHeapObj(IsHeapObj242,6568
+#  define IsHeapTerm(IsHeapTerm244,6662
+#  define IsHeapObj(IsHeapObj245,6727
+#define IsHeapBox(IsHeapBox249,6801
+#define IsHeapBoxM(IsHeapBoxM250,6867
+#define Var(Var252,6959
+#define Atom(Atom253,7001
+#define Choice(Choice254,7039
+#define Generic(Generic255,7086
+#define GetCar(GetCar257,7155
+#define GetCdr(GetCdr258,7197
+#  define VARSIZE 265,7335
+#  define FUNCSIZE 266,7364
+#  define TIMEUNIT 267,7393
+#  define GetHVATime(GetHVATime269,7423
+#  define GetCVATime(GetCVATime270,7490
+#  define GetHVATimeDer(GetHVATimeDer271,7547
+#    define GetSVATime(GetSVATime274,7614
+#    define SVASIZE 277,7685
+#    define GetSVATime(GetSVATime278,7714
+#    define TIMEUNIT 284,7841
+#    define GetHVATime(GetHVATime285,7870
+#    define GetCVATime(GetCVATime286,7939
+#    define GetHVATimeDer(GetHVATimeDer287,8008
+#    define GetHVATime(GetHVATime289,8086
+#    define GetCVATime(GetCVATime290,8143
+#    define GetHVATimeDer(GetHVATimeDer291,8190
+#  define GetSVATime(GetSVATime294,8244
+# define TIMETYPE 299,8356
+# define TIMETYPE 301,8384
+#  define Ref(Ref306,8441
+#  define DRef(DRef307,8493
+#  define Ref(Ref309,8554
+#define GetCVAGoals(GetCVAGoals324,8856
+#define WakeCVA	326,8908
+#define IsLeftmost(IsLeftmost341,9167
+#define IsFirstLeft(IsFirstLeft353,9370
+#define IsFirstRight(IsFirstRight366,9693
+#define IsNonVarOrLeftmost(IsNonVarOrLeftmost380,10018
+typedef struct atom_bucketatom_bucket416,10821
+} atom_bucket;atom_bucket420,10890
+struct atom_satom_s422,10906
+typedef struct atom_s *atom;atom428,10956
+#define GetAtomMode(GetAtomMode430,10986
+#define GetString(GetString431,11047
+#define AtomHasSpecial(AtomHasSpecial433,11111
+#define AtomHasSquote(AtomHasSquote434,11173
+#define OffsetAtom(OffsetAtom436,11236
+#define DeOffsetAtom(DeOffsetAtom437,11309
+typedef struct functor_bucketfunctor_bucket445,11487
+} functor_bucket;functor_bucket449,11572
+#define Func(Func451,11591
+#define ArityOf(ArityOf453,11646
+#define HashOf(HashOf454,11716
+#define FunctorToAtom(FunctorToAtom456,11783
+#define StoreFunctor(StoreFunctor457,11843
+#define StoreFunctorW(StoreFunctorW458,11907
+struct structure_sstructure_s466,12078
+typedef struct structure_s *structure;structure475,12183
+#define Struct(Struct477,12223
+#define StructArity(StructArity479,12266
+#define StructString(StructString480,12318
+#define GetArg(GetArg482,12385
+#define GetUntArg(GetUntArg483,12439
+#define GetFunctor(GetFunctor484,12496
+#define GetArity(GetArity485,12556
+#define GetSTRatom(GetSTRatom486,12605
+#define GetNthHead(GetNthHead488,12659
+#define GetNthTail(GetNthTail489,12722
+#  define TOPMASK 499,12920
+#  define GetNumber(GetNumber500,12962
+#  define Make_Integer(Make_Integer501,13046
+#  define TOPMASK 505,13165
+#  define GetNumber(GetNumber506,13202
+#  define Make_Integer(Make_Integer507,13284
+#define INTSIZE	512,13381
+#define MAX_NUM	514,13433
+#define MIN_NUM	515,13480
+#define Is_Integer(Is_Integer517,13513
+#define MakeNumber(MakeNumber518,13566
+#define ClearTop(ClearTop520,13651
+#define Make_Atomspace_Integer(Make_Atomspace_Integer522,13700
+#define BOXBITS 546,14478
+#define DYNBITS 547,14496
+#define SECBITS 548,14514
+#  define BOXMASK	552,14555
+#  define DYNMASK	553,14602
+#  define SECMASK	554,14646
+#  define S_TagOf(S_TagOf555,14702
+#  define GetBoxSize(GetBoxSize556,14766
+#  define MakeBoxSize(MakeBoxSize558,14890
+#  define BOXMASK	562,15037
+#  define DYNMASK	563,15083
+#  define SECMASK	564,15128
+#  define S_TagOf(S_TagOf565,15185
+#  define GetBoxSize(GetBoxSize566,15250
+#  define MakeBoxSize(MakeBoxSize568,15373
+#define IsBox(IsBox572,15483
+#define IsDynBox(IsDynBox574,15540
+#define IsStatBox(IsStatBox575,15577
+#define MakeDynBoxSize(MakeDynBoxSize576,15637
+#define MakeStatBoxSize(MakeStatBoxSize577,15698
+#define BOX_FRAME_SIZE	579,15771
+#define BOX_OBJ_OFFSET	580,15796
+#define ORDEREDTAG 596,16183
+#define Next(Next599,16246
+#define Next(Next601,16304
+#define IsOrdered(IsOrdered604,16364
+#define GetOrderNr(GetOrderNr606,16432
+#define MakeOrderNr(MakeOrderNr609,16546
+#  define Order(Order614,16690
+#  define Order(Order643,17583
+#define Order(Order671,18384
+#define NewOrderNr(NewOrderNr703,19360
+#define FLOATSIZE	723,19812
+#define GetFloat(GetFloat726,19864
+#define GetFloat(GetFloat728,19931
+#define MakeFloatHeapBoxMarker(MakeFloatHeapBoxMarker731,19972
+#define MakeFloatAtomBoxMarker(MakeFloatAtomBoxMarker732,20035
+#  define MakeInf(MakeInf735,20133
+#  define MakeNan(MakeNan736,20178
+#  define MakeConstInf(MakeConstInf738,20224
+#  define MakeConstNan(MakeConstNan739,20283
+#  define MakeInf(MakeInf743,20422
+#  define MakeNan(MakeNan744,20473
+#  define MakeConstInf(MakeConstInf746,20516
+#  define MakeConstNan(MakeConstNan747,20581
+#define make_float(make_float751,20671
+#  define GetBignum(GetBignum798,21946
+#  define GetBignum(GetBignum800,21989
+#define MakeBignumHeapBoxMarker(MakeBignumHeapBoxMarker803,22071
+#define MakeBignumAtomBoxMarker(MakeBignumAtomBoxMarker804,22135
+#define NUM2BIG(NUM2BIG806,22201
+#define FLT2BIG(FLT2BIG807,22257
+#define LONG_INT_WORDS	809,22322
+typedef sword code;code817,22503
+typedef sword indx;indx818,22523
+struct list_slist_s821,22545
+typedef struct list_s *list;list827,22593
+#define LastTail(LastTail829,22623
+#define GetGenTag(GetGenTag863,23179
+#define GetMethod(GetMethod864,23238
+} method;method874,23793
+} generic;generic880,23884
+
+storage.h,1906
+#define STORAGE_H14,191
+#  define Malloc(Malloc22,289
+#  define Malloc(Malloc27,410
+#define GETENV(GETENV33,482
+#define AlignSize(AlignSize41,619
+#define AlignDown(AlignDown43,697
+#define AlignAddress(AlignAddress46,762
+#define SingleAlignedSize(SingleAlignedSize49,836
+#define DoubleAlignedSize(DoubleAlignedSize51,909
+#define SingleAlignedAddress(SingleAlignedAddress54,984
+#define DoubleAlignedAddress(DoubleAlignedAddress56,1070
+#define InitHVA(InitHVA61,1182
+#define InitCVA(InitCVA68,1314
+#  define LoadSVA(LoadSVA76,1461
+#  define LoadSVA(LoadSVA78,1537
+#  define InitHVA(InitHVA90,1723
+#  define InitCVA(InitCVA97,1857
+#  define InitHVA(InitHVA105,1988
+#  define InitCVA(InitCVA106,2052
+#define LoadSVA(LoadSVA109,2115
+#define LoadHVA(LoadHVA117,2206
+#define CreateCVA(CreateCVA119,2267
+#define CreateHVA(CreateHVA126,2398
+#define CreateHVA(CreateHVA129,2503
+#define Make_LST(Make_LST132,2581
+#define Make_LST_S(Make_LST_S134,2638
+#define Make_STR(Make_STR138,2823
+#define Make_STR_Alloc(Make_STR_Alloc140,2898
+#define Make_Vector_Head(Make_Vector_Head146,3160
+#define Patch_Vector_Size(Patch_Vector_Size152,3336
+#define PopOnHeap(PopOnHeap159,3519
+#define PushOnHeap(PushOnHeap160,3592
+#define PushOnHeap1(PushOnHeap1161,3665
+#define PopFromHeap(PopFromHeap163,3733
+#define PushOnHeapF(PushOnHeapF165,3799
+#define IsInHeap(IsInHeap167,3874
+#define InitTime(InitTime176,4149
+#define InitTimeLite(InitTimeLite182,4249
+#define InitTime(InitTime190,4376
+#define StackAndTimeInit(StackAndTimeInit195,4406
+#define LightStackInit(LightStackInit204,4554
+#define BuiltinHeapCheck(BuiltinHeapCheck226,5204
+#define HeapCheck(HeapCheck250,5852
+#define BuiltinHeapCheck(BuiltinHeapCheck279,6629
+#define HeapCheck(HeapCheck302,7189
+#define BuiltinHeapCheck(BuiltinHeapCheck329,7810
+#define HeapCheck(HeapCheck338,8008
+
+database.h,561
+#define DATABASE_H14,193
+} enter_inst;enter_inst29,436
+#define IsEmptyDynPred(IsEmptyDynPred32,452
+#define IsLastClause(IsLastClause34,528
+typedef struct retry_node retry_node43,763
+} retry_node;retry_node46,834
+} in_switch;in_switch50,892
+union definfo definfo52,906
+typedef struct calluse calluse60,1029
+} calluse;calluse63,1093
+typedef struct definition definition68,1130
+} definition;definition77,1353
+} ListOption;ListOption100,1976
+#define PUBLIC 108,2085
+#define PROLOG 109,2114
+} database_iterator;database_iterator120,2331
+
+atom_table.h,636
+#define ATOM_TABLE_H23,497
+} atoms;atoms305,5507
+#define Print1(Print1307,5517
+#define Print2(Print2308,5569
+#define Print3(Print3309,5624
+#define Print4(Print4310,5682
+#define ErrPrint1(ErrPrint1312,5744
+#define ErrPrint2(ErrPrint2313,5796
+#define ErrPrint3(ErrPrint3314,5851
+#define ErrPrint4(ErrPrint4315,5909
+#define PL_Print1(PL_Print1317,5971
+#define PL_Print2(PL_Print2318,6018
+#define PL_Print3(PL_Print3319,6068
+#define PL_Print4(PL_Print4320,6121
+#define FD_Print1(FD_Print1322,6178
+#define FD_Print2(FD_Print2329,6329
+#define FD_Print3(FD_Print3336,6486
+#define FD_Print4(FD_Print4343,6649
+
+functor_table.h,31
+#define FUNCTOR_TABLE_H14,203
+
+instrdef.h,156
+#define INSTRDEF_H14,192
+#define GetOpString(GetOpString17,213
+#define Inst_Def(Inst_Def23,300
+} opcode;opcode28,384
+} assertcode;assertcode61,945
+
+instructions.h,17
+Inst_Def(13,178
+
+labelsort.h,88
+#define LABELSORT_H14,195
+typedef struct labelt labelt17,217
+} labelt;labelt20,274
+
+display.h,25
+#define DISPLAY_H15,228
+
+display_code.h,30
+#define DISPLAY_CODE_H14,201
+
+c.h,533
+#define C_H14,179
+#define ANY	17,193
+#    define NULL 22,296
+#  define inline27,356
+#  define PROTO(PROTO31,401
+#  define PROTOTYPE(PROTOTYPE33,427
+#  define const35,484
+#  define signed36,500
+#  define volatile37,517
+#  define PROTO(PROTO39,537
+#  define PROTOTYPE(PROTOTYPE40,561
+typedef signed short int s16;s1644,620
+typedef unsigned short int u16;u1645,650
+typedef   signed long int sword;sword47,683
+typedef unsigned long int uword;uword48,716
+typedef sword s32;s3250,750
+typedef uword u32;u3251,769
+
+think.h,46
+#define THINK_H14,187
+#define ArgCnt	19,227
+
+debug.h,805
+#define DEBUG_H15,224
+#define MAXSPYPOINTS 18,242
+#define MAXBREAKPOINTS 19,269
+#define DEBUG_PROMPT 21,297
+enum debugflags debugflags23,329
+#define Pre_DisplayInstr(Pre_DisplayInstr36,478
+#define DisplayFail(DisplayFail46,682
+#define DisplayFail(DisplayFail57,901
+#define DisplayInstr(DisplayInstr70,1117
+#define DisplayFail(DisplayFail87,1544
+#define DisplayInstr(DisplayInstr88,1567
+#define Pre_DisplayFail(Pre_DisplayFail89,1592
+#define Pre_DisplayInstr(Pre_DisplayInstr90,1621
+#define DB_Print1(DB_Print197,1694
+#define DB_Print2(DB_Print298,1752
+#define DB_Print3(DB_Print399,1814
+#define DB_Print4(DB_Print4100,1880
+#define DB_Print1(DB_Print1104,1972
+#define DB_Print2(DB_Print2105,2024
+#define DB_Print3(DB_Print3106,2080
+#define DB_Print4(DB_Print4107,2140
+
+unix.h,22
+#define UNIX_H14,185
+
+signal.h,24
+#define SIGNAL_H14,189
+
+event.h,631
+#define EVENT_H14,187
+} events;events23,303
+} global_events;global_events28,372
+#define AddEvent(AddEvent33,415
+#define RemoveEvent(RemoveEvent40,565
+#define AddGlobalEvent(AddGlobalEvent47,720
+#define RemoveGlobalEvent(RemoveGlobalEvent55,904
+#define RemoveGlobalEvent(RemoveGlobalEvent62,1081
+#define AddEvent(AddEvent67,1160
+#define RemoveEvent(RemoveEvent68,1223
+#define AddGlobalEvent(AddGlobalEvent70,1290
+#define AddGlobalEventCode(AddGlobalEventCode71,1361
+#define RemoveGlobalEvent(RemoveGlobalEvent74,1459
+#define RemoveGlobalEvent(RemoveGlobalEvent76,1543
+#define EventTrue(EventTrue81,1620
+
+semaphore.h,2269
+#define SEMAPHORE_H14,195
+} semaphores;semaphores23,356
+} spin_semaphores;spin_semaphores32,484
+} synch_t;synch_t38,564
+#define GrabPrivateSema(GrabPrivateSema52,774
+#define DropPrivateSema(DropPrivateSema54,836
+#   define GrabPrivSemaphore(GrabPrivSemaphore70,1206
+#   define DropPrivSemaphore(DropPrivSemaphore71,1276
+#   define GrabSemaphore(GrabSemaphore72,1346
+#   define DropSemaphore(DropSemaphore83,1671
+#   define GrabPrivSemaphore(GrabPrivSemaphore107,2259
+#   define DropPrivSemaphore(DropPrivSemaphore108,2329
+#   define GrabSemaphore(GrabSemaphore109,2399
+#   define DropSemaphore(DropSemaphore110,2462
+#   define FooSemaphore(FooSemaphore111,2520
+#  define GrabPrivSemaphore(GrabPrivSemaphore133,3142
+#  define DropPrivSemaphore(DropPrivSemaphore138,3272
+#  define GrabSemaphore(GrabSemaphore143,3402
+#  define DropSemaphore(DropSemaphore147,3527
+#define AcquireLock(AcquireLock158,3821
+#define ReleaseLock(ReleaseLock165,3967
+#define SPIN_SEMA_LOCK 167,4003
+#define SpinLockSemaphore(SpinLockSemaphore169,4038
+#define SpinGrabSemaphore(SpinGrabSemaphore185,4445
+#define SpinDropSemaphore(SpinDropSemaphore212,5155
+#define SpinDropSema(SpinDropSema226,5505
+#define SpinGrabSema(SpinGrabSema227,5581
+#define SpinGrabPrivateSema(SpinGrabPrivateSema229,5658
+#define SpinDropPrivateSema(SpinDropPrivateSema234,5781
+#define GrabPrivateSema(GrabPrivateSema245,6030
+#define DropPrivateSema(DropPrivateSema246,6057
+#define SpinGrabSemaphore(SpinGrabSemaphore247,6086
+#define SpinDropSemaphore(SpinDropSemaphore248,6122
+#define SpinGrabSema(SpinGrabSema249,6156
+#define SpinDropSema(SpinDropSema250,6187
+#define GrabSemaphore(GrabSemaphore251,6216
+#define DropSemaphore(DropSemaphore252,6241
+#define AcquireLock(AcquireLock253,6266
+#define ReleaseLock(ReleaseLock254,6292
+#  define DropDone(DropDone259,6370
+#  define GrabDone(GrabDone260,6422
+#  define DropDone(DropDone262,6480
+#  define GrabDone(GrabDone263,6534
+# define InitBarrier(InitBarrier280,7007
+# define BarrierSynch(BarrierSynch295,7428
+# define InitBarrier(InitBarrier321,8223
+# define BarrierSynch(BarrierSynch335,8602
+# define InitBarrier(InitBarrier363,9506
+# define BarrierSynch(BarrierSynch364,9530
+
+parallel.h,913
+#define PARALLEL_H14,193
+#define Report_Global_Fail 19,237
+#define Report_Global_Fail 23,325
+#define ActivateWorkers(ActivateWorkers34,494
+#define ActivateWorkersGC(ActivateWorkersGC44,758
+#define ActivateWorkersNoWait(ActivateWorkersNoWait59,1126
+#define ActivateWorkersStart(ActivateWorkersStart73,1486
+#define ActivateWorkersStop(ActivateWorkersStop86,1865
+#define ActivateWorkersStart(ActivateWorkersStart95,2035
+#define ActivateWorkersStop(ActivateWorkersStop100,2163
+#define ActivateWorkersStart(ActivateWorkersStart107,2331
+#define ActivateWorkersStop(ActivateWorkersStop112,2448
+#define Run_Parallel(Run_Parallel122,2651
+#define Start_Parallel(Start_Parallel128,2784
+#define Stop_Parallel	134,2922
+#define Run_Parallel_NoWait(Run_Parallel_NoWait139,3009
+#define Run_Parallel(Run_Parallel147,3179
+#define Start_Parallel(Start_Parallel148,3203
+#define Stop_Parallel149,3229
+
+event.c,24
+if 17,306
+if 184,3360
+
+global_event.c,11
+if 13,178
+
+gc.h,2347
+#define GC_H15,262
+#define GC_MRK_MASK	18,277
+#define GC_FWD_MASK	19,310
+#define GC_FMK_MASK	20,343
+#define GC_PTR_MASK	21,376
+#define SafeMarking(SafeMarking23,409
+#define SafeUnMarking(SafeUnMarking42,1068
+#  define SafeMark(SafeMark56,1448
+#  define SafeMarkF(SafeMarkF57,1504
+#  define SafeUnMark(SafeUnMark59,1561
+#  define SafeUnMarkF(SafeUnMarkF60,1619
+#  define SafeMark(SafeMark64,1685
+#  define SafeMarkF(SafeMarkF65,1720
+#  define SafeUnMark(SafeUnMark67,1757
+#  define SafeUnMarkF(SafeUnMarkF68,1794
+#define Mark(Mark72,1841
+#define MarkF(MarkF73,1878
+#define UnMark(UnMark75,1920
+#define UnMarkF(UnMarkF76,1961
+#define IsMarked(IsMarked78,2008
+#define IsMarkedF(IsMarkedF79,2056
+#define IsMarkedFonly(IsMarkedFonly80,2105
+#define IsForM(IsForM81,2149
+#define IsMarkedFM(IsMarkedFM82,2195
+#define GetBits(GetBits84,2267
+#define SetBits(SetBits85,2320
+#define GetGCBits(GetGCBits87,2384
+#define SetGCBits(SetGCBits88,2421
+#define AddMark(AddMark90,2474
+#define AddMarkF(AddMarkF91,2521
+#define AddMarkFM(AddMarkFM92,2569
+#define RemoveMark(RemoveMark94,2617
+#define RemoveMarkF(RemoveMarkF95,2680
+#define RemoveMarkFM(RemoveMarkFM96,2744
+#define PutMark(PutMark98,2801
+#define PutValue(PutValue100,2866
+#define PutValueFirst(PutValueFirst103,2957
+#define Reset(Reset106,3088
+#define Reverse(Reverse108,3129
+#define Undo(Undo117,3360
+#define Advance(Advance119,3401
+#  define TryAllocate(TryAllocate136,3799
+#  define TryAllocate(TryAllocate156,4343
+# define TryAllocate(TryAllocate172,4802
+#define GC_If_Needed(GC_If_Needed177,4891
+#define GC_If_Needed_Execute(GC_If_Needed_Execute207,5712
+#define GC_If_Needed_Require(GC_If_Needed_Require209,5785
+#define GC_If_Needed_Execute(GC_If_Needed_Execute232,6402
+#define GC_If_Needed_Require(GC_If_Needed_Require233,6471
+#define GC_If_Needed(GC_If_Needed235,6526
+#define GC_Sequentialize_Low_To_High	258,7053
+#define GC_Sequentialize_High_To_Low	268,7295
+#define GC_Run_Parallel(GC_Run_Parallel278,7556
+#define GC_Start_Parallel(GC_Start_Parallel288,7797
+#define GC_Stop_Parallel 298,8042
+#define GC_Run_Parallel_NoWait(GC_Run_Parallel_NoWait300,8082
+#define GC_Run_Parallel(GC_Run_Parallel311,8360
+#define GC_Start_Parallel(GC_Start_Parallel312,8387
+#define GC_Stop_Parallel313,8416
+
+segment.h,313
+#define SEGMENT_H14,191
+#define SEGMENTHEADERSIZE 16,210
+#define IsNewSegmentMarker(IsNewSegmentMarker18,291
+typedef struct segment segment21,332
+} segment;segment25,413
+#  define Free_Segment(Free_Segment61,2092
+#  define Free_Segment(Free_Segment65,2174
+#  define Free_Segment(Free_Segment72,2257
+
+trail.h,1605
+#define TRAIL_H15,225
+#define IsDoubleTrail(IsDoubleTrail17,242
+#define PopFromTrail(PopFromTrail24,446
+#define PushOnTrail(PushOnTrail30,552
+#define Trail_GEN(Trail_GEN50,1013
+#define Trail_HVA(Trail_HVA51,1057
+#define Trail_SVA(Trail_SVA52,1101
+#define Trail_CVA(Trail_CVA53,1145
+#define Trail_GEN(Trail_GEN62,1349
+# define TrailHVASize 65,1415
+# define Trail_HVA(Trail_HVA66,1439
+# define Trail_CVA(Trail_CVA75,1600
+# define TrailHVASize 83,1734
+# define Trail_HVA(Trail_HVA84,1758
+# define Trail_CVA(Trail_CVA90,1861
+#define Trail_SVA(Trail_SVA104,2157
+#define Trail_SVA(Trail_SVA107,2255
+#define TidyValue(TidyValue116,2500
+#define TidySVA(TidySVA118,2532
+#define AlwaysTrail(AlwaysTrail129,2729
+#define UnBind_HVA(UnBind_HVA139,2984
+#define UnBind_CVA(UnBind_CVA148,3221
+#define TidyHVA(TidyHVA162,3552
+#define HVATrailSize 171,3698
+#define AlwaysTrail(AlwaysTrail175,3754
+#define UnBind_HVA(UnBind_HVA177,3800
+#define UnBind_CVA(UnBind_CVA179,3867
+#define TidyHVA(TidyHVA192,4105
+#define HVATrailSize 200,4223
+#define DeclareUncond(DeclareUncond211,4421
+#define DeclareUncond(DeclareUncond215,4477
+#define UnBind_SVA(UnBind_SVA222,4649
+#define IsValueTrail(IsValueTrail224,4717
+#define UndoValue(UndoValue226,4758
+#define ValueTrail(ValueTrail232,4874
+#define TidyTrail247,5278
+#define Unwind_Trail(Unwind_Trail262,5822
+#define UnwindWorkers	339,7560
+#define TidyWorkers(TidyWorkers354,7973
+#define Worker_Unwind_Trail	368,8346
+#define Worker_Tidy_Trail440,10161
+#define UnwindWorkers444,10210
+#define TidyWorkers445,10232
+
+socket.h,24
+#define SOCKET_H14,189
+
+threads.h,1082
+#define THREADS_H10,265
+# define USE_THREADS31,709
+# define CHILD_PID_TYPE 32,730
+# define Thread_Create(Thread_Create35,788
+# define Thread_Cancel(Thread_Cancel39,957
+# define Thread_Self(Thread_Self40,1012
+# define USE_THREADS52,1255
+# define CHILD_PID_TYPE 53,1276
+# define Thread_Create(Thread_Create57,1335
+# define Thread_Cancel(Thread_Cancel70,1711
+# define Thread_Self(Thread_Self71,1766
+# define Thread_Sem_Type 73,1810
+# define Thread_Sem_Wait(Thread_Sem_Wait74,1856
+# define Thread_Sem_Post(Thread_Sem_Post75,1916
+# define Thread_Sem_Init(Thread_Sem_Init76,1976
+# define Thread_Sem_Dest(Thread_Sem_Dest77,2042
+# define USE_THREADS91,2329
+# define CHILD_PID_TYPE 92,2350
+# define Thread_Create(Thread_Create96,2408
+# define Thread_Cancel(Thread_Cancel98,2553
+# define Thread_Self(Thread_Self99,2603
+# define Thread_Sem_Type 101,2643
+# define Thread_Sem_Wait(Thread_Sem_Wait102,2690
+# define Thread_Sem_Post(Thread_Sem_Post103,2751
+# define Thread_Sem_Init(Thread_Sem_Init104,2812
+# define Thread_Sem_Dest(Thread_Sem_Dest105,2893
+
+main.c,130
+void main(28,474
+static void *start_engine(303,6018
+static void create_children(313,6135
+static void create_children(343,6640
+
+initial.c,344
+#  define CLK_TCK 34,521
+void def_c_pred(82,1792
+void initialize_builtins(94,2034
+void init_predefined_atoms(161,4277
+static void init_system(204,5660
+static void init_signals(211,5768
+static worker *init_once(226,6164
+static void init_each_time(290,7183
+void reinitialize(320,7918
+void init_wam(360,8826
+worker *initialize(399,9664
+
+error.c,52
+void luther_exit(34,428
+BOOL luther_error(84,1239
+
+inout.c,1636
+BOOL luther_prompt(50,812
+BOOL luther_ttynl(82,1304
+BOOL luther_ttytab(91,1396
+BOOL luther_ttyput(100,1501
+BOOL luther_ttyget(117,1741
+BOOL luther_ttyget0(137,2017
+BOOL luther_ttyskip(153,2247
+BOOL luther_ttyflush(178,2621
+BOOL luther_ttygetch0(188,2759
+BOOL luther_nl(232,3637
+BOOL luther_tab(241,3724
+BOOL luther_put(250,3824
+BOOL luther_get(267,4054
+BOOL luther_get0(299,4635
+BOOL luther_skip(333,5158
+BOOL luther_flush(370,5833
+BOOL luther_getch(380,5967
+BOOL luther_getch0(421,6779
+BOOL luther_display(465,7503
+BOOL luther_write(474,7617
+BOOL luther_write_float(483,7755
+BOOL luther_write_radix(500,8113
+BOOL luther_write_integer(517,8456
+BOOL luther_nl_stream(541,8900
+BOOL luther_tab_stream(556,9121
+BOOL luther_put_stream(571,9354
+BOOL luther_get_stream(592,9691
+BOOL luther_get0_stream(626,10239
+BOOL luther_skip_stream(657,10743
+BOOL luther_flush_stream(696,11389
+BOOL luther_display_stream(712,11618
+BOOL luther_write_stream(727,11864
+BOOL luther_get_input(749,12227
+BOOL luther_set_input(761,12377
+BOOL luther_get_output(780,12652
+BOOL luther_set_output(792,12805
+BOOL luther_open(824,13415
+BOOL luther_close(929,15620
+BOOL luther_rewind(962,16207
+BOOL luther_stream_list(994,16728
+BOOL luther_stream_name(1020,17156
+BOOL luther_stream_mode(1037,17446
+BOOL luther_stream_file(1054,17748
+BOOL luther_stream_code(1075,18067
+BOOL luther_file_code(1092,18363
+BOOL luther_fdopen(1118,18926
+buff_io_stream *init_io_stream(1176,20154
+int buff_getchar(1193,20482
+void flush_write_buff(1216,20838
+void writebuff(1223,20959
+void readline(1244,21258
+void initialize_inout(1277,21686
+
+char_table.c,30
+void build_char_table(19,229
+
+engine.c,206
+#define CompareNumber(CompareNumber49,1199
+#define PrintInst(PrintInst54,1313
+#define PrintInst(PrintInst57,1384
+  if 65,1622
+#define PrintInst(PrintInst70,1700
+#define Inst_Def(Inst_Def145,3767
+
+unify.c,205
+#  define C(C56,1491
+#  define C(C58,1518
+#  define U(U62,1566
+#  define U(U64,1593
+static BOOL unify_structure(84,2145
+BOOL unify(101,2434
+BOOL local_unify(315,6374
+BOOL unify_deref(528,10168
+
+expand_file_name.c,232
+BOOL expand_file_name(18,242
+static int mygetpwnam(36,507
+BOOL expand_file_name(51,806
+BOOL luther_expand_file_name(223,4203
+BOOL expand_file_name(284,5203
+BOOL expand_file_name(303,5469
+BOOL luther_expand_file_name(477,8903
+
+load.c,48
+void load_file(28,399
+BOOL luther_load(52,847
+
+qload.c,241
+#define Store_Tagged(Store_Tagged20,293
+#define Fetch_Name(Fetch_Name26,409
+#  define Getw(Getw42,670
+#  define Getw(Getw44,720
+#define Getc(Getc47,770
+static u32 mygetw(64,1103
+BOOL quickload(77,1292
+BOOL luther_qload(183,3265
+
+time.c,263
+long usertime(23,316
+long systime(35,528
+double walltime(47,735
+long pagefaults_no_io(56,885
+long pagefaults_ph_io(68,1060
+long usertime(87,1357
+long systime(99,1559
+double walltime(112,1747
+long pagefaults_no_io(121,1897
+long pagefaults_ph_io(126,1938
+
+statistics.c,935
+BOOL luther_statistics(22,351
+BOOL luther_statistics_n(194,6137
+BOOL luther_statistics_n(265,8395
+BOOL luther_statistics_runtime(275,8600
+BOOL luther_statistics_gctime(302,9221
+BOOL luther_statistics_gcnr(328,9817
+BOOL luther_statistics_gcbytes(354,10408
+BOOL luther_statistics_walltime(395,11506
+BOOL luther_statistics_parallel_runtime(454,13169
+BOOL luther_statistics_memory(497,14001
+BOOL luther_statistics_global(533,15081
+BOOL luther_statistics_local(579,16266
+BOOL luther_statistics_trail(602,16836
+BOOL luther_statistics_deref(635,17668
+BOOL luther_statistics_restore(652,17992
+BOOL luther_statistics_instr(669,18338
+BOOL luther_statistics_instr_prof(713,19195
+BOOL luther_statistics_tidy(768,20646
+BOOL luther_statistics_swap(785,20985
+BOOL luther_statistics_code(827,21824
+BOOL luther_statistics_atom(853,22409
+BOOL luther_pmon(878,22993
+BOOL luther_pmon_print(891,23248
+void init_statistics(909,23609
+
+builtin.c,2794
+BOOL luther_true(41,775
+BOOL luther_fail(52,964
+#define IsDigit(IsDigit59,1022
+#define CharOf(CharOf62,1159
+BOOL luther_number_chars(91,1776
+BOOL luther_atom_chars(296,5850
+BOOL luther_name(412,8615
+BOOL luther_unique_name(455,9661
+int random(528,11110
+void srandom(533,11145
+BOOL luther_seed(546,11379
+BOOL luther_random(569,11831
+BOOL luther_halt(600,12485
+BOOL luther_version(615,12760
+BOOL luther_freeze(634,13249
+BOOL luther_frozen(686,14450
+BOOL luther_defrost(716,15014
+BOOL luther_setarg(754,15849
+BOOL luther_zaparg(842,17776
+BOOL luther_atom_mode(930,19674
+BOOL luther_loading_mode(956,20110
+BOOL luther_module(985,20640
+BOOL luther_get_module(1016,21228
+BOOL luther_set_module(1030,21411
+BOOL luther_public(1054,21933
+BOOL luther_dynamic(1074,22290
+BOOL luther_assert_delete_other(1150,23813
+BOOL luther_asserta(1183,24714
+BOOL luther_assertz(1218,25651
+BOOL luther_erase(1253,26476
+BOOL luther_mgu_variables(1294,27255
+BOOL luther_clause(1414,30064
+BOOL luther_clause_noref(1669,36777
+BOOL luther_predicate_property(1898,42987
+BOOL luther_current_predicate_aux(1984,44545
+BOOL luther_current_predicate(2089,46953
+BOOL luther_topchoice(2295,51998
+BOOL luther_save_choice(2321,52635
+BOOL luther_load_choice(2333,52773
+BOOL luther_retry_choice(2358,53319
+BOOL luther_retry_cut(2409,54531
+BOOL luther_set_spy(2455,55273
+BOOL luther_impose_spy(2499,56025
+BOOL luther_remove_spy(2532,56573
+BOOL luther_get_trace_level(2579,57433
+BOOL luther_set_inc_trace_level(2589,57567
+BOOL luther_set_dec_trace_level(2601,57735
+BOOL luther_trace(2621,58053
+BOOL luther_trace_on(2629,58204
+BOOL luther_trace_spy(2638,58350
+BOOL luther_trace_off(2647,58498
+BOOL luther_set_handler(2663,58799
+BOOL luther_find_handler(2678,59156
+BOOL luther_garbage_collect(2707,59693
+BOOL luther_struct_reduce(2736,60327
+BOOL luther_copy_term(2875,63330
+static void check_size(2968,65031
+void luther_copy_args(2995,65585
+BOOL luther_worker_rest(3112,67551
+BOOL luther_active_workers(3132,68023
+BOOL luther_active_workers_org(3145,68243
+BOOL luther_scheduling(3190,69094
+BOOL luther_debug(3221,69678
+BOOL luther_debug_par(3243,70149
+BOOL luther_debug_par_file(3279,70981
+BOOL luther_debug_par_socket(3317,71926
+BOOL luther_debug_prolog(3361,72941
+BOOL luther_nodebug(3375,73192
+void initialize_flags(3390,73427
+BOOL luther_prolog_flag_gc_verbose(3405,73781
+BOOL luther_prolog_flag_load_verbose(3439,74583
+BOOL luther_processor_ids(3470,75257
+BOOL luther_processor_sort(3501,75826
+#  define Store_Code(Store_Code3562,76806
+#  define Store_Code(Store_Code3564,76889
+#define Store_Tagged(Store_Tagged3567,76939
+#define Init_Backtrackable(Init_Backtrackable3573,77061
+void init_backtrackable_c(3587,77421
+void initialize_builtin(3597,77737
+
+inline.c,2893
+#  define C(C244,8443
+#  define C(C246,8470
+#  define U(U250,8518
+#  define U(U252,8545
+CompareType compare_struct(273,9139
+static CompareType compare_term_wrapped(327,10697
+static CompareType compare_term(604,16531
+static BOOL luther_compare(615,16703
+static BOOL luther_eq_univ(668,17762
+static BOOL luther_ineq_univ(682,17993
+static BOOL luther_lt_univ(697,18235
+static BOOL luther_gt_univ(712,18474
+static BOOL luther_le_univ(727,18717
+static BOOL luther_ge_univ(742,18960
+static BOOL luther_univ(757,19219
+static BOOL luther_functor(891,21823
+static BOOL luther_arg(986,23427
+static BOOL luther_inline_unify(1029,24139
+static BOOL luther_active(1041,24299
+static BOOL luther_save(1053,24492
+static BOOL luther_collect_plus(1066,24721
+static BOOL luther_collect_times(1103,25398
+static BOOL luther_math_eq(1148,26203
+static BOOL luther_math_ineq(1155,26307
+static BOOL luther_lt(1164,26429
+static BOOL luther_gt(1170,26515
+static BOOL luther_le(1176,26601
+static BOOL luther_ge(1182,26688
+static BOOL luther_atom(1192,26792
+static BOOL luther_atomic(1204,26949
+static BOOL luther_generic(1216,27117
+static BOOL luther_integer(1228,27270
+static BOOL luther_float(1240,27442
+static BOOL luther_number(1252,27600
+static BOOL luther_nonvar(1264,27762
+static BOOL luther_var(1276,27919
+static BOOL luther_plus(1294,28199
+static BOOL luther_minus(1300,28290
+static BOOL luther_times(1311,28511
+static BOOL luther_plus_1(1406,30300
+static BOOL luther_minus_1(1412,30399
+static BOOL luther_bin_not(1419,30500
+static BOOL luther_bin_and(1425,30590
+static BOOL luther_bin_or(1431,30681
+static BOOL luther_bin_xor(1437,30771
+static BOOL luther_div(1445,30864
+static BOOL luther_intdiv(1509,31859
+static BOOL luther_mod(1603,33910
+static BOOL luther_min(1673,35503
+static BOOL luther_max(1743,36917
+static BOOL rshift_aux(1815,38333
+static BOOL lshift_aux(1849,38945
+static BOOL luther_rshift(1889,39774
+static BOOL luther_lshift(1924,40349
+static BOOL luther_pow(1959,40941
+static BOOL luther_neg(2010,41770
+static BOOL luther_tointeger(2043,42277
+static BOOL luther_floor(2072,42691
+static BOOL luther_ceiling(2101,43098
+static BOOL luther_truncate(2130,43506
+static BOOL luther_round(2162,43974
+static BOOL luther_msb(2204,44643
+static BOOL luther_rng(2265,45551
+static BOOL luther_tofloat(2324,46484
+static BOOL luther_exp(2357,46975
+static BOOL luther_log(2363,47059
+static BOOL luther_sqrt(2369,47143
+static BOOL luther_cbrt(2375,47229
+static BOOL luther_sin(2386,47410
+static BOOL luther_cos(2392,47494
+static BOOL luther_tan(2398,47578
+static BOOL luther_asin(2404,47662
+static BOOL luther_atan(2410,47748
+static BOOL luther_acos(2416,47834
+static BOOL luther_abs(2422,47920
+static BOOL luther_aref(2434,48118
+static BOOL luther_eval_math(2471,48687
+BOOL luther_is(2566,51587
+void initialize_inline(2596,52131
+
+assert.c,133
+BOOL match_term(96,3300
+code *compile_clause(947,20779
+static int compile_head(1050,22899
+static int compile_head_str(1201,25866
+
+array.c,532
+static BOOL luther_array_unify(81,2152
+static void luther_array_print(136,3420
+static void luther_array_undo(165,3918
+static TAGGED luther_array_copy(175,4024
+static void luther_array_mark(204,4705
+static TAGGED *luther_array_collect(231,5101
+static CompareType luther_array_compare(274,5851
+static BOOL luther_array(328,7214
+static BOOL luther_array_arg(344,7469
+static BOOL luther_array_setarg(377,8047
+static BOOL luther_array_sizeof(421,8960
+static BOOL luther_array_reduce(471,9983
+void initialize_array(614,12867
+
+bignum.c,1189
+BigNumber* get_bignum(25,501
+TAGGED make_bignum(50,1307
+TAGGED make_atomspace_bignum(76,1804
+int make_bignum_copy(97,2231
+TAGGED bignum_check(119,2632
+TAGGED make_bignum_of_int(139,3113
+TAGGED make_bignum_of_float(151,3298
+TAGGED make_bignum_of_string(180,3760
+TAGGED make_atomspace_bignum_of_string(195,4049
+TAGGED make_number_of_string(214,4449
+TAGGED make_atomspace_number_of_string(254,5176
+void make_string_of_bignum(298,5987
+void print_bignum(313,6223
+void print_bignum_fd(336,6660
+BOOL bignum_eq(362,7182
+BOOL bignum_ne(370,7290
+BOOL bignum_lt(378,7398
+BOOL bignum_gt(386,7505
+BOOL bignum_le(394,7612
+BOOL bignum_ge(402,7720
+int bignum_cmp(410,7828
+TAGGED bignum_abs(424,8033
+TAGGED bignum_neg(438,8223
+TAGGED bignum_inc(452,8427
+TAGGED bignum_dec(460,8556
+TAGGED bignum_add(468,8685
+TAGGED bignum_sub(483,8935
+TAGGED bignum_mul(498,9185
+TAGGED bignum_div(513,9427
+TAGGED bignum_mod(535,9766
+TAGGED bignum_pow(550,9999
+TAGGED bignum_not(595,10961
+TAGGED bignum_and(609,11169
+TAGGED bignum_ior(624,11419
+TAGGED bignum_xor(639,11665
+TAGGED bignum_msb(654,11910
+TAGGED bignum_rng(662,12009
+TAGGED bignum_rsh(678,12274
+TAGGED bignum_lsh(700,12618
+
+bnlib.c,718
+void bn_clr(37,698
+void bn_set_int(44,774
+integer bn_get_int(63,1033
+void bn_set_flt(74,1208
+double bn_get_flt(86,1377
+void bn_set_str(102,1669
+void bn_get_str(119,1975
+int bn_cmp(135,2226
+int bn_cmp_int(161,2666
+void bn_abs(193,3198
+void bn_neg(203,3350
+void bn_add(219,3547
+void bn_sub(292,5030
+void bn_mul(365,6563
+void bn_div(399,7152
+void bn_mod(476,9097
+void bn_pow(567,11345
+void bn_not(633,12848
+void bn_and(674,13545
+void bn_ior(815,16238
+void bn_xor(969,19124
+integer bn_msb(1115,21939
+void bn_rng(1142,22476
+void bn_rsh(1168,22953
+void bn_lsh(1199,23490
+natural approx_string_size_number(1256,24620
+natural approx_number_size_string(1263,24774
+static integer canonize(1276,25065
+
+term.c,124
+double get_float(25,395
+TAGGED make_float(66,1093
+TAGGED make_atomspace_float(111,2009
+TAGGED make_string_list(148,2705
+
+storage.c,559
+static worker *init_worker_global_storage(75,1192
+void init_localstack(329,7640
+void init_trailstack(349,8093
+void reset_backpatchheap(371,8567
+heap *atom_alloc(383,8790
+heap *aligned_atom_alloc(404,9216
+heap *patch_alloc(430,9751
+void init_temporary_registers(451,10150
+worker *init_global_memory(477,10625
+void init_local_memory(611,14304
+char *aligned_malloc(638,14810
+u32 get_usedheap(651,14988
+u32 get_freeheap(661,15172
+u32 get_totalheap(672,15357
+void extend_heap(678,15443
+void extend_codespace(717,16262
+TAGGED *mem_search(754,17105
+
+database.c,1120
+definition *make_undefined(82,2337
+in_switch *make_empty_index_table(103,2796
+static void reset_index_table(115,3048
+retry_node *make_retry_node(127,3297
+void remove_dynamic_clause(141,3599
+retry_node *add_dynamic_first(189,4306
+retry_node *add_dynamic_last(223,4979
+#define HashFunctor(HashFunctor257,5534
+void init_database(260,5687
+definition *get_definition(272,5916
+definition *get_definition_module(297,6443
+definition *get_definition_term(322,6963
+void add_user(382,8062
+void patch_callers(397,8349
+void unpatch_callers(434,9160
+void repatch_callers(470,9934
+definition *get_ex_definition(492,10446
+definition *get_c_definition(518,11008
+definition *get_def_code(554,11855
+definition *get_ex_definition(607,12745
+definition *get_c_definition(615,12929
+definition *make_public(627,13155
+void store_emulated_predicate(679,14029
+void store_c_predicate(699,14454
+void store_dynamic_predicate(718,14891
+void add_first_dynamic_predicate(753,15766
+void add_last_dynamic_predicate(776,16480
+void init_database_iterator(799,17191
+BOOL next_pred_in_database(828,17813
+void plisting(881,18861
+
+atom_table.c,312
+static atom_bucket *make_atom_bucket(346,5281
+static int hash_atom(368,5834
+static TAGGED make_atom(403,6533
+TAGGED store_atom(500,8692
+TAGGED atom_exist(531,9506
+char *get_string(562,10151
+TAGGED get_mode(576,10419
+void init_atomtable(589,10656
+void init_atom_table(607,11122
+void init_node(620,11408
+
+functor_table.c,154
+static functor_bucket *make_functor_bucket(17,232
+#define hash_functor(hash_functor44,695
+TAGGED store_functor(47,809
+void init_functortable(72,1349
+
+instrdef.c,34
+#define Inst_Def(Inst_Def19,235
+
+labelsort.c,178
+#define BOUBLE 16,220
+#define Swap(Swap18,238
+void labelsort(34,648
+#define SortTwo(SortTwo79,1362
+void sortfour(85,1498
+void quicksort(124,2308
+void labelsort(162,3001
+
+display.c,191
+void display_term_fd(21,274
+void display_term(159,2460
+void write_term(296,4634
+void write_float(458,7329
+void write_radix(544,8764
+void write_integer(573,9283
+static void dt(601,9792
+
+display_code.c,464
+#define ResetIndex 21,305
+#define PrintSmallIndex	23,343
+#define Get_Small_Index(Get_Small_Index32,536
+#define Get_Small_Index(Get_Small_Index34,599
+#define PrintLabel(PrintLabel46,790
+#define PrintIndex 59,1048
+#define PrintIndex1 61,1135
+#define PrintIndex1n 63,1235
+#define PrintIndex2 65,1336
+#define PrintIndex2n 67,1436
+#define PrintConstant	70,1537
+#define PrintStructure	108,2329
+void display_code(114,2480
+code *display_code_inc(121,2571
+
+think.c,109
+long usertime(26,400
+long systime(31,473
+double walltime(36,506
+extern char *get_application_name(41,543
+
+debug.c,443
+static int in_break(37,837
+static int in_spy(50,1032
+static int in_predspy(63,1226
+static void add_break(85,1560
+static void add_spy(102,1879
+static void add_predspy(119,2190
+static void delete_break(137,2536
+static void delete_spy(156,2856
+static void delete_predspy(175,3164
+void init_debugger(195,3509
+static code *display_current_state(219,3969
+int debug(422,7374
+int debug_fail(1172,22691
+void debug_prolog_terms(1212,23329
+
+unix.c,473
+void get_mmap_filename(40,622
+BOOL luther_unix_access(137,3558
+BOOL luther_unix_stat_type(192,4749
+BOOL luther_unix_stat_time(255,5938
+BOOL luther_unix_stat_type(301,6746
+BOOL luther_unix_stat_time(307,6813
+BOOL luther_unix_cd(321,7078
+BOOL luther_unix_cd_2(363,7776
+BOOL luther_unix_popen(420,9042
+BOOL luther_unix_access(478,10339
+BOOL luther_unix_cd(484,10403
+BOOL luther_unix_cd_2(490,10463
+BOOL luther_unix_popen(496,10525
+void initialize_unix(505,10607
+
+signal.c,326
+#define BUFSIZE 20,311
+#define SH_Print1(SH_Print121,331
+void init_my_getchar(32,569
+int my_getchar(43,721
+void readstring(71,1145
+void writestring(97,1524
+void install_sigvec(112,1733
+void reinstall_sigvec(140,2215
+void interrupt_handler(155,2445
+void usr1_interrupt_handler(292,5104
+void signal_handler(311,5395
+
+semaphore.c,396
+void init_spin_semaphores(22,303
+void init_semaphores(52,799
+void init_semaphores(80,1244
+void init_semaphores(118,2070
+void init_semaphores(130,2280
+void remove_semaphores(146,2482
+void init_semaphores(171,2933
+void init_spin_semaphores(180,3070
+void remove_semaphores(189,3212
+void synchronize(214,4031
+void synchronize(258,4839
+void synchronize(283,5287
+void synchronize(306,5622
+
+parallel.c,107
+double reduce_vector_plus(22,336
+double reduce_vector_times(61,1333
+TAGGED luther_await_nonvar(100,2347
+
+gc.c,990
+void garbage_collect(148,5149
+static void marking_phase(247,7824
+static void mark_registers(280,8682
+static void mark_all_environments(296,8966
+static void mark_environments(302,9079
+static void mark_choicepoints(370,10197
+static TAGGED *mark_trail(400,10784
+static void mark_variable(481,12129
+static void update_choicepoints(634,14380
+static void compact_trail(654,14727
+static void compacting_phase(676,15437
+static void sweep_registers(694,15735
+static void sweep_trail(709,16019
+static void sweep_all_environments(773,17175
+static void sweep_environments(780,17300
+static void sweep_choicepoints(811,17880
+static void compact_heap(848,18660
+static void compact_heap_up(863,18861
+static void compact_heap_down(910,19886
+static void intoReallocChain(966,21093
+static void updateReallocChain(973,21242
+static s32 calculate_total_marked(989,21536
+BOOL worker_garbage_collect(1051,23169
+static void worker_finish(1178,25422
+static void worker_mark_trail(1187,25564
+
+segment.c,1041
+void init_segments(108,3312
+inline static add_segments(157,4694
+void add_old_segments_nolock(177,5053
+void add_old_segments(187,5258
+void add_new_segments_nolock(200,5536
+void add_new_segments(209,5716
+segment *allocate_segment(225,6073
+segment *new_allocate_segment_nolock(262,6783
+segment *new_allocate_segment(293,7376
+TAGGED new_segment(344,8488
+TAGGED new_new_segment(392,9646
+TAGGED new_new_segment_nolock(427,10476
+segment *allocate_segment_nolock(467,11429
+void allocate_static_segment(497,12049
+void allocate_static_segment_nolock(544,13219
+TAGGED new_segment_nolock(584,14207
+void free_segment(636,15610
+void new_free_segment(685,16579
+void return_segment(735,17583
+void return_segment_nolock(746,17771
+void new_return_segment(793,18617
+void new_return_segment_nolock(806,18824
+unsigned long used_segment_size(839,19441
+unsigned long used_segment_size_all(891,20419
+unsigned long unused_segment_size(912,20813
+void print_segments(952,21498
+void free_new_seg_list(974,21975
+void free_seg_list(1000,22470
+
+trail.c,159
+#define MIN_TRAIL_GROWTH	23,429
+#define AdjustTrailPointer(AdjustTrailPointer26,461
+void shift_trail(42,882
+static void adjust_choicepoint_chain(107,2373
+
+shift.c,828
+#define AdjustChoicepointp(AdjustChoicepointp46,1765
+#define AdjustEnvironmentp(AdjustEnvironmentp54,1978
+#define ReadjustEnvironmentp(ReadjustEnvironmentp56,2068
+#define Readjust(Readjust58,2128
+#define Adjusted(Adjusted59,2194
+#define IsAdjusted(IsAdjusted60,2260
+#define AdjustSVA(AdjustSVA63,2322
+void shift_stack(93,3542
+static void adjust_choicepoint(168,5481
+static void adjust_environment(193,6049
+static void readjust_environment(208,6342
+static void adjust_choicepoint_chain(231,6852
+static void adjust_environment_chain(267,7788
+static void adjust_protected_chain(304,8826
+static void readjust_choicepoint_chain(355,9974
+static void readjust_environment_chain(375,10333
+static void readjust_protected_chain(400,10787
+static void adjust_trail(440,11665
+static void adjust_registers(460,11951
+
+socket.c,158
+int open_socket_listner(25,335
+int open_socket_ear(70,1479
+void start_debug_socket(91,1867
+int open_socket_listen(152,2967
+int open_socket_talk(170,3228
+
+new-copy-gc.c,1304
+#define DoAll(DoAll17,330
+void live_mark_variable(59,1771
+TAGGED collect_variable(71,1956
+void garbage_collect(94,2331
+void garbage_collect(294,7043
+void gc_tidy_trail(505,12119
+TAGGED *gc_tidy_trail_seg(546,12973
+void gc_mark(575,13624
+void gc_mark_choicepoints(584,13726
+void gc_mark_environments(628,14652
+void gc_mark_compare_area(669,15513
+TAGGED *gc_mark_trail(708,16339
+void gc_mark_variable(844,19753
+void gc_mark_var(854,19891
+inline static TAGGED *check_size(1078,24814
+inline TAGGED *gc_check_size(1108,25486
+void gc_copy(1120,25690
+void gc_copy_choicepoints(1137,26056
+void gc_copy_environments(1181,27025
+void gc_copy_compare_area(1219,27813
+TAGGED *gc_copy_trail(1256,28520
+inline static TAGGED *copy_hva(1430,32008
+inline static TAGGED *copy_cva(1549,34478
+inline static TAGGED *copy_box(1588,35368
+inline static TAGGED *copy_internal_list(1635,36311
+inline static TAGGED *copy_list(1693,37515
+inline static TAGGED *copy_struct(1742,38536
+inline static TAGGED *copy_term(1786,39618
+static TAGGED gc_copy_variable(1847,40935
+static void scan(1955,42831
+void gc_update(2140,45848
+void gc_PushChoicePoint(2220,47219
+void gc_PopChoicePoint(2271,48301
+void gc_return_new_gen_memory(2300,48815
+void gc_clean(2344,49660
+BOOL worker_garbage_collect(2374,50208
+
+lexer.l.m4,538
+#define MAX_LOAD_REC_DEPTH 32,447
+typedef struct loadbuf loadbuf34,479
+} loadbuf_t;loadbuf_t37,544
+void luther_switch_to_buffer(43,667
+void luther_save_linecount(51,835
+long luther_save_current_buffer(57,929
+void luther_init_buffers(77,1295
+void luther_new_buffer(85,1424
+void luther_delete_buffer(91,1532
+void luther_save_linecount(100,1696
+void luther_switch_to_buffer(102,1734
+s32 luther_save_current_buffer(104,1774
+void luther_init_buffers(109,1839
+void luther_new_buffer(111,1871
+void luther_delete_buffer(113,1906
+
+parser.y.m4,1167
+#  define Init_Code(Init_Code34,784
+#  define Flush_Instruction 35,820
+#  define Set_S_Tagged 36,850
+#  define Set_Code(Set_Code38,881
+#  define Set_Index(Set_Index40,944
+#  define Set_Small_Index(Set_Small_Index42,983
+#  define Save_Tagged(Save_Tagged43,1025
+#  define Init_Code(Init_Code45,1070
+#  define Flush_Instruction	46,1129
+#  define Set_S_Tagged	47,1179
+#  define Set_Code(Set_Code49,1228
+#  define Set_Index(Set_Index51,1266
+#  define Set_Small_Index(Set_Small_Index53,1305
+#  define Save_Tagged(Save_Tagged65,1563
+#define Set_Functor(Set_Functor70,1634
+#define Set_Definition(Set_Definition72,1676
+#define Set_Label(Set_Label74,1718
+#define Set_Tagged(Set_Tagged76,1760
+#define Reset_Switch_Stack 83,1902
+#define Push_Switch_Table(Push_Switch_Table85,1959
+#define Sort_Switch_Tables	91,2047
+#define YYDEBUG 100,2239
+#define MAX_NR_SWITCHES_IN_CLAUSE 101,2257
+typedef struct backpatch backpatch105,2359
+} backpatch;backpatch109,2441
+typedef struct backlist backlist111,2455
+} backlist;backlist114,2523
+static backlist *make_back(703,22523
+static s32 get_label_address(717,22743
+static void bpatch(743,23319

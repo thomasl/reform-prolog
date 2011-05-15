@@ -1,0 +1,9 @@
+# '.simics-log': this file logs SimICS commands from last execution
+# Note: we log all commands, even incorrect ones and comments.
+# This file can be used as a script using the -x flag, in which
+# case there will be multiple headers.
+#
+# comman-line arguments: 
+a
+e
+quit

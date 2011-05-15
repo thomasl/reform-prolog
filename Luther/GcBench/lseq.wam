@@ -1,0 +1,98 @@
+Predicate(test 0
+Label 1
+ X50 10 0
+ X26 run_list 1
+)
+Predicate(run_list 1
+Label 1
+ X21
+ X45 0 1
+ X25 make_list 2 1
+ X19 1
+ X49 0 0
+ X42 1
+ X23
+ X26 run 2
+)
+Predicate(make_list 2
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 0 0
+ X12
+ X35 1
+ X27
+Label 4
+ X20 2 2
+ X37 1
+ X62 1
+ X55 1
+ X50 0 2
+ X16 14 0 2
+ X16 28 3 0
+ X46 3 0
+ X26 make_list 2
+)
+Predicate(run 2
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X35 1
+ X27
+Label 3
+ X20 4 2
+ X21
+ X37 0
+ X54 1
+ X56 0
+ X37 1
+ X55 1
+ X56 1
+ X50 10000 0
+ X25 make_tree 2 2
+ X47 0 0
+ X47 1 1
+ X23
+ X26 run 2
+)
+Predicate(make_tree 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 2
+ X50 2 3
+ X16 13 0 3
+ X13 2
+ X34 leaf 1
+ X27
+Label 3
+ X20 5 2
+ X21
+ X36 tree 4 1
+ X62 node
+ X55 1
+ X56 1
+ X62 node
+ X50 1 2
+ X24 1 0
+ X16 14 0 2
+ X50 2 3
+ X16 30 4 0 3
+ X33 0 4
+ X47 0 0
+ X25 make_tree 2 2
+ X49 0 0
+ X47 1 1
+ X23
+ X26 make_tree 2
+)

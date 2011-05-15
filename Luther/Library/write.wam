@@ -1,0 +1,1443 @@
+Directive('$$LOAD_DIRECTIVE$$' 0
+Label 1
+ X20 63 0
+ X52 / 2 1
+ X62 write_canonical
+ X62 1
+ X52 / 2 2
+ X62 write_canonical
+ X62 2
+ X52 / 2 3
+ X62 display
+ X62 1
+ X52 / 2 4
+ X62 print
+ X62 1
+ X52 / 2 5
+ X62 print
+ X62 2
+ X52 / 2 6
+ X62 write
+ X62 1
+ X52 / 2 7
+ X62 write
+ X62 2
+ X52 / 2 8
+ X62 writeq
+ X62 1
+ X52 / 2 9
+ X62 writeq
+ X62 2
+ X52 / 2 10
+ X62 writeqq
+ X62 1
+ X52 / 2 11
+ X62 writeqq
+ X62 2
+ X52 ',' 2 12
+ X58 10
+ X58 11
+ X52 ',' 2 13
+ X58 9
+ X58 12
+ X52 ',' 2 14
+ X58 8
+ X58 13
+ X52 ',' 2 15
+ X58 7
+ X58 14
+ X52 ',' 2 16
+ X58 6
+ X58 15
+ X52 ',' 2 17
+ X58 5
+ X58 16
+ X52 ',' 2 18
+ X58 4
+ X58 17
+ X52 ',' 2 19
+ X58 3
+ X58 18
+ X52 ',' 2 20
+ X58 2
+ X58 19
+ X52 ',' 2 0
+ X58 1
+ X58 20
+ X26 public 1
+)
+Predicate(write_canonical 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X11 0
+ X25 writeq_quick 1 1
+ X14 0
+ X23
+ X27
+Label 3
+ X20 1 1
+ X50 noop 1
+ X50 quote 2
+ X50 1200 3
+ X50 0 4
+ X50 0 5
+ X50 '(' 6
+ X50 4 7
+ X42 8
+ X26 write_out 9
+)
+Predicate(display 1
+Label 1
+ X20 5 1
+ X29 2 0
+ X50 user_output 0
+ X52 display_aux 1 3
+ X60 2
+ X52 'SYSCALL' 1 1
+ X58 3
+ X26 with_default_output 2
+)
+Predicate('$writeqq_1_349_0' 1
+ X1 2 1 2 2 2
+Label 1
+ X10 1
+ X16 18 0
+ X13 1
+ X26 '$writeqq_1_349_1' 1
+Label 2
+ X26 writeq 1
+)
+Predicate('$write_out_9_363_0' 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X11 0
+ X25 '$write_out_9_363_1' 1 1
+ X14 0
+ X28
+ X23
+ X27
+Label 3
+ X27
+)
+Predicate('$write_out_11_373_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 4 3
+ X21
+ X30 1 2
+ X11 0
+ X42 1
+ X42 2
+ X42 3
+ X42 4
+ X25 current_infixop 5 2
+ X14 0
+ X49 1 0
+ X34 1200 0
+ X23
+ X27
+Label 3
+ X32 1 2
+ X27
+)
+Predicate('$write_VAR_6_377_0' 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 1
+ X50 26 2
+ X16 16 0 2
+ X13 1
+ X50 26 3
+ X16 31 4 0 3
+ X46 4 0
+ X26 '$write' 1
+Label 3
+ X27
+)
+Predicate('$maybe_space_2_397_0' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 2
+ X16 55 3 1 0
+ X50 4 4
+ X16 13 3 4
+ X16 57 5 1 0
+ X50 2 6
+ X16 13 5 6
+ X13 2
+ X50 32 0
+ X26 put 1
+Label 3
+ X27
+)
+Predicate('$write_VAR_6_378_0' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 2
+ X21
+ X29 2 0
+ X11 0
+ X46 1 0
+ X46 2 1
+ X25 atom_chars 2 1
+ X14 0
+ X23
+ X27
+Label 3
+ X32 0 1
+ X27
+)
+Predicate('$write_out_11_374_0' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 4
+ X50 1200 5
+ X16 5 0 5
+ X13 4
+ X16 26 6 2
+ X32 6 3
+ X27
+Label 3
+ X32 1 3
+ X27
+)
+Predicate('$write_out_11_375_0' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 4
+ X50 1200 5
+ X16 5 0 5
+ X13 4
+ X16 26 6 2
+ X32 6 3
+ X27
+Label 3
+ X32 1 3
+ X27
+)
+Predicate('$write_out_9_363_1' 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 3 1
+ X21
+ X29 1 0
+ X11 0
+ X52 portray 1 0
+ X60 1
+ X25 'USERCALL' 1 1
+ X14 0
+ X28
+ X23
+ X27
+Label 3
+ X27
+)
+Predicate('$write_out_9_366_0' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 2
+ X50 0 3
+ X16 13 0 3
+ X13 2
+ X46 1 0
+ X50 2 1
+ X26 maybe_space 2
+Label 3
+ X46 1 0
+ X50 0 1
+ X26 maybe_space 2
+)
+Predicate('$writeqq_1_349_1' 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 0
+ X11 0
+ X47 1 0
+ X50 1 1
+ X25 '$atom_mode' 2 2
+ X14 0
+ X49 1 0
+ X23
+ X26 writeq 1
+Label 3
+ X21
+ X30 0 0
+ X50 39 0
+ X25 put 1 1
+ X49 0 0
+ X25 writeq 1 0
+ X50 39 0
+ X23
+ X26 put 1
+)
+Predicate(print 1
+Label 1
+ X20 3 1
+ X52 print 1 1
+ X62 999
+ X50 noquote 2
+ X50 1200 3
+ X50 0 4
+ X50 0 5
+ X50 '(' 6
+ X50 4 7
+ X42 8
+ X26 write_out 9
+)
+Predicate(display_aux 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X11 0
+ X25 display_quick 1 1
+ X14 0
+ X23
+ X27
+Label 3
+ X20 1 1
+ X50 noop 1
+ X50 noquote 2
+ X50 1200 3
+ X50 0 4
+ X50 0 5
+ X50 '(' 6
+ X50 4 7
+ X42 8
+ X26 write_out 9
+)
+Predicate(display_quick 1
+ X1 1 2 2 5 5
+Label 1
+ X4 3
+ X6 5
+Label 2
+ X4 4
+ X6 5
+Label 3
+ X20 1 1
+ X29 2 0
+ X16 17 2
+ X50 user_output 0
+ X46 2 1
+ X26 '$display' 2
+Label 4
+ X20 1 1
+ X29 2 0
+ X16 19 2
+ X50 user_output 0
+ X46 2 1
+ X26 '$display' 2
+Label 5
+ X20 1 1
+ X29 2 0
+ X16 24 2
+ X50 user_output 0
+ X46 2 1
+ X26 '$display' 2
+)
+Predicate(maybe_paren 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X34 '(' 3
+ X34 4 5
+ X10 6
+ X16 14 0 1
+ X13 6
+ X46 2 0
+ X26 '$display' 1
+Label 3
+ X32 2 3
+ X32 4 5
+ X27
+)
+Predicate(maybe_paren 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X34 4 3
+ X10 4
+ X16 14 0 1
+ X13 4
+ X50 ')' 0
+ X26 '$display' 1
+Label 3
+ X32 2 3
+ X27
+)
+Predicate(maybe_space 2
+Label 1
+ X20 1 2
+ X29 2 0
+ X46 1 0
+ X46 2 1
+ X26 '$maybe_space_2_397_0' 2
+)
+Predicate(print 2
+Label 1
+ X20 3 2
+ X29 2 1
+ X52 print 1 1
+ X60 2
+ X26 with_default_output 2
+)
+Predicate(write 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X11 0
+ X25 write_quick 1 1
+ X14 0
+ X23
+ X27
+Label 3
+ X20 1 1
+ X50 op 1
+ X50 noquote 2
+ X50 1200 3
+ X50 0 4
+ X50 0 5
+ X50 '(' 6
+ X50 4 7
+ X42 8
+ X26 write_out 9
+)
+Predicate(write 2
+Label 1
+ X20 3 2
+ X29 2 1
+ X52 write 1 1
+ X60 2
+ X26 with_default_output 2
+)
+Predicate(write_VAR 6
+ X1 1 2 2 2 2
+Label 1
+ X4 3
+ X6 5
+Label 2
+ X4 3
+ X5 4
+ X6 5
+Label 3
+ X21
+ X30 0 0
+ X34 0 5
+ X10 6
+ X47 0 7
+ X16 23 7
+ X47 0 8
+ X50 0 9
+ X16 16 8 9
+ X50 noop 10
+ X16 6 1 10
+ X13 6
+ X46 4 0
+ X50 0 1
+ X25 maybe_space 2 1
+ X47 0 1
+ X50 26 2
+ X16 32 3 1 2
+ X50 65 4
+ X16 25 5 3 4
+ X46 5 0
+ X25 put 1 1
+ X49 0 0
+ X23
+ X26 '$write_VAR_6_377_0' 1
+Label 4
+ X21
+ X30 3 1
+ X30 1 4
+ X30 2 5
+ X11 4
+ X24 1 0
+ X16 20 0
+ X47 0 1
+ X25 '$write_VAR_6_378_0' 2 5
+ X47 0 2
+ X16 18 2
+ X49 3 3
+ X50 noop 4
+ X16 6 3 4
+ X14 4
+ X47 0 0
+ X47 2 1
+ X25 '$atom_mode' 2 3
+ X49 1 0
+ X49 2 1
+ X25 maybe_space 2 1
+ X49 0 0
+ X23
+ X26 '$display' 1
+Label 5
+ X20 1 6
+ X21
+ X30 0 0
+ X30 1 1
+ X30 2 2
+ X30 3 3
+ X34 4 5
+ X47 2 0
+ X50 '$VAR' 1
+ X46 4 2
+ X42 3
+ X25 write_atom 4 4
+ X19 2
+ X50 0 0
+ X50 1 1
+ X52 '$VAR' 1 2
+ X61 0
+ X49 1 3
+ X49 2 4
+ X49 3 5
+ X23
+ X26 write_args 6
+)
+Predicate(write_atom 4
+ X1 1 2 fail fail fail
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 2 (
+        noquote 3
+        quote 4
+) fail
+Label 3
+ X21
+ X30 0 1
+ X30 1 2
+ X30 2 3
+ X34 noquote 0
+ X47 0 0
+ X47 2 1
+ X25 '$atom_mode' 2 3
+ X49 1 0
+ X49 2 1
+ X25 maybe_space 2 1
+ X49 0 0
+ X23
+ X26 '$display' 1
+Label 4
+ X21
+ X30 0 1
+ X30 1 2
+ X30 2 3
+ X34 quote 0
+ X47 0 0
+ X47 2 1
+ X25 '$atom_mode' 2 3
+ X49 1 0
+ X49 2 1
+ X25 maybe_space 2 1
+ X49 0 0
+ X23
+ X26 '$write' 1
+)
+Predicate(write_args 6
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X32 0 1
+ X12
+ X50 41 0
+ X26 put 1
+Label 3
+ X20 2 6
+ X21
+ X36 print 1 3
+ X55 6
+ X10 7
+ X16 14 5 6
+ X13 7
+ X46 5 1
+ X25 write_args 2 0
+ X50 ... 0
+ X25 '$display' 1 0
+ X50 41 0
+ X23
+ X26 put 1
+Label 4
+ X21
+ X30 6 0
+ X30 2 1
+ X30 3 2
+ X30 4 3
+ X30 5 4
+ X30 0 5
+ X47 6 0
+ X47 0 1
+ X24 1 1
+ X25 write_args 2 7
+ X19 2
+ X49 6 9
+ X16 26 10 9
+ X30 1 10
+ X47 1 11
+ X47 3 12
+ X44 0 13
+ X16 2 11 12 13
+ X47 4 1
+ X47 5 2
+ X50 999 3
+ X50 0 4
+ X47 0 5
+ X50 '(' 6
+ X50 4 7
+ X42 8
+ X25 write_out 9 6
+ X49 0 6
+ X16 26 7 6
+ X49 1 0
+ X49 2 1
+ X49 3 2
+ X49 4 3
+ X49 5 4
+ X46 7 5
+ X23
+ X26 write_args 6
+)
+Predicate(write_args 2
+ X1 4 1 2 1 1
+Label 1
+ X4 5
+ X6 6
+Label 2
+ X2 1 (
+        0 3
+) 1
+Label 3
+ X4 4
+ X5 5
+ X6 6
+Label 4
+ X34 0 0
+ X12
+ X50 40 0
+ X26 put 1
+Label 5
+ X32 0 1
+ X12
+ X50 ', ' 0
+ X26 '$display' 1
+Label 6
+ X50 44 0
+ X26 put 1
+)
+Predicate(write_canonical 2
+Label 1
+ X20 3 2
+ X29 2 1
+ X52 write_canonical 1 1
+ X60 2
+ X26 with_default_output 2
+)
+Predicate(writeq 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X11 0
+ X25 writeq_quick 1 1
+ X14 0
+ X23
+ X27
+Label 3
+ X20 1 1
+ X50 op 1
+ X50 quote 2
+ X50 1200 3
+ X50 0 4
+ X50 0 5
+ X50 '(' 6
+ X50 4 7
+ X42 8
+ X26 write_out 9
+)
+Predicate(write_quick 1
+ X1 1 2 2 5 5
+Label 1
+ X4 3
+ X6 5
+Label 2
+ X4 4
+ X6 5
+Label 3
+ X16 17 0
+ X26 '$display' 1
+Label 4
+ X16 19 0
+ X26 '$display' 1
+Label 5
+ X16 24 0
+ X26 '$display' 1
+)
+Predicate(write_out 9
+ X1 1 2 4 3 5
+Label 1
+ X4 9
+ X5 10
+ X5 11
+ X5 12
+ X5 13
+ X5 15
+ X5 16
+ X5 17
+ X5 18
+ X5 19
+ X5 20
+ X6 21
+Label 2
+ X4 9
+ X5 11
+ X5 12
+ X5 13
+ X6 14
+Label 3
+ X4 9
+ X5 11
+ X5 12
+ X5 13
+ X5 15
+ X5 16
+ X5 18
+ X5 20
+ X6 21
+Label 4
+ X4 9
+ X5 11
+ X5 12
+ X5 13
+ X5 15
+ X5 16
+ X5 20
+ X6 21
+Label 5
+ X3 3 (
+        '$VAR' 1 6
+        {} 1 7
+        ',' 2 8
+) 4
+Label 6
+ X4 9
+ X5 10
+ X5 11
+ X5 12
+ X5 13
+ X5 15
+ X5 16
+ X5 20
+ X6 21
+Label 7
+ X4 9
+ X5 11
+ X5 12
+ X5 13
+ X5 15
+ X5 16
+ X5 17
+ X5 20
+ X6 21
+Label 8
+ X4 9
+ X5 11
+ X5 12
+ X5 13
+ X5 15
+ X5 16
+ X5 19
+ X5 20
+ X6 21
+Label 9
+ X21
+ X30 1 0
+ X34 0 8
+ X11 0
+ X47 1 9
+ X16 17 9
+ X46 7 0
+ X50 0 1
+ X25 maybe_space 2 2
+ X14 0
+ X49 1 0
+ X23
+ X26 '$write' 1
+Label 10
+ X20 2 9
+ X36 '$VAR' 1 0
+ X55 0
+ X10 9
+ X16 26 10 5
+ X13 9
+ X46 10 3
+ X46 7 4
+ X46 8 5
+ X26 write_VAR 6
+Label 11
+ X20 2 9
+ X21
+ X36 print 1 1
+ X55 9
+ X34 2 8
+ X11 0
+ X16 14 5 9
+ X46 7 0
+ X50 2 1
+ X25 maybe_space 2 1
+ X14 0
+ X50 ... 0
+ X23
+ X26 '$display' 1
+Label 12
+ X20 7 9
+ X21
+ X30 1 0
+ X36 print 1 1
+ X54 1
+ X34 0 8
+ X11 0
+ X52 portray 1 9
+ X54 1
+ X52 current_predicate 2 0
+ X54 1
+ X58 9
+ X25 'USERCALL' 1 2
+ X49 1 0
+ X25 '$write_out_9_363_0' 1 1
+ X14 0
+ X23
+ X27
+Label 13
+ X20 2 9
+ X21
+ X30 1 0
+ X30 0 2
+ X30 3 4
+ X30 5 6
+ X34 4 8
+ X11 4
+ X47 1 9
+ X24 1 2
+ X16 18 9
+ X47 1 0
+ X42 1
+ X47 2 2
+ X42 3
+ X25 current_prefixop 4 6
+ X49 2 1
+ X49 3 2
+ X16 15 1 2
+ X14 4
+ X49 5 0
+ X25 '$display' 1 2
+ X19 1
+ X49 0 0
+ X49 1 1
+ X50 4 2
+ X42 3
+ X25 write_atom 4 0
+ X50 41 0
+ X23
+ X26 put 1
+Label 14
+ X20 1 9
+ X29 9 0
+ X10 10
+ X16 18 9
+ X13 10
+ X46 2 0
+ X46 9 1
+ X46 7 2
+ X46 8 3
+ X26 write_atom 4
+Label 15
+ X21
+ X30 0 0
+ X34 0 8
+ X10 9
+ X47 0 10
+ X16 21 10
+ X13 9
+ X47 0 0
+ X46 7 1
+ X25 '$write_out_9_366_0' 2 1
+ X49 0 0
+ X23
+ X26 '$write' 1
+Label 16
+ X20 2 9
+ X21
+ X30 2 0
+ X30 3 2
+ X30 0 5
+ X34 noop 1
+ X34 4 8
+ X10 9
+ X47 2 10
+ X44 1 11
+ X45 1 12
+ X16 1 10 11 12
+ X13 9
+ X47 3 0
+ X46 7 2
+ X42 3
+ X25 write_atom 4 4
+ X49 0 6
+ X16 26 7 6
+ X50 0 0
+ X49 1 1
+ X49 2 2
+ X50 noop 3
+ X49 3 4
+ X46 7 5
+ X23
+ X26 write_args 6
+Label 17
+ X20 2 9
+ X21
+ X30 1 1
+ X30 2 2
+ X36 {} 1 0
+ X56 0
+ X34 4 8
+ X10 9
+ X16 26 10 5
+ X30 3 10
+ X13 9
+ X50 123 0
+ X25 put 1 4
+ X19 1
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X50 1200 3
+ X50 0 4
+ X49 3 5
+ X50 '(' 6
+ X50 4 7
+ X42 8
+ X25 write_out 9 0
+ X50 125 0
+ X23
+ X26 put 1
+Label 18
+ X20 2 9
+ X21
+ X30 1 1
+ X30 2 2
+ X37 0
+ X56 4
+ X56 0
+ X34 4 8
+ X10 9
+ X24 1 3
+ X16 26 10 5
+ X30 3 10
+ X13 9
+ X50 91 0
+ X25 put 1 5
+ X19 1
+ X47 4 0
+ X47 1 1
+ X47 2 2
+ X50 999 3
+ X50 0 4
+ X47 3 5
+ X50 '(' 6
+ X50 4 7
+ X42 8
+ X25 write_out 9 4
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 write_tail 4
+Label 19
+ X20 3 9
+ X21
+ X30 4 1
+ X30 5 2
+ X30 0 3
+ X30 2 8
+ X36 ',' 2 0
+ X56 7
+ X56 3
+ X10 9
+ X24 2 1 6
+ X16 26 10 5
+ X30 6 10
+ X13 9
+ X50 1000 0
+ X47 0 1
+ X46 6 2
+ X45 8 3
+ X46 7 4
+ X45 9 5
+ X25 maybe_paren 6 10
+ X19 1
+ X47 7 0
+ X47 4 1
+ X47 5 2
+ X50 999 3
+ X50 0 4
+ X47 6 5
+ X49 8 6
+ X49 9 7
+ X42 8
+ X25 write_out 9 7
+ X50 44 0
+ X25 put 1 7
+ X47 3 0
+ X49 4 1
+ X49 5 2
+ X50 1000 3
+ X50 1000 4
+ X49 6 5
+ X50 '(' 6
+ X50 4 7
+ X47 1 8
+ X25 write_out 9 3
+ X50 1000 0
+ X49 0 1
+ X49 1 2
+ X49 2 3
+ X23
+ X26 maybe_paren 4
+Label 20
+ X20 10 9
+ X29 11 0
+ X29 12 1
+ X29 13 2
+ X29 14 3
+ X29 15 4
+ X29 16 6
+ X29 17 7
+ X29 18 8
+ X10 19
+ X44 1 20
+ X44 0 21
+ X16 1 11 20 21
+ X13 19
+ X16 26 22 5
+ X46 11 2
+ X46 12 3
+ X46 13 4
+ X46 14 5
+ X46 15 6
+ X46 22 7
+ X46 16 8
+ X46 17 9
+ X46 18 10
+ X26 write_out 11
+Label 21
+ X26 '$write' 1
+)
+Predicate(write_out 11
+ X1 1 8 2 8 8
+Label 1
+ X4 5
+ X5 6
+ X5 7
+ X6 8
+Label 2
+ X2 2 (
+        1 3
+        2 4
+) 8
+Label 3
+ X4 5
+ X5 6
+ X6 8
+Label 4
+ X4 7
+ X6 8
+Label 5
+ X20 1 11
+ X21
+ X30 5 1
+ X30 7 2
+ X30 8 3
+ X30 4 4
+ X30 1 5
+ X30 10 7
+ X30 13 8
+ X30 14 9
+ X30 3 10
+ X34 1 0
+ X11 15
+ X47 5 0
+ X42 1
+ X45 9 2
+ X45 16 3
+ X24 5 0 2 6 11 12
+ X25 current_postfixop 4 17
+ X14 15
+ X47 5 0
+ X49 16 1
+ X47 0 2
+ X25 '$write_out_11_373_0' 3 15
+ X47 0 0
+ X47 1 1
+ X49 13 2
+ X47 11 3
+ X49 14 4
+ X47 12 5
+ X25 maybe_paren 6 13
+ X19 1
+ X50 1 9
+ X49 7 10
+ X44 0 11
+ X16 2 9 10 11
+ X49 8 1
+ X47 4 2
+ X49 9 3
+ X50 1200 4
+ X49 10 5
+ X49 11 6
+ X49 12 7
+ X47 6 8
+ X25 write_out 9 7
+ X49 4 0
+ X49 5 1
+ X49 6 2
+ X47 2 3
+ X25 write_atom 4 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 maybe_paren 4
+Label 6
+ X20 1 11
+ X21
+ X30 10 1
+ X30 4 2
+ X30 5 3
+ X30 6 4
+ X30 1 5
+ X30 15 6
+ X30 8 7
+ X30 12 8
+ X30 13 9
+ X30 3 10
+ X34 1 0
+ X11 14
+ X47 10 11
+ X50 - 12
+ X24 5 0 2 7 9 11
+ X16 6 11 12
+ X47 10 0
+ X42 1
+ X45 16 2
+ X47 7 3
+ X25 current_prefixop 4 17
+ X14 14
+ X49 15 0
+ X49 16 1
+ X47 7 2
+ X47 0 3
+ X25 '$write_out_11_374_0' 4 14
+ X19 1
+ X47 0 0
+ X47 1 1
+ X49 12 2
+ X42 3
+ X49 13 4
+ X47 11 5
+ X25 maybe_paren 6 12
+ X47 6 0
+ X49 10 1
+ X49 11 2
+ X47 9 3
+ X25 write_atom 4 10
+ X19 1
+ X50 1 9
+ X49 4 10
+ X44 0 11
+ X16 2 9 10 11
+ X49 5 1
+ X49 6 2
+ X49 7 3
+ X47 7 4
+ X49 8 5
+ X50 ' (' 6
+ X49 9 7
+ X47 2 8
+ X25 write_out 9 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 maybe_paren 4
+Label 7
+ X20 1 11
+ X21
+ X30 10 1
+ X30 4 2
+ X30 5 3
+ X30 6 4
+ X30 1 5
+ X30 18 6
+ X30 8 7
+ X30 15 8
+ X30 16 9
+ X30 3 10
+ X34 2 0
+ X11 17
+ X47 10 0
+ X42 1
+ X45 12 2
+ X45 19 3
+ X45 7 4
+ X24 6 0 2 9 11 13 14
+ X25 current_infixop 5 20
+ X14 17
+ X49 18 0
+ X49 19 1
+ X47 7 2
+ X47 0 3
+ X25 '$write_out_11_375_0' 4 17
+ X47 0 0
+ X47 1 1
+ X49 15 2
+ X47 13 3
+ X49 16 4
+ X47 14 5
+ X25 maybe_paren 6 15
+ X19 1
+ X50 1 9
+ X47 4 10
+ X44 0 11
+ X16 2 9 10 11
+ X47 5 1
+ X47 6 2
+ X49 12 3
+ X50 1200 4
+ X47 8 5
+ X49 13 6
+ X49 14 7
+ X47 11 8
+ X25 write_out 9 12
+ X47 6 0
+ X49 10 1
+ X49 11 2
+ X47 9 3
+ X25 write_atom 4 10
+ X19 1
+ X50 2 9
+ X49 4 10
+ X44 0 11
+ X16 2 9 10 11
+ X49 5 1
+ X49 6 2
+ X49 7 3
+ X47 7 4
+ X49 8 5
+ X50 '(' 6
+ X49 9 7
+ X47 2 8
+ X25 write_out 9 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 maybe_paren 4
+Label 8
+ X20 1 11
+ X21
+ X30 0 0
+ X30 1 2
+ X30 2 3
+ X30 3 4
+ X30 4 7
+ X34 4 10
+ X47 3 0
+ X46 9 2
+ X42 3
+ X25 write_atom 4 5
+ X50 0 0
+ X49 0 1
+ X49 1 2
+ X49 2 3
+ X49 3 4
+ X49 4 5
+ X23
+ X26 write_args 6
+)
+Predicate(write_tail 4
+ X1 4 1 2 3 2
+Label 1
+ X2 1 (
+        [] 5
+) 2
+Label 2
+ X4 6
+ X6 8
+Label 3
+ X4 6
+ X6 7
+Label 4
+ X21
+ X30 0 0
+ X10 4
+ X47 0 5
+ X16 17 5
+ X13 4
+ X50 124 0
+ X25 put 1 1
+ X49 0 0
+ X25 '$write' 1 0
+ X50 93 0
+ X23
+ X26 put 1
+Label 5
+ X35 0
+ X12
+ X50 93 0
+ X26 put 1
+Label 6
+ X20 2 4
+ X21
+ X36 print 1 1
+ X55 4
+ X10 5
+ X16 14 3 4
+ X13 5
+ X50 44 0
+ X25 put 1 0
+ X50 ... 0
+ X25 '$display' 1 0
+ X50 93 0
+ X23
+ X26 put 1
+Label 7
+ X20 2 4
+ X21
+ X30 2 1
+ X30 3 2
+ X30 0 3
+ X37 0
+ X56 4
+ X56 1
+ X12
+ X50 44 0
+ X25 put 1 5
+ X19 1
+ X47 4 0
+ X47 2 1
+ X47 3 2
+ X50 999 3
+ X50 0 4
+ X47 0 5
+ X50 '(' 6
+ X50 4 7
+ X42 8
+ X25 write_out 9 4
+ X49 0 4
+ X16 26 5 4
+ X47 1 0
+ X49 2 1
+ X49 3 2
+ X46 5 3
+ X23
+ X26 write_tail 4
+Label 8
+ X21
+ X30 0 0
+ X30 1 1
+ X30 2 2
+ X30 3 3
+ X50 124 0
+ X25 put 1 4
+ X19 1
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X50 999 3
+ X50 0 4
+ X49 3 5
+ X50 '(' 6
+ X50 4 7
+ X42 8
+ X25 write_out 9 0
+ X50 93 0
+ X23
+ X26 put 1
+)
+Predicate(writeq 2
+Label 1
+ X20 3 2
+ X29 2 1
+ X52 writeq 1 1
+ X60 2
+ X26 with_default_output 2
+)
+Predicate(writeqq 1
+Label 1
+ X26 '$writeqq_1_349_0' 1
+)
+Predicate(writeq_quick 1
+ X1 1 2 2 5 5
+Label 1
+ X4 3
+ X6 5
+Label 2
+ X4 4
+ X6 5
+Label 3
+ X16 17 0
+ X26 '$write' 1
+Label 4
+ X16 19 0
+ X26 '$write' 1
+Label 5
+ X16 24 0
+ X26 '$write' 1
+)
+Predicate(writeqq 2
+Label 1
+ X20 3 2
+ X29 2 1
+ X52 writeqq 1 1
+ X60 2
+ X26 with_default_output 2
+)

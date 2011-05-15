@@ -1,0 +1,888 @@
+Directive('$$LOAD_DIRECTIVE$$' 0
+Label 1
+ X20 153 0
+ X52 / 2 1
+ X62 statistics
+ X62 2
+ X52 / 2 2
+ X62 repeat
+ X62 0
+ X52 / 2 3
+ X62 number_chars
+ X62 2
+ X52 / 2 4
+ X62 length
+ X62 2
+ X52 / 2 5
+ X62 numbervars
+ X62 3
+ X52 / 2 6
+ X62 assert
+ X62 1
+ X52 / 2 7
+ X62 assert
+ X62 2
+ X52 / 2 8
+ X62 assertz
+ X62 1
+ X52 / 2 9
+ X62 assertz
+ X62 2
+ X52 / 2 10
+ X62 asserta
+ X62 1
+ X52 / 2 11
+ X62 asserta
+ X62 2
+ X52 / 2 12
+ X62 recordz
+ X62 3
+ X52 / 2 13
+ X62 recorda
+ X62 3
+ X52 / 2 14
+ X62 recorded
+ X62 3
+ X52 / 2 15
+ X62 erase
+ X62 1
+ X52 / 2 16
+ X62 retract
+ X62 1
+ X52 / 2 17
+ X62 retractall
+ X62 1
+ X52 / 2 18
+ X62 current_key
+ X62 2
+ X52 / 2 19
+ X62 predicate_property
+ X62 2
+ X52 / 2 20
+ X62 clause
+ X62 2
+ X52 / 2 21
+ X62 clause
+ X62 3
+ X52 / 2 22
+ X62 abort
+ X62 0
+ X52 / 2 23
+ X62 compile
+ X62 1
+ X52 / 2 24
+ X62 fcompile
+ X62 1
+ X52 / 2 25
+ X62 prolog_flag
+ X62 2
+ X52 / 2 26
+ X62 prolog_flag
+ X62 3
+ X52 ',' 2 27
+ X58 25
+ X58 26
+ X52 ',' 2 28
+ X58 24
+ X58 27
+ X52 ',' 2 29
+ X58 23
+ X58 28
+ X52 ',' 2 30
+ X58 22
+ X58 29
+ X52 ',' 2 31
+ X58 21
+ X58 30
+ X52 ',' 2 32
+ X58 20
+ X58 31
+ X52 ',' 2 33
+ X58 19
+ X58 32
+ X52 ',' 2 34
+ X58 18
+ X58 33
+ X52 ',' 2 35
+ X58 17
+ X58 34
+ X52 ',' 2 36
+ X58 16
+ X58 35
+ X52 ',' 2 37
+ X58 15
+ X58 36
+ X52 ',' 2 38
+ X58 14
+ X58 37
+ X52 ',' 2 39
+ X58 13
+ X58 38
+ X52 ',' 2 40
+ X58 12
+ X58 39
+ X52 ',' 2 41
+ X58 11
+ X58 40
+ X52 ',' 2 42
+ X58 10
+ X58 41
+ X52 ',' 2 43
+ X58 9
+ X58 42
+ X52 ',' 2 44
+ X58 8
+ X58 43
+ X52 ',' 2 45
+ X58 7
+ X58 44
+ X52 ',' 2 46
+ X58 6
+ X58 45
+ X52 ',' 2 47
+ X58 5
+ X58 46
+ X52 ',' 2 48
+ X58 4
+ X58 47
+ X52 ',' 2 49
+ X58 3
+ X58 48
+ X52 ',' 2 50
+ X58 2
+ X58 49
+ X52 ',' 2 0
+ X58 1
+ X58 50
+ X26 public 1
+)
+Predicate(statistics 2
+ X1 1 2 fail fail fail
+Label 1
+ X4 3
+ X5 4
+ X5 5
+ X5 6
+ X5 7
+ X5 8
+ X5 9
+ X5 10
+ X5 11
+ X5 12
+ X5 13
+ X5 14
+ X5 15
+ X5 16
+ X5 17
+ X5 18
+ X5 19
+ X6 20
+Label 2
+ X2 18 (
+        runtime 3
+        walltime 4
+        parallel 5
+        gcnr 6
+        gctime 7
+        gcbytes 8
+        trail 9
+        local 10
+        global 11
+        memory 12
+        deref 13
+        restore 14
+        instr 15
+        instr_prof 16
+        tidytrail 17
+        swapbind 18
+        code 19
+        atom 20
+) fail
+Label 3
+ X34 runtime 0
+ X46 1 0
+ X26 '$statistics_runtime' 1
+Label 4
+ X34 walltime 0
+ X46 1 0
+ X26 '$statistics_walltime' 1
+Label 5
+ X34 parallel 0
+ X46 1 0
+ X26 '$statistics_parallel_runtime' 1
+Label 6
+ X34 gcnr 0
+ X46 1 0
+ X26 '$statistics_gcnr' 1
+Label 7
+ X34 gctime 0
+ X46 1 0
+ X26 '$statistics_gctime' 1
+Label 8
+ X34 gcbytes 0
+ X46 1 0
+ X26 '$statistics_gcbytes' 1
+Label 9
+ X34 trail 0
+ X46 1 0
+ X26 '$statistics_trail' 1
+Label 10
+ X34 local 0
+ X46 1 0
+ X26 '$statistics_local' 1
+Label 11
+ X34 global 0
+ X46 1 0
+ X26 '$statistics_global' 1
+Label 12
+ X34 memory 0
+ X46 1 0
+ X26 '$statistics_memory' 1
+Label 13
+ X34 deref 0
+ X46 1 0
+ X26 '$statistics_deref' 1
+Label 14
+ X34 restore 0
+ X46 1 0
+ X26 '$statistics_restore' 1
+Label 15
+ X34 instr 0
+ X46 1 0
+ X26 '$statistics_instr' 1
+Label 16
+ X34 instr_prof 0
+ X46 1 0
+ X26 '$statistics_instr_prof' 1
+Label 17
+ X34 tidytrail 0
+ X46 1 0
+ X26 '$statistics_tidy' 1
+Label 18
+ X34 swapbind 0
+ X46 1 0
+ X26 '$statistics_swap' 1
+Label 19
+ X34 code 0
+ X46 1 0
+ X26 '$statistics_code' 1
+Label 20
+ X34 atom 0
+ X46 1 0
+ X26 '$statistics_atom' 1
+)
+Predicate(repeat 0
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X27
+Label 3
+ X26 repeat 0
+)
+Predicate(number_chars 2
+Label 1
+ X50 10 2
+ X26 number_chars 3
+)
+Predicate(length 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 2
+ X29 3 1
+ X10 4
+ X16 17 3
+ X13 4
+ X50 0 1
+ X46 3 2
+ X26 length_var 3
+Label 3
+ X20 1 2
+ X29 3 1
+ X50 0 1
+ X46 3 2
+ X26 length_num 3
+)
+Predicate(assert 1
+Label 1
+ X20 1 1
+ X42 1
+ X26 assertz 2
+)
+Predicate(abort 0
+Label 1
+ X21
+ X50 '{Execution aborted}' 0
+ X24 1 0
+ X25 '$display' 1 1
+ X25 nl 0 1
+ X49 0 0
+ X25 '$load_choice' 1 1
+ X14 0
+ X28
+ X23
+ X27
+)
+Predicate('$numbervars_3_70_0' 3
+ X1 3 3 1 3 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 3
+ X29 3 0
+ X10 4
+ X16 23 3
+ X13 4
+ X46 1 0
+ X46 3 1
+ X26 numbervars_aux 3
+Label 3
+ X20 6 3
+ X29 3 0
+ X29 4 1
+ X50 2 0
+ X52 numbervars 3 1
+ X60 4
+ X60 3
+ X60 2
+ X26 illegal_arg 2
+)
+Predicate('$member_2_103_0' 2
+ X1 1 2 2 2 2
+Label 1
+ X10 2
+ X16 17 0
+ X13 2
+ X26 member_var 2
+Label 2
+ X26 member_chk 2
+)
+Predicate('$member_chk_2_107_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 3
+ X16 5 1 0
+ X13 3
+ X27
+Label 3
+ X46 1 0
+ X46 2 1
+ X26 member_chk 2
+)
+Predicate('$numbervars_aux_3_71_0' 3
+ X1 4 5 1 6 2
+Label 1
+ X4 5
+ X6 8
+Label 2
+ X3 1 (
+        '$VAR' 1 3
+) 8
+Label 3
+ X4 7
+ X6 8
+Label 4
+ X20 2 3
+ X10 3
+ X16 17 0
+ X13 3
+ X36 '$VAR' 1 0
+ X60 1
+ X16 26 4 1
+ X32 4 2
+ X27
+Label 5
+ X10 3
+ X16 19 0
+ X13 3
+ X32 1 2
+ X27
+Label 6
+ X20 2 3
+ X21
+ X30 2 2
+ X10 3
+ X37 0
+ X55 0
+ X56 0
+ X13 3
+ X45 1 2
+ X25 numbervars_aux 3 3
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 numbervars_aux 3
+Label 7
+ X20 2 3
+ X10 3
+ X36 '$VAR' 1 0
+ X55 0
+ X16 23 0
+ X13 3
+ X26 '$numbervars_aux_3_71_1' 3
+Label 8
+ X20 2 3
+ X53 3
+ X54 1
+ X55 4
+ X16 3 0 3
+ X46 4 0
+ X26 numbervars_aux 3
+)
+Predicate('$numbervars_aux_3_71_1' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 3
+ X16 11 1 0
+ X13 3
+ X16 26 4 1
+ X32 4 2
+ X27
+Label 3
+ X32 1 2
+ X27
+)
+Predicate(append 3
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X32 1 2
+ X27
+Label 3
+ X20 4 3
+ X37 0
+ X55 3
+ X55 0
+ X37 2
+ X58 3
+ X55 2
+ X26 append 3
+)
+Predicate(assert 2
+Label 1
+ X26 assertz 2
+)
+Predicate(assertz 1
+Label 1
+ X20 1 1
+ X42 1
+ X26 assertz 2
+)
+Predicate(asserta 1
+Label 1
+ X20 1 1
+ X42 1
+ X26 asserta 2
+)
+Predicate(assert_delete_other 1
+ X1 2 3 3 3 1
+Label 1
+ X3 1 (
+        :- 2 2
+) 3
+Label 2
+ X20 3 1
+ X36 :- 2 0
+ X55 0
+ X55 1
+ X12
+ X26 '$assert_delete_other' 2
+Label 3
+ X50 true 1
+ X26 '$assert_delete_other' 2
+)
+Predicate(asserta 2
+ X1 2 3 3 3 1
+Label 1
+ X3 1 (
+        :- 2 2
+) 3
+Label 2
+ X20 6 2
+ X36 :- 2 0
+ X55 0
+ X55 4
+ X12
+ X16 17 1
+ X36 '$ref' 2 1
+ X55 2
+ X55 3
+ X46 4 1
+ X26 '$asserta' 4
+Label 3
+ X20 3 2
+ X16 17 1
+ X36 '$ref' 2 1
+ X55 2
+ X55 3
+ X50 true 1
+ X26 '$asserta' 4
+)
+Predicate(assertz 2
+ X1 2 3 3 3 1
+Label 1
+ X3 1 (
+        :- 2 2
+) 3
+Label 2
+ X20 6 2
+ X36 :- 2 0
+ X55 0
+ X55 4
+ X12
+ X16 17 1
+ X36 '$ref' 2 1
+ X55 2
+ X55 3
+ X46 4 1
+ X26 '$assertz' 4
+Label 3
+ X20 3 2
+ X16 17 1
+ X36 '$ref' 2 1
+ X55 2
+ X55 3
+ X50 true 1
+ X26 '$assertz' 4
+)
+Predicate(erase 1
+Label 1
+ X20 3 1
+ X36 '$ref' 2 0
+ X55 0
+ X55 1
+ X26 '$erase' 2
+)
+Predicate(current_key 2
+Label 1
+ X20 6 2
+ X52 '$$RECORD$$' 2 2
+ X60 0
+ X60 1
+ X52 : 2 0
+ X62 prolog
+ X58 2
+ X50 true 1
+ X26 clause 2
+)
+Predicate(clause 2
+Label 1
+ X50 0 2
+ X50 0 3
+ X26 '$clause' 4
+)
+Predicate(clause 3
+Label 1
+ X50 0 3
+ X50 0 4
+ X26 '$clause' 5
+)
+Predicate(compile 1
+Label 1
+ X20 12 1
+ X21
+ X29 1 0
+ X52 - 1 2
+ X62 analyse
+ X52 output 1 3
+ X62 '/tmp/a.wam'
+ X53 4
+ X58 3
+ X63
+ X53 5
+ X58 2
+ X58 4
+ X52 rcompile 2 0
+ X60 1
+ X58 5
+ X25 'USERCALL' 1 0
+ X50 '/tmp/a.wam' 0
+ X23
+ X26 load 1
+)
+Predicate(eq 2
+Label 1
+ X32 0 1
+ X27
+)
+Predicate(fcompile 1
+Label 1
+ X20 10 1
+ X29 1 0
+ X52 - 1 2
+ X62 analyse
+ X53 3
+ X62 output_separate
+ X63
+ X53 4
+ X58 2
+ X58 3
+ X52 rcompile 2 0
+ X60 1
+ X58 4
+ X26 'USERCALL' 1
+)
+Predicate(hd 2
+Label 1
+ X20 2 2
+ X37 1
+ X60 0
+ X54 1
+ X27
+)
+Predicate(length_var 3
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X32 1 2
+ X27
+Label 3
+ X20 2 3
+ X37 0
+ X54 1
+ X55 0
+ X16 26 3 1
+ X46 3 1
+ X26 length_var 3
+)
+Predicate(length_num 3
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X32 1 2
+ X12
+ X27
+Label 3
+ X20 2 3
+ X37 0
+ X54 1
+ X55 0
+ X16 14 2 1
+ X16 26 3 1
+ X46 3 1
+ X26 length_num 3
+)
+Predicate(member 2
+Label 1
+ X26 '$member_2_103_0' 2
+)
+Predicate(member_var 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 2
+ X37 1
+ X55 2
+ X54 1
+ X32 2 0
+ X27
+Label 3
+ X20 2 2
+ X37 1
+ X54 1
+ X55 1
+ X26 member_var 2
+)
+Predicate(member_chk 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 2
+ X16 17 1
+ X13 2
+ X28
+ X27
+Label 3
+ X20 3 2
+ X29 3 0
+ X37 1
+ X55 0
+ X55 2
+ X46 3 1
+ X26 '$member_chk_2_107_0' 3
+)
+Predicate(numbervars 3
+Label 1
+ X20 1 3
+ X29 3 0
+ X46 1 0
+ X46 3 1
+ X26 '$numbervars_3_70_0' 3
+)
+Predicate(recordz 3
+Label 1
+ X20 6 3
+ X52 '$$RECORD$$' 2 3
+ X60 0
+ X60 1
+ X52 : 2 0
+ X62 prolog
+ X58 3
+ X46 2 1
+ X26 assertz 2
+)
+Predicate(recorda 3
+Label 1
+ X20 6 3
+ X52 '$$RECORD$$' 2 3
+ X60 0
+ X60 1
+ X52 : 2 0
+ X62 prolog
+ X58 3
+ X46 2 1
+ X26 asserta 2
+)
+Predicate(predicate_property 2
+Label 1
+ X20 1 2
+ X21
+ X30 0 0
+ X30 1 1
+ X42 0
+ X47 0 1
+ X25 current_predicate 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 '$predicate_property' 2
+)
+Predicate(numbervars_aux 3
+Label 1
+ X26 '$numbervars_aux_3_71_0' 3
+)
+Predicate(prolog_flag 2
+Label 1
+ X20 2 2
+ X29 3 1
+ X42 1
+ X46 3 2
+ X26 prolog_flag 3
+)
+Predicate(prolog_flag 3
+ X1 1 2 fail fail fail
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 2 (
+        gc_verbose 3
+        load_verbose 4
+) fail
+Label 3
+ X34 gc_verbose 0
+ X46 1 0
+ X46 2 1
+ X26 prolog_flag_gc_verbose 2
+Label 4
+ X34 load_verbose 0
+ X46 1 0
+ X46 2 1
+ X26 prolog_flag_load_verbose 2
+)
+Predicate(recorded 3
+Label 1
+ X20 6 3
+ X52 '$$RECORD$$' 2 3
+ X60 0
+ X60 1
+ X52 : 2 0
+ X62 prolog
+ X58 3
+ X50 true 1
+ X26 clause 3
+)
+Predicate(retract 1
+ X1 2 3 3 3 1
+Label 1
+ X3 1 (
+        :- 2 2
+) 3
+Label 2
+ X20 3 1
+ X21
+ X36 :- 2 0
+ X55 0
+ X55 1
+ X12
+ X45 0 2
+ X25 clause 3 1
+ X49 0 0
+ X23
+ X26 erase 1
+Label 3
+ X21
+ X50 true 1
+ X45 0 2
+ X25 clause 3 1
+ X49 0 0
+ X23
+ X26 erase 1
+)
+Predicate(retractall 1
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X25 retract 1 0
+ X28
+ X23
+ X27
+Label 3
+ X27
+)
+Predicate(split_list 4
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 0 0
+ X12
+ X35 2
+ X32 1 3
+ X27
+Label 4
+ X20 4 4
+ X37 1
+ X55 4
+ X55 1
+ X37 2
+ X58 4
+ X55 2
+ X16 28 5 0
+ X46 5 0
+ X26 split_list 4
+)
+Predicate(tl 2
+Label 1
+ X20 2 2
+ X37 1
+ X54 1
+ X60 0
+ X27
+)

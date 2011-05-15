@@ -1,0 +1,2 @@
+load('c').
+rcompile('../Compiler/reform',[-a]).

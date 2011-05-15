@@ -1,0 +1,297 @@
+Directive('$$LOAD_DIRECTIVE$$' 0
+Label 1
+ X20 159 0
+ X52 / 2 1
+ X62 compare
+ X62 3
+ X52 / 2 2
+ X62 functor
+ X62 3
+ X52 / 2 3
+ X62 arg
+ X62 3
+ X52 / 2 4
+ X62 =..
+ X62 2
+ X52 / 2 5
+ X62 =
+ X62 2
+ X52 / 2 6
+ X62 ==
+ X62 2
+ X52 / 2 7
+ X62 \==
+ X62 2
+ X52 / 2 8
+ X62 @<
+ X62 2
+ X52 / 2 9
+ X62 @>
+ X62 2
+ X52 / 2 10
+ X62 @=<
+ X62 2
+ X52 / 2 11
+ X62 @>=
+ X62 2
+ X52 / 2 12
+ X62 =:=
+ X62 2
+ X52 / 2 13
+ X62 =\=
+ X62 2
+ X52 / 2 14
+ X62 <
+ X62 2
+ X52 / 2 15
+ X62 >
+ X62 2
+ X52 / 2 16
+ X62 =<
+ X62 2
+ X52 / 2 17
+ X62 >=
+ X62 2
+ X52 / 2 18
+ X62 var
+ X62 1
+ X52 / 2 19
+ X62 atom
+ X62 1
+ X52 / 2 20
+ X62 atomic
+ X62 1
+ X52 / 2 21
+ X62 nonvar
+ X62 1
+ X52 / 2 22
+ X62 number
+ X62 1
+ X52 / 2 23
+ X62 float
+ X62 1
+ X52 / 2 24
+ X62 integer
+ X62 1
+ X52 / 2 25
+ X62 generic
+ X62 1
+ X52 / 2 26
+ X62 par_reduce_plus
+ X62 2
+ X52 / 2 27
+ X62 par_reduce_times
+ X62 2
+ X52 ',' 2 28
+ X58 26
+ X58 27
+ X52 ',' 2 29
+ X58 25
+ X58 28
+ X52 ',' 2 30
+ X58 24
+ X58 29
+ X52 ',' 2 31
+ X58 23
+ X58 30
+ X52 ',' 2 32
+ X58 22
+ X58 31
+ X52 ',' 2 33
+ X58 21
+ X58 32
+ X52 ',' 2 34
+ X58 20
+ X58 33
+ X52 ',' 2 35
+ X58 19
+ X58 34
+ X52 ',' 2 36
+ X58 18
+ X58 35
+ X52 ',' 2 37
+ X58 17
+ X58 36
+ X52 ',' 2 38
+ X58 16
+ X58 37
+ X52 ',' 2 39
+ X58 15
+ X58 38
+ X52 ',' 2 40
+ X58 14
+ X58 39
+ X52 ',' 2 41
+ X58 13
+ X58 40
+ X52 ',' 2 42
+ X58 12
+ X58 41
+ X52 ',' 2 43
+ X58 11
+ X58 42
+ X52 ',' 2 44
+ X58 10
+ X58 43
+ X52 ',' 2 45
+ X58 9
+ X58 44
+ X52 ',' 2 46
+ X58 8
+ X58 45
+ X52 ',' 2 47
+ X58 7
+ X58 46
+ X52 ',' 2 48
+ X58 6
+ X58 47
+ X52 ',' 2 49
+ X58 5
+ X58 48
+ X52 ',' 2 50
+ X58 4
+ X58 49
+ X52 ',' 2 51
+ X58 3
+ X58 50
+ X52 ',' 2 52
+ X58 2
+ X58 51
+ X52 ',' 2 0
+ X58 1
+ X58 52
+ X26 public 1
+)
+Predicate(compare 3
+Label 1
+ X16 0 0 1 2
+ X27
+)
+Predicate(arg 3
+Label 1
+ X16 2 0 1 2
+ X27
+)
+Predicate(=.. 2
+Label 1
+ X16 3 0 1
+ X27
+)
+Predicate(= 2
+Label 1
+ X32 1 0
+ X27
+)
+Predicate(< 2
+Label 1
+ X16 13 0 1
+ X27
+)
+Predicate(== 2
+Label 1
+ X16 5 0 1
+ X27
+)
+Predicate(=:= 2
+Label 1
+ X16 11 0 1
+ X27
+)
+Predicate(=< 2
+Label 1
+ X16 15 0 1
+ X27
+)
+Predicate(\== 2
+Label 1
+ X16 6 0 1
+ X27
+)
+Predicate(@< 2
+Label 1
+ X16 7 0 1
+ X27
+)
+Predicate(=\= 2
+Label 1
+ X16 12 0 1
+ X27
+)
+Predicate(> 2
+Label 1
+ X16 14 0 1
+ X27
+)
+Predicate(>= 2
+Label 1
+ X16 16 0 1
+ X27
+)
+Predicate(@> 2
+Label 1
+ X16 8 0 1
+ X27
+)
+Predicate(@=< 2
+Label 1
+ X16 9 0 1
+ X27
+)
+Predicate(@>= 2
+Label 1
+ X16 10 0 1
+ X27
+)
+Predicate(atom 1
+Label 1
+ X16 18 0
+ X27
+)
+Predicate(atomic 1
+Label 1
+ X16 19 0
+ X27
+)
+Predicate(functor 3
+Label 1
+ X16 1 0 1 2
+ X27
+)
+Predicate(float 1
+Label 1
+ X16 22 0
+ X27
+)
+Predicate(var 1
+Label 1
+ X16 17 0
+ X27
+)
+Predicate(nonvar 1
+Label 1
+ X16 20 0
+ X27
+)
+Predicate(integer 1
+Label 1
+ X16 23 0
+ X27
+)
+Predicate(generic 1
+Label 1
+ X16 24 0
+ X27
+)
+Predicate(number 1
+Label 1
+ X16 21 0
+ X27
+)
+Predicate(par_reduce_plus 2
+Label 1
+ X26 par_reduce_plus 2
+)
+Predicate(par_reduce_times 2
+Label 1
+ X26 par_reduce_times 2
+)

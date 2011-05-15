@@ -1,0 +1,1541 @@
+Directive('$$LOAD_DIRECTIVE$$' 0
+Label 1
+ X20 3 0
+ X52 / 2 0
+ X62 '$random_val'
+ X62 1
+ X26 dynamic 1
+)
+Predicate('$get_stars_1_7_0' 5
+Label 1
+ X26 star 5
+)
+Predicate('$compute_acceleration_9_25_0' 6
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 6
+ X50 0.0001 7
+ X16 13 0 7
+ X13 6
+ X34 0.0 4
+ X34 0.0 5
+ X27
+Label 3
+ X16 30 6 3 0
+ X16 29 7 1 6
+ X32 7 4
+ X16 29 8 2 6
+ X32 8 5
+ X27
+)
+Predicate('$compute_acceleration_9_26_0' 12
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 6 12
+ X21
+ X30 1 11
+ X10 12
+ X16 29 13 0 0
+ X16 29 14 9 3
+ X16 13 13 14
+ X13 12
+ X36 tree 5 8
+ X54 4
+ X55 15
+ X16 43 16 3
+ X16 29 17 3 16
+ X16 30 18 15 17
+ X16 29 19 1 18
+ X16 29 20 2 18
+ X30 0 20
+ X46 19 0
+ X46 10 1
+ X25 '$compute_acceleration_9_26_2' 2 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 '$compute_acceleration_9_26_1' 2
+Label 3
+ X20 6 12
+ X21
+ X30 12 4
+ X30 18 5
+ X30 10 6
+ X30 17 7
+ X30 16 9
+ X30 4 10
+ X30 9 11
+ X36 tree 5 8
+ X56 27
+ X56 24
+ X56 21
+ X56 14
+ X54 1
+ X50 2 12
+ X16 30 13 0 12
+ X30 15 13
+ X50 1 0
+ X47 15 1
+ X45 25 2
+ X45 26 3
+ X24 14 0 1 2 3 5 6 7 8 11 13 19 20 22 23
+ X25 quadrant_to_pos 4 28
+ X47 10 9
+ X49 25 10
+ X16 25 11 9 10
+ X47 12 12
+ X49 26 13
+ X16 25 14 12 13
+ X47 27 0
+ X47 15 1
+ X47 16 2
+ X46 11 3
+ X46 14 4
+ X47 17 5
+ X47 18 6
+ X45 0 7
+ X45 5 8
+ X25 compute_acceleration 9 25
+ X50 2 0
+ X47 15 1
+ X45 22 2
+ X45 23 3
+ X25 quadrant_to_pos 4 25
+ X47 10 9
+ X49 22 10
+ X16 25 11 9 10
+ X47 12 12
+ X49 23 13
+ X16 25 14 12 13
+ X47 24 0
+ X47 15 1
+ X47 16 2
+ X46 11 3
+ X46 14 4
+ X47 17 5
+ X47 18 6
+ X45 1 7
+ X45 6 8
+ X25 compute_acceleration 9 22
+ X50 3 0
+ X47 15 1
+ X45 19 2
+ X45 20 3
+ X25 quadrant_to_pos 4 22
+ X47 10 9
+ X49 19 10
+ X16 25 11 9 10
+ X47 12 12
+ X49 20 13
+ X16 25 14 12 13
+ X47 21 0
+ X47 15 1
+ X47 16 2
+ X46 11 3
+ X46 14 4
+ X47 17 5
+ X47 18 6
+ X45 2 7
+ X45 7 8
+ X25 compute_acceleration 9 19
+ X50 4 0
+ X47 15 1
+ X45 11 2
+ X45 13 3
+ X25 quadrant_to_pos 4 19
+ X49 10 9
+ X49 11 10
+ X16 25 11 9 10
+ X49 12 12
+ X49 13 13
+ X16 25 14 12 13
+ X47 14 0
+ X49 15 1
+ X49 16 2
+ X46 11 3
+ X46 14 4
+ X49 17 5
+ X49 18 6
+ X45 3 7
+ X45 8 8
+ X25 compute_acceleration 9 10
+ X49 0 0
+ X49 1 1
+ X16 25 2 0 1
+ X49 2 3
+ X16 25 4 2 3
+ X49 3 5
+ X16 25 6 4 5
+ X33 4 6
+ X49 5 7
+ X49 6 8
+ X16 25 9 7 8
+ X49 7 10
+ X16 25 11 9 10
+ X49 8 12
+ X16 25 13 11 12
+ X33 9 13
+ X23
+ X27
+)
+Predicate('$compute_acceleration_9_26_1' 2
+ X1 1 4 4 4 2
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X3 1 (
+        + 1 1
+) 4
+Label 3
+ X20 2 2
+ X10 2
+ X36 + 1 0
+ X62 nan
+ X13 2
+ X34 0.0 1
+ X27
+Label 4
+ X32 0 1
+ X27
+)
+Predicate('$compute_acceleration_9_26_2' 2
+ X1 1 4 4 4 2
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X3 1 (
+        + 1 1
+) 4
+Label 3
+ X20 2 2
+ X10 2
+ X36 + 1 0
+ X62 nan
+ X13 2
+ X34 0.0 1
+ X27
+Label 4
+ X32 0 1
+ X27
+)
+Predicate('$pos_to_quadrant_3_12_0' 3
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X10 3
+ X50 0 4
+ X16 16 0 4
+ X13 3
+ X46 2 0
+ X26 '$pos_to_quadrant_3_12_1' 2
+Label 3
+ X10 3
+ X50 0 4
+ X16 16 2 4
+ X13 3
+ X34 2 1
+ X27
+Label 4
+ X34 3 1
+ X27
+)
+Predicate('$insert_quad_conflict_10_23_0' 12
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 14 1
+ X30 6 2
+ X30 5 3
+ X30 12 4
+ X30 4 5
+ X30 10 6
+ X30 2 7
+ X30 1 8
+ X30 0 9
+ X30 3 10
+ X30 15 11
+ X10 12
+ X47 14 13
+ X16 5 13 0
+ X13 12
+ X47 14 0
+ X47 6 1
+ X45 11 2
+ X45 13 3
+ X24 3 7 8 9
+ X25 quadrant_to_pos 4 16
+ X19 7
+ X49 10 6
+ X49 11 7
+ X16 25 8 6 7
+ X30 7 8
+ X49 12 9
+ X49 13 10
+ X16 25 11 9 10
+ X30 8 11
+ X47 0 12
+ X47 3 13
+ X16 25 14 12 13
+ X49 14 0
+ X52 tree 5 1
+ X62 empty
+ X62 empty
+ X62 empty
+ X62 empty
+ X62 0.0
+ X46 14 2
+ X49 15 3
+ X42 4
+ X45 9 5
+ X25 quadrant_new_node 6 10
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X23
+ X26 insert_quad_conflict 10
+Label 3
+ X20 11 12
+ X21
+ X30 0 0
+ X30 5 3
+ X30 4 5
+ X30 2 10
+ X30 3 11
+ X46 1 0
+ X52 tree 5 1
+ X62 empty
+ X62 empty
+ X62 empty
+ X62 empty
+ X62 0.0
+ X46 9 2
+ X45 1 3
+ X42 4
+ X52 body 3 5
+ X60 9
+ X60 8
+ X60 7
+ X25 quadrant_new_node 6 6
+ X19 5
+ X49 0 0
+ X49 1 1
+ X47 2 2
+ X49 3 3
+ X42 4
+ X52 body 3 5
+ X61 2
+ X61 4
+ X61 5
+ X23
+ X26 quadrant_new_node 6
+)
+Predicate('$make_organized_stars0_4_42_0' 5
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 5
+ X50 8000.0 6
+ X16 14 0 6
+ X13 5
+ X34 -8000.0 4
+ X16 25 7 2 1
+ X32 7 3
+ X27
+Label 3
+ X32 0 4
+ X32 2 3
+ X27
+)
+Predicate('$pos_to_quadrant_3_12_1' 2
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X10 2
+ X50 0 3
+ X16 16 0 3
+ X13 2
+ X34 1 1
+ X27
+Label 3
+ X34 4 1
+ X27
+)
+Predicate(dimension 1
+ X1 1 fail 1 fail fail
+Label 1
+ X34 20000.0 0
+ X27
+)
+Predicate(compute_acceleration 9
+ X1 1 2 7 7 4
+Label 1
+ X4 5
+ X6 6
+Label 2
+ X2 1 (
+        empty 3
+) 7
+Label 3
+ X4 5
+ X6 7
+Label 4
+ X3 1 (
+        body 3 6
+) 7
+Label 5
+ X34 empty 0
+ X34 0.0 7
+ X34 0.0 8
+ X12
+ X27
+Label 6
+ X20 4 9
+ X36 body 3 0
+ X55 3
+ X55 9
+ X55 10
+ X12
+ X16 27 11 9 5
+ X16 27 12 10 6
+ X16 29 13 11 11
+ X16 29 14 12 12
+ X16 25 15 13 14
+ X16 43 16 15
+ X16 29 17 15 16
+ X46 17 0
+ X46 11 1
+ X46 12 2
+ X46 7 4
+ X46 8 5
+ X26 '$compute_acceleration_9_25_0' 6
+Label 7
+ X20 6 9
+ X29 12 0
+ X29 13 2
+ X29 14 3
+ X29 15 5
+ X29 16 7
+ X29 17 8
+ X16 27 18 14 15
+ X16 27 19 4 6
+ X16 29 20 18 18
+ X16 29 21 19 19
+ X16 25 22 20 21
+ X46 1 0
+ X46 18 1
+ X46 19 2
+ X46 22 3
+ X46 6 5
+ X46 14 6
+ X46 15 7
+ X46 12 8
+ X46 13 9
+ X46 16 10
+ X46 17 11
+ X26 '$compute_acceleration_9_26_0' 12
+)
+Predicate(compute_tree 2
+Label 1
+ X21
+ X30 0 0
+ X30 2 1
+ X45 1 0
+ X25 dimension 1 3
+ X49 0 0
+ X49 1 1
+ X50 empty 2
+ X49 2 3
+ X23
+ X26 compute_tree0 4
+)
+Predicate(compute_time_step 3
+Label 1
+ X21
+ X30 0 0
+ X30 4 1
+ X30 5 2
+ X45 1 0
+ X24 3 2 3 6
+ X25 dimension 1 7
+ X45 6 0
+ X25 theta 1 7
+ X45 3 0
+ X25 time_step 1 7
+ X49 6 1
+ X47 6 2
+ X16 29 3 1 2
+ X30 2 3
+ X50 'compute time step 0' 0
+ X25 write 1 6
+ X25 nl 0 6
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X23
+ X26 compute_time_step0 6
+)
+Predicate(compute_time_step0 6
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X35 5
+ X27
+Label 3
+ X20 16 6
+ X21
+ X30 12 1
+ X30 13 2
+ X30 0 3
+ X30 14 4
+ X37 0
+ X55 9
+ X56 11
+ X36 star 5 9
+ X55 10
+ X56 7
+ X56 9
+ X56 2
+ X56 5
+ X37 5
+ X55 11
+ X56 15
+ X36 star 5 11
+ X58 10
+ X56 8
+ X56 10
+ X56 3
+ X56 6
+ X47 14 0
+ X47 12 1
+ X47 13 2
+ X50 0.0 3
+ X50 0.0 4
+ X47 7 5
+ X47 9 6
+ X45 1 7
+ X45 4 8
+ X25 compute_acceleration 9 16
+ X49 0 6
+ X49 1 7
+ X16 29 8 6 7
+ X47 2 9
+ X16 25 10 9 8
+ X33 3 10
+ X47 0 11
+ X49 4 12
+ X16 29 13 11 12
+ X47 5 14
+ X16 25 15 14 13
+ X33 6 15
+ X47 0 16
+ X47 3 17
+ X16 29 18 16 17
+ X47 7 19
+ X16 25 20 19 18
+ X33 8 20
+ X47 0 21
+ X47 6 22
+ X16 29 23 21 22
+ X47 9 24
+ X16 25 25 24 23
+ X33 10 25
+ X47 11 0
+ X49 12 1
+ X49 13 2
+ X47 0 3
+ X49 14 4
+ X47 15 5
+ X23
+ X26 compute_time_step0 6
+)
+Predicate(compute_tree0 4
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X32 2 3
+ X27
+Label 3
+ X20 8 4
+ X21
+ X30 1 1
+ X30 3 3
+ X37 0
+ X55 8
+ X56 0
+ X36 star 5 8
+ X55 1
+ X55 9
+ X55 3
+ X54 2
+ X46 2 0
+ X46 9 2
+ X47 1 4
+ X50 0.0 5
+ X50 0.0 6
+ X45 2 7
+ X25 insert_quad_tree 8 4
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 compute_tree0 4
+)
+Predicate(theta 1
+ X1 1 fail 1 fail fail
+Label 1
+ X34 0.3 0
+ X27
+)
+Predicate(star 5
+ X1 1 fail 1 fail fail
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X6 5
+Label 2
+ X34 100.0 0
+ X34 -500.0 1
+ X34 -8000.0 2
+ X34 0.0 3
+ X34 0.5 4
+ X27
+Label 3
+ X34 100.0 0
+ X34 500.0 1
+ X34 -7600.0 2
+ X34 0.0 3
+ X34 0.8 4
+ X27
+Label 4
+ X34 100.0 0
+ X34 3500.0 1
+ X34 -5000.0 2
+ X34 0.0 3
+ X34 0.4 4
+ X27
+Label 5
+ X34 10.0 0
+ X34 4500.0 1
+ X34 -5000.0 2
+ X34 0.0 3
+ X34 0.5 4
+ X27
+)
+Predicate(get_stars 1
+Label 1
+ X20 13 1
+ X29 3 0
+ X52 star 5 0
+ X55 4
+ X55 5
+ X55 6
+ X55 7
+ X55 8
+ X52 '$get_stars_1_7_0' 5 1
+ X58 4
+ X58 5
+ X58 6
+ X58 7
+ X58 8
+ X46 3 2
+ X26 findall 3
+)
+Predicate(quadrant_to_pos 4
+ X1 1 fail 2 fail fail
+Label 1
+ X4 3
+ X5 4
+ X5 5
+ X6 6
+Label 2
+ X2 4 (
+        1 3
+        2 4
+        3 5
+        4 6
+) fail
+Label 3
+ X34 1 0
+ X32 1 2
+ X32 1 3
+ X27
+Label 4
+ X34 2 0
+ X32 1 3
+ X16 39 4 1
+ X32 4 2
+ X27
+Label 5
+ X34 3 0
+ X32 2 3
+ X16 39 4 1
+ X32 4 2
+ X27
+Label 6
+ X34 4 0
+ X32 1 2
+ X16 39 4 1
+ X32 4 3
+ X27
+)
+Predicate(pos_to_quadrant 3
+Label 1
+ X20 1 3
+ X29 3 0
+ X46 1 0
+ X46 3 1
+ X26 '$pos_to_quadrant_3_12_0' 3
+)
+Predicate(insert_2d_bodies 3
+Label 1
+ X21
+ X30 0 0
+ X30 1 1
+ X30 2 2
+ X45 3 0
+ X25 dimension 1 4
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 insert_2d_bodies0 4
+)
+Predicate(insert_2d_bodies0 4
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X32 1 2
+ X27
+Label 3
+ X20 6 4
+ X21
+ X30 2 2
+ X30 3 3
+ X37 0
+ X55 8
+ X56 0
+ X36 body 3 8
+ X55 9
+ X55 2
+ X55 3
+ X46 1 0
+ X46 9 1
+ X47 3 4
+ X50 0.0 5
+ X50 0.0 6
+ X45 1 7
+ X25 insert_quad_tree 8 4
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X23
+ X26 insert_2d_bodies0 4
+)
+Predicate(insert_quad_tree 8
+ X1 1 3 fail fail 2
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X3 2 (
+        tree 5 4
+        body 3 5
+) fail
+Label 3
+ X20 4 8
+ X34 empty 0
+ X36 body 3 7
+ X60 1
+ X60 2
+ X60 3
+ X27
+Label 4
+ X20 6 8
+ X21
+ X30 1 1
+ X30 2 2
+ X30 3 3
+ X30 19 4
+ X30 8 5
+ X30 10 6
+ X30 18 7
+ X36 tree 5 0
+ X56 13
+ X56 14
+ X56 15
+ X56 16
+ X56 17
+ X47 2 8
+ X47 8 9
+ X16 27 10 8 9
+ X47 3 11
+ X47 10 12
+ X16 27 13 11 12
+ X45 12 0
+ X46 10 1
+ X46 13 2
+ X24 7 0 4 5 6 7 9 11
+ X25 pos_to_quadrant 3 20
+ X49 19 4
+ X50 2 5
+ X16 30 6 4 5
+ X30 4 6
+ X47 12 0
+ X47 4 1
+ X45 9 2
+ X45 11 3
+ X25 quadrant_to_pos 4 19
+ X19 6
+ X49 8 6
+ X49 9 7
+ X16 25 8 6 7
+ X30 5 8
+ X49 10 9
+ X49 11 10
+ X16 25 11 9 10
+ X30 6 11
+ X49 12 0
+ X52 tree 5 1
+ X59 13
+ X59 14
+ X59 15
+ X59 16
+ X59 17
+ X47 1 2
+ X49 18 3
+ X45 0 4
+ X45 7 5
+ X25 quadrant_new_node 6 8
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X23
+ X26 insert_quad_tree 8
+Label 5
+ X20 11 8
+ X29 10 1
+ X29 11 2
+ X29 12 3
+ X29 13 4
+ X29 14 5
+ X29 15 6
+ X29 16 7
+ X36 body 3 0
+ X55 0
+ X55 1
+ X55 2
+ X46 10 3
+ X46 11 4
+ X46 12 5
+ X46 13 6
+ X46 14 7
+ X46 15 8
+ X46 16 9
+ X26 insert_quad_conflict 10
+)
+Predicate(insert_quad_conflict 10
+Label 1
+ X21
+ X30 9 0
+ X30 8 1
+ X30 7 2
+ X30 10 3
+ X30 5 4
+ X30 3 5
+ X30 6 7
+ X30 4 8
+ X30 11 9
+ X47 8 10
+ X47 6 11
+ X16 27 12 10 11
+ X47 7 13
+ X47 4 14
+ X16 27 15 13 14
+ X47 5 16
+ X47 6 17
+ X16 27 18 16 17
+ X30 12 18
+ X47 3 19
+ X47 4 20
+ X16 27 21 19 20
+ X30 13 21
+ X50 2 22
+ X16 30 23 6 22
+ X30 2 23
+ X45 1 0
+ X46 12 1
+ X46 15 2
+ X24 1 0
+ X25 pos_to_quadrant 3 14
+ X45 0 0
+ X49 12 1
+ X49 13 2
+ X25 pos_to_quadrant 3 12
+ X49 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X49 5 5
+ X49 6 6
+ X49 7 7
+ X49 8 8
+ X49 9 9
+ X49 10 10
+ X49 11 11
+ X23
+ X26 '$insert_quad_conflict_10_23_0' 12
+)
+Predicate(plot_to_file 2
+Label 1
+ X21
+ X30 1 0
+ X46 1 0
+ X50 write 1
+ X45 0 2
+ X25 open 3 2
+ X49 1 0
+ X47 0 1
+ X25 plot_to_stream 2 1
+ X49 0 0
+ X23
+ X26 close 1
+)
+Predicate(plot_stars_to_stream 2
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X27
+Label 3
+ X20 12 2
+ X21
+ X30 1 1
+ X37 0
+ X55 3
+ X56 0
+ X36 star 5 3
+ X54 1
+ X55 4
+ X55 5
+ X54 2
+ X47 1 0
+ X50 'plot ~w ~w~N' 1
+ X53 6
+ X58 5
+ X63
+ X53 2
+ X58 4
+ X58 6
+ X25 format 3 2
+ X47 0 0
+ X49 1 1
+ X23
+ X26 plot_stars_to_stream 2
+)
+Predicate(make_stars 2
+ X1 1 4 2 4 4
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 1 (
+        0 1
+) 4
+Label 3
+ X34 0 0
+ X35 1
+ X12
+ X27
+Label 4
+ X20 8 2
+ X21
+ X30 8 0
+ X37 1
+ X55 2
+ X56 9
+ X36 star 5 2
+ X62 1.0
+ X56 1
+ X56 3
+ X56 5
+ X56 7
+ X50 7500 0
+ X45 0 1
+ X24 3 2 4 6
+ X25 random_max 2 10
+ X50 7500 0
+ X45 2 1
+ X25 random_max 2 10
+ X50 1000 0
+ X45 4 1
+ X25 random_max 2 10
+ X50 1000 0
+ X45 6 1
+ X25 random_max 2 10
+ X49 0 2
+ X50 3750.0 3
+ X16 27 4 2 3
+ X33 1 4
+ X49 2 5
+ X50 3750.0 6
+ X16 27 7 5 6
+ X33 3 7
+ X49 4 8
+ X50 500 9
+ X16 27 10 8 9
+ X50 10000 11
+ X16 30 12 10 11
+ X33 5 12
+ X49 6 13
+ X50 500 14
+ X16 27 15 13 14
+ X50 10000 16
+ X16 30 17 15 16
+ X33 7 17
+ X49 8 18
+ X16 28 19 18
+ X46 19 0
+ X47 9 1
+ X23
+ X26 make_stars 2
+)
+Predicate(make_organized_stars 3
+Label 1
+ X20 1 3
+ X21
+ X29 4 0
+ X30 1 1
+ X30 0 2
+ X50 -8000.0 0
+ X50 -8000.0 1
+ X46 4 2
+ X47 0 3
+ X25 make_organized_stars0 4 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 length 2
+)
+Predicate(loop 3
+ X1 3 4 1 4 4
+Label 1
+ X2 1 (
+        0 2
+) 4
+Label 2
+ X4 3
+ X6 4
+Label 3
+ X34 0 0
+ X12
+ X27
+Label 4
+ X20 1 3
+ X21
+ X30 0 0
+ X30 4 1
+ X30 2 2
+ X50 runtime 0
+ X42 1
+ X24 3 1 3 5
+ X25 statistics 2 6
+ X50 'Computing tree' 0
+ X25 write 1 6
+ X25 nl 0 6
+ X47 4 0
+ X45 5 1
+ X25 compute_tree 2 6
+ X50 'Computing time step' 0
+ X25 write 1 6
+ X25 nl 0 6
+ X49 4 0
+ X49 5 1
+ X45 1 2
+ X25 compute_time_step 3 4
+ X19 4
+ X50 runtime 0
+ X53 2
+ X56 3
+ X63
+ X53 1
+ X54 1
+ X58 2
+ X25 statistics 2 4
+ X19 2
+ X50 'runtime ~w~N' 0
+ X53 1
+ X59 3
+ X63
+ X25 format 2 3
+ X49 0 3
+ X16 28 4 3
+ X46 4 0
+ X49 1 1
+ X49 2 2
+ X23
+ X26 loop 3
+)
+Predicate(main 0
+Label 1
+ X21
+ X50 'reading stars...' 0
+ X24 1 0
+ X25 write 1 1
+ X25 nl 0 1
+ X45 0 0
+ X50 'stars.db' 1
+ X25 read_stars 2 1
+ X50 'stars have been read' 0
+ X25 write 1 1
+ X25 nl 0 1
+ X19 1
+ X50 1 0
+ X47 0 1
+ X42 2
+ X25 loop 3 1
+ X49 0 0
+ X50 'lut.output' 1
+ X23
+ X26 write_stars 2
+)
+Predicate(make_organized_stars0 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 9 4
+ X21
+ X29 5 1
+ X30 3 2
+ X37 3
+ X55 6
+ X56 4
+ X36 star 5 6
+ X62 1.0
+ X60 0
+ X60 5
+ X62 0.0
+ X62 0.0
+ X11 1
+ X47 3 7
+ X16 25 8 0 7
+ X46 8 0
+ X47 3 1
+ X46 5 2
+ X45 0 3
+ X45 2 4
+ X25 '$make_organized_stars0_4_42_0' 5 5
+ X49 0 4
+ X50 8000 5
+ X16 13 4 5
+ X14 1
+ X49 2 0
+ X47 0 1
+ X49 3 2
+ X47 4 3
+ X23
+ X26 make_organized_stars0 4
+Label 3
+ X35 3
+ X27
+)
+Predicate(plot_tree_to_stream 2
+Label 1
+ X21
+ X30 0 0
+ X30 2 1
+ X45 1 0
+ X25 dimension 1 3
+ X49 0 0
+ X50 0.0 1
+ X50 0.0 2
+ X49 1 3
+ X49 2 4
+ X23
+ X26 plot_to_stream0 5
+)
+Predicate(plot_tree_to_stream0 5
+ X1 1 4 fail fail 2
+Label 1
+ X4 3
+ X5 4
+ X6 5
+Label 2
+ X3 2 (
+        tree 5 3
+        body 3 5
+) fail
+Label 3
+ X20 6 5
+ X21
+ X30 4 4
+ X36 tree 5 0
+ X55 0
+ X56 8
+ X56 5
+ X56 0
+ X54 1
+ X50 2 5
+ X16 30 6 3 5
+ X30 3 6
+ X47 3 7
+ X16 25 8 1 7
+ X47 3 9
+ X16 25 10 2 9
+ X47 3 11
+ X16 27 12 1 11
+ X30 9 12
+ X47 3 13
+ X16 25 14 2 13
+ X30 10 14
+ X47 3 15
+ X16 27 16 1 15
+ X30 6 16
+ X47 3 17
+ X16 27 18 2 17
+ X30 7 18
+ X47 3 19
+ X16 25 20 1 19
+ X30 1 20
+ X47 3 21
+ X16 27 22 2 21
+ X30 2 22
+ X46 8 1
+ X46 10 2
+ X47 3 3
+ X47 4 4
+ X25 plot_tree_to_stream0 5 11
+ X47 8 0
+ X49 9 1
+ X49 10 2
+ X47 3 3
+ X47 4 4
+ X25 plot_tree_to_stream0 5 8
+ X47 5 0
+ X49 6 1
+ X49 7 2
+ X47 3 3
+ X47 4 4
+ X25 plot_tree_to_stream0 5 5
+ X47 0 0
+ X49 1 1
+ X49 2 2
+ X49 3 3
+ X49 4 4
+ X23
+ X26 plot_tree_to_stream0 5
+Label 4
+ X20 8 5
+ X34 empty 0
+ X16 27 5 1 3
+ X16 25 6 2 3
+ X16 25 7 1 3
+ X16 27 8 2 3
+ X46 4 0
+ X50 'cross ~w ~w ~w ~w~N' 1
+ X53 9
+ X60 8
+ X63
+ X53 10
+ X60 7
+ X58 9
+ X53 11
+ X60 6
+ X58 10
+ X53 2
+ X60 5
+ X58 11
+ X26 format 3
+Label 5
+ X20 8 5
+ X36 body 3 0
+ X54 1
+ X55 5
+ X55 6
+ X46 4 0
+ X50 'plot ~w ~w~N' 1
+ X53 7
+ X58 6
+ X63
+ X53 2
+ X58 5
+ X58 7
+ X26 format 3
+)
+Predicate(quadrant_new_node 6
+ X1 1 fail 2 fail fail
+Label 1
+ X4 3
+ X5 4
+ X5 5
+ X6 6
+Label 2
+ X2 4 (
+        1 3
+        2 4
+        3 5
+        4 6
+) fail
+Label 3
+ X20 12 6
+ X34 1 0
+ X36 tree 5 1
+ X60 4
+ X55 6
+ X55 7
+ X55 8
+ X55 9
+ X36 tree 5 3
+ X60 5
+ X58 6
+ X58 7
+ X58 8
+ X55 10
+ X12
+ X16 25 11 9 2
+ X32 11 10
+ X27
+Label 4
+ X20 12 6
+ X34 2 0
+ X36 tree 5 1
+ X55 6
+ X60 4
+ X55 7
+ X55 8
+ X55 9
+ X36 tree 5 3
+ X58 6
+ X60 5
+ X58 7
+ X58 8
+ X55 10
+ X12
+ X16 25 11 9 2
+ X32 11 10
+ X27
+Label 5
+ X20 12 6
+ X34 3 0
+ X36 tree 5 1
+ X55 6
+ X55 7
+ X60 4
+ X55 8
+ X55 9
+ X36 tree 5 3
+ X58 6
+ X58 7
+ X60 5
+ X58 8
+ X55 10
+ X12
+ X16 25 11 9 2
+ X32 11 10
+ X27
+Label 6
+ X20 12 6
+ X34 4 0
+ X36 tree 5 1
+ X55 6
+ X55 7
+ X55 8
+ X60 4
+ X55 9
+ X36 tree 5 3
+ X58 6
+ X58 7
+ X58 8
+ X60 5
+ X55 10
+ X12
+ X16 25 11 9 2
+ X32 11 10
+ X27
+)
+Predicate(random 1
+ X1 1 3 2 3 3
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X2 1 (
+        4711 1
+) 3
+Label 3
+ X20 2 1
+ X21
+ X30 2 0
+ X11 0
+ X52 '$random_val' 1 0
+ X56 1
+ X25 retract 1 3
+ X19 2
+ X14 0
+ X47 1 1
+ X50 9699691 2
+ X16 29 3 1 2
+ X50 510511 4
+ X16 32 5 3 4
+ X33 2 5
+ X52 '$random_val' 1 0
+ X61 2
+ X23
+ X26 assert 1
+Label 4
+ X20 3 1
+ X29 1 0
+ X34 4711 1
+ X52 '$random_val' 1 0
+ X58 1
+ X26 assert 1
+)
+Predicate(random_max 2
+Label 1
+ X21
+ X30 1 0
+ X30 2 1
+ X45 0 0
+ X25 random 1 3
+ X49 0 0
+ X49 1 1
+ X16 32 2 0 1
+ X33 2 2
+ X23
+ X27
+)
+Predicate(read_stars 2
+Label 1
+ X21
+ X30 1 0
+ X46 1 0
+ X50 read 1
+ X45 0 2
+ X25 open 3 2
+ X49 1 0
+ X47 0 1
+ X25 read_stars0 2 1
+ X49 0 0
+ X23
+ X26 close 1
+)
+Predicate(read_stars0 2
+ X1 1 3 fail 2 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 2 2
+ X21
+ X30 3 1
+ X37 0
+ X56 0
+ X56 2
+ X11 1
+ X47 3 0
+ X47 0 1
+ X25 read 2 4
+ X47 0 2
+ X50 end_of_file 3
+ X16 6 2 3
+ X14 1
+ X47 2 0
+ X49 3 1
+ X23
+ X26 read_stars0 2
+Label 3
+ X35 0
+ X27
+)
+Predicate(time_step 1
+ X1 1 fail 1 fail fail
+Label 1
+ X34 1000 0
+ X27
+)
+Predicate(write_stars 2
+Label 1
+ X21
+ X30 1 0
+ X46 1 0
+ X50 write 1
+ X45 0 2
+ X25 open 3 2
+ X49 1 0
+ X47 0 1
+ X25 write_stars0 2 1
+ X49 0 0
+ X23
+ X26 close 1
+)
+Predicate(write_stars0 2
+ X1 1 2 fail 3 fail
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X35 0
+ X27
+Label 3
+ X20 2 2
+ X21
+ X30 1 1
+ X37 0
+ X55 1
+ X56 0
+ X47 1 0
+ X25 write 2 2
+ X47 1 0
+ X50 '.' 1
+ X25 write 2 2
+ X47 1 0
+ X25 nl 1 2
+ X47 0 0
+ X49 1 1
+ X23
+ X26 write_stars0 2
+)

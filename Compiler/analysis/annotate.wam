@@ -1,0 +1,682 @@
+Predicate('$annotate_entry_4_1105_0' 9
+ X1 2 1 4 4 4
+Label 1
+ X2 2 (
+        parallel 2
+        sequential 3
+) 4
+Label 2
+ X20 1 9
+ X29 9 1
+ X10 10
+ X34 parallel 0
+ X13 10
+ X46 4 0
+ X46 2 1
+ X46 3 2
+ X46 7 3
+ X46 8 4
+ X46 9 7
+ X26 annotate_ix_struct 8
+Label 3
+ X20 1 9
+ X29 9 1
+ X10 10
+ X34 sequential 0
+ X13 10
+ X34 unanalysed 2
+ X34 unanalysed 3
+ X46 4 0
+ X46 7 1
+ X46 8 2
+ X46 5 3
+ X46 6 4
+ X46 9 5
+ X26 annotate_as_unanalysed 6
+Label 4
+ X20 3 9
+ X29 9 0
+ X50 'annotate_entry/4: unknown compile mode (~q)' 0
+ X53 1
+ X60 9
+ X63
+ X26 sys_error 2
+)
+Predicate('$annotate_as_unanalysed_6_1107_0' 6
+ X1 2 4 4 4 1
+Label 1
+ X3 2 (
+        ix 6 2
+        rp 6 3
+) 4
+Label 2
+ X20 9 6
+ X29 6 1
+ X29 7 2
+ X10 8
+ X36 ix 6 0
+ X54 6
+ X13 8
+ X50 unanalysed 1
+ X46 6 2
+ X46 7 3
+ X46 5 4
+ X26 annotate_sequential 5
+Label 3
+ X20 7 6
+ X10 6
+ X36 rp 6 0
+ X54 6
+ X13 6
+ X26 annotate_parallel_as_sequential 6
+Label 4
+ X20 3 6
+ X29 6 0
+ X50 'annotate_as_unanalysed/6: unknown indexing format (~q)' 0
+ X53 1
+ X60 6
+ X63
+ X26 sys_error 2
+)
+Predicate('$annotate_as_parallel_8_1108_0' 8
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 8
+ X21
+ X29 8 0
+ X11 0
+ X46 7 0
+ X46 4 1
+ X46 6 2
+ X46 5 4
+ X46 8 5
+ X25 annotate_parallel 6 1
+ X14 0
+ X23
+ X27
+Label 3
+ X20 5 8
+ X50 'parallel annotation of ~q failed' 0
+ X52 / 2 8
+ X60 1
+ X60 2
+ X53 1
+ X58 8
+ X63
+ X26 sys_error 2
+)
+Predicate('$annotate_arg_5_1209_0' 5
+ X1 3 1 2 2 2
+Label 1
+ X2 1 (
+        susp 3
+) 2
+Label 2
+ X4 4
+ X6 5
+Label 3
+ X10 5
+ X34 susp 0
+ X13 5
+ X32 3 4
+ X27
+Label 4
+ X21
+ X30 2 2
+ X30 1 4
+ X11 0
+ X46 1 0
+ X25 system_type_id 1 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 5
+ X21
+ X30 4 2
+ X30 1 4
+ X46 3 0
+ X45 2 1
+ X24 2 0 3
+ X25 t_to_num 2 5
+ X49 4 0
+ X47 3 1
+ X25 t_to_num 2 4
+ X49 2 0
+ X49 3 1
+ X47 0 2
+ X25 num_lub 3 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 num_to_t 2
+)
+Predicate('$annotate_as_parallel_8_1108_1' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 4 4
+ X21
+ X29 4 0
+ X11 0
+ X52 / 2 0
+ X60 1
+ X60 2
+ X46 3 1
+ X46 4 2
+ X25 non_bot_lookup_cp 3 1
+ X14 0
+ X23
+ X27
+Label 3
+ X20 5 4
+ X50 'predicate ~q has par c.p. but no seq c.p.' 0
+ X52 / 2 4
+ X60 1
+ X60 2
+ X53 1
+ X58 4
+ X63
+ X26 sys_error 2
+)
+Predicate('$annotate_as_sequential_7_1109_0' 7
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 1 7
+ X21
+ X29 7 0
+ X11 0
+ X46 5 0
+ X46 4 1
+ X46 3 2
+ X46 6 3
+ X46 7 4
+ X25 annotate_sequential 5 1
+ X14 0
+ X23
+ X27
+Label 3
+ X20 5 7
+ X50 'sequential annotation of ~q failed' 0
+ X52 / 2 7
+ X60 1
+ X60 2
+ X53 1
+ X58 7
+ X63
+ X26 sys_error 2
+)
+Predicate('$annotate_ix_struct_8_1106_0' 8
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 1 8
+ X21
+ X29 8 0
+ X11 0
+ X46 1 0
+ X46 2 1
+ X46 3 2
+ X46 4 3
+ X46 5 4
+ X46 6 5
+ X46 7 6
+ X46 8 7
+ X25 annotate_as_parallel 8 1
+ X14 0
+ X23
+ X27
+Label 3
+ X20 1 8
+ X21
+ X29 8 0
+ X30 1 3
+ X11 0
+ X46 1 0
+ X46 2 1
+ X46 4 2
+ X46 5 3
+ X46 6 4
+ X46 7 5
+ X46 8 6
+ X25 annotate_as_sequential 7 2
+ X14 0
+ X49 1 0
+ X34 unanalysed 0
+ X23
+ X27
+Label 4
+ X20 5 8
+ X21
+ X30 7 0
+ X30 2 1
+ X30 0 2
+ X30 1 3
+ X30 3 4
+ X30 4 5
+ X30 5 6
+ X30 6 7
+ X50 'predicate ~q has no call pattern (assumes defaults)' 0
+ X52 / 2 8
+ X61 5
+ X61 6
+ X53 1
+ X58 8
+ X63
+ X25 warning 2 8
+ X49 0 6
+ X34 unanalysed 6
+ X49 1 7
+ X34 unanalysed 7
+ X49 2 0
+ X49 3 1
+ X49 4 2
+ X47 5 3
+ X47 6 4
+ X49 7 5
+ X23
+ X26 annotate_as_unanalysed 6
+)
+Predicate('$annotate_var_5_1231_0' 5
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 1 5
+ X21
+ X29 5 0
+ X30 2 3
+ X30 1 4
+ X11 0
+ X46 2 0
+ X46 5 1
+ X25 defined 2 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 3
+ X21
+ X30 2 1
+ X30 1 4
+ X11 0
+ X47 2 0
+ X25 system_type_id 1 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 4
+ X21
+ X30 4 1
+ X30 1 4
+ X46 3 0
+ X45 2 1
+ X24 2 0 3
+ X25 t_to_num 2 5
+ X49 4 0
+ X47 3 1
+ X25 t_to_num 2 4
+ X49 2 0
+ X49 3 1
+ X47 0 2
+ X25 num_lub 3 2
+ X49 0 0
+ X49 1 1
+ X23
+ X26 num_to_t 2
+)
+Predicate('$check_arg_safeness_4_1241_0' 3
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 1 1
+ X30 2 2
+ X11 0
+ X25 shared_term 1 3
+ X19 4
+ X14 0
+ X50 'shared argument ~q to ~q may be conditionally bound' 0
+ X53 2
+ X61 2
+ X63
+ X53 1
+ X61 1
+ X58 2
+ X23
+ X26 warning 2
+Label 3
+ X27
+)
+Predicate('$change_det_5_1256_0' 4
+Label 1
+ X4 2
+ X5 3
+ X5 4
+ X5 5
+ X6 6
+Label 2
+ X10 4
+ X16 5 0 1
+ X13 4
+ X32 3 2
+ X27
+Label 3
+ X20 3 4
+ X10 4
+ X50 det 5
+ X16 5 0 5
+ X13 4
+ X36 ',' 2 2
+ X62 '$det'
+ X60 3
+ X27
+Label 4
+ X20 3 4
+ X10 4
+ X50 nondet 5
+ X16 5 0 5
+ X13 4
+ X36 ',' 2 2
+ X62 '$nondet'
+ X60 3
+ X27
+Label 5
+ X10 4
+ X50 failed 5
+ X16 5 0 5
+ X13 4
+ X32 3 2
+ X27
+Label 6
+ X20 3 4
+ X29 4 0
+ X50 'change_det/5: unknown determinacy information ~q' 0
+ X53 1
+ X60 4
+ X63
+ X26 sys_error 2
+)
+Predicate('$det_entry_4_1274_0' 4
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X20 6 4
+ X21
+ X29 4 0
+ X30 1 2
+ X30 2 3
+ X11 0
+ X46 1 0
+ X49 1 1
+ X52 + 1 5
+ X60 4
+ X52 entry 2 2
+ X58 5
+ X54 1
+ X25 lookup 3 3
+ X14 0
+ X49 2 0
+ X33 1 0
+ X23
+ X27
+Label 3
+ X20 6 4
+ X29 4 0
+ X46 1 0
+ X52 + 1 5
+ X60 4
+ X52 entry 2 1
+ X58 5
+ X54 1
+ X26 insert 4
+)
+Predicate('$eliminate_dead_4_1184_0' 5
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 2 5
+ X10 5
+ X50 live 6
+ X16 5 0 6
+ X13 5
+ X37 3
+ X60 2
+ X60 4
+ X27
+Label 3
+ X21
+ X30 0 2
+ X10 5
+ X50 dead 6
+ X16 5 0 6
+ X13 5
+ X32 4 3
+ X46 1 0
+ X25 kill_label 1 1
+ X19 13
+ X49 0 2
+ X36 ',' 2 2
+ X55 3
+ X54 1
+ X36 :- 2 3
+ X55 4
+ X54 1
+ X44 6 5
+ X44 8 7
+ X16 1 4 5 7
+ X50 'found unreachable clause in ~q' 0
+ X52 / 2 9
+ X58 6
+ X58 8
+ X53 1
+ X58 9
+ X63
+ X23
+ X26 warning 2
+Label 4
+ X20 3 5
+ X29 5 0
+ X50 'eliminate_dead/4: ~q must be live/dead' 0
+ X53 1
+ X60 5
+ X63
+ X26 sys_error 2
+)
+Predicate('$duplicate_entry_6_1263_0' 8
+ X1 5 1 2 1 1
+Label 1
+ X4 3
+ X6 4
+Label 2
+ X4 3
+ X5 4
+ X6 5
+Label 3
+ X20 7 8
+ X10 8
+ X16 20 0
+ X16 20 2
+ X13 8
+ X44 10 9
+ X16 2 1 3 9
+ X37 6
+ X58 10
+ X60 7
+ X36 + 1 0
+ X60 1
+ X36 + 1 2
+ X60 4
+ X16 26 11 4
+ X32 11 5
+ X27
+Label 4
+ X20 2 8
+ X10 8
+ X16 20 0
+ X13 8
+ X36 + 1 0
+ X60 1
+ X32 4 5
+ X32 6 7
+ X27
+Label 5
+ X20 2 8
+ X10 8
+ X16 20 2
+ X13 8
+ X36 + 1 2
+ X60 1
+ X32 4 5
+ X32 6 7
+ X27
+)
+Predicate('$final_lift_unify_11_1207_0' 12
+Label 1
+ X4 2
+ X6 3
+Label 2
+ X21
+ X30 3 0
+ X30 7 1
+ X30 11 3
+ X30 6 4
+ X30 5 5
+ X30 8 6
+ X30 4 7
+ X30 1 8
+ X30 2 9
+ X30 9 10
+ X30 10 11
+ X11 0
+ X46 2 0
+ X49 3 1
+ X25 defined 2 12
+ X19 6
+ X14 0
+ X49 1 5
+ X16 26 6 5
+ X33 2 6
+ X49 4 7
+ X33 3 7
+ X49 5 8
+ X36 ',' 2 8
+ X55 9
+ X61 8
+ X36 = 2 9
+ X61 6
+ X61 7
+ X49 9 0
+ X49 10 1
+ X47 1 2
+ X49 11 3
+ X47 6 4
+ X23
+ X26 annotate_arg 5
+Label 3
+ X20 1 12
+ X29 12 0
+ X32 1 4
+ X32 9 8
+ X32 6 5
+ X46 2 0
+ X50 def 1
+ X46 12 2
+ X46 7 3
+ X26 insert 4
+)
+Predicate('$initial_determinacy_4_1221_0' 4
+ X1 2 1 5 5 5
+Label 1
+ X2 3 (
+        det 2
+        nondet 3
+        shallow 4
+) 5
+Label 2
+ X20 3 4
+ X10 4
+ X34 det 0
+ X13 4
+ X36 ',' 2 2
+ X62 '$initially_det'
+ X60 3
+ X34 det 1
+ X27
+Label 3
+ X20 3 4
+ X10 4
+ X34 nondet 0
+ X13 4
+ X36 ',' 2 2
+ X62 '$initially_nondet'
+ X60 3
+ X34 nondet 1
+ X27
+Label 4
+ X20 3 4
+ X10 4
+ X34 shallow 0
+ X13 4
+ X36 ',' 2 2
+ X62 '$initially_nondet'
+ X60 3
+ X34 nondet 1
+ X27
+Label 5
+ X20 3 4
+ X29 4 1
+ X50 'initial_determinacy/4: invalid determinacy ~q' 0
+ X53 1
+ X60 4
+ X63
+ X26 sys_error 2
+)
+Predicate('$initial_determinacy_4_1221_1' 2
+ X1 3 1 5 5 2
+Label 1
+ X2 1 (
+        bot 4
+) 5
+Label 2
+ X3 1 (
+        shr 3 3
+) 5
+Label 3
+ X20 5 2
+ X10 2
+ X36 shr 3 0
+ X54 2
+ X55 3
+ X13 2
+ X42 4
+ X16 1 3 1 4
+ X27
+Label 4
+ X10 2
+ X34 bot 0
+ X13 2
+ X50 'initial_determinacy/4: seq call pattern is bottom' 0
+ X26 sys_error 1
+Label 5
+ X20 1 2
+ X42 2
+ X16 1 0 1 2
+ X27
+)

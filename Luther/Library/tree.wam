@@ -1,0 +1,95 @@
+Predicate(tree_lookup 2
+ X1 1 fail fail fail 2
+Label 1
+ X10 2
+ X16 17 0
+ X13 2
+ X28
+ X27
+Label 2
+ X20 4 2
+ X36 tree 3 0
+ X55 4
+ X55 2
+ X55 3
+ X46 1 0
+ X46 4 1
+ X26 '$tree_lookup_2_791_0' 4
+)
+Predicate('$tree_lookup_2_791_0' 4
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X10 4
+ X32 0 2
+ X13 4
+ X27
+Label 3
+ X20 1 4
+ X29 4 0
+ X10 5
+ X16 7 2 4
+ X13 5
+ X46 1 0
+ X46 4 1
+ X26 tree_lookup 2
+Label 4
+ X20 1 4
+ X29 4 0
+ X10 5
+ X16 8 2 4
+ X13 5
+ X46 3 0
+ X46 4 1
+ X26 tree_lookup 2
+)
+Predicate('$tree_insert_2_793_0' 4
+Label 1
+ X4 2
+ X5 3
+ X6 4
+Label 2
+ X20 1 4
+ X29 4 0
+ X10 5
+ X16 7 2 4
+ X13 5
+ X46 1 0
+ X46 4 1
+ X26 tree_insert 2
+Label 3
+ X20 1 4
+ X29 4 0
+ X10 5
+ X16 8 2 4
+ X13 5
+ X46 3 0
+ X46 4 1
+ X26 tree_insert 2
+Label 4
+ X27
+)
+Predicate(tree_insert 2
+ X1 1 fail fail fail 2
+Label 1
+ X20 4 2
+ X10 2
+ X16 17 0
+ X13 2
+ X36 tree 3 0
+ X54 1
+ X60 1
+ X54 1
+ X27
+Label 2
+ X20 4 2
+ X36 tree 3 0
+ X55 4
+ X55 2
+ X55 3
+ X46 1 0
+ X46 4 1
+ X26 '$tree_insert_2_793_0' 4
+)

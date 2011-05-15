@@ -1,0 +1,182 @@
+
+
+	Luther Reform Prolog Version 0.7/1.8 (Beta) Release 0.9
+================================================================================
+
+
+1	Introduction
+	------------------------------
+
+
+  Luther Reform Prolog is a portable implementation of Reform Prolog supported
+by Uppsala University. The parallel machinery has been ported to the following
+platforms:
+
+  o	SUN 630 MP		(Solaris & SunOS)
+  o	SUN Sparc Center 2000	(Solaris)
+  o	KSR 1 Supercomputer	(KSR OS 1.2.1)
+  o	Sequent Symmetry	(DYNIX 3.2)
+
+
+  The sequential machinery should run on most UNIX platforms, Berkeley (BSD) as
+well as System V. Included in the package are many of the features you will find
+in other Prolog implementations, such as SICStus Prolog. Bellow is a list of the
+main features provided by the package: 
+
+  o	compiler for Reform Prolog (targeting an extended Warren abstract machine)
+
+  o	portable emulator supporting parallel execution
+
+  o	garbage collector and stack-trail shifter supporting parallel execution
+
+  o	corouting support (via freeze)
+
+  o	exception handling
+
+  o	interpreter supporting Prolog-level tracing.
+
+  o	low-level debugger (supporting multiple workers)
+
+
+
+2	Requirements
+	------------------------------
+
+
+  The Luther Reform Prolog package is currently using two external packages,
+supported by GNU; GNU MP and Flex. The multi precision package (GNU MP) is
+included in the Luther Reform Prolog ditto. Flex, however, is not included in
+the package. In order to install and run the package successfully you need a
+version of Flex which support directives (we are currently using version 2.4.6).
+
+
+2.1	Resources
+
+
+  The compiler is rather memory consuming to say the least. We recommend you to
+run the compiler using at least 30 Mbytes of total memory. This will be
+sufficient for most programs you compile.
+
+
+
+3	Installation
+	------------------------------
+
+
+  The Luther Reform Prolog package is (currently) divided into two separate file
+structures; the compiler (which also run under SICStus Prolog) and the emulator
+(these are located under Reform/Compiler and Reform/Luther respectively).
+  The compiler is supplied in a "wam"-format which is used by the emulator
+(Luther), but the compiler may also be built to run under SICStus Prolog (see
+3.1 "Building Reform Prolog under SICStus" below). In order to install the
+emulator, there is a configuration script in the Reform/Luther directory to aid
+the process. This is the procedure:
+
+  o	Unwrap the package, from a tar-file "reform.tar" using:
+
+		tar -x -f reform.tar
+
+  o	Move to directory Reform/Luther .
+
+  o	Configure the package (using the supplied command "configure").
+	This procedure will build various make-files, test programs and the
+	start script "lut".
+
+  o	Build the emulator using one of the following options:
+
+		make seq	- to build the sequential machinery
+		make par	- to build the parallel machinery
+		make all	- to build the entire package (seq & par)
+
+	Note however that the parallel implementation may only be built on one
+	of the architectures mentioned in the introduction.
+
+  o	Remove any binary objects (not executables) using
+
+		(cd Emulator ; make clean)
+
+
+  After successful installation the Luther Reform Prolog may be run using the
+script "lut" (see the "luther" man file for details). You should also have a
+look at the "reform" man file.
+
+
+
+3.1	Building Reform Prolog under SICStus Prolog
+
+
+  The compiler may also be built under SICStus, this enables native code
+performance on platforms with SICStus native code support. With the Luther
+Reform Prolog package in place, run SICStus Prolog in the Reform/Compiler
+directory and consult the file util/rmake.pl (using ['util/rmake'].).
+  This file contains a tiny utility (rmake) which may be used to build the
+Reform compiler (preferably under SICStus). The rmake utility will build the
+compiler in the current directory if not otherwise specified. The file produced
+by rmake is a load image of the compiled code (using native code if supported). 
+  Use the predicate rmake/0 to build the compiler using a standard name
+(reform-compiler) or, alternatively use rmake/1 or rmake/2 with a file name
+specifying the target file and a second (optional) argument specifying the
+compile mode (as accepted by SICStus, see note below). 
+
+
+Examples:
+
+  ?- rmake.			%%%  Will build "reform-compiler" using native
+				%%% code if available.
+
+  ?- rmake('my-compiler').	%%%  Will build "my-compiler" using native
+				%%% code if available.
+
+  ?- rmake('my-compiler', debugcode).	%%%  Same as above, using debug code.
+
+
+
+4	Known problems and bugs
+	------------------------------
+
+
+  The configuration script uses 'arch' to establish the current architecture,
+since 'arch' is not a standard command under System V you may have to add a
+simple script which echoes the machine architecture. This is only of concern
+when building the parallel machinery.
+
+  The compiler does not include support for modules.
+
+  The compiler does not duplicate (uniquely) predicates which are common to
+sequential as well as parallel execution. This should be done since the
+parallel machinery may impose instructions not supported during sequential
+execution.
+
+  Detection of other recursion types than list recursion has not been fully
+implemented in the parallelising compiler.
+
+  The emulator does not support code space growth or collection.
+
+  At present, the compiler is not loaded during boot-loading. Instead the
+compiler has to be loaded separately. This is due to the voluminous ascii-format
+used as output by the compiler. This is a temporary solution and it will be
+abandoned as soon as we have added byte-code support.
+
+  This list is incomplete.
+
+
+
+5	Questions and answers
+	------------------------------
+
+
+Send requests to
+		<reform-request@csd.uu.se>
+
+Send bug reports to
+		<reform-bug@csd.uu.se>
+
+Bugs tend actually to be fixed if they can be isolated, so it is in your
+interest to report them in such a way that they can be easily reproduced.
+
+The mailing list
+	 	<reform-users@csd.uu.se>
+
+is a channel for communication among users and implementors. To subscribe/
+unsubscribe, write to
+		<reform@csd.uu.se>
